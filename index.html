@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f5ef">
+  <meta name="description" content="欢迎来到 Keeper。记录日常，留住灵感。一个正在慢慢生长的小站。">
+  <title>Keeper · 记录日常，留住灵感</title>
+  <link rel="canonical" href="https://keeper.day/">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='14' fill='%23274b3a'/%3E%3Cpath d='M15 12v24m19-24L22 24l12 12' fill='none' stroke='%23f6f5ef' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #f6f5ef; color: #23362b; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    a:focus-visible { outline: 3px solid #527953; outline-offset: 5px; border-radius: 4px; }
+    .page { width: min(100% - 48px, 960px); margin: 0 auto; }
+    header { min-height: 84px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #d9ded3; }
+    .brand { display: inline-flex; align-items: center; gap: 10px; font-weight: 650; font-size: 21px; letter-spacing: -.7px; }
+    .mark { width: 32px; height: 32px; display: grid; place-items: center; background: #274b3a; color: #f6f5ef; border-radius: 10px; font: 23px Georgia, serif; }
+    .domain { color: #5c6e60; font: 12px ui-monospace, SFMono-Regular, Consolas, monospace; }
+    main { padding: 54px 0 42px; }
+    .intro { display: grid; grid-template-columns: 1fr 200px; gap: 36px; align-items: center; }
+    .eyebrow { margin: 0 0 17px; font: 11px ui-monospace, SFMono-Regular, Consolas, monospace; letter-spacing: 2.4px; color: #657c61; }
+    h1 { margin: 0; font-size: clamp(30px, 4.4vw, 44px); font-weight: 600; line-height: 1.4; letter-spacing: -1.4px; }
+    .description { max-width: 520px; margin: 18px 0 0; color: #5b6b5f; font-size: 15px; line-height: 1.9; }
+    .illustration { width: 180px; height: 180px; justify-self: end; }
+    .welcome { margin-top: 36px; padding: 20px 0; border-top: 1px solid #d9ded3; border-bottom: 1px solid #d9ded3; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .welcome h2 { margin: 0 0 6px; font-size: 15px; font-weight: 600; }
+    .welcome p { margin: 0; color: #5b6b5f; font-size: 13px; line-height: 1.8; }
+    .github { display: inline-flex; align-items: center; justify-content: center; gap: 14px; flex-shrink: 0; min-height: 44px; padding: 0 18px; border: 1px solid #becbbb; border-radius: 7px; font-size: 13px; transition: background .15s ease; }
+    .github:hover { background: #e8eddf; }
+    footer { display: flex; justify-content: space-between; gap: 16px; padding-bottom: 24px; font-size: 11px; color: #667564; }
+    .status { display: inline-flex; align-items: center; gap: 7px; }
+    .dot { width: 6px; height: 6px; background: #598353; border-radius: 50%; }
+    @media (max-width: 580px) {
+      .page { width: calc(100% - 36px); }
+      header { min-height: 72px; }
+      main { padding: 34px 0 30px; }
+      .intro { grid-template-columns: 1fr; gap: 20px; }
+      .illustration { width: 110px; height: 110px; justify-self: start; grid-row: 1; }
+      .eyebrow { margin-bottom: 12px; }
+      .description { font-size: 14px; }
+      .welcome { margin-top: 28px; align-items: flex-start; flex-direction: column; gap: 16px; }
+      footer { flex-wrap: wrap; line-height: 1.6; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <a class="brand" href="/" aria-label="Keeper 首页"><span class="mark" aria-hidden="true">k</span>Keeper</a>
+      <span class="domain">keeper.day</span>
+    </header>
+    <main>
+      <section class="intro" aria-labelledby="intro-title">
+        <div>
+          <p class="eyebrow">A LITTLE SPACE FOR EVERYDAY</p>
+          <h1 id="intro-title">记录日常，<br>留住灵感。</h1>
+          <p class="description">欢迎来到 Keeper。<br>把值得记住的片刻，和正在发生的好事，慢慢收集在这里。</p>
+        </div>
+        <svg class="illustration" viewBox="0 0 180 180" fill="none" aria-hidden="true">
+          <circle cx="90" cy="90" r="84" fill="#e7ecdc"/>
+          <circle cx="125" cy="46" r="13" fill="#d6b96b"/>
+          <path d="M89 137V75" stroke="#416547" stroke-width="3" stroke-linecap="round"/>
+          <path d="M90 100C62 102 46 85 48 65C73 63 91 76 90 100Z" fill="#9ab287"/>
+          <path d="M90 84C87 57 101 39 121 38C128 61 113 83 90 84Z" fill="#668c60"/>
+          <path d="M90 119C93 94 108 82 131 85C130 108 112 123 90 119Z" fill="#b2c29b"/>
+          <path d="M62 140H119" stroke="#9aac8c" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </section>
+      <section class="welcome" aria-labelledby="welcome-title">
+        <div>
+          <h2 id="welcome-title">小站初见，来日方长。</h2>
+          <p>这里正在慢慢生长。谢谢你的到来，欢迎常来看看。</p>
+        </div>
+        <a class="github" href="https://github.com/spidboy">在 GitHub 找到我 <span aria-hidden="true">↗</span></a>
+      </section>
+    </main>
+    <footer><span>© 2026 Keeper</span><span class="status"><span class="dot" aria-hidden="true"></span>把每一天，认真收藏。</span></footer>
+  </div>
+</body>
+</html>
