@@ -1,0 +1,434 @@
+{
+  "assets": {
+    "pair-photos": {
+      "source": "attachments/keeper-day/product-stickers/p-16-mutual-photos-v2.png",
+      "title": "You, through my eyes.",
+      "copy": "Your picture on mine. My picture on yours. A little portrait of being someone’s favorite person.",
+      "alt": "You, through my eyes. — Keeper paired artwork concept",
+      "label": "PAIRED ARTWORK CONCEPT",
+      "width": 1440,
+      "height": 1080
+    },
+    "pair-sun-moon": {
+      "source": "attachments/keeper-day/product-stickers/p-01-sun-moon-v2.png",
+      "title": "You’re my sun. I’m your moon.",
+      "copy": "Warm daylight and a midnight sky. Two different energies, one good pair.",
+      "alt": "You’re my sun. I’m your moon. — Keeper paired artwork concept",
+      "label": "PAIRED ARTWORK CONCEPT",
+      "width": 1440,
+      "height": 1080
+    },
+    "pair-mountain-sea": {
+      "source": "attachments/keeper-day/product-stickers/p-02-mountain-sea-v2.png",
+      "title": "Mountains meet the sea.",
+      "copy": "For the person who feels like both an adventure and a place to come home to.",
+      "alt": "Mountains meet the sea. — Keeper paired artwork concept",
+      "label": "PAIRED ARTWORK CONCEPT",
+      "width": 1440,
+      "height": 1080
+    },
+    "pair-dawn-dusk": {
+      "source": "attachments/keeper-day/product-stickers/p-03-dawn-dusk-v2.png",
+      "title": "From first light to last.",
+      "copy": "A soft beginning and a golden ending. Two halves of a day worth keeping.",
+      "alt": "From first light to last. — Keeper paired artwork concept",
+      "label": "PAIRED ARTWORK CONCEPT",
+      "width": 1440,
+      "height": 1080
+    },
+    "pair-rain-rainbow": {
+      "source": "attachments/keeper-day/product-stickers/p-04-rain-rainbow-v2.png",
+      "title": "After the rain, you.",
+      "copy": "A little weather, a little color. An optimistic pair for your everyday person.",
+      "alt": "After the rain, you. — Keeper paired artwork concept",
+      "label": "PAIRED ARTWORK CONCEPT",
+      "width": 1440,
+      "height": 1080
+    },
+    "pair-high-five": {
+      "source": "attachments/keeper-day/product-stickers/p-11-high-five-v2.png",
+      "title": "My partner in everything.",
+      "copy": "For the small wins, the big plans and the friend who’s always on your side.",
+      "alt": "My partner in everything. — Keeper paired artwork concept",
+      "label": "PAIRED ARTWORK CONCEPT",
+      "width": 1440,
+      "height": 1080
+    },
+    "pair-cats": {
+      "source": "attachments/keeper-day/product-stickers/p-13-facing-cats-v2.png",
+      "title": "A perfect little pair.",
+      "copy": "Two curious cats, facing each other. Quiet company with a playful side.",
+      "alt": "A perfect little pair. — Keeper paired artwork concept",
+      "label": "PAIRED ARTWORK CONCEPT",
+      "width": 1440,
+      "height": 1080
+    },
+    "pair-pixels": {
+      "source": "attachments/keeper-day/product-stickers/p-21-pixel-partners-v2.png",
+      "title": "Better in two-player mode.",
+      "copy": "A pixel-inspired pair for your favorite teammate, on screen and off.",
+      "alt": "Better in two-player mode. — Keeper paired artwork concept",
+      "label": "PAIRED ARTWORK CONCEPT",
+      "width": 1440,
+      "height": 1080
+    },
+    "pair-cities": {
+      "source": "attachments/keeper-day/product-stickers/p-25-two-cities-v2.png",
+      "title": "Two cities. One story.",
+      "copy": "Different skylines, something shared. A visual idea for keeping someone close.",
+      "alt": "Two cities. One story. — Keeper paired artwork concept",
+      "label": "PAIRED ARTWORK CONCEPT",
+      "width": 1440,
+      "height": 1080
+    },
+    "pair-lighthouse": {
+      "source": "attachments/keeper-day/product-stickers/p-07-wave-lighthouse-v2.png",
+      "title": "You’re my way home.",
+      "copy": "A wave and a lighthouse, made to belong in the same little story.",
+      "alt": "You’re my way home. — Keeper paired artwork concept",
+      "label": "PAIRED ARTWORK CONCEPT",
+      "width": 1440,
+      "height": 1080
+    },
+    "pair-music": {
+      "source": "attachments/keeper-day/product-stickers/p-17-shared-music-v2.png",
+      "title": "Our kind of soundtrack.",
+      "copy": "For the songs, the walks and the moments that become yours together.",
+      "alt": "Our kind of soundtrack. — Keeper paired artwork concept",
+      "label": "PAIRED ARTWORK CONCEPT",
+      "width": 1440,
+      "height": 1080
+    },
+    "pair-coffee": {
+      "source": "attachments/keeper-day/product-stickers/p-27-coffee-croissant-v2.png",
+      "title": "Our usual, please.",
+      "copy": "Coffee and a croissant. A small nod to the routines you love sharing.",
+      "alt": "Our usual, please. — Keeper paired artwork concept",
+      "label": "PAIRED ARTWORK CONCEPT",
+      "width": 1440,
+      "height": 1080
+    },
+    "style-pixels": {
+      "source": "attachments/keeper-day/product-stickers/st-03-pixel-world.png",
+      "title": "Pixel world",
+      "copy": "A little retro color for the places you love.",
+      "alt": "Pixel world — Keeper surface-art concept",
+      "label": "SURFACE-ART CONCEPT",
+      "width": 720,
+      "height": 960
+    },
+    "style-botanical": {
+      "source": "attachments/keeper-day/product-stickers/st-11-botanical-specimens.png",
+      "title": "Botanical notes",
+      "copy": "Leafy details, a softer palette, and a little room to grow.",
+      "alt": "Botanical notes — Keeper surface-art concept",
+      "label": "SURFACE-ART CONCEPT",
+      "width": 720,
+      "height": 960
+    },
+    "style-swiss": {
+      "source": "attachments/keeper-day/product-stickers/st-31-swiss-grid.png",
+      "title": "Quiet geometry",
+      "copy": "Clean lines and red accents for a more graphic kind of day.",
+      "alt": "Quiet geometry — Keeper surface-art concept",
+      "label": "SURFACE-ART CONCEPT",
+      "width": 720,
+      "height": 960
+    },
+    "style-outdoor": {
+      "source": "attachments/keeper-day/product-stickers/st-46-outdoor-contours.png",
+      "title": "Out of office",
+      "copy": "Contours and mountain colors for your next small adventure.",
+      "alt": "Out of office — Keeper surface-art concept",
+      "label": "SURFACE-ART CONCEPT",
+      "width": 720,
+      "height": 960
+    },
+    "style-stars": {
+      "source": "attachments/keeper-day/product-stickers/st-07-star-chart.png",
+      "title": "Under the stars",
+      "copy": "A little night sky around your favorite view.",
+      "alt": "Under the stars — Keeper surface-art concept",
+      "label": "SURFACE-ART CONCEPT",
+      "width": 720,
+      "height": 960
+    },
+    "style-scrapbook": {
+      "source": "attachments/keeper-day/product-stickers/st-05-scrapbook.png",
+      "title": "The scrapbook",
+      "copy": "A warm, collected look for everyday memories.",
+      "alt": "The scrapbook — Keeper surface-art concept",
+      "label": "SURFACE-ART CONCEPT",
+      "width": 720,
+      "height": 960
+    },
+    "style-midcentury": {
+      "source": "attachments/keeper-day/product-stickers/st-33-midcentury.png",
+      "title": "Sunday afternoon",
+      "copy": "Warm curves and earthy colors, right at home.",
+      "alt": "Sunday afternoon — Keeper surface-art concept",
+      "label": "SURFACE-ART CONCEPT",
+      "width": 720,
+      "height": 960
+    },
+    "style-terrazzo": {
+      "source": "attachments/keeper-day/product-stickers/st-35-terrazzo.png",
+      "title": "Little pieces of color",
+      "copy": "A playful pattern with room for a quiet moment.",
+      "alt": "Little pieces of color — Keeper surface-art concept",
+      "label": "SURFACE-ART CONCEPT",
+      "width": 720,
+      "height": 960
+    },
+    "style-waves": {
+      "source": "attachments/keeper-day/product-stickers/st-37-woodcut-waves.png",
+      "title": "By the water",
+      "copy": "Blue waves around a view you wish you could stay in.",
+      "alt": "By the water — Keeper surface-art concept",
+      "label": "SURFACE-ART CONCEPT",
+      "width": 720,
+      "height": 960
+    },
+    "style-ink": {
+      "source": "attachments/keeper-day/product-stickers/st-38-ink-landscape.png",
+      "title": "A slower view",
+      "copy": "Soft landscape details for the contemplative ones.",
+      "alt": "A slower view — Keeper surface-art concept",
+      "label": "SURFACE-ART CONCEPT",
+      "width": 720,
+      "height": 960
+    },
+    "style-gradient": {
+      "source": "attachments/keeper-day/product-stickers/st-42-soft-gradient.png",
+      "title": "Soft daydream",
+      "copy": "A gentle wash of color around a favorite scene.",
+      "alt": "Soft daydream — Keeper surface-art concept",
+      "label": "SURFACE-ART CONCEPT",
+      "width": 720,
+      "height": 960
+    },
+    "style-pet": {
+      "source": "attachments/keeper-day/product-stickers/st-48-pet-cyanotype.png",
+      "title": "For your favorite face",
+      "copy": "Blue botanical details for the one who’s always happy to see you.",
+      "alt": "For your favorite face — Keeper surface-art concept",
+      "label": "SURFACE-ART CONCEPT",
+      "width": 720,
+      "height": 960
+    },
+    "app-calendar": {
+      "source": "attachments/keeper-day/screen-scenes-20261106/01-calendar-desk.png",
+      "title": "Your day, at a glance.",
+      "copy": "A calendar and a small plan for the afternoon. An exploration of how a quiet desk display could feel.",
+      "alt": "Your day, at a glance. — Keeper display concept",
+      "label": "DISPLAY CONCEPT",
+      "width": 1440,
+      "height": 960,
+      "short": "Calendar",
+      "category": "display"
+    },
+    "app-water": {
+      "source": "attachments/keeper-day/screen-scenes-20261106/02-water-reminder.png",
+      "title": "A little pause.",
+      "copy": "A gentle visual idea for a water break. A reminder concept, not an active notification feature.",
+      "alt": "A little pause. — Keeper display concept",
+      "label": "DISPLAY CONCEPT",
+      "width": 1440,
+      "height": 960,
+      "short": "A little pause",
+      "category": "display"
+    },
+    "app-travel": {
+      "source": "attachments/keeper-day/screen-scenes-20261106/03-boarding-info.png",
+      "title": "A little travel companion.",
+      "copy": "A sample flight-information layout for a day on the move. Not live travel data or a boarding pass.",
+      "alt": "A little travel companion. — Keeper display concept",
+      "label": "DISPLAY CONCEPT",
+      "width": 1440,
+      "height": 960,
+      "short": "On the move",
+      "category": "display"
+    },
+    "app-anniversary": {
+      "source": "attachments/keeper-day/screen-scenes-20261106/04-anniversary.png",
+      "title": "A date worth remembering.",
+      "copy": "A countdown concept for a day that belongs to the two of you. A little anticipation, kept in sight.",
+      "alt": "A date worth remembering. — Keeper display concept",
+      "label": "DISPLAY CONCEPT",
+      "width": 1440,
+      "height": 960,
+      "short": "Our anniversary",
+      "category": "display"
+    },
+    "app-scenes": {
+      "source": "attachments/keeper-day/app/G-saved-scenes.png",
+      "title": "01 — Choose your scene.",
+      "copy": "A saved-scenes concept for collecting favorite display combinations in one place: a photo, a date, a little information for the day.",
+      "alt": "01 — Choose your scene. — Keeper companion app concept",
+      "label": "COMPANION APP CONCEPT",
+      "width": 1440,
+      "height": 960,
+      "short": "Saved scenes",
+      "category": "companion"
+    },
+    "app-layouts": {
+      "source": "attachments/keeper-day/app/H-style-and-layout-editor.png",
+      "title": "02 — Make it yours.",
+      "copy": "Explore Original, Warm Film and Soft Mono photo styles, plus layouts with room for a date or a note. Interface design, not released editing software.",
+      "alt": "02 — Make it yours. — Keeper companion app concept",
+      "label": "COMPANION APP CONCEPT",
+      "width": 1440,
+      "height": 960,
+      "short": "Style & layout",
+      "category": "companion"
+    },
+    "app-widgets": {
+      "source": "attachments/keeper-day/app/I-widgets-and-schedules.png",
+      "title": "03 — Add the little details.",
+      "copy": "Date, calendar, weather, quote, countdown and checklist previews, plus an exploration of scheduled scene changes.",
+      "alt": "03 — Add the little details. — Keeper companion app concept",
+      "label": "COMPANION APP CONCEPT",
+      "width": 1440,
+      "height": 960,
+      "short": "Widgets",
+      "category": "companion"
+    },
+    "app-settings": {
+      "source": "attachments/keeper-day/app/J-device-sync-and-settings.png",
+      "title": "04 — Review your settings.",
+      "copy": "A concept flow for checking changes and syncing device configuration. Connectivity and automatic syncing are not confirmed launch features.",
+      "alt": "04 — Review your settings. — Keeper companion app concept",
+      "label": "COMPANION APP CONCEPT",
+      "width": 1440,
+      "height": 960,
+      "short": "Device settings",
+      "category": "companion"
+    },
+    "moment-friends": {
+      "source": "attachments/keeper-day/marketing/14-the-good-stuff-stays.png",
+      "title": "The people who make the day.",
+      "copy": "The ones you laugh with. The ones who turn an ordinary afternoon into a favorite memory.",
+      "alt": "The people who make the day. — Keeper illustrative lifestyle scene",
+      "label": "ILLUSTRATIVE LIFESTYLE SCENE",
+      "width": 1200,
+      "height": 1200
+    },
+    "moment-college": {
+      "source": "attachments/keeper-day/marketing/28-student-home.png",
+      "title": "A new chapter. A familiar face.",
+      "copy": "A little reminder of home, wherever your next chapter takes you.",
+      "alt": "A new chapter. A familiar face. — Keeper illustrative lifestyle scene",
+      "label": "ILLUSTRATIVE LIFESTYLE SCENE",
+      "width": 1200,
+      "height": 1200
+    },
+    "moment-desk": {
+      "source": "attachments/keeper-day/marketing/26-nyc-desk.png",
+      "title": "A good place to pause.",
+      "copy": "A desk, a favorite photo, and a quiet moment in the middle of everything.",
+      "alt": "A good place to pause. — Keeper illustrative lifestyle scene",
+      "label": "ILLUSTRATIVE LIFESTYLE SCENE",
+      "width": 1200,
+      "height": 1200
+    },
+    "moment-pet": {
+      "source": "attachments/keeper-day/website-assets/moment-pet.webp",
+      "title": "Yes, another photo of the dog.",
+      "copy": "Some faces never get old. Make a little room for your everyday favorite.",
+      "alt": "Yes, another photo of the dog. — Keeper illustrative lifestyle scene",
+      "label": "ILLUSTRATIVE LIFESTYLE SCENE",
+      "width": 525,
+      "height": 685
+    },
+    "moment-wedding": {
+      "source": "attachments/keeper-day/marketing/20-take-the-moment-home.png",
+      "title": "The day you’ll come back to.",
+      "copy": "A celebration, a familiar smile, a moment to keep close long after the day.",
+      "alt": "The day you’ll come back to. — Keeper illustrative lifestyle scene",
+      "label": "ILLUSTRATIVE LIFESTYLE SCENE",
+      "width": 1200,
+      "height": 1200
+    },
+    "moment-birthday": {
+      "source": "attachments/keeper-day/marketing/17-gift-she-sees-every-day.png",
+      "title": "A gift with someone in mind.",
+      "copy": "A birthday idea built around a favorite face. Illustrative gift packaging, not final product packaging.",
+      "alt": "A gift with someone in mind. — Keeper illustrative lifestyle scene",
+      "label": "ILLUSTRATIVE LIFESTYLE SCENE",
+      "width": 1200,
+      "height": 1200
+    },
+    "moment-mother": {
+      "source": "attachments/keeper-day/marketing/25-mother-gift.png",
+      "title": "For the person who feels like home.",
+      "copy": "A familiar face. A little thank-you. A gift idea for someone who means a lot.",
+      "alt": "For the person who feels like home. — Keeper illustrative lifestyle scene",
+      "label": "ILLUSTRATIVE LIFESTYLE SCENE",
+      "width": 1200,
+      "height": 1200
+    },
+    "moment-anniversary": {
+      "source": "attachments/keeper-day/screen-scenes-20261106/04-anniversary.png",
+      "title": "Your day, kept close.",
+      "copy": "An anniversary display concept for the dates that belong to the two of you. Not a released widget.",
+      "alt": "Your day, kept close. — Keeper illustrative lifestyle scene",
+      "label": "ILLUSTRATIVE LIFESTYLE SCENE",
+      "width": 1440,
+      "height": 960
+    }
+  },
+  "pairs": [
+    "pair-photos",
+    "pair-sun-moon",
+    "pair-mountain-sea",
+    "pair-dawn-dusk",
+    "pair-rain-rainbow",
+    "pair-high-five",
+    "pair-cats",
+    "pair-pixels",
+    "pair-cities",
+    "pair-lighthouse",
+    "pair-music",
+    "pair-coffee"
+  ],
+  "styles": [
+    "style-pixels",
+    "style-botanical",
+    "style-swiss",
+    "style-outdoor",
+    "style-stars",
+    "style-scrapbook",
+    "style-midcentury",
+    "style-terrazzo",
+    "style-waves",
+    "style-ink",
+    "style-gradient",
+    "style-pet"
+  ],
+  "apps": [
+    "app-calendar",
+    "app-water",
+    "app-travel",
+    "app-anniversary",
+    "app-scenes",
+    "app-layouts",
+    "app-widgets",
+    "app-settings"
+  ],
+  "moments": [
+    "moment-friends",
+    "moment-college",
+    "moment-desk",
+    "moment-pet",
+    "moment-wedding",
+    "moment-birthday",
+    "moment-mother",
+    "moment-anniversary"
+  ],
+  "app_featured": [
+    "app-calendar",
+    "app-water",
+    "app-travel",
+    "app-anniversary"
+  ]
+}
