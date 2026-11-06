@@ -1,0 +1,33 @@
+const preview = document.querySelector('#camera-preview');
+const samplePhotos = {
+  love: { path: '/assets/screen-love.webp', label: 'a couple' },
+  pet: { path: '/assets/screen-pet.webp', label: 'a happy dog' },
+  blooms: { path: '/assets/screen-blooms.webp', label: 'flowers' }
+};
+document.querySelectorAll('[data-photo]').forEach((button) => {
+  button.addEventListener('click', () => {
+    const photo = samplePhotos[button.dataset.photo];
+    preview.querySelectorAll('.screen-art, .mini-art').forEach((image) => { image.src = photo.path; });
+    preview.setAttribute('aria-label', `keeper.day design preview showing ${photo.label}: a white portrait body with a red button at bottom left and a small square window at bottom right`);
+    document.querySelectorAll('[data-photo]').forEach((choice) => { choice.setAttribute('aria-pressed', String(choice === button)); });
+  });
+});
+const chatButton = document.querySelector('#open-chat');
+const chatStatus = document.querySelector('#chat-status');
+function enableChat() {
+  if (chatButton) chatButton.hidden = false;
+}
+if (window.HubSpotConversations) {
+  enableChat();
+} else {
+  window.hsConversationsOnReady = [...(window.hsConversationsOnReady || []), enableChat];
+}
+chatButton?.addEventListener('click', () => {
+  const widget = window.HubSpotConversations?.widget;
+  if (widget?.status().loaded) {
+    widget.open();
+    chatStatus.textContent = '';
+  } else {
+    chatStatus.textContent = 'Live chat is still connecting. Please try again in a moment, or follow the project below.';
+  }
+});
