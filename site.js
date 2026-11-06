@@ -28,6 +28,12 @@ chatButton?.addEventListener('click', () => {
     widget.open();
     chatStatus.textContent = '';
   } else {
-    chatStatus.textContent = 'Live chat is still connecting. Please try again in a moment, or follow the project below.';
+    chatStatus.textContent = 'Live chat is still connecting. Please try again in a moment, or email us below.';
   }
+});
+document.querySelectorAll('[data-preorder]').forEach((link) => {
+  link.addEventListener('click', () => {
+    window.gtag?.('event', 'preorder_click', { placement: link.dataset.preorder, currency: 'USD', value: 219 });
+    window.clarity?.('event', 'preorder_click');
+  });
 });
