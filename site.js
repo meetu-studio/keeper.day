@@ -1,3 +1,13 @@
+const mobileMenu = document.querySelector('.mobile-menu');
+mobileMenu?.querySelectorAll('a').forEach((link) => {
+  link.addEventListener('click', () => { mobileMenu.open = false; });
+});
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape' && mobileMenu?.open) {
+    mobileMenu.open = false;
+    mobileMenu.querySelector('summary').focus();
+  }
+});
 const preview = document.querySelector('#camera-preview');
 const samplePhotos = {
   love: { path: '/assets/screen-love.webp', label: 'a couple' },
