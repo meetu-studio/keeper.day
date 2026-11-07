@@ -63,14 +63,13 @@ apps=[
 ('settings','app/J-device-sync-and-settings.png','04 — Review your settings.','A concept flow for checking changes and syncing device configuration. Connectivity and automatic syncing are not confirmed launch features.','Device settings','companion')]
 for k,f,t,c,s,cat in apps:add('app-'+k,f,t,c,'apps',label='DISPLAY CONCEPT' if cat=='display' else 'COMPANION APP CONCEPT',short=s,category=cat)
 # Lifestyle selections are finalized after visual review; no claims of customer use.
-# AI-generated US lifestyle backgrounds with the original pixel-locked product.
+# User-approved complete AI-generated scenes, conditioned on product references.
+# These are illustrations, not pixel-locked hardware photography or customer evidence.
 new_scenes=[
-('breakfast','01-weekend-breakfast','Your favorite kind of morning.','Coffee, breakfast, and the person who makes an ordinary Saturday feel like yours.','An American couple sharing breakfast, with an upright Keeper on the table — AI-assisted lifestyle concept'),
-('roommates','02-dorm-unpacking','New room. New people. New keepers.','Unpacking a new chapter, one familiar little moment at a time.','American college roommates unpacking a dorm room, with Keeper on the desk — AI-assisted lifestyle concept'),
-('dog-walk','03-dog-walk-home','The best part of coming home.','A neighborhood walk. A happy face. Some days, that is the whole story.','An American dog owner at home after a walk, with a dog photo on Keeper — AI-assisted lifestyle concept'),
-('trail-cafe','04-trailside-cafe','Take the long way home.','A little fresh air, a roadside coffee, and the friends who make the trip.','American friends at a trailside cafe, with Keeper displaying a portrait — AI-assisted lifestyle concept')]
+('cafe-friends','01-cafe-friends','A little moment. Better together.','One more coffee. One more look at the photo that made you both smile.','American friends holding Keeper and looking at a portrait together in a cafe — AI-generated lifestyle concept'),
+('neighborhood-couple','02-neighborhood-couple','The walk is part of the story.','A familiar street, your favorite person, and a small reason to stop along the way.','An American couple pausing on a neighborhood walk to view a photo on Keeper — AI-generated lifestyle concept')]
 for k,f,t,c,alt in new_scenes:
-    add('moment-'+k,'lifestyle-web-20261107/finals/'+f+'.png',t,c,'moments',alt=alt,label='AI-ASSISTED LIFESTYLE CONCEPT',wide=True)
+    add('moment-'+k,'lifestyle-natural-20261107/'+f+'.png',t,c,'moments',alt=alt,label='AI-GENERATED LIFESTYLE CONCEPT',wide=True)
 moments=[
 ('friends','marketing/14-the-good-stuff-stays.png','The people who make the day.','The ones you laugh with. The ones who turn an ordinary afternoon into a favorite memory.'),
 ('college','marketing/28-student-home.png','A new chapter. A familiar face.','A little reminder of home, wherever your next chapter takes you.'),

@@ -24,7 +24,7 @@ if not COMPONENTS.exists():
 C = json.loads(COMPONENTS.read_text())
 E = lambda x:html.escape(str(x),quote=True)
 STRIPE='https://buy.stripe.com/4gM9ASgVe1IzaOse1Q6kg00?locale=en'
-VERSION='20261107-direct-scenes-v2'
+VERSION='20261108-natural-scenes'
 NAV=[('camera.html','The camera'),('together.html','Made for two'),('little-apps.html','Little apps'),('styles.html','Your style'),('moments.html','Little moments')]
 CONCEPT='Design explorations · Not included in the current pre-order'
 def image(key, eager=False):
@@ -82,7 +82,7 @@ home+='<section class="section-pad" id="camera">'+heading('START WITH THE CAMERA
 home+='<section class="editorial-split" id="together"><figure>'+image('pair-sun-moon')+'</figure><div class="editorial-copy"><p class="eyebrow">MADE FOR TWO</p><h2>You have yours.<br><em>I have you.</em></h2><p>Sun and moon. Mountains and sea. Your picture on mine, my picture on yours. Explore paired artwork for two people with a little world of their own.</p><a class="text-link" href="/together.html">Find your other half <span aria-hidden="true">↗</span></a><span class="concept-label">Paired artwork concepts · Not a bundle</span></div></section>'
 home+='<section class="section-pad app-teaser" id="studio">'+heading('LITTLE APPS, BIG PERSONALITY','A little space for<br><em>your everyday.</em>')+app_preview()+note('apps')+'</section>'
 home+='<section class="section-pad style-band">'+heading('MAKE IT YOURS','Same little Keeper.<br><em>A different kind of you.</em>','From quiet botanicals to retro pixels, a collection of surface-art ideas with personality.','/styles.html','Explore your style')+'<div class="collection-grid four style-grid">'+''.join(card(k,'/styles.html') for k in DATA['styles'][:4])+ '</div><p class="asset-note">Surface-art concepts, not currently available finishes or accessories.</p></section>'
-home+='<section class="section-pad home-moments" id="moments">'+heading('A DAY WORTH KEEPING','The big days.<br><em>And all the days between.</em>','Your favorite people. Your favorite place. That face you never get tired of.','/moments.html','See the little moments')+'<div class="collection-grid scenes">'+''.join(card(k,'/moments.html') for k in DATA['moments'][:4])+'</div><p class="asset-note">Lifestyle imagery is illustrative and AI-created, not customer photography or testimonials.</p></section>'
+home+='<section class="section-pad home-moments" id="moments">'+heading('A DAY WORTH KEEPING','The big days.<br><em>And all the days between.</em>','Your favorite people. Your favorite place. That face you never get tired of.','/moments.html','See the little moments')+'<div class="collection-grid scenes">'+''.join(card(k,'/moments.html') for k in DATA['moments'][:2])+'</div><p class="asset-note">Lifestyle imagery is illustrative and AI-created, not customer photography or testimonials.</p></section>'
 home+=C['story']+C['preorder'].replace('shown below','shown on this site').replace('Companion app concepts, widgets, and Bluetooth/photo-transfer explorations','Paired designs, decorative finishes, companion app concepts, widgets, and Bluetooth/photo-transfer explorations')
 render('index.html','keeper.day — A little camera. A world of you.','Discover Keeper: a color e-paper camera, paired artwork, personal styles and little app concepts. Standard camera pre-order: $199 + $20 US shipping.',home)
 # The camera: detailed product, checkout terms, FAQ.

@@ -304,42 +304,22 @@
       "short": "Device settings",
       "category": "companion"
     },
-    "moment-breakfast": {
-      "source": "attachments/keeper-day/lifestyle-web-20261107/finals/01-weekend-breakfast.png",
-      "title": "Your favorite kind of morning.",
-      "copy": "Coffee, breakfast, and the person who makes an ordinary Saturday feel like yours.",
-      "alt": "An American couple sharing breakfast, with an upright Keeper on the table — AI-assisted lifestyle concept",
-      "label": "AI-ASSISTED LIFESTYLE CONCEPT",
+    "moment-cafe-friends": {
+      "source": "attachments/keeper-day/lifestyle-natural-20261107/01-cafe-friends.png",
+      "title": "A little moment. Better together.",
+      "copy": "One more coffee. One more look at the photo that made you both smile.",
+      "alt": "American friends holding Keeper and looking at a portrait together in a cafe — AI-generated lifestyle concept",
+      "label": "AI-GENERATED LIFESTYLE CONCEPT",
       "width": 1440,
       "height": 960,
       "wide": true
     },
-    "moment-roommates": {
-      "source": "attachments/keeper-day/lifestyle-web-20261107/finals/02-dorm-unpacking.png",
-      "title": "New room. New people. New keepers.",
-      "copy": "Unpacking a new chapter, one familiar little moment at a time.",
-      "alt": "American college roommates unpacking a dorm room, with Keeper on the desk — AI-assisted lifestyle concept",
-      "label": "AI-ASSISTED LIFESTYLE CONCEPT",
-      "width": 1440,
-      "height": 960,
-      "wide": true
-    },
-    "moment-dog-walk": {
-      "source": "attachments/keeper-day/lifestyle-web-20261107/finals/03-dog-walk-home.png",
-      "title": "The best part of coming home.",
-      "copy": "A neighborhood walk. A happy face. Some days, that is the whole story.",
-      "alt": "An American dog owner at home after a walk, with a dog photo on Keeper — AI-assisted lifestyle concept",
-      "label": "AI-ASSISTED LIFESTYLE CONCEPT",
-      "width": 1440,
-      "height": 960,
-      "wide": true
-    },
-    "moment-trail-cafe": {
-      "source": "attachments/keeper-day/lifestyle-web-20261107/finals/04-trailside-cafe.png",
-      "title": "Take the long way home.",
-      "copy": "A little fresh air, a roadside coffee, and the friends who make the trip.",
-      "alt": "American friends at a trailside cafe, with Keeper displaying a portrait — AI-assisted lifestyle concept",
-      "label": "AI-ASSISTED LIFESTYLE CONCEPT",
+    "moment-neighborhood-couple": {
+      "source": "attachments/keeper-day/lifestyle-natural-20261107/02-neighborhood-couple.png",
+      "title": "The walk is part of the story.",
+      "copy": "A familiar street, your favorite person, and a small reason to stop along the way.",
+      "alt": "An American couple pausing on a neighborhood walk to view a photo on Keeper — AI-generated lifestyle concept",
+      "label": "AI-GENERATED LIFESTYLE CONCEPT",
       "width": 1440,
       "height": 960,
       "wide": true
@@ -456,10 +436,8 @@
     "app-settings"
   ],
   "moments": [
-    "moment-breakfast",
-    "moment-roommates",
-    "moment-dog-walk",
-    "moment-trail-cafe",
+    "moment-cafe-friends",
+    "moment-neighborhood-couple",
     "moment-friends",
     "moment-college",
     "moment-desk",
