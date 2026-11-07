@@ -17,12 +17,12 @@ The site is a visual product story, not a single checkout landing page. Each col
 | `/together.html` | Make the existing paired design library visible | 12 complementary two-device artwork concepts |
 | `/little-apps.html` | Show specific screen ideas and the current configuration direction | 4 standalone display scenes; G/H/I/J configuration concepts; preview switcher and category filters |
 | `/styles.html` | Explore personal expression | 12 individual surface-art designs |
-| `/moments.html` | Place Keeper in everyday life | 8 lifestyle/design scenes: friends, college, desk, pet, wedding, birthday, family gift, anniversary |
+| `/moments.html` | Place Keeper in everyday life | 12 scenes: 4 new locked-product American lifestyle composites (breakfast, dorm, dog walk, trailside cafe), then 8 existing lifestyle/design scenes |
 | `/terms.html`, `/privacy.html` | Legal and support | Existing policies; official support address |
 
 ## Asset selection and boundaries
 
-The curated manifest contains 40 image entries. Existing project sources are converted to WebP with proportional resizing, never stretched, mirrored, redrawn or used to invent hardware geometry. Each entry records its source, dimensions, alt text and editorial caption in `scripts/content.json`.
+The curated manifest contains 44 image entries. Four new American lifestyle scenes use AI-generated backgrounds with the original product pixels composited at uniform scale. Only the main-screen mask is changed; source and final-resolution checks found zero changes outside that mask. Backgrounds, prompts, source hashes, transforms and reproducible compositing are archived in the source vault at `attachments/keeper-day/lifestyle-web-20261107/`. These four scenes lead the homepage album and retain a 3:2 uncropped layout. Existing project sources are converted to WebP with proportional resizing, never stretched, mirrored, redrawn or used to invent hardware geometry. Each entry records its source, dimensions, alt text and editorial caption in `scripts/content.json`.
 
 - Paired artworks are concepts, not two-camera bundles, shipping editions or wireless photo-sharing demonstrations.
 - App concepts use the current G → H → I → J direction: choose a scene, edit style/layout, choose widgets/schedules, review configuration. Historical A/B photo-transfer flows are deliberately excluded.
@@ -36,7 +36,7 @@ The curated manifest contains 40 image entries. Existing project sources are con
 
 One standard camera: US$199 + US$20 US shipping = US$219 paid in full today. US only. In development; expected August 2027. Full pre-shipment refund including shipping. Returns within 14 days of delivery, unused and in original packaging. Customer pays change-of-mind return shipping; studio pays shipping for quality issues. Concept artwork, finishes, companion apps and connectivity are not included launch promises.
 
-Checkout remains the existing Stripe payment link. This rebuild does not change Stripe or HubSpot configuration. Official support: support@keeper.day.
+Every Pre-order CTA, including the main homepage button, shared header, and legal-page navigation, opens the existing Stripe checkout directly in one click. Product information and order-detail links remain separate; there is no variant-selection or intermediate preorder step. `scripts/check_site.py` rejects any Pre-order CTA not pointing to the exact Stripe payment link. Stripe and HubSpot configuration are unchanged. Official support: support@keeper.day.
 
 ## Build and maintenance
 
