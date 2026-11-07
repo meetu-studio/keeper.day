@@ -2,10 +2,12 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://keeper.day/</loc></url>
   <url><loc>https://keeper.day/camera.html</loc></url>
-  <url><loc>https://keeper.day/together.html</loc></url>
-  <url><loc>https://keeper.day/little-apps.html</loc></url>
-  <url><loc>https://keeper.day/styles.html</loc></url>
+  <url><loc>https://keeper.day/gifting.html</loc></url>
+  <url><loc>https://keeper.day/support.html</loc></url>
   <url><loc>https://keeper.day/moments.html</loc></url>
+  <url><loc>https://keeper.day/together.html</loc></url>
+  <url><loc>https://keeper.day/styles.html</loc></url>
+  <url><loc>https://keeper.day/little-apps.html</loc></url>
   <url><loc>https://keeper.day/terms.html</loc></url>
   <url><loc>https://keeper.day/privacy.html</loc></url>
 </urlset>

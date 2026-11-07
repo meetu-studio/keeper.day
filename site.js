@@ -66,9 +66,10 @@ if (filterGrid) {
     });
   });
 }
-document.querySelectorAll('[data-preorder]').forEach((link) => {
+// A checkout click is not a completed purchase; Stripe confirms payment.
+document.querySelectorAll('[data-purchase]').forEach((link) => {
   link.addEventListener('click', () => {
-    window.gtag?.('event', 'preorder_click', { placement: link.dataset.preorder, currency: 'USD', value: 219 });
-    window.clarity?.('event', 'preorder_click');
+    window.gtag?.('event', 'checkout_click', { placement: link.dataset.purchase, currency: 'USD', value: Number(document.body.dataset.orderTotal) });
+    window.clarity?.('event', 'checkout_click');
   });
 });
