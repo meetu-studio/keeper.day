@@ -24,7 +24,7 @@ if not COMPONENTS.exists():
 C = json.loads(COMPONENTS.read_text())
 E = lambda x:html.escape(str(x),quote=True)
 STRIPE='https://buy.stripe.com/4gM9ASgVe1IzaOse1Q6kg00?locale=en'
-VERSION='20261107-direct-scenes'
+VERSION='20261107-direct-scenes-v2'
 NAV=[('camera.html','The camera'),('together.html','Made for two'),('little-apps.html','Little apps'),('styles.html','Your style'),('moments.html','Little moments')]
 CONCEPT='Design explorations · Not included in the current pre-order'
 def image(key, eager=False):
