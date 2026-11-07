@@ -7,18 +7,29 @@ import json,sys
 ROOT=Path(__file__).resolve().parents[1]
 class Page(HTMLParser):
     def __init__(self,path):
-        super().__init__();self.path=path;self.ids=[];self.links=[];self.images=[];self.h1=0;self.feed(path.read_text())
+        super().__init__();self.path=path;self.ids=[];self.links=[];self.images=[];self.anchors=[];self.anchor=None;self.h1=0;self.feed(path.read_text())
     def handle_starttag(self,tag,attrs):
         a=dict(attrs)
         if 'id' in a:self.ids.append(a['id'])
         if tag=='h1':self.h1+=1
-        if tag=='a' and 'href' in a:self.links.append(a['href'])
+        if tag=='a' and 'href' in a:
+            self.links.append(a['href']);self.anchor={'attrs':a,'text':''}
         if tag=='img':self.images.append(a)
+    def handle_data(self,data):
+        if self.anchor is not None:self.anchor['text']+=data
+    def handle_endtag(self,tag):
+        if tag=='a' and self.anchor is not None:
+            self.anchors.append(self.anchor);self.anchor=None
 pages={p.name:Page(p) for p in ROOT.glob('*.html')}
 errors=[]
 for name,page in pages.items():
     if len(page.ids)!=len(set(page.ids)):errors.append(f'{name}: duplicate IDs')
     if page.h1!=1:errors.append(f'{name}: expected 1 H1, found {page.h1}')
+    for anchor in page.anchors:
+        a=anchor['attrs']
+        if anchor['text'].strip().lower().startswith('pre-order') or 'data-preorder' in a:
+            if a['href']!='https://buy.stripe.com/4gM9ASgVe1IzaOse1Q6kg00?locale=en':
+                errors.append(f'{name}: preorder must link directly to Stripe, found {a["href"]}')
     for url in page.links:
         u=urlsplit(url)
         if u.scheme or u.netloc:continue
