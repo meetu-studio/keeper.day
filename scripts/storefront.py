@@ -1,0 +1,107 @@
+"""Product-first Keeper storefront. Body fragments; shell and commerce belong to build_site."""
+from html import escape
+
+
+def _e(value):
+    return escape(str(value), quote=True)
+
+
+def _money(value):
+    return f'${float(value):,.0f}'
+
+
+def _image(name, alt, eager=False):
+    path = name if name.startswith('/') else '/assets/storefront/' + name + '.webp'
+    w, h = (659, 891) if 'product-flowers' in path else (1440, 960)
+    return f'<img src="{_e(path)}" alt="{_e(alt)}" width="{w}" height="{h}" loading="{"eager" if eager else "lazy"}" decoding="async"'+(' fetchpriority="high"' if eager else '')+'>'
+
+
+def _buy(c, placement, label='Buy Keeper'):
+    return f'<a class="sf-buy" data-purchase="{_e(placement)}" href="{_e(c["checkout_url"])}">{label}<span aria-hidden="true">↗</span></a>'
+
+
+def _price(c):
+    return f'<div class="sf-price"><strong>{_money(c["price"])}</strong><span>USD · camera &amp; gift package</span></div><p class="sf-shipping">+ {_money(c["shipping"])} worldwide shipping <span>·</span> <strong>{_money(c["total"])} USD total</strong></p>'
+
+
+def _purchase(c, placement):
+    return _price(c)+f'<div class="sf-actions">{_buy(c, placement)}<a class="sf-link" href="#how-it-works">How it works <span aria-hidden="true">↓</span></a></div><p class="sf-micro">Full refund before shipment. <a href="/terms.html">14-day unused returns &amp; terms</a>.<br>Need it by a particular date? <a href="mailto:support@keeper.day">Ask us before ordering.</a></p>'
+
+
+def _head(kicker, title, copy=''):
+    return f'<div class="sf-section-head"><p class="sf-kicker">{kicker}</p><h2>{title}</h2>'+ (f'<p>{copy}</p>' if copy else '')+'</div>'
+
+
+def _gallery():
+    images = [('/assets/product-flowers.webp','Keeper camera with flower image on the color e-paper display','The camera'),('everyday-hero','Keeper in an everyday setting','Everyday Keeper'),('in-the-hand','Keeper held in a hand','A closer look'),('full-kit','Keeper camera, gift box, lanyard and instruction manual','What’s included'),('at-home','Keeper displayed at home','At home')]
+    panels, buttons = [], []
+    for i, (src, alt, label) in enumerate(images):
+        panels.append(f'<figure class="sf-gallery-panel{" sf-hardware" if i == 0 else ""}" id="sf-photo-{i}" data-sf-panel>{_image(src,alt,i==0)}<figcaption>{label}</figcaption></figure>')
+        buttons.append(f'<button class="sf-thumb" type="button" data-sf-photo="{i}" aria-controls="sf-photo-{i}" aria-pressed="{str(i == 0).lower()}" aria-label="Show image {i+1}: {_e(label)}">{_image(src,"",False)}</button>')
+    return '<div class="sf-gallery" data-sf-gallery><div class="sf-gallery-panels">'+''.join(panels)+'</div><div class="sf-thumbnails" role="group" aria-label="Product images" hidden>'+''.join(buttons)+'</div><p class="sf-micro">Some images are AI-generated visualizations. See product details for included items.</p><p class="sf-sr-only" data-sf-gallery-status aria-live="polite"></p></div>'
+
+
+def _box(c):
+    items = ''.join(f'<li><span aria-hidden="true">✓</span>{_e(item)}</li>' for item in c['included'])
+    return f'<section class="sf-box sf-section" id="in-the-box"><figure>{_image("full-kit","The standard Keeper package: one camera, gift box, lanyard and instruction manual")}</figure><div>{_head("THE COMPLETE LITTLE PACKAGE","Good things come<br>in this box.","The gift box isn’t an upgrade. It comes with every Keeper.")}<ul class="sf-included">{items}</ul><p class="sf-micro">One standard camera per package. Memory card inclusion is not confirmed; please ask before ordering.</p><a class="sf-link" href="/gifting.html">Meet your next thoughtful gift <span aria-hidden="true">↗</span></a></div></section>'
+
+
+def _benefits():
+    return '<section class="sf-section sf-benefits" aria-label="Why Keeper"><article><span class="sf-icon" aria-hidden="true">↗</span><h2>A camera, not your phone.</h2><p>Take photos with a dedicated camera. You don’t need your phone to capture a moment.</p></article><article><span class="sf-icon" aria-hidden="true">▤</span><h2>A different kind of screen.</h2><p>Color e-paper gives your photo a reflective, paper-like home. It’s a display, not a paper print.</p></article><article><span class="sf-icon" aria-hidden="true">♡</span><h2>Made to mean something.</h2><p>A favorite face. A familiar place. A small gift with room for a very personal story.</p></article></section>'
+
+
+def _how():
+    return '<section class="sf-section" id="how-it-works">'+_head('A SIMPLE IDEA','Take a moment. Give it a place.','A standalone camera and a color e-paper display, together in one little object.')+'<ol class="sf-steps"><li><span>01</span><h3>Take the photo.</h3><p>Use Keeper itself to capture the people and places you love. No phone needed for taking pictures.</p></li><li><span>02</span><h3>Keep a favorite in view.</h3><p>Let a photograph live on the color e-paper screen, rather than only inside a camera roll.</p></li><li><span>03</span><h3>Come back to it.</h3><p>Give it a place beside your books, on your desk, or wherever your day happens.</p></li></ol><p class="sf-micro">Photos are stored on microSD. For card requirements, photo transfer, charging or detailed controls, contact us before purchase.</p></section>'
+
+
+def _epaper():
+    return '<section class="sf-section sf-paper" id="e-paper"><div>'+_head('NOT A PRINT. NOT ANOTHER PHONE.','Meet color e-paper.','A softer, reflective way to see a photograph. E-paper uses the light around you, with a paper-like look instead of the glow of a phone screen.')+'<p class="sf-micro">Expect a different color and refresh experience from a phone. Taking photos and updating the display require power. Images shown on this site are not samples of captured image quality.</p></div><div class="sf-comparison"><article><span class="sf-kicker">KEEPER / E-PAPER</span><h3>A photo on an object.</h3><p>A digital image on a reflective color display, with a camera built in.</p></article><article><span class="sf-kicker">INSTANT PRINT</span><h3>A photo on paper.</h3><p>A physical print you can hand over. Keeper does not print photographs.</p></article><article><span class="sf-kicker">YOUR PHONE</span><h3>A world on a screen.</h3><p>Bright, fast and multifunctional. Keeper offers a separate place for a favorite photograph.</p></article></div></section>'
+
+
+def _moments():
+    cards = [('/assets/collections/moment-cafe-friends.webp','Friends spending time at a café','The coffee that became an afternoon.','For the friends who turn an ordinary catch-up into a good day.'),('/assets/collections/moment-neighborhood-couple.webp','A couple walking through a neighborhood','Your favorite person. Any ordinary day.','Not every photograph needs a special occasion.'),('at-home','Keeper in a home setting','A little more you, at home.','A favorite image, with a place among your everyday things.')]
+    return '<section class="sf-section">'+_head('FOR LIFE AS IT HAPPENS','The everyday is worth keeping.')+'<div class="sf-moments">'+''.join(f'<article><figure>{_image(src,alt)}</figure><h3>{title}</h3><p>{copy}</p></article>' for src,alt,title,copy in cards)+'</div></section>'
+
+
+def _specs():
+    rows = [('Product','Standalone digital camera'),('Main display','3.7-inch color e-paper'),('Shutter','Physical red shutter button'),('Photo storage','microSD; card inclusion not confirmed'),('Phone required to capture?','No'),('Availability','Manufactured and in stock'),('Standard package','Camera, gift box, lanyard, instruction manual')]
+    return '<section class="sf-section sf-specs" id="product-details"><div>'+_head('THE DETAILS, CLEARLY','Know your Keeper.','The confirmed essentials. No guesswork dressed up as specifications.')+'<p class="sf-micro">Need dimensions, weight, battery, charging, storage compatibility, data-transfer or warranty details? <a href="mailto:support@keeper.day">Ask support before you buy.</a></p></div><dl>'+''.join(f'<div><dt>{a}</dt><dd>{b}</dd></div>' for a,b in rows)+'</dl></section>'
+
+
+def _faq(c, full=False):
+    groups = [('Ordering & shipping', [('Is Keeper available now?','Yes. Keeper is manufactured and in stock. Each standard package includes one camera, a gift box, a lanyard and an instruction manual.'),('What will I pay?',f'The camera and package are {_money(c["price"])} USD, plus {_money(c["shipping"])} worldwide shipping: {_money(c["total"])} USD total. Stripe may offer local-currency pricing with a different converted amount; choose USD to pay the listed USD amount. Contact us about any destination-specific duties before ordering.'),('When will my order arrive?','Dispatch and transit estimates are not confirmed here. If a birthday, trip or other date matters, email support@keeper.day before ordering so we can discuss your destination.')]),('Camera & screen',[('Does it print photos?','No. Your photograph appears on a color e-paper display. Keeper does not make physical prints.'),('Do I need a phone or app?','You can take photographs with Keeper without a phone. Photos are stored on microSD. Do not assume wireless connectivity or app features are included; ask us about your intended transfer workflow before buying.'),('What should I know about e-paper?','The main color e-paper screen has a reflective, paper-like appearance, different from a phone’s color and refresh experience. Taking photographs and changing the displayed image use battery power. The small lower-right display is an IPS LCD, not e-paper.')]),('Returns & help',[('Can I cancel before shipment?',f'Yes. Cancel before shipment for a full refund of {_money(c["total"])} USD. Contact support@keeper.day with your order details.'),('What if I change my mind after delivery?',f'You can return an unused item in its original packaging within 14 days. For change-of-mind returns, the camera price ({_money(c["price"])} USD) is refundable, but the original {_money(c["shipping"])} shipping charge is not; you pay return shipping. The studio pays return shipping for quality issues. See the purchase terms for the full policy.'),('How do I get help?','Email <a href="mailto:support@keeper.day">support@keeper.day</a> with your question and order number if you have one. Ask before purchase if you need a particular technical feature or delivery date.')])]
+    if not full:
+        pairs = [groups[0][1][1],groups[0][1][2],groups[1][1][0],groups[1][1][1],groups[2][1][1]]
+        groups = [('',pairs)]
+    content = ''
+    for title,pairs in groups:
+        content += '<div class="sf-faq-group">'+(f'<h3>{title}</h3>' if title else '')+''.join(f'<details><summary>{q}<span aria-hidden="true">+</span></summary><div class="sf-answer"><p>{a}</p></div></details>' for q,a in pairs)+'</div>'
+    return '<section class="sf-section sf-faq" id="questions"><div>'+_head('GOOD QUESTIONS','A few things to know.')+'<a class="sf-link" href="/support.html">All questions &amp; support ↗</a></div><div>'+content+'</div></section>'
+
+
+def _end(c):
+    return f'<section class="sf-section sf-final"><div><p class="sf-kicker">IN STOCK · GIFT BOX INCLUDED</p><h2>A little camera.<br>A day worth keeping.</h2></div><div>{_price(c)}{_buy(c,"final")}<p class="sf-micro"><a href="/terms.html">Shipping &amp; returns</a> · <a href="mailto:support@keeper.day">Talk to us</a></p></div></section><aside class="sf-mobile-buy" aria-label="Buy Keeper"><div><strong>Keeper · {_money(c["price"])}</strong><span>{_money(c["total"])} USD incl. worldwide shipping</span></div>{_buy(c,"mobile-sticky")}</aside>'
+
+
+def home_body(commerce):
+    c = commerce
+    hero = f'<section class="sf-hero sf-section"><div class="sf-hero-copy"><p class="sf-kicker"><span class="sf-stock-dot" aria-hidden="true"></span> THE KEEPER CAMERA · IN STOCK</p><h1>A little camera.<br>For the moments<br>you want to <em>keep.</em></h1><p class="sf-lead">Take photos. Keep a favorite in view.<br>A standalone camera with a color e-paper display.</p>{_purchase(c,"home-hero")}</div><figure class="sf-hero-image">{_image("everyday-hero","Keeper camera in an everyday scene",True)}<figcaption><span>Meet Keeper.</span> A camera. A keepsake. Yours.</figcaption></figure></section>'
+    return '<div class="storefront">'+hero+_benefits()+_box(c)+_how()+_epaper()+_moments()+_faq(c)+_end(c)+'</div>'
+
+
+def product_body(commerce):
+    c = commerce
+    hero = '<section class="sf-section sf-product">'+_gallery()+f'<div class="sf-product-copy"><p class="sf-kicker"><span class="sf-stock-dot" aria-hidden="true"></span> MANUFACTURED &amp; IN STOCK</p><h1>Meet your<br>little <em>Keeper.</em></h1><p class="sf-lead">A standalone camera with a color e-paper display. Take a photograph, then give a favorite a place in your day.</p><ul class="sf-product-points"><li>Take photos without a phone</li><li>3.7-inch color e-paper main display</li><li>Gift box, lanyard &amp; manual included</li></ul>{_purchase(c,"product-hero")}</div></section>'
+    return '<div class="storefront">'+hero+_how()+_box(c)+_specs()+_epaper()+_faq(c)+_end(c)+'</div>'
+
+
+def gifting_body(commerce):
+    c = commerce
+    hero = f'<section class="sf-section sf-hero sf-gift-hero"><div class="sf-hero-copy"><p class="sf-kicker">A GIFT WITH A LITTLE MORE FEELING</p><h1>For your<br>favorite <em>person.</em></h1><p class="sf-lead">Not another thing to scroll through. A little camera for making memories, and a color e-paper screen to keep one close.</p>{_purchase(c,"gifting-hero")}</div><figure class="sf-hero-image">{_image("gift-opening","A person opening a Keeper gift package",True)}<figcaption>A small box. A personal kind of gift.</figcaption></figure></section>'
+    contexts = '<section class="sf-section sf-gift-contexts">'+_head('YOU KNOW WHO IT’S FOR','Something to make memories with.')+'<div class="sf-steps"><article><span>FOR YOUR PERSON</span><h3>The days you share.</h3><p>An anniversary, a birthday, or just because a favorite face deserves a place nearby.</p></article><article><span>FOR YOUR FRIEND</span><h3>More days like this.</h3><p>For coffee dates, catch-ups and the person who makes ordinary plans worth remembering.</p></article><article><span>FOR YOUR FAMILY</span><h3>A little closer to home.</h3><p>A thoughtful object for someone who loves taking pictures of the people they love.</p></article></div></section>'
+    return '<div class="storefront">'+hero+_box(c)+contexts+_how()+_faq(c)+_end(c)+'</div>'
+
+
+def support_body(commerce):
+    intro = '<section class="sf-section sf-support-intro"><div><p class="sf-kicker">HERE TO HELP</p><h1>A question?<br><em>Talk to us.</em></h1><p class="sf-lead">Before you buy, after it arrives, or when you need a little help with your Keeper.</p></div><div class="sf-contact-card"><h2>A real way to reach us.</h2><a class="sf-contact-email" href="mailto:support@keeper.day">support@keeper.day ↗</a><p>Include your order number if you have one. If a delivery date or technical detail matters to you, ask us before placing an order.</p><button class="sf-buy" type="button" id="open-chat" hidden>Chat with us <span aria-hidden="true">↗</span></button><p class="sf-micro" id="chat-status" aria-live="polite"></p><a class="sf-link" href="/terms.html">Read the purchase terms ↗</a></div></section>'
+    return '<div class="storefront">'+intro+_faq(commerce,True)+_end(commerce)+'</div>'

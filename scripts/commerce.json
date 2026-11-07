@@ -1,0 +1,15 @@
+{
+  "currency": "USD",
+  "price": 199,
+  "shipping": 30,
+  "total": 229,
+  "availability": "InStock",
+  "shipping_scope": "Worldwide",
+  "included": ["Keeper camera", "Gift box", "Lanyard", "Instruction manual"],
+  "checkout_url": "https://buy.stripe.com/4gM7sK5cwdrh09Oe1Q6kg01?locale=en",
+  "checkout_verified": true,
+  "support_email": "support@keeper.day",
+  "confirmed_by_owner": "2026-11-08",
+  "dispatch_sla": null,
+  "warranty_duration": null
+}

@@ -1,0 +1,56 @@
+[
+  {
+    "key": "everyday-hero",
+    "source": "attachments/keeper-day/storefront-20261108/01-everyday-hero.png",
+    "public": "/assets/storefront/everyday-hero.webp",
+    "width": 1440,
+    "height": 960,
+    "bytes": 214438,
+    "provenance": "AI-generated whole-scene visualization; not a production-camera sample or customer photo"
+  },
+  {
+    "key": "gift-box",
+    "source": "attachments/keeper-day/storefront-20261108/02-gift-box.png",
+    "public": "/assets/storefront/gift-box.webp",
+    "width": 1440,
+    "height": 960,
+    "bytes": 239416,
+    "provenance": "AI-generated whole-scene visualization; not a production-camera sample or customer photo"
+  },
+  {
+    "key": "in-the-hand",
+    "source": "attachments/keeper-day/storefront-20261108/03-in-the-hand.png",
+    "public": "/assets/storefront/in-the-hand.webp",
+    "width": 1440,
+    "height": 960,
+    "bytes": 221610,
+    "provenance": "AI-generated whole-scene visualization; not a production-camera sample or customer photo"
+  },
+  {
+    "key": "at-home",
+    "source": "attachments/keeper-day/storefront-20261108/04-at-home.png",
+    "public": "/assets/storefront/at-home.webp",
+    "width": 1440,
+    "height": 960,
+    "bytes": 159690,
+    "provenance": "AI-generated whole-scene visualization; not a production-camera sample or customer photo"
+  },
+  {
+    "key": "full-kit",
+    "source": "attachments/keeper-day/storefront-kit-20261108/01-full-kit.png",
+    "public": "/assets/storefront/full-kit.webp",
+    "width": 1440,
+    "height": 960,
+    "bytes": 123028,
+    "provenance": "AI-generated whole-scene visualization; not a production-camera sample or customer photo"
+  },
+  {
+    "key": "gift-opening",
+    "source": "attachments/keeper-day/storefront-kit-20261108/02-gift-opening.png",
+    "public": "/assets/storefront/gift-opening.webp",
+    "width": 1440,
+    "height": 960,
+    "bytes": 206518,
+    "provenance": "AI-generated whole-scene visualization; not a production-camera sample or customer photo"
+  }
+]
