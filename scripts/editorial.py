@@ -9,6 +9,35 @@ CONTENT = json.loads((ROOT/'editorial-content.json').read_text())
 THEMES = [('nature','Nature'),('minimal','Quiet design'),('playful','Playful'),('retro','Retro')]
 AI = 'AI-generated placeholder · replace with a real image'
 DEMO = 'Illustrative content, not an actual review, publication or partnership.'
+DIARY_NOTE = 'AI-created photo ideas · not customer submissions or photographs taken with Keeper.'
+DIARY_CATEGORIES = [('friends','Friends'),('family','Family'),('pets','Pets'),('street','On the street'),('outdoors','Outdoors'),('details','Little things')]
+DIARY_FEATURED = ['friends-pizza','pets-dog','street-rain','family-birthday','outdoors-lake','friends-rooftop','pets-cat','details-diner']
+
+
+def diary_cards(ids=None):
+    photos = CONTENT['photo_diary']
+    if ids is not None:
+        photos = [next(p for p in photos if p['id'] == key) for key in ids]
+    cards = ''
+    for p in photos:
+        base = p['image']
+        srcset = ', '.join(f'{base}-{w}.webp {w}w' for w in p['sizes'])
+        cards += f'<figure class="ed-diary-card" id="photo-{p["id"]}" data-diary-category="{p["category"]}"><a class="ed-diary-image" data-diary-photo="{p["id"]}" href="{base}-full.webp" aria-label="Open photograph"><img src="{base}-960.webp" srcset="{srcset}" sizes="(max-width:700px) 46vw, (max-width:1024px) 30vw, 23vw" width="{p["width"]}" height="{p["height"]}" alt="{escape(p["alt"])}" loading="lazy" decoding="async" data-source="illustration"><span class="ed-diary-zoom" aria-hidden="true">↗</span></a><figcaption><h3>{escape(p["title"])}</h3><p class="ed-diary-caption">{escape(p["caption"])}</p><span class="ed-ai">AI photo example</span></figcaption></figure>'
+    return '<div class="ed-diary-grid">'+cards+'</div>'
+
+
+def diary_section(full=False):
+    heading = '' if full else head('PHOTO DIARY','The moments you didn’t plan.','Friends between plans. A dog at the door. A view worth stopping for.','/moments.html#photo-diary','Explore all 12 photographs')
+    filters = ''
+    if full:
+        options = [('all','All photographs')] + DIARY_CATEGORIES
+        filters = '<nav class="ed-diary-filters" aria-label="Browse by moment">'+''.join(f'<a href="/moments.html?topic={key}#photo-diary" data-diary-filter="{key}">{label}</a>' for key,label in options)+'</nav><p class="ed-diary-count" data-diary-count role="status" aria-live="polite">12 / 12</p>'
+    return '<section class="ed-section ed-diary" id="photo-diary">'+heading+f'<p class="ed-diary-note">{DIARY_NOTE}</p>'+filters+diary_cards(None if full else DIARY_FEATURED)+'</section>'
+
+
+def diary_dialog():
+    first = CONTENT['photo_diary'][0]
+    return f'<dialog class="ed-diary-dialog" aria-labelledby="diary-title"><div class="ed-diary-toolbar"><span data-diary-position aria-live="polite"></span><button type="button" data-diary-close aria-label="Close photograph">×</button></div><img data-diary-large src="{first["image"]}-full.webp" width="{first["width"]}" height="{first["height"]}" alt="{escape(first["alt"])}" loading="lazy"><div class="ed-diary-detail"><h2 id="diary-title">{escape(first["title"])}</h2><p data-diary-description>{escape(first["caption"])}</p><p class="ed-diary-note">{DIARY_NOTE}</p><div class="ed-diary-controls"><button type="button" data-diary-prev aria-label="Previous photograph">←</button><button type="button" data-diary-next aria-label="Next photograph">→</button><a class="ed-text-link" data-diary-gallery href="/moments.html#photo-diary">View the photo diary</a></div><div class="kr-share-actions" hidden><button type="button" data-share-url="https://keeper.day/moments.html">Share this photograph</button><button type="button" data-copy-url="https://keeper.day/moments.html">Copy link</button><span data-share-status role="status"></span></div></div></dialog>'
 
 
 def photo(key, eager=False, cls='', sizes='(max-width:700px) 100vw, 50vw'):
@@ -97,8 +126,7 @@ def logos():
 
 
 def social_wall():
-    keys=['cafe','campus','pets','street','gift','carry']
-    return '<div class="ed-social-wall">'+''.join(f'<a href="/moments.html#{key}" aria-label="Explore this photo story">{photo(key,sizes="(max-width:700px) 50vw, 17vw")}</a>' for key in keys)+'</div><div class="ed-social-status"><span>Instagram · account to be added</span><span>TikTok · account to be added</span><span>YouTube · account to be added</span></div>'
+    return diary_cards([p['id'] for p in CONTENT['photo_diary'] if p['id'] not in DIARY_FEATURED])+'<div class="ed-social-status"><span>Instagram · account to be added</span><span>TikTok · account to be added</span><span>YouTube · account to be added</span></div>'
 
 
 def home_body(c):
@@ -119,8 +147,8 @@ def home_body(c):
     media='<section class="ed-section" id="media">'+head('IN THE PICTURE','Media & creative company.',DEMO,'/press.html','Media & partnerships')+press_cards()+logos()+'</section>'
     education='<section class="ed-section" id="field-notes">'+head('FIELD NOTES','Go out with a little more inspiration.','','/learn.html','All photography guides')+guide_cards()+updates()+'</section>'
     brand='<section class="ed-section ed-brand"><div>'+photo('studio')+'</div><div>'+head('MEETU STUDIO · KEEPER.DAY','Made around the photograph.','We want the camera to come along, and a photograph to stay in sight.')+'<p>Keeper brings a physical shutter, a paper-like photo display and an exterior of your own into one small camera.</p><a class="ed-text-link" href="/about.html">Why we made Keeper ↗</a></div></section>'
-    community='<section class="ed-section" id="community">'+head('THE PHOTO CIRCLE','What would you photograph today?','Ideas to share, people to photograph, and a camera to bring along.','/moments.html#membership','Explore the photo circle')+social_wall()+'<div class="kr-share-actions" hidden><button type="button" data-share-url="https://keeper.day/moments.html">Share the everyday gallery ↗</button><button type="button" data-copy-url="https://keeper.day/moments.html">Copy link</button><span data-share-status role="status"></span></div></section>'
-    return '<div class="storefront editorial">'+hero+shop+facts+look+shooting+paper+daily+finder+gift+reviews()+media+education+brand+community+service_strip()+_faq(c)+newsletter()+_end(c)+'</div>'
+    community='<section class="ed-section" id="community">'+head('THE PHOTO CIRCLE','A few more things to photograph.','A slow breakfast, another try, a detour and flowers on the way home.','/moments.html#membership','Explore the photo circle')+f'<p class="ed-diary-note">{DIARY_NOTE}</p>'+social_wall()+'<div class="kr-share-actions" hidden><button type="button" data-share-url="https://keeper.day/moments.html">Share the everyday gallery ↗</button><button type="button" data-copy-url="https://keeper.day/moments.html">Copy link</button><span data-share-status role="status"></span></div></section>'
+    return '<div class="storefront editorial">'+hero+shop+diary_section()+facts+look+shooting+paper+daily+finder+gift+reviews()+media+education+brand+community+service_strip()+_faq(c)+newsletter()+_end(c)+diary_dialog()+'</div>'
 
 
 def updates():
@@ -169,4 +197,4 @@ def owners_body(c):
 def moments_body(c):
     titles={'hero':'Photograph your people.','street':'A walk with your people.','cafe':'Stay for another coffee.','campus':'The people you meet along the way.','pets':'The face you always photograph.','carry':'Bring the camera along.','gift':'Give them their next photograph.','studio':'Bring a photograph home.','family':'A birthday at home.','trail':'Take the longer way back.'}
     stories=''.join(f'<article id="{key}">{photo(key)}<h2>{title}</h2><p>{CONTENT["images"][key]["story"]}</p><a class="ed-text-link" href="/camera.html?style={CONTENT["images"][key]["style"]}#choose-style">Find this look ↗</a></article>' for key,title in titles.items())
-    return '<div class="storefront editorial">'+intro('EVERYDAY PHOTOGRAPHS','The days you want to photograph.','Friends, family, a familiar street. These visual stories are ideas for your next outing with a camera.')+'<section class="ed-section ed-story-grid">'+stories+'</section><section class="ed-section ed-brand">'+demo_form('membership')+'<div><h2>Share a photo-walk idea.</h2><p>The photo circle is a preview of future community content. There is no active membership, rewards program or account signup yet.</p><div class="kr-share-actions" hidden><button type="button" data-share-url="https://keeper.day/moments.html">Share the everyday gallery ↗</button><button type="button" data-copy-url="https://keeper.day/moments.html">Copy link</button><span data-share-status role="status"></span></div></div></section>'+social_wall()+newsletter()+_end(c)+'</div>'
+    return '<div class="storefront editorial">'+intro('PHOTO DIARY','Everyday photographs, worth a second look.','A small album of the people, places and little things you could bring Keeper along to photograph.')+diary_section(True)+head('THE CAMERA COMES ALONG','From the photograph to the camera.','See how a Keeper camera can come along for these everyday moments.')+'<section class="ed-section ed-story-grid">'+stories+'</section><section class="ed-section ed-brand">'+demo_form('membership')+'<div><h2>Share a photo-walk idea.</h2><p>The photo circle is a preview of future community content. There is no active membership, rewards program or account signup yet.</p><div class="kr-share-actions" hidden><button type="button" data-share-url="https://keeper.day/moments.html">Share the everyday gallery ↗</button><button type="button" data-copy-url="https://keeper.day/moments.html">Copy link</button><span data-share-status role="status"></span></div></div></section>'+newsletter()+_end(c)+diary_dialog()+'</div>'

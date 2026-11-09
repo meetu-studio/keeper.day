@@ -40,4 +40,74 @@
     finder.addEventListener('change', () => update()); update(false);
   }
   document.querySelectorAll('[data-demo-form]').forEach(form => form.addEventListener('submit', event => event.preventDefault()));
+  const diary = document.querySelector('.ed-diary-dialog');
+  if (diary && typeof diary.showModal === 'function') {
+    const cards = [...document.querySelectorAll('.ed-diary-card')];
+    const filters = [...document.querySelectorAll('[data-diary-filter]')];
+    const count = document.querySelector('[data-diary-count]');
+    const allowed = ['all','friends','family','pets','street','outdoors','details'];
+    let active = null;
+    let opener = null;
+    const visible = () => cards.filter(card => !card.hidden);
+    const filter = (topic, write = true) => {
+      cards.forEach(card => { card.hidden = topic !== 'all' && card.dataset.diaryCategory !== topic; });
+      filters.forEach(link => link.setAttribute('aria-current', String(link.dataset.diaryFilter === topic)));
+      if (count) count.textContent = `${visible().length} / ${cards.length}`;
+      if (write) {
+        const url = new URL(location.href);
+        topic === 'all' ? url.searchParams.delete('topic') : url.searchParams.set('topic', topic);
+        url.hash = 'photo-diary';
+        history.replaceState(null, '', url);
+        document.dispatchEvent(new Event('keeper:selectionchange'));
+      }
+    };
+    const show = card => {
+      active = card;
+      const source = card.querySelector('img');
+      const image = diary.querySelector('[data-diary-large]');
+      image.src = card.querySelector('[data-diary-photo]').href;
+      image.alt = source.alt;
+      image.width = source.width;
+      image.height = source.height;
+      diary.querySelector('#diary-title').textContent = card.querySelector('h3').textContent;
+      diary.querySelector('[data-diary-description]').textContent = card.querySelector('.ed-diary-caption').textContent;
+      diary.querySelector('[data-diary-position]').textContent = `${visible().indexOf(card) + 1} / ${visible().length}`;
+      const url = new URL(diary.querySelector('[data-diary-gallery]').href);
+      url.searchParams.set('topic', card.dataset.diaryCategory);
+      url.hash = card.id;
+      diary.querySelector('[data-share-url]').dataset.shareUrl = url.href;
+      diary.querySelector('[data-copy-url]').dataset.copyUrl = url.href;
+      diary.querySelector('[data-share-status]').textContent = '';
+    };
+    const move = direction => {
+      const list = visible();
+      show(list[(list.indexOf(active) + direction + list.length) % list.length]);
+    };
+    cards.forEach(card => card.querySelector('[data-diary-photo]').addEventListener('click', event => {
+      if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      event.preventDefault(); opener = event.currentTarget; show(card); diary.showModal();
+    }));
+    filters.forEach(link => link.addEventListener('click', event => {
+      if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      event.preventDefault(); filter(link.dataset.diaryFilter);
+    }));
+    diary.querySelector('[data-diary-close]').addEventListener('click', () => diary.close());
+    diary.querySelector('[data-diary-prev]').addEventListener('click', () => move(-1));
+    diary.querySelector('[data-diary-next]').addEventListener('click', () => move(1));
+    diary.addEventListener('keydown', event => {
+      if (event.target.matches('input,textarea')) return;
+      if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') { event.preventDefault(); move(event.key === 'ArrowLeft' ? -1 : 1); }
+    });
+    diary.addEventListener('click', event => { if (event.target === diary) { const rect = diary.getBoundingClientRect(); if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) diary.close(); } });
+    diary.addEventListener('close', () => opener?.focus({preventScroll:true}));
+    if (filters.length) {
+      const topic = new URL(location.href).searchParams.get('topic');
+      filter(allowed.includes(topic) ? topic : 'all', false);
+      const linked = cards.find(card => '#'+card.id === location.hash);
+      if (linked) {
+        if (linked.hidden) filter(linked.dataset.diaryCategory, false);
+        requestAnimationFrame(() => linked.scrollIntoView({block:'center'}));
+      }
+    }
+  }
 })();

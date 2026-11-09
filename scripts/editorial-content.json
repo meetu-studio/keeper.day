@@ -313,5 +313,205 @@
       "description": "Keeper exterior art collaboration concept",
       "href": "/press.html#concept-6"
     }
+  ],
+  "photo_diary": [
+    {
+      "id": "friends-pizza",
+      "category": "friends",
+      "title": "One more slice.",
+      "caption": "The conversation after everyone has eaten.",
+      "alt": "Two American friends laughing over pizza boxes on an apartment floor",
+      "image": "/assets/photo-diary/20261110/friends-pizza",
+      "width": 1536,
+      "height": 1024,
+      "sizes": [
+        480,
+        960,
+        1440
+      ],
+      "placeholder": true,
+      "source": "ChatGPT Imagegen, 2026-11-10"
+    },
+    {
+      "id": "friends-rooftop",
+      "category": "friends",
+      "title": "Stay until the lights come on.",
+      "caption": "A friend, a rooftop and the end of the day.",
+      "alt": "An American friend laughing on a modest rooftop at dusk with city windows behind her",
+      "image": "/assets/photo-diary/20261110/friends-rooftop",
+      "width": 1024,
+      "height": 1536,
+      "sizes": [
+        480,
+        960
+      ],
+      "placeholder": true,
+      "source": "ChatGPT Imagegen, 2026-11-10"
+    },
+    {
+      "id": "family-birthday",
+      "category": "family",
+      "title": "Before the candles go out.",
+      "caption": "A small cake. The whole kitchen watching.",
+      "alt": "An American child smiles at a birthday cake beside a parent in a lived-in kitchen",
+      "image": "/assets/photo-diary/20261110/family-birthday",
+      "width": 1536,
+      "height": 1024,
+      "sizes": [
+        480,
+        960,
+        1440
+      ],
+      "placeholder": true,
+      "source": "ChatGPT Imagegen, 2026-11-10"
+    },
+    {
+      "id": "family-pancakes",
+      "category": "family",
+      "title": "Sunday, still in pajamas.",
+      "caption": "Breakfast takes as long as it takes.",
+      "alt": "An American father and young daughter making pancakes in a sunlit kitchen",
+      "image": "/assets/photo-diary/20261110/family-pancakes",
+      "width": 1024,
+      "height": 1536,
+      "sizes": [
+        480,
+        960
+      ],
+      "placeholder": true,
+      "source": "ChatGPT Imagegen, 2026-11-10"
+    },
+    {
+      "id": "pets-dog",
+      "category": "pets",
+      "title": "Ready before you are.",
+      "caption": "The face waiting by the front door.",
+      "alt": "A golden retriever sitting by an American home's front door with a leash beside it",
+      "image": "/assets/photo-diary/20261110/pets-dog",
+      "width": 1024,
+      "height": 1536,
+      "sizes": [
+        480,
+        960
+      ],
+      "placeholder": true,
+      "source": "ChatGPT Imagegen, 2026-11-10"
+    },
+    {
+      "id": "pets-cat",
+      "category": "pets",
+      "title": "This seat is taken.",
+      "caption": "A patch of sun and absolutely no plans.",
+      "alt": "A tabby cat asleep across a chair in a patch of afternoon sunlight",
+      "image": "/assets/photo-diary/20261110/pets-cat",
+      "width": 1536,
+      "height": 1024,
+      "sizes": [
+        480,
+        960,
+        1440
+      ],
+      "placeholder": true,
+      "source": "ChatGPT Imagegen, 2026-11-10"
+    },
+    {
+      "id": "street-rain",
+      "category": "street",
+      "title": "The walk after the rain.",
+      "caption": "A familiar block, looking different for a minute.",
+      "alt": "A friend in a yellow raincoat crossing a wet residential street in the United States",
+      "image": "/assets/photo-diary/20261110/street-rain",
+      "width": 1024,
+      "height": 1536,
+      "sizes": [
+        480,
+        960
+      ],
+      "placeholder": true,
+      "source": "ChatGPT Imagegen, 2026-11-10"
+    },
+    {
+      "id": "street-skate",
+      "category": "street",
+      "title": "One more try before home.",
+      "caption": "The pause between two attempts.",
+      "alt": "Two American skateboarder friends resting beside a neighborhood skate ramp",
+      "image": "/assets/photo-diary/20261110/street-skate",
+      "width": 1536,
+      "height": 1024,
+      "sizes": [
+        480,
+        960,
+        1440
+      ],
+      "placeholder": true,
+      "source": "ChatGPT Imagegen, 2026-11-10"
+    },
+    {
+      "id": "outdoors-lake",
+      "category": "outdoors",
+      "title": "No reason to hurry back.",
+      "caption": "Friends at the end of the trail.",
+      "alt": "Two American friends sitting on a lakeside dock with their feet above the water",
+      "image": "/assets/photo-diary/20261110/outdoors-lake",
+      "width": 1536,
+      "height": 1024,
+      "sizes": [
+        480,
+        960,
+        1440
+      ],
+      "placeholder": true,
+      "source": "ChatGPT Imagegen, 2026-11-10"
+    },
+    {
+      "id": "outdoors-roadtrip",
+      "category": "outdoors",
+      "title": "A stop we didn’t plan.",
+      "caption": "A roadside view worth getting out for.",
+      "alt": "An American road-trip companion standing by a coastal overlook with wind in her hair",
+      "image": "/assets/photo-diary/20261110/outdoors-roadtrip",
+      "width": 1024,
+      "height": 1536,
+      "sizes": [
+        480,
+        960
+      ],
+      "placeholder": true,
+      "source": "ChatGPT Imagegen, 2026-11-10"
+    },
+    {
+      "id": "details-diner",
+      "category": "details",
+      "title": "Coffee, then nowhere in particular.",
+      "caption": "The table before the afternoon starts.",
+      "alt": "Two half-finished coffees and a shared slice of pie on an American diner table",
+      "image": "/assets/photo-diary/20261110/details-diner",
+      "width": 1536,
+      "height": 1024,
+      "sizes": [
+        480,
+        960,
+        1440
+      ],
+      "placeholder": true,
+      "source": "ChatGPT Imagegen, 2026-11-10"
+    },
+    {
+      "id": "details-flowers",
+      "category": "details",
+      "title": "Flowers on the way home.",
+      "caption": "Something small that changed the whole afternoon.",
+      "alt": "A paper-wrapped bouquet of mixed flowers on a bicycle basket outside an American neighborhood shop",
+      "image": "/assets/photo-diary/20261110/details-flowers",
+      "width": 1024,
+      "height": 1536,
+      "sizes": [
+        480,
+        960
+      ],
+      "placeholder": true,
+      "source": "ChatGPT Imagegen, 2026-11-10"
+    }
   ]
 }
