@@ -52,9 +52,12 @@ class Page(HTMLParser):
             self.anchor = None
 
 catalogs = read_catalogs()
-paths = list(ROOT.glob('*.html'))+[p for lang in LANGUAGES if lang != 'en' for p in (ROOT/lang).glob('*.html')]
+verification = ROOT / 'google0c0b3716f5a1174c.html'
+paths = [p for p in ROOT.glob('*.html') if p != verification]+[p for lang in LANGUAGES if lang != 'en' for p in (ROOT/lang).glob('*.html')]
 pages = {str(p.relative_to(ROOT)): Page(p) for p in paths}
 errors = []
+if not verification.is_file() or verification.read_text().strip() != 'google-site-verification: google0c0b3716f5a1174c.html':
+    errors.append('Google site verification file must be preserved')
 if len(pages) != 76: errors.append(f'Expected 76 language pages, found {len(pages)}')
 for name, page in pages.items():
     if len(page.ids) != len(set(page.ids)):
@@ -173,7 +176,7 @@ for lang in LANGUAGES:
     for name in ['index.html','moments.html','press.html','owners.html','learn.html']:
         markup=(ROOT/(prefix+name)).read_text()
         for form in re.findall(r'<form[^>]*data-demo-form[^>]*>.*?</form>',markup,re.S):
-            if '<fieldset disabled>' not in form or '<button type="button" disabled>' not in form or re.search(r'<form[^>]+action=',form):errors.append(f'{lang}/{name}: demonstration form enabled')
+            if not re.search(r'<fieldset\b[^>]*\bdisabled(?:\s|>)',form) or not re.search(r'<button\b(?=[^>]*\btype="button")(?=[^>]*\bdisabled(?:\s|>))[^>]*>',form) or re.search(r'<form[^>]+action=',form):errors.append(f'{lang}/{name}: demonstration form enabled')
 for kind,groups in editorial['recommendations'].items():
     for theme,ids in groups.items():
         if len(ids)!=3 or any(key not in {d['id'] for d in data['designs']} for key in ids):errors.append(f'Invalid fixed recommendations {kind}:{theme}')
