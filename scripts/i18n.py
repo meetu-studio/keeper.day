@@ -212,10 +212,9 @@ def localize(source, locale, filename, catalogs, version):
     boot = f'<script id="keeper-i18n" type="application/json">{safe_json(context)}</script><script src="/language.js?v={version}"></script>'
     result = result.replace('<title>',alternate+boot+'<title>',1)
     links = ''.join(f'<a href="{localized_url("/"+("" if filename=="index.html" else filename),lang)}" data-language="{lang}" lang="{HTML_LANG[lang]}"'+(' aria-current="true"' if lang==locale else '')+f'>{label}</a>' for lang,label in LANGUAGES.items())
-    switch = f'<div class="language-switch" role="group" aria-label="{escape(catalogs[locale]["ui"]["language_label"])}">{links}</div>'
-    result = result.replace('<nav aria-label=', '<div class="desktop-languages">'+switch+'</div><nav aria-label=',1)
-    result = result.replace('</summary><div><a', '</summary><div>'+switch+'<a',1)
-    result = re.sub(r'(<details class="mobile-menu"><summary[^>]*>)',r'\1<span class="mobile-current-language" lang="'+HTML_LANG[locale]+'">'+LANGUAGES[locale]+'</span>',result,count=1)
+    label = escape(catalogs[locale]['ui']['language_label'])
+    switch = f'<details class="language-switch"><summary aria-label="{label}: {LANGUAGES[locale]}" lang="{HTML_LANG[locale]}">{LANGUAGES[locale]}<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><path d="m3 4.5 3 3 3-3"></path></svg></summary><div class="language-options" role="group" aria-label="{label}">{links}</div></details>'
+    result = result.replace('<nav aria-label=', '<div class="header-language">'+switch+'</div><nav aria-label=',1)
     if filename == '404.html':
         result = result.replace('<title>','<meta name="robots" content="noindex"><title>',1)
     return result

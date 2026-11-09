@@ -354,21 +354,24 @@ body.storefront-body{padding-bottom:0}
 @media(max-width:700px){.kr-shooting-layout{grid-template-columns:1fr;gap:22px}.kr-camera-controls{max-width:520px}.kr-camera-controls figcaption{font-size:10px;gap:6px 12px}.kr-control-label{width:23px;height:23px;font-size:10px}.kr-hero .sf-kicker{font-size:9px;letter-spacing:.1em}}
 @media(prefers-reduced-motion:reduce){.kr-design-image img{transition:none}.kr-design-image:hover img{transform:none}}
 
-.desktop-languages{margin-left:auto}
-.language-switch{display:flex;align-items:center;gap:4px;white-space:nowrap}
-.language-switch a{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:5px 8px;font:500 12px/1.3 "Helvetica Neue",Arial,sans-serif;color:var(--muted);text-decoration:none;border-bottom:2px solid transparent}
-.language-switch a[aria-current=true]{color:var(--red);border-color:var(--red)}
-.language-switch a:focus-visible{outline:2px solid var(--red);outline-offset:2px}
+.header-language{margin-left:auto;flex-shrink:0}
+.language-switch{position:relative;white-space:nowrap}
+.storefront-body .language-switch>summary{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:44px;min-width:104px;padding:10px 12px;border:1px solid var(--line);border-radius:5px;font:500 12px/1.3 "Helvetica Neue",Arial,sans-serif;color:var(--ink);list-style:none;cursor:pointer}
+.language-switch>summary::-webkit-details-marker{display:none}
+.language-switch>summary::marker{content:''}
+.language-switch>summary svg{flex-shrink:0}
+.language-switch[open]>summary svg{transform:rotate(180deg)}
+.language-options{position:absolute;top:calc(100% + 7px);right:0;width:156px;padding:5px;background:#fffefa;border:1px solid var(--line);border-radius:5px;box-shadow:0 8px 20px #292c2415;z-index:35}
+.language-options a{display:flex;align-items:center;min-height:44px;padding:10px 12px;font:500 13px/1.3 "Helvetica Neue",Arial,sans-serif;color:var(--ink);text-decoration:none;border-radius:3px}
+.language-options a[aria-current=true]{color:var(--red);background:#f3ede5}
+.language-options a:is(:hover,:focus-visible){background:#eeeae1}
 .storefront-body .site-header{gap:18px}
 .storefront-body .mobile-menu{flex-shrink:0}
 .storefront-body .mobile-menu summary{white-space:nowrap}
-.mobile-current-language{font-size:12px!important;font-weight:600;color:var(--ink);padding-right:10px;margin-right:3px;border-right:1px solid #c9c5bb}
-.storefront-body .mobile-menu[open] summary .mobile-current-language{transform:none}
 html:lang(zh) .storefront,html:lang(ja) .storefront,html:lang(ko) .storefront{font-family:"Helvetica Neue",Arial,"PingFang SC","Hiragino Sans","Malgun Gothic",sans-serif;overflow-wrap:anywhere}
 html:lang(zh) .storefront :is(h1,h2,h3),html:lang(ja) .storefront :is(h1,h2,h3),html:lang(ko) .storefront :is(h1,h2,h3){letter-spacing:-.025em;line-height:1.25}
 html:lang(zh) .storefront h1 em,html:lang(ja) .storefront h1 em,html:lang(ko) .storefront h1 em{font-family:inherit;font-style:normal;font-weight:500}
-@media(min-width:701px) and (max-width:1180px){.desktop-languages{display:none}.storefront-body .site-header nav{display:none}.storefront-body .site-header .mobile-menu{display:block;margin-left:auto}}
-@media(max-width:700px){.desktop-languages{display:none}.mobile-menu .language-switch{display:flex;flex-wrap:wrap;gap:4px;padding:8px 0 12px;border-bottom:1px solid var(--line);margin-bottom:7px}.mobile-menu .language-switch a{min-height:40px;padding:8px;font-size:12px}.storefront-body .site-header{gap:10px}html:lang(ja) .sf-mobile-buy .sf-buy,html:lang(ko) .sf-mobile-buy .sf-buy{min-width:0;gap:10px;font-size:11px}html:lang(ja) .sf-hero-image figcaption,html:lang(ko) .sf-hero-image figcaption{flex-wrap:wrap}}
+@media(max-width:700px){.storefront-body .site-header{gap:10px}html:lang(ja) .sf-mobile-buy .sf-buy,html:lang(ko) .sf-mobile-buy .sf-buy{min-width:0;gap:10px;font-size:11px}html:lang(ja) .sf-hero-image figcaption,html:lang(ko) .sf-hero-image figcaption{flex-wrap:wrap}}
 
 /* Compact multilingual navigation and predictable touch targets. */
 .storefront-body .site-header{background:#fffefa;backdrop-filter:none}
@@ -384,13 +387,11 @@ html:lang(ja) .storefront-body{font-family:"Helvetica Neue",Arial,"Hiragino Sans
 html:lang(ko) .storefront-body{font-family:"Helvetica Neue",Arial,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;word-break:keep-all}
 html:lang(zh) .storefront,html:lang(ja) .storefront,html:lang(ko) .storefront{font-family:inherit}
 @media(max-width:1180px){
-  .storefront-body .site-header nav,.desktop-languages{display:none}
-  .storefront-body .site-header .mobile-menu{display:block;margin-left:auto}
+  .storefront-body .site-header nav{display:none}
+  .storefront-body .site-header .mobile-menu{display:block;margin-left:0}
   .storefront-body .mobile-menu summary{display:flex;align-items:center;min-height:44px;padding:8px 0;gap:6px}
   .storefront-body .mobile-menu>div{position:absolute;right:16px;top:100%;width:min(400px,calc(100vw - 32px));max-height:calc(100dvh - 110px);overflow-y:auto;background:#fffefa;border:1px solid var(--line);border-radius:0 0 7px 7px;padding:12px;box-shadow:0 12px 24px #292c2415}
   .storefront-body .mobile-menu a{display:flex;align-items:center;min-height:44px;padding:10px 12px;font-size:14px;text-decoration:none}
-  .storefront-body .mobile-menu .language-switch{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px;padding:0 0 8px;margin-bottom:6px;border-bottom:1px solid var(--line)}
-  .storefront-body .mobile-menu .language-switch a{padding:8px 4px;font-size:12px}
 }
 @media(max-width:700px){
   .kr-hero .sf-hero-image{order:0}
@@ -401,5 +402,11 @@ html:lang(zh) .storefront,html:lang(ja) .storefront,html:lang(ko) .storefront{fo
   .storefront-body .site-header{padding:8px 16px;min-height:60px}
   .sf-product-copy h1{font-size:32px}
   .kr-selection-note{font-size:13px}
+}
+@media(max-width:380px){
+  .storefront-body .site-header{padding-inline:12px;gap:6px}
+  .storefront-body .site-header .wordmark{font-size:24px}
+  .storefront-body .language-switch>summary{min-width:86px;padding-inline:9px;gap:7px}
+  .storefront-body .mobile-menu summary{font-size:11px;gap:4px}
 }
 
