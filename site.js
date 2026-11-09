@@ -1,4 +1,5 @@
 const mobileMenu = document.querySelector('.mobile-menu');
+const keeperText = window.KeeperI18n.t;
 mobileMenu?.querySelectorAll('a').forEach((link) => {
   link.addEventListener('click', () => { mobileMenu.open = false; });
 });
@@ -10,15 +11,15 @@ document.addEventListener('keydown', (event) => {
 });
 const preview = document.querySelector('#camera-preview');
 const samplePhotos = {
-  love: { path: '/assets/screen-love.webp', label: 'a couple' },
-  pet: { path: '/assets/screen-pet.webp', label: 'a happy dog' },
-  blooms: { path: '/assets/screen-blooms.webp', label: 'flowers' }
+  love: { path: '/assets/screen-love.webp', label: keeperText('preview_love') },
+  pet: { path: '/assets/screen-pet.webp', label: keeperText('preview_pet') },
+  blooms: { path: '/assets/screen-blooms.webp', label: keeperText('preview_blooms') }
 };
 document.querySelectorAll('[data-photo]').forEach((button) => {
   button.addEventListener('click', () => {
     const photo = samplePhotos[button.dataset.photo];
     preview.querySelectorAll('.screen-art, .mini-art').forEach((image) => { image.src = photo.path; });
-    preview.setAttribute('aria-label', `keeper.day design preview showing ${photo.label}: a white portrait body with a red button at bottom left and a small square window at bottom right`);
+    preview.setAttribute('aria-label', keeperText('preview_alt',{subject:photo.label}));
     document.querySelectorAll('[data-photo]').forEach((choice) => { choice.setAttribute('aria-pressed', String(choice === button)); });
   });
 });
@@ -38,7 +39,7 @@ chatButton?.addEventListener('click', () => {
     widget.open();
     chatStatus.textContent = '';
   } else {
-    chatStatus.textContent = 'Live chat is still connecting. Please try again in a moment, or email us below.';
+    chatStatus.textContent = keeperText('chat_connecting');
   }
 });
 document.querySelectorAll('[data-preview]').forEach((previewPanel) => {
@@ -62,7 +63,7 @@ if (filterGrid) {
     button.addEventListener('click', () => {
       cards.forEach((card) => { card.hidden = button.dataset.filter !== 'all' && card.dataset.category !== button.dataset.filter; });
       document.querySelectorAll('[data-filter]').forEach((choice) => { choice.setAttribute('aria-pressed', String(choice === button)); });
-      document.querySelector('.filter-status').textContent = `${cards.filter((card) => !card.hidden).length} concepts`;
+      document.querySelector('.filter-status').textContent = keeperText('concept_count',{count:cards.filter((card) => !card.hidden).length});
     });
   });
 }

@@ -1,6 +1,7 @@
 /* Progressive enhancement only: purchase links and all content work without JS. */
 (() => {
   'use strict';
+  const {t,url} = window.KeeperI18n;
   document.querySelectorAll('[data-sf-gallery]').forEach((gallery) => {
     const panels = [...gallery.querySelectorAll('[data-sf-panel]')];
     const controls = gallery.querySelector('.sf-thumbnails');
@@ -13,7 +14,7 @@
         button.setAttribute('aria-pressed', String(i === index));
       });
       if (announce && status) {
-        status.textContent = `Image ${index + 1} of ${panels.length}: ${panels[index].querySelector('figcaption')?.textContent || ''}`;
+        status.textContent = t('gallery_status',{index:index+1,count:panels.length,label:panels[index].querySelector('figcaption')?.textContent || ''});
       }
     };
     buttons.forEach((button, index) => {
@@ -40,14 +41,14 @@
     const filters = [...catalog.querySelectorAll('[data-design-filter]')];
     let kind = 'all';
     const filter = () => {
-      const words = search.value.toLocaleLowerCase().trim().split(/\s+/).filter(Boolean);
+      const words = search.value.normalize('NFKC').toLocaleLowerCase().trim().split(/\s+/).filter(Boolean);
       let count = 0;
       cards.forEach((card) => {
-        const match = (kind === 'all' || card.dataset.kind === kind) && words.every(word => card.dataset.search.toLocaleLowerCase().includes(word));
+        const match = (kind === 'all' || card.dataset.kind === kind) && words.every(word => card.dataset.search.normalize('NFKC').toLocaleLowerCase().includes(word));
         card.hidden = !match;
         count += Number(match);
       });
-      catalog.querySelector('[data-design-count]').textContent = `${count} design${count === 1 ? '' : 's'} · $199 per camera + $30 worldwide shipping`;
+      catalog.querySelector('[data-design-count]').textContent = t(count === 1 ? 'catalog_count_one' : 'catalog_count',{count});
       catalog.querySelector('[data-design-empty]').hidden = count !== 0;
     };
     search.addEventListener('input', filter);
@@ -76,18 +77,19 @@
       const valid = id === 'classic' || !!variant;
       select.value = variant ? id : valid ? 'classic' : '';
       const display = variant || groupVariants[0];
-      const name = variant ? `${variant.name} · ${id.toUpperCase()}` : pendingPair ? `${groupVariants[0].name.split(' · ')[0]} · choose a side` : 'Classic cream';
+      const name = variant ? `${variant.name} · ${id.toUpperCase()}` : pendingPair ? t('choose_side_name',{name:groupVariants[0].name.split(' · ')[0]}) : t('classic_name');
       selector.querySelector('[data-selected-name]').textContent = name;
-      selector.querySelector('[data-selection-note]').textContent = pendingPair ? 'Choose A (left) or B (right). Each purchase includes one camera, not both.' : `One camera · ${variant?.side ? 'Side '+variant.side.toUpperCase()+(variant.side === 'a' ? ' (left)' : ' (right)')+' exterior' : variant ? variant.name+' exterior' : 'classic cream exterior'} · gift box, lanyard & manual.`;
-      selector.querySelector('[data-selection-status]').textContent = !valid && !pendingPair ? 'That design number was not found. Classic cream is shown; choose a look before continuing.' : pendingPair ? 'Select a side to continue to checkout.' : 'Your selected exterior is included. $229 USD total with worldwide shipping.';
+      const exterior = variant?.side ? t('side_exterior',{side:variant.side.toUpperCase(),position:t(variant.side==='a'?'left':'right')}) : variant ? t('exterior',{name:variant.name}) : t('classic_exterior');
+      selector.querySelector('[data-selection-note]').textContent = pendingPair ? t('pair_note') : t('selected_note',{exterior});
+      selector.querySelector('[data-selection-status]').textContent = !valid && !pendingPair ? t('invalid_design') : pendingPair ? t('select_side') : t('selected_total');
       selector.querySelector('[data-side-choices]').hidden = !pendingPair;
       productImage.src = display?.image || originalImage.src;
       productImage.width = display?.width || originalImage.width;
       productImage.height = display?.height || originalImage.height;
-      productImage.alt = display ? `${name}. ${variant?.side ? 'Selected side '+variant.side.toUpperCase()+'. One camera per purchase.' : pendingPair ? 'A on the left, B on the right.' : 'One camera with this exterior.'}` : 'Classic cream Keeper camera';
+      productImage.alt = display ? t('product_alt',{name,details:variant?.side ? t('selected_side_alt',{side:variant.side.toUpperCase()}) : pendingPair ? t('pair_alt') : t('single_alt')}) : t('classic_alt');
       productCaption.textContent = name;
       document.querySelector('[data-sf-photo="0"] img').src = productImage.src;
-      document.querySelector('[data-sf-photo="0"]').setAttribute('aria-label','Show selected look: '+name);
+      document.querySelector('[data-sf-photo="0"]').setAttribute('aria-label',t('show_selected',{name}));
       document.querySelector('[data-sf-photo="0"]').click();
       const checkout = new URL(data.checkout);
       if (variant) checkout.searchParams.set('client_reference_id', 'keeper-'+id);
@@ -95,18 +97,21 @@
         link.href = pendingPair || !valid ? '#choose-style' : checkout.href;
         link.dataset.variant = variant ? id : 'classic';
         link.setAttribute('aria-disabled', String(!!pendingPair || !valid));
-        link.setAttribute('aria-label', pendingPair || !valid ? 'Choose your exterior before checkout' : `Buy one ${name} Keeper for $199 plus $30 shipping, $229 USD total`);
+        link.setAttribute('aria-label', pendingPair || !valid ? t('checkout_pick') : t('buy_aria',{name}));
         const arrow = link.querySelector('span');
-        const text = pendingPair || !valid ? 'Choose your look' : 'Buy '+(variant ? id.toUpperCase() : 'Keeper');
+        const text = pendingPair || !valid ? t('choose_look') : t('buy_label',{name:variant ? id.toUpperCase() : 'Keeper'});
         link.replaceChildren(document.createTextNode(text));
         if (arrow) link.append(arrow);
       });
-      currentShareUrl = 'https://keeper.day/camera.html'+(variant || pendingPair ? '?style='+encodeURIComponent(id) : '');
+      const shared = new URL(url('/camera.html'+(variant || pendingPair ? '?style='+encodeURIComponent(id) : '')));
+      shared.host = 'keeper.day';shared.protocol = 'https:';shared.port = '';
+      currentShareUrl = shared.href;
       if (updateUrl) {
         const url = new URL(location.href);
         if (variant || pendingPair) url.searchParams.set('style', id); else url.searchParams.delete('style');
         history.replaceState(null, '', url);
       }
+      document.dispatchEvent(new Event('keeper:selectionchange'));
     };
     selector.querySelector('.kr-select-control').hidden = false;
     select.addEventListener('change', () => update(select.value));
@@ -125,22 +130,22 @@
   const copyLink = async (url, container) => {
     const status = container.querySelector('[data-share-status]');
     const previousFocus = document.activeElement;
-    status.textContent = 'Copying link…';
+    status.textContent = t('copying');
     try {
       await Promise.race([navigator.clipboard.writeText(url), new Promise((_,reject) => setTimeout(() => reject(new Error('Clipboard unavailable')),1200))]);
-      status.textContent = 'Link copied.';
+      status.textContent = t('copied');
     } catch {
       let field = container.querySelector('input');
       if (!field) {
         field = document.createElement('input');
         field.readOnly = true;
-        field.setAttribute('aria-label', 'Link to copy');
+        field.setAttribute('aria-label', t('copy_label'));
         container.append(field);
       }
       field.value = url;field.focus();field.select();
       if (document.hasFocus() && document.execCommand('copy')) {
-        field.remove();previousFocus?.focus({preventScroll:true});status.textContent = 'Link copied.';
-      } else status.textContent = 'Select and copy this link.';
+        field.remove();previousFocus?.focus({preventScroll:true});status.textContent = t('copied');
+      } else status.textContent = t('copy_manual');
     }
   };
   document.querySelectorAll('.kr-share-actions').forEach(container => {
@@ -148,7 +153,7 @@
     container.querySelectorAll('button').forEach(button => button.addEventListener('click', async () => {
       const url = button.dataset.shareUrl || button.dataset.copyUrl || currentShareUrl;
       if ((button.hasAttribute('data-share-current') || button.hasAttribute('data-share-url')) && navigator.share) {
-        try { await navigator.share({title:'Find your Keeper',text:'A little camera. A look of your own.',url}); }
+        try { await navigator.share({title:t('share_title'),text:t('share_text'),url}); }
         catch (error) { if (error.name !== 'AbortError') await copyLink(url,container); }
       } else await copyLink(url,container);
     }));

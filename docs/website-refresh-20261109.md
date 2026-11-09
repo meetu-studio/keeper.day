@@ -23,3 +23,13 @@ The homepage now opens on a hiker using a landscape Keeper to photograph two fri
 Two new ST-46/ST-27 camera-use scenes join the eight everyday images. Their source bodies are rotated and uniformly placed from existing product artwork, with no body repaint or perspective warp. Matching simulated photographs are restricted to the original screen interiors, and hand occlusions are restored above the body. PNG proof compares exposed body pixels outside these explicit masks and a one-pixel antialiasing boundary: zero differing pixels for both scenes. These remain AI-created scenes with simulated displays, not camera sample output.
 
 Resource version: `20261109-camera-1`. Local verification passed 55 layouts, 128 variant mappings, paired A/B, filter/search, clipboard write/read, gallery keyboard, mobile menu/Escape, FAQ and no-JavaScript purchase links. USD pricing and checkout mechanics are unchanged. Release and production evidence are recorded in the local Chinese maintenance note.
+
+## November 9 follow-up: four static languages
+
+English retains the root URLs. Simplified Chinese, Japanese and Korean are available under `/zh/`, `/ja/` and `/ko/`: 44 complete HTML pages and 40 indexable sitemap URLs. Navigation, body copy, exterior names, image descriptions, policy text and dynamic messages use the same four static catalogs. Missing keys, empty translations and inconsistent named placeholders fail the build.
+
+Unspecified root entries choose a saved manual preference, then the first supported browser language, with English fallback. Explicit language paths remain stable. English links use `?lang=en` when a fixed English selection is needed. Switching preserves the page, selected design/side, campaign parameters and fragment; browser storage failure does not prevent navigation or checkout. The shared 404 localizes in place and retains the failing URL and status.
+
+All 128 patterned choices retain their IDs, A/left and B/right mapping, one-camera quantity and USD199 + USD30 = USD229 pricing. Stripe standard checkout receives the selected `locale`; its product configuration and reference IDs are preserved. Policy text now states that the selected ST/P exterior is included and one P side is one camera. The language preference is documented separately from optional-service consent.
+
+Resource version: `20261109-i18n-1`. Local acceptance covers 176 desktop/mobile layouts, 512 variant mappings, all-language and full-width search, clipboard readback, A/B selection, no-JavaScript catalogs, FAQ, mobile menu/Escape and in-place 404. Eight targeted mobile header cases verify single-line menus after the Japanese narrow-screen correction. The existing camera-led imagery is reused. Production evidence is kept in the project maintenance note.

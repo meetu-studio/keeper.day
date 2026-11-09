@@ -61,3 +61,17 @@ The November 9 follow-up adds two horizontal, two-handed photography scenes usin
 The eight new lifestyle scenes use built-in Imagegen environments and original product layers composited with uniform scale/translation. Original pixels, generation prompts, intermediate layers and pixel-verification records are kept in the project vault under `attachments/keeper-day/website-refresh-20261109`. Final PNG dimensions are 1536×1024; published WebP sizes are 480, 960 and 1440 wide. Artwork and screen images are illustrative, not customer photographs or camera sample output.
 
 For the camera-use hero and gifting scene, replace the corresponding PNG under `camera-marketing-20261109/final/`; the other eight remain under `website-refresh-20261109/final/`. Replace with a real photograph, update its provenance/caption, and run the asset and page builders. Do not rerun the scene composer over replaced real photographs. Increment the builder resource version, run checks and verify Pages plus an ordinary browser refresh. Preserve `CNAME` as `keeper.day`.
+
+## Languages and automatic selection
+
+English keeps the existing root URLs. Simplified Chinese, Japanese and Korean have complete static pages under `/zh/`, `/ja/` and `/ko/`. The build generates 44 HTML pages, with 40 indexable URLs in the sitemap. Each language has its own canonical, alternate-language links, metadata, alt text and share text.
+
+Unspecified root URLs use a saved manual choice, then the first supported `navigator.languages` preference, and otherwise English. All `zh-*` preferences use Simplified Chinese. An explicit language directory always wins. `?lang=en` explicitly requests English, including in English share URLs. The selector preserves the current page, query parameters, design/side and fragment. The interface preference is stored separately from optional analytics consent as `keeper-language-v1`; browser storage failure leaves language links and core shopping available.
+
+The four `scripts/locales/*.json` catalogs contain `text` (exact source copy), `ui` (named message templates) and `designs` (98 names keyed by permanent design ID). The HTML localizer operates at build time; it does not call a translation service. `scripts/content.json` remains the language-independent image/variant source. All four design names and IDs are indexed for search. JavaScript reads the current page's generated message catalog; no display text should be added directly to interactive handlers.
+
+To change copy, update the English template and matching keys in all four catalogs, keep message placeholders identical, then run the existing build and checks. A missing key, blank translation or placeholder mismatch blocks the build. English price text is consistently rendered with the US$ prefix. Checkout keeps one camera and the same price; only `locale=en/zh/ja/ko` and the selected `client_reference_id` vary.
+
+The shared GitHub Pages 404 includes generated language fragments. Its small bootstrap changes the content in place for unknown paths, retaining the failing URL and HTTP 404 status. No-JavaScript visitors can use the static language links; every translated catalog includes all 128 direct purchase choices.
+
+Stripe's standard checkout interface follows the selected locale. Product names/custom text configured in Stripe, HubSpot conversation content and transactional emails remain provider-managed. Original images, including any words within images, are reused.

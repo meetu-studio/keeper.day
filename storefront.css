@@ -354,3 +354,17 @@ body.storefront-body{padding-bottom:0}
 @media(max-width:700px){.kr-shooting-layout{grid-template-columns:1fr;gap:22px}.kr-camera-controls{max-width:520px}.kr-camera-controls figcaption{font-size:10px;gap:6px 12px}.kr-control-label{width:23px;height:23px;font-size:10px}.kr-hero .sf-kicker{font-size:9px;letter-spacing:.1em}}
 @media(prefers-reduced-motion:reduce){.kr-design-image img{transition:none}.kr-design-image:hover img{transform:none}}
 
+.desktop-languages{margin-left:auto}
+.language-switch{display:flex;align-items:center;gap:4px;white-space:nowrap}
+.language-switch a{display:inline-flex;align-items:center;justify-content:center;min-height:36px;padding:5px 6px;font:500 11px/1.3 "Helvetica Neue",Arial,sans-serif;color:var(--muted);text-decoration:none;border-bottom:2px solid transparent}
+.language-switch a[aria-current=true]{color:var(--red);border-color:var(--red)}
+.language-switch a:focus-visible{outline:2px solid var(--red);outline-offset:2px}
+.storefront-body .site-header{gap:18px}
+.storefront-body .mobile-menu{flex-shrink:0}
+.storefront-body .mobile-menu summary{white-space:nowrap}
+html:lang(zh) .storefront,html:lang(ja) .storefront,html:lang(ko) .storefront{font-family:"Helvetica Neue",Arial,"PingFang SC","Hiragino Sans","Malgun Gothic",sans-serif;overflow-wrap:anywhere}
+html:lang(zh) .storefront :is(h1,h2,h3),html:lang(ja) .storefront :is(h1,h2,h3),html:lang(ko) .storefront :is(h1,h2,h3){letter-spacing:-.025em;line-height:1.25}
+html:lang(zh) .storefront h1 em,html:lang(ja) .storefront h1 em,html:lang(ko) .storefront h1 em{font-family:inherit;font-style:normal;font-weight:500}
+@media(min-width:701px) and (max-width:1180px){.desktop-languages{display:none}.storefront-body .site-header nav{display:none}.storefront-body .site-header .mobile-menu{display:block;margin-left:auto}}
+@media(max-width:700px){.desktop-languages{display:none}.mobile-menu .language-switch{display:flex;flex-wrap:wrap;gap:4px;padding:8px 0 12px;border-bottom:1px solid var(--line);margin-bottom:7px}.mobile-menu .language-switch a{min-height:40px;padding:8px;font-size:12px}.storefront-body .site-header{gap:10px}html:lang(ja) .sf-mobile-buy .sf-buy,html:lang(ko) .sf-mobile-buy .sf-buy{min-width:0;gap:10px;font-size:11px}html:lang(ja) .sf-hero-image figcaption,html:lang(ko) .sf-hero-image figcaption{flex-wrap:wrap}}
+

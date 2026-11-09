@@ -2,18 +2,21 @@
 """Static release gates. Checkout and responsive interaction require browser QA too."""
 from pathlib import Path
 from html.parser import HTMLParser
+from html import unescape
 from urllib.parse import urlsplit, unquote, parse_qs
 from collections import Counter
 import json, re, sys
+from i18n import LANGUAGES, HTML_LANG, read_catalogs, canonical
 ROOT = Path(__file__).resolve().parents[1]
 COMMERCE = json.loads((ROOT / 'scripts/commerce.json').read_text())
 DATA = json.loads((ROOT / 'scripts/content.json').read_text())
 VARIANTS = {v['id']:v for v in DATA['variants']}
 
-def valid_checkout(href, variant=None):
+def valid_checkout(href, variant=None, locale='en'):
     actual, expected = urlsplit(href), urlsplit(COMMERCE['checkout_url'])
     if (actual.scheme,actual.netloc,actual.path) != (expected.scheme,expected.netloc,expected.path): return False
     query, base = parse_qs(actual.query), parse_qs(expected.query)
+    base['locale'] = [locale]
     reference = query.pop('client_reference_id', None)
     if query != base: return False
     if variant: return reference == ['keeper-'+variant] and variant in VARIANTS
@@ -25,10 +28,14 @@ class Page(HTMLParser):
         self.path = path
         self.ids, self.links, self.images, self.anchors, self.resources = [], [], [], [], []
         self.anchor = None
+        self.searches = []
         self.h1 = 0
+        self.locale = None
         self.feed(path.read_text())
     def handle_starttag(self, tag, attrs):
         a = dict(attrs)
+        if tag == 'html': self.locale = a.get('data-locale')
+        if 'data-search' in a: self.searches.append(a['data-search'])
         if 'id' in a: self.ids.append(a['id'])
         if tag == 'h1': self.h1 += 1
         if tag == 'a' and 'href' in a:
@@ -44,13 +51,22 @@ class Page(HTMLParser):
             self.anchors.append(self.anchor)
             self.anchor = None
 
-pages = {p.name: Page(p) for p in ROOT.glob('*.html')}
+catalogs = read_catalogs()
+paths = list(ROOT.glob('*.html'))+[p for lang in LANGUAGES if lang != 'en' for p in (ROOT/lang).glob('*.html')]
+pages = {str(p.relative_to(ROOT)): Page(p) for p in paths}
 errors = []
+if len(pages) != 44: errors.append(f'Expected 44 language pages, found {len(pages)}')
 for name, page in pages.items():
     if len(page.ids) != len(set(page.ids)):
         errors.append(f'{name}: duplicate IDs {list(k for k,v in Counter(page.ids).items() if v > 1)}')
     if page.h1 != 1: errors.append(f'{name}: expected one H1, found {page.h1}')
-    text = page.path.read_text()
+    text = re.sub(r'<script id="keeper-not-found" type="application/json">.*?</script>', '', page.path.read_text(), flags=re.S)
+    if page.locale not in LANGUAGES: errors.append(f'{name}: missing or invalid locale')
+    if f'lang="{HTML_LANG.get(page.locale)}"' not in text: errors.append(f'{name}: wrong document language')
+    for lang in LANGUAGES:
+        if f'hreflang="{HTML_LANG[lang]}" href="{canonical(page.path.name,lang)}"' not in text: errors.append(f'{name}: missing alternate {lang}')
+    if f'rel="canonical" href="{canonical(page.path.name,page.locale)}"' not in text: errors.append(f'{name}: wrong canonical')
+    if '/language.js?' not in text or 'id="keeper-i18n"' not in text: errors.append(f'{name}: missing language bootstrap')
     if f'data-order-total="{COMMERCE["total"]}"' not in text: errors.append(f'{name}: wrong configured total')
     amounts = re.findall(r'(?:US\$|\$)\s*(\d+(?:\.\d+)?)', text)
     allowed = {float(COMMERCE[k]) for k in ['price','shipping','total']}
@@ -64,7 +80,7 @@ for name, page in pages.items():
     if 'mailto:' in email_excluded or '__cf_email__' in text or '/cdn-cgi/l/email-protection' in text:
         errors.append(f'{name}: unprotected or pre-obfuscated support email')
     policy_match = re.search(r'<meta http-equiv="Content-Security-Policy" content="([^"]+)">', text)
-    policy = policy_match.group(1).split() if policy_match else []
+    policy = unescape(policy_match.group(1)).split() if policy_match else []
     if not policy or policy[0] != 'script-src-elem' or "'self'" not in policy:
         errors.append(f'{name}: missing script-provider allowlist')
     if any(source in ['*', 'https:', 'http:'] or 'cloudflareinsights.com' in source for source in policy):
@@ -75,16 +91,18 @@ for name, page in pages.items():
         if re.search(pattern, text, re.I): errors.append(f'{name}: stale sale copy {pattern}')
     for anchor in page.anchors:
         a = anchor['attrs']
-        routing = 'data-current-checkout' in a and a['href'] == '/camera.html#choose-style'
-        if 'data-purchase' in a and not routing and not valid_checkout(a['href'],a.get('data-variant')):
+        parsed = urlsplit(a['href'])
+        routing = 'data-current-checkout' in a and parsed.path.endswith('/camera.html') and parsed.fragment == 'choose-style'
+        if 'data-purchase' in a and not routing and not valid_checkout(a['href'],a.get('data-variant'),page.locale):
             errors.append(f'{name}: wrong direct checkout {a["href"]}')
-        if 'buy.stripe.com' in a['href'] and not valid_checkout(a['href'],a.get('data-variant')):
+        if 'buy.stripe.com' in a['href'] and not valid_checkout(a['href'],a.get('data-variant'),page.locale):
             errors.append(f'{name}: stale Stripe link {a["href"]}')
     for url in page.links + page.resources:
         u = urlsplit(url)
         if u.scheme or u.netloc: continue
         target = unquote(u.path).lstrip('/') or name
         if u.path == '/': target = 'index.html'
+        elif u.path.endswith('/'): target += 'index.html'
         if not (ROOT / target).is_file(): errors.append(f'{name}: missing target {url}')
         if u.fragment and target in pages and unquote(u.fragment) not in pages[target].ids:
             errors.append(f'{name}: missing anchor {url}')
@@ -92,14 +110,14 @@ for name, page in pages.items():
         if 'alt' not in img: errors.append(f'{name}: missing image alt {img.get("src")}')
         if not img.get('src', '').startswith('http') and not all(img.get(k) for k in ['width','height']):
             errors.append(f'{name}: missing image dimensions {img.get("src")}')
-    if name != '404.html':
+    if page.path.name != '404.html':
         for expected in ['mailto:support@keeper.day', 'G-783F93X4HE', '1113554937986944', 'z98vqpb6j4', '247894352.js']:
             if expected not in text: errors.append(f'{name}: missing support/tracking {expected}')
 for name in ['index.html', 'camera.html', 'gifting.html', 'support.html', 'terms.html']:
     text = (ROOT / name).read_text().lower()
     for expected in ['199', '30', '229', 'gift box', 'lanyard', 'manual', 'in stock']:
         if expected not in text: errors.append(f'{name}: missing offer detail {expected}')
-for name in ['index.html', 'camera.html']:
+for name in [str(p.relative_to(ROOT)) for p in paths if p.name in ['index.html','camera.html']]:
     text = (ROOT / name).read_text()
     structured = json.loads(re.search(r'<script type="application/ld\+json">(.*?)</script>', text, re.S).group(1))
     offer = structured['offers']
@@ -121,12 +139,26 @@ for d in data['designs']:
     if {v['id'] for v in VARIANTS.values() if v['group']==d['id']} != expected: errors.append(f'Wrong sides for {d["id"]}')
 listed = {a['attrs'].get('data-variant') for a in pages['styles.html'].anchors if 'buy.stripe.com' in a['attrs']['href']}
 if listed != set(VARIANTS): errors.append('The static catalog does not provide all 128 correct purchase links')
-payload = json.loads(re.search(r'<script type="application/json" id="keeper-design-data">(.*?)</script>',(ROOT/'camera.html').read_text(),re.S).group(1))
-if {v['id'] for v in payload['variants']} != set(VARIANTS): errors.append('Product selector and catalog disagree')
+for lang in LANGUAGES:
+    prefix = '' if lang=='en' else lang+'/'
+    listed = {a['attrs'].get('data-variant') for a in pages[prefix+'styles.html'].anchors if 'buy.stripe.com' in a['attrs']['href']}
+    if listed != set(VARIANTS): errors.append(f'{lang}: missing static purchase choices')
+    payload = json.loads(re.search(r'<script type="application/json" id="keeper-design-data">(.*?)</script>',(ROOT/(prefix+'camera.html')).read_text(),re.S).group(1))
+    if {v['id'] for v in payload['variants']} != set(VARIANTS): errors.append(f'{lang}: selector and catalog disagree')
+    if parse_qs(urlsplit(payload['checkout']).query).get('locale') != [lang]: errors.append(f'{lang}: wrong checkout language')
+    for variant in payload['variants']:
+        if catalogs[lang]['designs'][variant['group']] not in variant['name']: errors.append(f'{lang}: wrong localized variant name {variant["id"]}')
+        if not any(variant['id'] in search.split() for search in pages[prefix+'styles.html'].searches): errors.append(f'{lang}: search omits variant {variant["id"]}')
+    for card in pages[prefix+'styles.html'].anchors:
+        if card['attrs'].get('data-variant') and not valid_checkout(card['attrs']['href'],card['attrs']['data-variant'],lang): errors.append(f'{lang}: invalid design checkout')
+for lang in ['zh','ja','ko']:
+    unchanged = [key for key,value in catalogs[lang]['text'].items() if value == catalogs['en']['text'][key]]
+    if unchanged: errors.append(f'{lang}: untranslated text {unchanged}')
+if len(re.findall(r'<url>',(ROOT/'sitemap.xml').read_text())) != 40: errors.append('Expected 40 indexable language URLs')
 if len(data['lifestyle']) != 8: errors.append('Expected eight lifestyle scenes')
 if len(data.get('camera_story',[])) != 2: errors.append('Expected two camera-use scenes')
 for scene in data['lifestyle']+data.get('camera_story',[]):
     for suffix in ['', '-480', '-960']:
         if not (ROOT/f'assets/everyday/{scene["id"]}{suffix}.webp').is_file(): errors.append(f'Missing responsive lifestyle image {scene["id"]}{suffix}')
-print(json.dumps({'pages': len(pages), 'curated_images': len(data['assets']), 'design_images':len(data['designs']), 'selectable_designs':len(VARIANTS), 'lifestyle_images':len(data['lifestyle']), 'camera_use_images':len(data.get('camera_story',[])), 'checkout_verified': COMMERCE['checkout_verified'], 'errors': errors}, indent=2))
+print(json.dumps({'pages': len(pages), 'languages':list(LANGUAGES), 'translation_texts_per_language':len(catalogs['en']['text']), 'ui_messages_per_language':len(catalogs['en']['ui']), 'curated_images': len(data['assets']), 'design_images':len(data['designs']), 'selectable_designs':len(VARIANTS), 'lifestyle_images':len(data['lifestyle']), 'camera_use_images':len(data.get('camera_story',[])), 'checkout_verified': COMMERCE['checkout_verified'], 'errors': errors}, indent=2))
 sys.exit(bool(errors))

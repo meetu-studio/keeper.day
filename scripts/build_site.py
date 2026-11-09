@@ -6,6 +6,7 @@ import html
 import re
 from storefront import home_body, product_body, gifting_body, support_body, styles_body, moments_body
 from policies import terms_body
+from i18n import LANGUAGES, canonical, read_catalogs, localize, attach_not_found
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = json.loads((ROOT / 'scripts/content.json').read_text())
@@ -13,7 +14,8 @@ COMMERCE = json.loads((ROOT / 'scripts/commerce.json').read_text())
 C = json.loads((ROOT / 'scripts/components.json').read_text())
 A = DATA['assets']
 E = lambda x: html.escape(str(x), quote=True)
-VERSION = '20261109-camera-1'
+VERSION = '20261109-i18n-1'
+CATALOGS = read_catalogs()
 # Keep CDN-injected analytics outside the consent-controlled provider set.
 SCRIPT_POLICY = "script-src-elem 'self' 'unsafe-inline' https://www.googletagmanager.com https://connect.facebook.net https://*.clarity.ms https://*.hs-scripts.com https://*.usemessages.com https://*.hs-banner.com https://*.hs-analytics.net https://*.hscollectedforms.net https://*.hubspot.com https://*.hsadspixel.net https://*.hsleadflows.net"
 STRIPE = COMMERCE['checkout_url']
@@ -62,8 +64,14 @@ def render(filename, title, description, body, product=False):
 <body class="keeper-home storefront-body page-{filename.removesuffix('.html')}" data-order-total="{TOTAL}"><!--email_off--><a class="skip-link" href="#main">Skip to content</a><div class="announcement">In stock. Ready for your everyday. <span>Gift box included · ${SHIPPING} worldwide shipping</span></div>
 <header class="site-header"><a class="wordmark" href="/" aria-label="keeper.day home">keeper<span>.</span>day</a><nav aria-label="Main navigation">{nav}<a class="nav-contact" data-current-checkout data-purchase="header" href="/camera.html#choose-style" aria-label="Buy one Keeper camera for ${PRICE} plus ${SHIPPING} shipping, ${TOTAL} total">Shop camera — ${PRICE} <span aria-hidden="true">↗</span></a></nav><details class="mobile-menu"><summary aria-label="Open navigation">Menu <span aria-hidden="true">+</span></summary><div><a href="/">Home</a>{mobile}<a href="/camera.html#choose-style" data-current-checkout data-purchase="mobile-menu">Shop camera — ${PRICE}</a></div></details></header>
 <section class="consent-banner" data-consent-banner aria-label="Privacy choices" hidden><p>Optional analytics, advertising and chat stay off until you choose. Shopping and secure checkout work either way. <a href="/privacy.html">Privacy details</a></p><div class="consent-actions"><button type="button" data-consent-decline>Essential only</button><button type="button" data-consent-allow>Allow optional</button></div></section><main id="main">{body}</main>{footer()}<!--/email_off--><template id="optional-services">{C['tracking']}</template></body></html>'''
-    (ROOT / filename).write_text(content)
-    print('Built', filename)
+    pages = {locale:localize(content,locale,filename,CATALOGS,VERSION) for locale in LANGUAGES}
+    if filename == '404.html':
+        pages['en'] = attach_not_found(pages)
+    for locale, page in pages.items():
+        target = ROOT/filename if locale == 'en' else ROOT/locale/filename
+        target.parent.mkdir(exist_ok=True)
+        target.write_text(page)
+        print('Built', target.relative_to(ROOT))
 
 
 render('index.html', 'Keeper — A pocket camera with color e-paper',
@@ -88,9 +96,7 @@ render('moments.html', 'Everyday gallery — Keeper',
 render('terms.html', 'Shipping, returns & purchase terms — Keeper',
        f'Keeper is in stock. ${PRICE} camera + ${SHIPPING} worldwide shipping = ${TOTAL}. Included gift box, lanyard and manual. Cancellation and return terms.', terms_body(COMMERCE))
 render('404.html', 'Page not found — Keeper', 'Find your way back to Keeper.', '<section class="page-intro"><p class="eyebrow">404 · A little off the beaten path</p><h1>This page got away.</h1><p class="section-lead">The good days are still here. Let’s find your next Keeper.</p><a class="buy-button" href="/camera.html">Meet the camera ↗</a></section>')
-error_page = ROOT / '404.html'
-error_page.write_text(error_page.read_text().replace('<title>', '<meta name="robots" content="noindex"><title>', 1))
 privacy_source = ROOT / 'scripts/privacy-body.html'
 render('privacy.html', 'Privacy notice — Keeper', 'How Keeper and Meetu Studio handle order, payment, support and website usage information.', privacy_source.read_text())
 urls = ['', 'camera.html', 'gifting.html', 'support.html', 'moments.html', 'together.html', 'styles.html', 'little-apps.html', 'terms.html', 'privacy.html']
-(ROOT / 'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + ''.join(f'  <url><loc>https://keeper.day/{p}</loc></url>\n' for p in urls) + '</urlset>\n')
+(ROOT / 'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + ''.join(f'  <url><loc>{canonical(p or "index.html",locale)}</loc></url>\n' for locale in LANGUAGES for p in urls) + '</urlset>\n')
