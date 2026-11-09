@@ -19,7 +19,8 @@ def _money(value):
 def _image(name, alt, eager=False):
     path = name if name.startswith('/') else '/assets/storefront/' + name + '.webp'
     w, h = (659, 891) if 'product-flowers' in path else (1440, 960)
-    return f'<img src="{_e(path)}" alt="{_e(alt)}" width="{w}" height="{h}" loading="{"eager" if eager else "lazy"}" decoding="async"'+(' fetchpriority="high"' if eager else '')+'>'
+    responsive = ' srcset="/assets/storefront/full-kit-720.webp 720w, /assets/storefront/full-kit.webp 1440w" sizes="(max-width:700px) calc(100vw - 40px), 46vw"' if name == 'full-kit' else ''
+    return f'<img src="{_e(path)}"{responsive} alt="{_e(alt)}" width="{w}" height="{h}" loading="{"eager" if eager else "lazy"}" decoding="async"'+(' fetchpriority="high"' if eager else '')+'>'
 
 
 def _buy(c, placement, label='Buy Keeper'):
@@ -51,7 +52,7 @@ def _gallery():
 
 def _box(c):
     items = ''.join(f'<li><span aria-hidden="true">✓</span>{_e(item)}</li>' for item in c['included'])
-    return f'<section class="sf-box sf-section" id="in-the-box"><figure>{_image("full-kit","The standard Keeper package: one camera, gift box, lanyard and instruction manual")}</figure><div>{_head("THE COMPLETE LITTLE PACKAGE","Good things come<br>in this box.","The gift box isn’t an upgrade. It comes with every Keeper.")}<ul class="sf-included">{items}</ul><p class="sf-micro">One camera with your selected exterior per package. Memory card inclusion is not confirmed; please ask before ordering.</p><a class="sf-link" href="/gifting.html">Meet your next thoughtful gift <span aria-hidden="true">↗</span></a></div></section>'
+    return f'<section class="sf-box sf-section" id="in-the-box"><figure>{_image("full-kit","The standard Keeper package: one camera, gift box, lanyard and instruction manual")}</figure><div>{_head("Included with your camera","Ready to give.","The gift box isn’t an upgrade. It comes with every Keeper.")}<ul class="sf-included">{items}</ul><p class="sf-micro">One camera with your selected exterior per package. Memory card inclusion is not confirmed; please ask before ordering.</p><a class="sf-link" href="/gifting.html">Meet your next thoughtful gift <span aria-hidden="true">↗</span></a></div></section>'
 
 
 def _benefits():
@@ -59,13 +60,13 @@ def _benefits():
 
 
 def _how():
-    diagram = '<figure class="kr-camera-controls"><div><img src="/assets/camera-controls.webp" width="960" height="586" loading="lazy" decoding="async" alt="Keeper held in landscape orientation: color e-paper photograph on the left, small viewfinder at upper right, red shutter at lower right"><span class="kr-control-label kr-control-view" aria-hidden="true">1</span><span class="kr-control-label kr-control-shutter" aria-hidden="true">2</span><span class="kr-control-label kr-control-photo" aria-hidden="true">3</span></div><figcaption><span>1 · Small LCD viewfinder</span><span>2 · Red physical shutter</span><span>3 · Color e-paper photograph</span></figcaption></figure>'
+    diagram = '<figure class="kr-camera-controls"><div><img src="/assets/camera-controls.webp" srcset="/assets/camera-controls-640.webp 640w, /assets/camera-controls.webp 960w" sizes="(max-width:700px) calc(100vw - 72px), 44vw" width="960" height="586" loading="lazy" decoding="async" alt="Keeper held in landscape orientation: color e-paper photograph on the left, small viewfinder at upper right, red shutter at lower right"><span class="kr-control-label kr-control-view" aria-hidden="true">1</span><span class="kr-control-label kr-control-shutter" aria-hidden="true">2</span><span class="kr-control-label kr-control-photo" aria-hidden="true">3</span></div><figcaption><span>1 · Small LCD viewfinder</span><span>2 · Red physical shutter</span><span>3 · Color e-paper photograph</span></figcaption></figure>'
     steps = '<ol class="sf-steps"><li><span>01 · FRAME IT</span><h3>Who are you photographing?</h3><p>Raise your camera toward the person or scene. Use the small LCD viewfinder to compose your picture.</p></li><li><span>02 · TAKE IT</span><h3>Make it a photograph.</h3><p>Use the red physical shutter to take the shot. Keeper takes photographs on its own and stores them on microSD.</p></li><li><span>03 · KEEP IT</span><h3>Your shot, still in sight.</h3><p>The larger color e-paper screen gives a photograph you took a paper-like place on the camera.</p></li></ol>'
-    return '<section class="sf-section" id="how-it-works">'+_head('A CAMERA, THROUGH AND THROUGH','Find it. Frame it. Photograph it.','A small viewfinder for framing. A physical shutter for taking the shot. Color e-paper for the photograph you keep.')+'<div class="kr-shooting-layout">'+diagram+steps+'</div>'+'<p class="sf-micro">Screen photos are illustrative. For card requirements, transfer, charging or detailed camera controls, contact us before purchase.</p></section>'
+    return '<section class="sf-section" id="how-it-works">'+_head('The red button takes the photograph','Pick it up. Take a photo.')+'<div class="kr-shooting-layout">'+diagram+steps+'</div>'+'<p class="sf-micro">Screen photos are illustrative. For card requirements, transfer, charging or detailed camera controls, contact us before purchase.</p></section>'
 
 
 def _epaper():
-    return '<section class="sf-section sf-paper" id="e-paper"><div>'+_head('A LITTLE PHOTO, ALWAYS NEARBY','Meet color e-paper.','A softer, reflective way to see a photograph. The main screen uses the light around you, with a matte, paper-like look.')+'<p class="sf-micro">Taking photos and updating the display require power. The small viewfinder is a separate IPS LCD. Screen images on this site are simulated.</p></div><div class="sf-comparison"><article><span class="sf-kicker">TAKE IT</span><h3>Start with a real moment.</h3><p>A dedicated camera, a red shutter button, and something worth remembering.</p></article><article><span class="sf-kicker">KEEP IT</span><h3>Give a favorite a place.</h3><p>The e-paper screen retains a static image without continuously powering the display.</p></article><article><span class="sf-kicker">MAKE IT YOURS</span><h3>A little object with a lot of you.</h3><p>Your choice of exterior, your everyday companion, your favorite view.</p></article></div></section>'
+    return '<section class="sf-section shutter-paper" id="e-paper" data-moment="word-highlight"><div class="wrap"><h2>Meet color e-paper.</h2><p class="mo-wh__text">A photograph stays visible on the matte, paper-like display. Take it along, or give it a place on your desk.</p><p class="sf-micro">Taking photos and updating the display require power. The small viewfinder is a separate IPS LCD. Screen images on this site are simulated.</p></div></section>'
 
 
 def _moments():
@@ -87,24 +88,24 @@ def _faq(c, full=False):
     content = ''
     for title,pairs in groups:
         content += '<div class="sf-faq-group">'+(f'<h3>{title}</h3>' if title else '')+''.join(f'<details><summary>{q}<span aria-hidden="true">+</span></summary><div class="sf-answer"><p>{a}</p></div></details>' for q,a in pairs)+'</div>'
-    return '<section class="sf-section sf-faq" id="questions"><div>'+_head('GOOD QUESTIONS','A few things to know.')+'<a class="sf-link" href="/support.html">All questions &amp; support ↗</a></div><div>'+content+'</div></section>'
+    return '<section class="sf-section sf-faq" id="questions"><div>'+_head('Before you order','Questions about Keeper.')+'<a class="sf-link" href="/support.html">All questions &amp; support ↗</a></div><div>'+content+'</div></section>'
 
 
 def _end(c):
-    return f'<section class="sf-section sf-final"><div><p class="sf-kicker">IN STOCK · GIFT BOX INCLUDED</p><h2>Take Keeper on your next photo walk.</h2></div><div>{_price(c)}{_buy(c,"final")}<p class="sf-micro"><a href="/terms.html">Shipping &amp; returns</a> · <a href="mailto:support@keeper.day">Talk to us</a></p></div></section><aside class="sf-mobile-buy" aria-label="Buy Keeper"><div><strong>Keeper · {_money(c["price"])}</strong><span>{_money(c["total"])} USD incl. worldwide shipping</span></div>{_buy(c,"mobile-sticky")}</aside>'
+    return f'<section class="sf-section sf-final"><div><p class="sf-kicker">IN STOCK · GIFT BOX INCLUDED</p><h2>Your next photo<br>starts here.</h2></div><div>{_price(c)}{_buy(c,"final")}<p class="sf-micro"><a href="/terms.html">Shipping &amp; returns</a> · <a href="mailto:support@keeper.day">Talk to us</a></p></div></section><aside class="sf-mobile-buy" aria-label="Buy Keeper"><div><strong>Keeper · {_money(c["price"])}</strong><span>{_money(c["total"])} USD incl. worldwide shipping</span></div>{_buy(c,"mobile-sticky")}</aside>'
 
 
 def home_body(commerce):
     c = commerce
-    hero = f'''<section class="hero sf-section campaign-hero" data-enter><div class="campaign-hero-copy"><p class="sf-kicker"><span class="sf-stock-dot" aria-hidden="true"></span> A POCKET CAMERA WITH COLOR E-PAPER</p><h1>A photo that takes photos.</h1><p class="sf-lead">A pocket camera with a color e-paper display.<br>Frame your people. Press the red shutter.</p>{_purchase(c,"home-hero")}</div><figure class="campaign-product" data-enter-media><img src="/assets/campaign/st-46-landscape.webp" width="1270" height="775" loading="eager" fetchpriority="high" decoding="async" alt="Keeper ST-46 pocket camera, shown in landscape orientation"><figcaption>Screen images are simulated.</figcaption></figure></section>'''
-    street = '<section class="sf-section campaign-story"><div class="campaign-story-copy"><p class="sf-kicker">A CAMERA FOR EVERY DAY</p><h2>Your day, in photographs.</h2><p>Bring a camera for the photographs you want to make along the way.</p><a class="sf-link" href="/moments.html">Explore the everyday gallery ↗</a></div><figure><img src="/assets/campaign/street-friends.webp" srcset="/assets/campaign/street-friends-480.webp 480w, /assets/campaign/street-friends-960.webp 960w, /assets/campaign/street-friends.webp 1440w" sizes="(max-width:700px) 100vw, 65vw" width="1440" height="960" loading="lazy" decoding="async" alt="Two friends walking together on an American city street"></figure></section>'
-    featured = '<section class="sf-section"><div class="kr-section-top">'+_head('MAKE IT YOUR CAMERA','A look for your next photo walk.','Choose an exterior for the camera you take along. Every Keeper is $199 + $30 worldwide shipping.')+'<a class="sf-link" href="/styles.html">Explore camera designs ↗</a></div><div class="kr-design-grid kr-featured">'+''.join(_design_card(DESIGNS[k],c) for k in DATA['featured_designs'])+'</div></section>'
-    return '<div class="storefront">'+hero+street+featured+_how()+_lifestyle_section([2,3,5,6])+_epaper()+_paired_section(c)+_box(c)+_faq(c)+_share_section()+_end(c)+'</div>'
+    hero = f'''<section class="hero hero--product sf-section shutter-hero" data-enter><div class="hero__head shutter-head"><div><p class="sf-kicker">Keeper · Color e-paper camera</p><h1>Your everyday camera.</h1><p class="sf-lead">Frame your people. Press the red shutter. Keep a photograph in view.</p></div><div class="shutter-order">{_price(c)}{_buy(c,"home-hero")}</div></div><div class="hero__stage shutter-stage" data-enter-media><img src="/assets/campaign/st-46-landscape.webp" srcset="/assets/campaign/st-46-landscape-640.webp 640w, /assets/campaign/st-46-landscape.webp 1270w" sizes="(max-width:700px) calc(100vw - 40px), 70vw" width="1270" height="775" loading="eager" fetchpriority="high" decoding="async" alt="Keeper ST-46 pocket camera, shown in landscape orientation"></div><div class="shutter-foot"><a class="sf-link" href="#how-it-works">How it works <span aria-hidden="true">↓</span></a><p>Camera. Selected exterior. Gift box. Lanyard. Manual.</p><p class="sf-micro">Screen images are simulated.</p></div></section>'''
+    featured = '<section class="sf-section shutter-collection" id="camera-looks"><div class="kr-section-top">'+_head('128 exterior choices','A camera in your colors.','Choose a look. The camera stays Keeper.')+'<a class="sf-link" href="/styles.html">See all 128 choices ↗</a></div><div class="kr-design-grid kr-featured">'+''.join(_design_card(DESIGNS[k],c) for k in DATA['featured_designs'])+'</div></section>'
+    street = '<section class="sf-section shutter-journal ground-inverse"><div class="wrap"><div class="kr-section-top">'+_head('Take it outside','Your day, in photographs.','Bring a camera for the photographs you want to make along the way.')+'<a class="sf-link" href="/moments.html">See the everyday gallery ↗</a></div><div class="shutter-photo-pair"><figure><img src="/assets/campaign/street-friends.webp" srcset="/assets/campaign/street-friends-480.webp 480w, /assets/campaign/street-friends-960.webp 960w, /assets/campaign/street-friends.webp 1440w" sizes="(max-width:700px) 100vw, 50vw" width="1440" height="960" loading="lazy" decoding="async" alt="Two friends walking together on an American city street"></figure><figure>'+_lifestyle_image(DATA['camera_story'][0])+'</figure></div></div></section>'
+    return '<div class="storefront">'+hero+featured+_how()+street+_epaper()+_paired_section(c)+_box(c)+_faq(c)+_end(c)+'</div>'
 
 
 def product_body(commerce):
     c = commerce
-    hero = '<section class="sf-section sf-product"><div class="sf-product-heading"><p class="sf-kicker"><span class="sf-stock-dot" aria-hidden="true"></span> YOUR EVERYDAY CAMERA · IN STOCK</p><h1>Take it along.<br>Take the <em>photograph.</em></h1><p class="sf-lead">A pocket camera with a color e-paper display. Frame the people and places you love, use the red shutter, and keep a favorite shot in view.</p></div>'+_gallery()+f'<div class="sf-product-copy"><ul class="sf-product-points"><li>Small LCD viewfinder for composing your shot</li><li>Red physical shutter for taking photographs</li><li>3.7-inch color e-paper for a photograph you took</li></ul>{_style_selector(c)}{_purchase(c,"product-hero")}</div></section>'
+    hero = '<section class="hero sf-section sf-product" data-enter><div class="sf-product-heading"><p class="sf-kicker"><span class="sf-stock-dot" aria-hidden="true"></span> YOUR EVERYDAY CAMERA · IN STOCK</p><h1>Keeper camera.</h1><p class="sf-lead">A pocket camera with a color e-paper display. Frame the people and places you love, use the red shutter, and keep a favorite shot in view.</p></div>'+_gallery()+f'<div class="sf-product-copy">{_style_selector(c)}{_purchase(c,"product-hero")}</div></section>'
     browser = '<details class="kr-all-designs"><summary>Browse every look · 128 design choices</summary>'+design_catalog(c)+'</details>'
     return '<div class="storefront">'+hero+browser+_how()+_box(c)+_specs()+_epaper()+_faq(c)+_end(c)+'</div>'
 
@@ -131,13 +132,14 @@ def checkout_url(c, variant):
 def _design_card(design, c):
     key, paired = design['id'], design['kind'] == 'paired'
     sides = ['a','b'] if paired else ['']
+    sizes = '(max-width:700px) calc(100vw - 40px), 48vw' if paired else '(max-width:700px) 46vw, 24vw'
     choices = ''
     for side in sides:
         variant = key+('-'+side if side else '')
         label = ('Side '+side.upper()+(' · left' if side == 'a' else ' · right')) if side else 'Choose this look'
         choices += f'<div class="kr-design-choice"><a class="kr-choose" href="/camera.html?style={variant}#choose-style">{label} ↗</a><a class="kr-quick-buy" data-purchase="design-{variant}" data-variant="{variant}" href="{_e(checkout_url(c,variant))}" aria-label="Buy one {_e(design["name"])} {side.upper()} Keeper, $229 USD including shipping">Buy one · $199</a></div>'
     label = 'A / left · B / right · sold individually' if paired else 'Camera + selected exterior'
-    return f'<article class="kr-design-card" data-design-card data-kind="{design["kind"]}" data-search="{_e(key+" "+design["name"]+" "+design["name_zh"])}"><a class="kr-design-image" href="/camera.html?style={key}{"-a" if paired else ""}#choose-style"><img src="{design["thumb"]}" srcset="{design["thumb"]} 360w, {design["image"]} {design["width"]}w" sizes="(max-width:700px) 46vw, 24vw" alt="{_e(design["name"])} — {key.upper()}{" A and B exterior designs" if paired else " exterior design"}" width="{design["width"]}" height="{design["height"]}" loading="lazy" decoding="async"></a><div class="kr-design-heading"><h3>{_e(design["name"])}</h3><span>{key.upper()}</span></div><p class="kr-design-caption">{label}</p>{choices}</article>'
+    return f'<article class="kr-design-card card" data-design-card data-kind="{design["kind"]}" data-search="{_e(key+" "+design["name"]+" "+design["name_zh"])}"><a class="kr-design-image" href="/camera.html?style={key}{"-a" if paired else ""}#choose-style"><img src="{design["thumb"]}" srcset="{design["thumb"]} 360w, {design["image"]} {design["width"]}w" sizes="{sizes}" alt="{_e(design["name"])} — {key.upper()}{" A and B exterior designs" if paired else " exterior design"}" width="{design["width"]}" height="{design["height"]}" loading="lazy" decoding="async"></a><div class="kr-design-heading"><h3>{_e(design["name"])}</h3><span>{key.upper()}</span></div><p class="kr-design-caption">{label}</p>{choices}</article>'
 
 
 def design_catalog(c, paired_only=False):
@@ -177,7 +179,7 @@ def _lifestyle_section(indices=None):
 
 
 def _paired_section(c):
-    return '<section class="sf-section"><div class="kr-section-top">'+_head('A PHOTO WALK FOR TWO','A day worth photographing together.','Choose A or B for your camera, then head out with your favorite photographer. Each Keeper is sold individually.')+'<a class="sf-link" href="/together.html">Meet all 30 pairs ↗</a></div><div class="kr-design-grid kr-pair-featured">'+''.join(_design_card(DESIGNS[k],c) for k in DATA['featured_pairs'])+'</div></section>'
+    return '<section class="sf-section"><div class="kr-section-top">'+_head('For two photographers','Pick your side.','Choose A (left) or B (right). Each order is one camera, with one exterior.')+'<a class="sf-link" href="/together.html">Meet all 30 pairs ↗</a></div><div class="kr-design-grid kr-pair-featured">'+''.join(_design_card(DESIGNS[k],c) for k in DATA['featured_pairs'])+'</div></section>'
 
 
 def _share_section():

@@ -12,7 +12,7 @@
       });
       mobileBuy.hidden = visibleActions.size > 0;
     });
-    document.querySelectorAll('.sf-actions [data-current-checkout], .sf-final [data-current-checkout]').forEach(action => observer.observe(action));
+    document.querySelectorAll('.shutter-order [data-current-checkout], .sf-actions [data-current-checkout], .sf-final [data-current-checkout]').forEach(action => observer.observe(action));
   }
   document.querySelectorAll('[data-sf-gallery]').forEach((gallery) => {
     const panels = [...gallery.querySelectorAll('[data-sf-panel]')];
