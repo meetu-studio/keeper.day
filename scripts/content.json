@@ -2802,8 +2802,8 @@
     {
       "id": "01-cafe",
       "style": "st-42",
-      "title": "Coffee, then the long way home.",
-      "copy": "The ordinary afternoons you wish would last a little longer.",
+      "title": "Photograph the friend who makes you laugh.",
+      "copy": "Bring a camera to the catch-up that turns into a whole afternoon.",
       "image": "/assets/everyday/01-cafe.webp",
       "width": 1440,
       "height": 960,
@@ -2814,8 +2814,8 @@
     {
       "id": "02-campus",
       "style": "st-52",
-      "title": "Your people. Your kind of day.",
-      "copy": "A little color for the places you grow together.",
+      "title": "Your first photo walk together.",
+      "copy": "The people you meet deserve photographs of your own.",
       "image": "/assets/everyday/02-campus.webp",
       "width": 1440,
       "height": 960,
@@ -2826,8 +2826,8 @@
     {
       "id": "03-trail",
       "style": "st-46",
-      "title": "Out there, together.",
-      "copy": "A pocket-size companion for the stops along the way.",
+      "title": "You came for the view. Photograph your people, too.",
+      "copy": "Bring a small camera for the turns and stops along the trail.",
       "image": "/assets/everyday/03-trail.webp",
       "width": 1440,
       "height": 960,
@@ -2838,8 +2838,8 @@
     {
       "id": "04-birthday",
       "style": "st-27",
-      "title": "The candles. The wish. That face.",
-      "copy": "For the moments that become family stories.",
+      "title": "The candles. The laugh. Take the photograph.",
+      "copy": "A camera for the family pictures you will come back to.",
       "image": "/assets/everyday/04-birthday.webp",
       "width": 1440,
       "height": 960,
@@ -2850,8 +2850,8 @@
     {
       "id": "05-workdesk",
       "style": "st-31",
-      "title": "A little company for your workday.",
-      "copy": "Your favorite view, right beside the next good idea.",
+      "title": "A photograph from the walk to work.",
+      "copy": "After taking the shot, keep it on your camera at your desk.",
       "image": "/assets/everyday/05-workdesk.webp",
       "width": 1440,
       "height": 960,
@@ -2862,8 +2862,8 @@
     {
       "id": "06-skate",
       "style": "st-12",
-      "title": "Make a little noise. Keep a little memory.",
-      "copy": "For your friends, your music, your corner of the world.",
+      "title": "The trick can wait. Photograph that laugh.",
+      "copy": "Stop for a moment and take a picture of the friends you came with.",
       "image": "/assets/everyday/06-skate.webp",
       "width": 1440,
       "height": 960,
@@ -2874,8 +2874,8 @@
     {
       "id": "07-pets",
       "style": "st-48",
-      "title": "The face that makes your day.",
-      "copy": "Even the smallest walk deserves a favorite photograph.",
+      "title": "That face is worth a photograph.",
+      "copy": "Take a camera on your next dog walk and see what you notice.",
       "image": "/assets/everyday/07-pets.webp",
       "width": 1440,
       "height": 960,
@@ -2886,14 +2886,42 @@
     {
       "id": "08-paired-gift",
       "style": "p-01-a",
-      "title": "Two different looks. A little in common.",
-      "copy": "Pick your side of the story. Each Keeper is sold individually.",
+      "title": "One photo walk. Two photographers.",
+      "copy": "Choose your exterior and make photographs together. Each Keeper is sold individually.",
       "image": "/assets/everyday/08-paired-gift.webp",
       "width": 1440,
       "height": 960,
       "source": "attachments/keeper-day/website-refresh-20261109/final/08-paired-gift.png",
       "provenance": "AI-generated environment with original product pixels composited from a locked source layer; not a customer photo or a camera sample.",
       "source_sha256": "0043d40d01cd441d079e18f1524776f6be112df71ab70d5e29b5433be21a8ea8"
+    }
+  ],
+  "camera_story": [
+    {
+      "id": "01-take-the-photo",
+      "style": "st-46",
+      "title": "Small camera. Everyday stories.",
+      "copy": "A friend turns around. You raise your camera. That is the photograph.",
+      "alt": "An American hiker holds a landscape Keeper ST-46 camera in both hands to photograph two friends on a mountain trail",
+      "image": "/assets/everyday/01-take-the-photo.webp",
+      "width": 1440,
+      "height": 960,
+      "source": "attachments/keeper-day/camera-marketing-20261109/final/01-take-the-photo.png",
+      "provenance": "AI-generated environment with original product pixels composited from a locked source layer; not a customer photo or a camera sample.",
+      "source_sha256": "7ce92c5836ce57e6b8cbe156d231f6c6b9a76ee2fffa57a3fc5391641c7016b3"
+    },
+    {
+      "id": "02-photograph-your-people",
+      "style": "st-27",
+      "title": "Give them a camera. Make more photographs together.",
+      "copy": "For the family birthdays you want to photograph, not just remember.",
+      "alt": "An American parent uses a landscape Keeper ST-27 camera to photograph their child and another parent at a backyard birthday",
+      "image": "/assets/everyday/02-photograph-your-people.webp",
+      "width": 1440,
+      "height": 960,
+      "source": "attachments/keeper-day/camera-marketing-20261109/final/02-photograph-your-people.png",
+      "provenance": "AI-generated environment with original product pixels composited from a locked source layer; not a customer photo or a camera sample.",
+      "source_sha256": "43b4e294a6989d2da3b552520728a32a954ef8305816fce7c720e1f9fa05f63e"
     }
   ]
 }

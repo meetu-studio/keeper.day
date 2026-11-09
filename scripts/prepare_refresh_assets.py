@@ -46,19 +46,22 @@ for filename in ['generation-prompts.json', 'generation-prompts-iteration-02.jso
 data['designs'], data['variants'] = groups, variants
 data['featured_designs'] = ['st-12','st-27','st-31','st-42','st-46','st-50']
 data['featured_pairs'] = ['p-01','p-13','p-21']
-data['lifestyle'] = []
 (ROOT/'assets/everyday').mkdir(exist_ok=True)
-for scene in json.loads((SCENES/'scenes.json').read_text()):
-    source = SCENES/'final'/f'{scene["id"]}.png'
-    record = {k:scene[k] for k in ['id','style','title','copy']}
-    record.update({'image':f'/assets/everyday/{scene["id"]}.webp','width':1440,'height':960,
-                   'source':str(source.relative_to(VAULT)), 'provenance':'AI-generated environment with original product pixels composited from a locked source layer; not a customer photo or a camera sample.'})
-    if source.exists():
-        for width in [480,960,1440]:
-            suffix = '' if width == 1440 else '-'+str(width)
-            encode(source, ROOT/f'assets/everyday/{scene["id"]}{suffix}.webp', width)
-        record['source_sha256'] = hashlib.sha256(source.read_bytes()).hexdigest()
-    data['lifestyle'].append(record)
+for scene_root, collection in [(SCENES, 'lifestyle'), (VAULT/'attachments/keeper-day/camera-marketing-20261109', 'camera_story')]:
+    data[collection] = []
+    for scene in json.loads((scene_root/'scenes.json').read_text()):
+        source = scene_root/'final'/f'{scene["id"]}.png'
+        record = {k:scene[k] for k in ['id','style','title','copy']}
+        if 'alt' in scene:
+            record['alt'] = scene['alt']
+        record.update({'image':f'/assets/everyday/{scene["id"]}.webp','width':1440,'height':960,
+                       'source':str(source.relative_to(VAULT)), 'provenance':'AI-generated environment with original product pixels composited from a locked source layer; not a customer photo or a camera sample.'})
+        if source.exists():
+            for width in [480,960,1440]:
+                suffix = '' if width == 1440 else '-'+str(width)
+                encode(source, ROOT/f'assets/everyday/{scene["id"]}{suffix}.webp', width)
+            record['source_sha256'] = hashlib.sha256(source.read_bytes()).hexdigest()
+        data[collection].append(record)
 assert len(groups) == 98 and len(variants) == 128 and len({v['id'] for v in variants}) == 128
 (ROOT/'scripts/content.json').write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n')
-print(json.dumps({'design_images':len(groups),'selectable_designs':len(variants),'lifestyle_images':len(list((ROOT/'assets/everyday').glob('*[0-9a-z].webp')))},indent=2))
+print(json.dumps({'design_images':len(groups),'selectable_designs':len(variants),'lifestyle_scenes':len(data['lifestyle']),'camera_story_scenes':len(data['camera_story'])},indent=2))

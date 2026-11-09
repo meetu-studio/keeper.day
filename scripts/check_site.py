@@ -124,8 +124,9 @@ if listed != set(VARIANTS): errors.append('The static catalog does not provide a
 payload = json.loads(re.search(r'<script type="application/json" id="keeper-design-data">(.*?)</script>',(ROOT/'camera.html').read_text(),re.S).group(1))
 if {v['id'] for v in payload['variants']} != set(VARIANTS): errors.append('Product selector and catalog disagree')
 if len(data['lifestyle']) != 8: errors.append('Expected eight lifestyle scenes')
-for scene in data['lifestyle']:
+if len(data.get('camera_story',[])) != 2: errors.append('Expected two camera-use scenes')
+for scene in data['lifestyle']+data.get('camera_story',[]):
     for suffix in ['', '-480', '-960']:
         if not (ROOT/f'assets/everyday/{scene["id"]}{suffix}.webp').is_file(): errors.append(f'Missing responsive lifestyle image {scene["id"]}{suffix}')
-print(json.dumps({'pages': len(pages), 'curated_images': len(data['assets']), 'design_images':len(data['designs']), 'selectable_designs':len(VARIANTS), 'lifestyle_images':len(data['lifestyle']), 'checkout_verified': COMMERCE['checkout_verified'], 'errors': errors}, indent=2))
+print(json.dumps({'pages': len(pages), 'curated_images': len(data['assets']), 'design_images':len(data['designs']), 'selectable_designs':len(VARIANTS), 'lifestyle_images':len(data['lifestyle']), 'camera_use_images':len(data.get('camera_story',[])), 'checkout_verified': COMMERCE['checkout_verified'], 'errors': errors}, indent=2))
 sys.exit(bool(errors))

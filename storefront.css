@@ -341,5 +341,16 @@ body.storefront-body{padding-bottom:0}
 @media(max-width:380px){.storefront-body .site-header nav{display:none}.storefront-body .site-header .mobile-menu{margin-left:auto}}
 @media(max-width:700px){.kr-hero{grid-template-columns:1fr}.kr-hero h1 br{display:block}.kr-hero .sf-actions .sf-buy{gap:18px}}
 @media(max-width:700px){.sf-hero.kr-hero h1 br:first-of-type{display:revert}}
+.kr-shooting-layout{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:34px}
+.kr-camera-controls>div{position:relative}
+.kr-camera-controls img{width:100%;height:auto}
+.kr-camera-controls figcaption{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:14px;font-size:11px;color:var(--muted)}
+.kr-control-label{position:absolute;display:flex;align-items:center;justify-content:center;width:27px;height:27px;border-radius:50%;background:#fffefa;color:#282722;border:2px solid #c93828;font:600 12px/1 Arial;box-shadow:0 1px 4px #0002;transform:translate(-50%,-50%)}
+.kr-control-view{left:86%;top:21%}.kr-control-shutter{left:86%;top:77%}.kr-control-photo{left:40%;top:50%}
+.kr-shooting-layout .sf-steps{grid-template-columns:1fr;gap:8px}
+.kr-shooting-layout .sf-steps>li{padding:12px 0}
+.kr-shooting-layout .sf-steps span{margin-bottom:7px}
+.kr-shooting-layout .sf-steps h3{font-size:20px;margin-bottom:7px}
+@media(max-width:700px){.kr-shooting-layout{grid-template-columns:1fr;gap:22px}.kr-camera-controls{max-width:520px}.kr-camera-controls figcaption{font-size:10px;gap:6px 12px}.kr-control-label{width:23px;height:23px;font-size:10px}.kr-hero .sf-kicker{font-size:9px;letter-spacing:.1em}}
 @media(prefers-reduced-motion:reduce){.kr-design-image img{transition:none}.kr-design-image:hover img{transform:none}}
 

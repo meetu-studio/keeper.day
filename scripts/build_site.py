@@ -13,7 +13,7 @@ COMMERCE = json.loads((ROOT / 'scripts/commerce.json').read_text())
 C = json.loads((ROOT / 'scripts/components.json').read_text())
 A = DATA['assets']
 E = lambda x: html.escape(str(x), quote=True)
-VERSION = '20261109-color-1'
+VERSION = '20261109-camera-1'
 # Keep CDN-injected analytics outside the consent-controlled provider set.
 SCRIPT_POLICY = "script-src-elem 'self' 'unsafe-inline' https://www.googletagmanager.com https://connect.facebook.net https://*.clarity.ms https://*.hs-scripts.com https://*.usemessages.com https://*.hs-banner.com https://*.hs-analytics.net https://*.hscollectedforms.net https://*.hubspot.com https://*.hsadspixel.net https://*.hsleadflows.net"
 STRIPE = COMMERCE['checkout_url']
@@ -32,7 +32,7 @@ def card(key):
 
 
 def footer():
-    return '<footer><div class="footer-discover"><div><a class="wordmark" href="/">keeper<span>.</span>day</a><p>A little camera.<br>A day worth keeping.</p><p>Take a photo. Carry a little color.<br>Keep a favorite close.</p></div><div><h3>Make it your Keeper</h3><a href="/camera.html">The camera · $199</a><a href="/styles.html">Find your look · 128 choices</a><a href="/together.html">Paired designs</a><a href="/moments.html">Everyday gallery</a><a href="/gifting.html">Inside the gift box</a></div><div><h3>Here to help</h3><a href="/support.html">Help &amp; answers</a><a href="mailto:support@keeper.day">support@keeper.day</a><a href="/terms.html">Shipping &amp; returns</a><a href="/privacy.html">Privacy</a><button class="cookie-settings" type="button" data-open-consent>Cookie settings</button><a href="/little-apps.html">Interface sketchbook</a></div></div><div class="footer-bottom"><span>© 2026 keeper.day · Meetu Studio</span><span>In stock · Gift box included · Worldwide shipping</span><a href="#main">Back to top ↑</a></div><p class="storefront-image-note">Product and lifestyle visuals include AI-created scenes and design renders. Screen images are simulated; these are not customer photographs or actual camera sample output. Each purchase includes one camera with the selected exterior, gift box, lanyard and instruction manual.</p></footer>'
+    return '<footer><div class="footer-discover"><div><a class="wordmark" href="/">keeper<span>.</span>day</a><p>A little camera.<br>A day worth keeping.</p><p>Go out. Take photographs.<br>Keep this day.</p></div><div><h3>Make it your Keeper</h3><a href="/camera.html">The camera · $199</a><a href="/styles.html">Find your look · 128 choices</a><a href="/together.html">Paired designs</a><a href="/moments.html">Everyday gallery</a><a href="/gifting.html">Inside the gift box</a></div><div><h3>Here to help</h3><a href="/support.html">Help &amp; answers</a><a href="mailto:support@keeper.day">support@keeper.day</a><a href="/terms.html">Shipping &amp; returns</a><a href="/privacy.html">Privacy</a><button class="cookie-settings" type="button" data-open-consent>Cookie settings</button><a href="/little-apps.html">Interface sketchbook</a></div></div><div class="footer-bottom"><span>© 2026 keeper.day · Meetu Studio</span><span>In stock · Gift box included · Worldwide shipping</span><a href="#main">Back to top ↑</a></div><p class="storefront-image-note">Product and lifestyle visuals include AI-created scenes and design renders. Screen images are simulated; these are not customer photographs or actual camera sample output. Each purchase includes one camera with the selected exterior, gift box, lanyard and instruction manual.</p></footer>'
 
 
 def render(filename, title, description, body, product=False):
@@ -42,9 +42,9 @@ def render(filename, title, description, body, product=False):
     structured = ''
     if product:
         structured = '<script type="application/ld+json">' + json.dumps({
-            '@context': 'https://schema.org', '@type': 'Product', 'name': 'Keeper color e-paper camera',
-            'description': 'In-stock camera with a gift box, lanyard and instruction manual.',
-            'image': ['https://keeper.day/assets/everyday/01-cafe.webp', 'https://keeper.day/assets/designs/st-42.webp'],
+            '@context': 'https://schema.org', '@type': 'Product', 'name': 'Keeper pocket color e-paper camera',
+            'description': 'Pocket digital camera with a small viewfinder, physical red shutter, color e-paper photo display, gift box, lanyard and instruction manual.',
+            'image': ['https://keeper.day/assets/everyday/01-take-the-photo.webp', 'https://keeper.day/assets/designs/st-42.webp'],
             'brand': {'@type': 'Brand', 'name': 'keeper.day'},
             'offers': {'@type': 'Offer', 'url': canonical, 'priceCurrency': 'USD',
                        'price': COMMERCE['price'], 'availability': 'https://schema.org/InStock',
@@ -60,18 +60,18 @@ def render(filename, title, description, body, product=False):
 <meta property="og:type" content="website"><meta property="og:title" content="{E(title)}"><meta property="og:description" content="{E(description)}"><meta property="og:url" content="{canonical}"><meta property="og:image" content="https://keeper.day/assets/og-card.webp?v={VERSION}"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image">
 {structured}<script src="/consent.js?v={VERSION}" defer></script><script src="/site.js?v={VERSION}" defer></script><script src="/storefront.js?v={VERSION}" defer></script></head>
 <body class="keeper-home storefront-body page-{filename.removesuffix('.html')}" data-order-total="{TOTAL}"><!--email_off--><a class="skip-link" href="#main">Skip to content</a><div class="announcement">In stock. Ready for your everyday. <span>Gift box included · ${SHIPPING} worldwide shipping</span></div>
-<header class="site-header"><a class="wordmark" href="/" aria-label="keeper.day home">keeper<span>.</span>day</a><nav aria-label="Main navigation">{nav}<a class="nav-contact" data-current-checkout data-purchase="header" href="/camera.html#choose-style" aria-label="Buy one Keeper camera for ${PRICE} plus ${SHIPPING} shipping, ${TOTAL} total">Choose Keeper — ${PRICE} <span aria-hidden="true">↗</span></a></nav><details class="mobile-menu"><summary aria-label="Open navigation">Menu <span aria-hidden="true">+</span></summary><div><a href="/">Home</a>{mobile}<a href="/camera.html#choose-style" data-current-checkout data-purchase="mobile-menu">Choose Keeper — ${PRICE}</a></div></details></header>
+<header class="site-header"><a class="wordmark" href="/" aria-label="keeper.day home">keeper<span>.</span>day</a><nav aria-label="Main navigation">{nav}<a class="nav-contact" data-current-checkout data-purchase="header" href="/camera.html#choose-style" aria-label="Buy one Keeper camera for ${PRICE} plus ${SHIPPING} shipping, ${TOTAL} total">Shop camera — ${PRICE} <span aria-hidden="true">↗</span></a></nav><details class="mobile-menu"><summary aria-label="Open navigation">Menu <span aria-hidden="true">+</span></summary><div><a href="/">Home</a>{mobile}<a href="/camera.html#choose-style" data-current-checkout data-purchase="mobile-menu">Shop camera — ${PRICE}</a></div></details></header>
 <section class="consent-banner" data-consent-banner aria-label="Privacy choices" hidden><p>Optional analytics, advertising and chat stay off until you choose. Shopping and secure checkout work either way. <a href="/privacy.html">Privacy details</a></p><div class="consent-actions"><button type="button" data-consent-decline>Essential only</button><button type="button" data-consent-allow>Allow optional</button></div></section><main id="main">{body}</main>{footer()}<!--/email_off--><template id="optional-services">{C['tracking']}</template></body></html>'''
     (ROOT / filename).write_text(content)
     print('Built', filename)
 
 
-render('index.html', 'Keeper — A little camera. A day worth keeping.',
-       f'Keep favorite moments in sight with the Keeper color e-paper camera. In stock. Gift box, lanyard and manual included. ${PRICE} + ${SHIPPING} worldwide shipping.', home_body(COMMERCE), True)
+render('index.html', 'Keeper — A pocket camera with color e-paper',
+       f'A pocket camera for photographing everyday life. Frame your shot, use the red shutter, and keep a photograph on color e-paper. In stock. Gift box, lanyard and manual included. ${PRICE} + ${SHIPPING} worldwide shipping.', home_body(COMMERCE), True)
 render('camera.html', f'Shop Keeper — Color e-paper camera, ${PRICE}',
        f'Meet the in-stock Keeper camera: color e-paper, a red shutter button and a gift box to keep. ${PRICE} camera + ${SHIPPING} worldwide shipping = ${TOTAL}.', product_body(COMMERCE), True)
 render('gifting.html', 'A gift worth keeping — Keeper camera & gift box',
-       f'Give a little camera and a place for favorite memories. Every Keeper includes a gift box, lanyard and instruction manual. In stock, ${PRICE} plus ${SHIPPING} shipping.', gifting_body(COMMERCE))
+       f'Give a camera for the photographs you will make together. Every Keeper includes a gift box, lanyard and instruction manual. In stock, ${PRICE} plus ${SHIPPING} shipping.', gifting_body(COMMERCE))
 render('support.html', 'Keeper support — Orders, shipping, camera & returns',
        'Find answers about the Keeper camera, what is in the box, worldwide shipping, cancellations and returns. Contact support@keeper.day.', support_body(COMMERCE))
 
