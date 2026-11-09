@@ -75,3 +75,5 @@ To change copy, update the English template and matching keys in all four catalo
 The shared GitHub Pages 404 includes generated language fragments. Its small bootstrap changes the content in place for unknown paths, retaining the failing URL and HTTP 404 status. No-JavaScript visitors can use the static language links; every translated catalog includes all 128 direct purchase choices.
 
 Stripe's standard checkout interface follows the selected locale. Product names/custom text configured in Stripe, HubSpot conversation content and transactional emails remain provider-managed. Original images, including any words within images, are reused.
+
+Frontend refinement (9 November): compact header with the current language visible, larger touch targets, text/price/action before the hero photograph on phones, and a purchase bar that yields to visible page actions. Resource version `20261109-frontend-1`. See `docs/frontend-polish-20261109.md` for decisions and separate project/skill validation results.

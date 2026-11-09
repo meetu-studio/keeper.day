@@ -225,7 +225,6 @@
     "MAKE IT YOURS": "MAKE IT YOURS",
     "Made for taking photographs": "Made for taking photographs",
     "Main navigation": "Main navigation",
-    "Make a photograph.": "Make a photograph.",
     "Make it": "Make it",
     "Make it a photograph.": "Make it a photograph.",
     "Make it your Keeper": "Make it your Keeper",
@@ -314,7 +313,6 @@
     "THE COMPLETE LITTLE PACKAGE": "THE COMPLETE LITTLE PACKAGE",
     "THE DETAILS, CLEARLY": "THE DETAILS, CLEARLY",
     "Take a camera on your next dog walk and see what you notice.": "Take a camera on your next dog walk and see what you notice.",
-    "Take a camera.": "Take a camera.",
     "Take it along.": "Take it along.",
     "Take the": "Take the",
     "Taking photos and updating the display require power. The small viewfinder is a separate IPS LCD. Screen images on this site are simulated.": "Taking photos and updating the display require power. The small viewfinder is a separate IPS LCD. Screen images on this site are simulated.",
@@ -339,7 +337,6 @@
     "The people you meet deserve photographs of your own.": "The people you meet deserve photographs of your own.",
     "The people. The light. The little surprises.": "The people. The light. The little surprises.",
     "The standard Keeper package: one camera, gift box, lanyard and instruction manual": "The standard Keeper package: one camera, gift box, lanyard and instruction manual",
-    "The trick can wait. Photograph that laugh.": "The trick can wait. Photograph that laugh.",
     "These are interface concepts, not released or working apps. Connectivity, reminders, automatic updates and phone-photo transfer shown here are not included features of the current camera.": "These are interface concepts, not released or working apps. Connectivity, reminders, automatic updates and phone-photo transfer shown here are not included features of the current camera.",
     "These terms describe the current in-stock offer. Updates do not remove the cancellation, refund or other commitments already made for an existing order.": "These terms describe the current in-stock offer. Updates do not remove the cancellation, refund or other commitments already made for an existing order.",
     "This notice explains how keeper.day and Meetu Studio handle information when you browse our site, contact us, or place an order.": "This notice explains how keeper.day and Meetu Studio handle information when you browse our site, contact us, or place an order.",
@@ -369,7 +366,6 @@
     "YOUR KEEPER · ONE CAMERA": "YOUR KEEPER · ONE CAMERA",
     "Yes. Cancel before shipment for a full refund of $229 USD. Contact support@keeper.day with your order details.": "Yes. Cancel before shipment for a full refund of $229 USD. Contact support@keeper.day with your order details.",
     "Yes. Keeper is manufactured and in stock. Each standard package includes one camera, a gift box, a lanyard and an instruction manual.": "Yes. Keeper is manufactured and in stock. Each standard package includes one camera, a gift box, a lanyard and an instruction manual.",
-    "You came for the view. Photograph your people, too.": "You came for the view. Photograph your people, too.",
     "You can contact us by email if you prefer not to use website chat. Order, shipping, refund, and important product-update messages are service communications needed to manage your purchase.": "You can contact us by email if you prefer not to use website chat. Order, shipping, refund, and important product-update messages are service communications needed to manage your purchase.",
     "You can request access, correction, or deletion of your personal information by emailing": "You can request access, correction, or deletion of your personal information by emailing",
     "You can return an unused item in its original packaging within 14 days. For change-of-mind returns, the camera price ($199 USD) is refundable, but the original $30 shipping charge is not; you pay return shipping. The studio pays return shipping for quality issues. See the purchase terms for the full policy.": "You can return an unused item in its original packaging within 14 days. For change-of-mind returns, the camera price ($199 USD) is refundable, but the original $30 shipping charge is not; you pay return shipping. The studio pays return shipping for quality issues. See the purchase terms for the full policy.",
@@ -402,7 +398,10 @@
     "with your question and order number if you have one. Ask before purchase if you need a particular technical feature or delivery date.": "with your question and order number if you have one. Ask before purchase if you need a particular technical feature or delivery date.",
     "your camera.": "your camera.",
     "Last updated November 9, 2026": "Last updated November 9, 2026",
-    "We also save a language you choose in browser local storage so future visits can use it. This interface preference does not enable optional analytics, advertising or chat. You can change the language at any time or remove the preference by clearing this site’s storage.": "We also save a language you choose in browser local storage so future visits can use it. This interface preference does not enable optional analytics, advertising or chat. You can change the language at any time or remove the preference by clearing this site’s storage."
+    "We also save a language you choose in browser local storage so future visits can use it. This interface preference does not enable optional analytics, advertising or chat. You can change the language at any time or remove the preference by clearing this site’s storage.": "We also save a language you choose in browser local storage so future visits can use it. This interface preference does not enable optional analytics, advertising or chat. You can change the language at any time or remove the preference by clearing this site’s storage.",
+    "Photograph the people on your trail.": "Photograph the people on your trail.",
+    "Catch a laugh between tricks.": "Catch a laugh between tricks.",
+    "Take Keeper on your next photo walk.": "Take Keeper on your next photo walk."
   },
   "ui": {
     "language_label": "Language",

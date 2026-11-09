@@ -136,6 +136,11 @@ class Localizer(HTMLParser):
             self.script = a.get('id') or a.get('type') or 'script'
         if tag == 'html':
             a.update({'lang':HTML_LANG[self.locale], 'data-locale':self.locale,'data-page':self.filename})
+        classes = a.get('class','').split()
+        if tag == 'button' or 'sf-buy' in classes or 'nav-contact' in classes:
+            a['class'] = ' '.join(classes+['btn'])
+        elif 'kr-design-image' in classes or 'kr-life-image' in classes:
+            a['class'] = ' '.join(classes+['m-zoom'])
         if not self.in_template:
             for key in ['alt','aria-label','placeholder','label']:
                 if a.get(key):
@@ -198,6 +203,9 @@ def localize(source, locale, filename, catalogs, version):
     parser = Localizer(locale,filename,catalogs)
     parser.feed(source)
     result = ''.join(parser.output)
+    if locale != 'en':
+        word = escape(catalogs[locale]['text']['Everyday'])
+        result = result.replace(word+' <em>',word+'<em>')
     alternate = ''.join(f'<link rel="alternate" hreflang="{HTML_LANG[lang]}" href="{canonical(filename,lang)}">' for lang in LANGUAGES)
     alternate += f'<link rel="alternate" hreflang="x-default" href="{canonical(filename,"en")}">'
     context = {'locale':locale,'page':filename,'messages':catalogs[locale]['ui'],'languages':LANGUAGES}
@@ -207,6 +215,7 @@ def localize(source, locale, filename, catalogs, version):
     switch = f'<div class="language-switch" role="group" aria-label="{escape(catalogs[locale]["ui"]["language_label"])}">{links}</div>'
     result = result.replace('<nav aria-label=', '<div class="desktop-languages">'+switch+'</div><nav aria-label=',1)
     result = result.replace('</summary><div><a', '</summary><div>'+switch+'<a',1)
+    result = re.sub(r'(<details class="mobile-menu"><summary[^>]*>)',r'\1<span class="mobile-current-language" lang="'+HTML_LANG[locale]+'">'+LANGUAGES[locale]+'</span>',result,count=1)
     if filename == '404.html':
         result = result.replace('<title>','<meta name="robots" content="noindex"><title>',1)
     return result

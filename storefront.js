@@ -2,6 +2,18 @@
 (() => {
   'use strict';
   const {t,url} = window.KeeperI18n;
+  const mobileBuy = document.querySelector('.sf-mobile-buy');
+  if (mobileBuy && 'IntersectionObserver' in window) {
+    const visibleActions = new Set();
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) visibleActions.add(entry.target);
+        else visibleActions.delete(entry.target);
+      });
+      mobileBuy.hidden = visibleActions.size > 0;
+    });
+    document.querySelectorAll('.sf-actions [data-current-checkout], .sf-final [data-current-checkout]').forEach(action => observer.observe(action));
+  }
   document.querySelectorAll('[data-sf-gallery]').forEach((gallery) => {
     const panels = [...gallery.querySelectorAll('[data-sf-panel]')];
     const controls = gallery.querySelector('.sf-thumbnails');

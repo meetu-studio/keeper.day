@@ -225,7 +225,6 @@
     "MAKE IT YOURS": "自分らしく",
     "Made for taking photographs": "写真を撮るために",
     "Main navigation": "メインナビゲーション",
-    "Make a photograph.": "一枚を撮ろう。",
     "Make it": "あなただけの",
     "Make it a photograph.": "その瞬間を、一枚に。",
     "Make it your Keeper": "あなたの Keeper に",
@@ -314,7 +313,6 @@
     "THE COMPLETE LITTLE PACKAGE": "ひと箱に、必要なものを",
     "THE DETAILS, CLEARLY": "知っておきたい詳細",
     "Take a camera on your next dog walk and see what you notice.": "次の犬の散歩には、カメラを。何が見つかるかな。",
-    "Take a camera.": "カメラを持って。",
     "Take it along.": "持ち歩こう。",
     "Take the": "その瞬間を",
     "Taking photos and updating the display require power. The small viewfinder is a separate IPS LCD. Screen images on this site are simulated.": "撮影や表示の更新には電力が必要です。小さなファインダーは独立したIPS LCDです。当サイトの画面の写真はシミュレーションです。",
@@ -339,7 +337,6 @@
     "The people you meet deserve photographs of your own.": "出会った人を、自分の一枚に。",
     "The people. The light. The little surprises.": "人も、光も、小さな驚きも。",
     "The standard Keeper package: one camera, gift box, lanyard and instruction manual": "Keeper標準パッケージ：カメラ1台、ギフトボックス、ストラップ、説明書",
-    "The trick can wait. Photograph that laugh.": "技はあとでいい。その笑顔を撮ろう。",
     "These are interface concepts, not released or working apps. Connectivity, reminders, automatic updates and phone-photo transfer shown here are not included features of the current camera.": "これらはインターフェースのコンセプトで、公開済み・動作可能なアプリではありません。接続、リマインダー、自動更新、スマートフォンからの写真転送は、現在のカメラに含まれる機能ではありません。",
     "These terms describe the current in-stock offer. Updates do not remove the cancellation, refund or other commitments already made for an existing order.": "本規約は現在の在庫商品の販売条件です。更新によって既存の注文へのキャンセル、返金、その他の約束が失われることはありません。",
     "This notice explains how keeper.day and Meetu Studio handle information when you browse our site, contact us, or place an order.": "本通知は、サイト閲覧、お問い合わせ、ご注文の際に、keeper.dayとMeetu Studioが情報をどのように取り扱うかを説明します。",
@@ -369,7 +366,6 @@
     "YOUR KEEPER · ONE CAMERA": "あなたの KEEPER · カメラ1台",
     "Yes. Cancel before shipment for a full refund of $229 USD. Contact support@keeper.day with your order details.": "はい。発送前のキャンセルは US$229を全額返金します。ご注文情報を添えて support@keeper.day へご連絡ください。",
     "Yes. Keeper is manufactured and in stock. Each standard package includes one camera, a gift box, a lanyard and an instruction manual.": "はい。Keeperは製造済みで在庫があります。標準パッケージにはカメラ1台、ギフトボックス、ストラップ、説明書が含まれます。",
-    "You came for the view. Photograph your people, too.": "景色も、一緒に来た人も撮ろう。",
     "You can contact us by email if you prefer not to use website chat. Order, shipping, refund, and important product-update messages are service communications needed to manage your purchase.": "チャットをご希望でない場合はメールをご利用ください。注文、配送、返金、重要な製品更新の連絡は、ご購入の管理に必要なサービス通知です。",
     "You can request access, correction, or deletion of your personal information by emailing": "個人情報の開示、訂正、削除をご希望の場合は、次の宛先へメールをお送りください：",
     "You can return an unused item in its original packaging within 14 days. For change-of-mind returns, the camera price ($199 USD) is refundable, but the original $30 shipping charge is not; you pay return shipping. The studio pays return shipping for quality issues. See the purchase terms for the full policy.": "お届け後14日以内、未使用・元の梱包がある場合に返品できます。お客様都合では本体代金 US$199を返金しますが、当初の送料 US$30は返金されず、返送料はお客様負担です。品質上の問題の返送料はスタジオが負担します。詳しくは購入規約をご覧ください。",
@@ -402,7 +398,10 @@
     "with your question and order number if you have one. Ask before purchase if you need a particular technical feature or delivery date.": "。ご質問と、ご注文番号があればお知らせください。必要な機能やお届け日がある場合は、ご購入前にお問い合わせください。",
     "your camera.": "カメラに。",
     "Last updated November 9, 2026": "最終更新日：2026年11月9日",
-    "We also save a language you choose in browser local storage so future visits can use it. This interface preference does not enable optional analytics, advertising or chat. You can change the language at any time or remove the preference by clearing this site’s storage.": "選んだ言語をブラウザーのローカルストレージに保存し、次回以降の表示に利用します。この表示設定によって任意の解析・広告・チャットが有効になることはありません。言語はいつでも変更でき、当サイトのストレージを消去すると設定を削除できます。"
+    "We also save a language you choose in browser local storage so future visits can use it. This interface preference does not enable optional analytics, advertising or chat. You can change the language at any time or remove the preference by clearing this site’s storage.": "選んだ言語をブラウザーのローカルストレージに保存し、次回以降の表示に利用します。この表示設定によって任意の解析・広告・チャットが有効になることはありません。言語はいつでも変更でき、当サイトのストレージを消去すると設定を削除できます。",
+    "Photograph the people on your trail.": "一緒に歩く人を撮ろう。",
+    "Catch a laugh between tricks.": "技の合間の笑顔を撮ろう。",
+    "Take Keeper on your next photo walk.": "次の散歩には、Keeper を。"
   },
   "ui": {
     "language_label": "言語",

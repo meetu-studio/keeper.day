@@ -28,7 +28,8 @@ body.storefront-body{--ink:#282722;--muted:#6c6860;--red:#c93828;--line:#e3dfd7;
 .sf-kicker{font-size:10px;font-weight:700;letter-spacing:.12em;line-height:1.5;text-transform:uppercase;margin-bottom:16px!important;display:flex;align-items:center;gap:7px}
 .sf-stock-dot{width:7px;height:7px;border-radius:50%;background:#53805b;display:inline-block;flex-shrink:0}
 .sf-lead{font-size:17px;line-height:1.6;color:var(--muted);margin:20px 0!important;max-width:460px}
-.sf-hero{display:grid;grid-template-columns:.85fr 1.15fr;align-items:center;gap:44px;padding-top:36px;padding-bottom:36px}
+.storefront .hero{min-height:0;max-width:none;overflow:visible}
+.sf-hero{display:grid;grid-template-columns:.85fr 1.15fr;align-items:center;gap:44px;padding:36px 0}
 .sf-hero-copy{padding:12px 0}
 .sf-hero-image{background:#eeebe3;border:1px solid #e7e1d6;border-radius:var(--sf-radius);overflow:hidden;box-shadow:0 10px 32px #4f3e2510}
 .sf-hero-image img{aspect-ratio:3/2;object-fit:contain}
@@ -41,8 +42,8 @@ body.storefront-body{--ink:#282722;--muted:#6c6860;--red:#c93828;--line:#e3dfd7;
 .sf-shipping span{padding:0 4px}
 .sf-shipping strong{font-weight:600;color:var(--ink)}
 .sf-actions{display:flex;align-items:center;flex-wrap:wrap;gap:18px;margin:18px 0 12px}
-.sf-buy{display:inline-flex;align-items:center;justify-content:space-between;gap:36px;padding:14px 22px;min-height:49px;min-width:190px;background:var(--red);color:#fff!important;font-size:14px;line-height:1.4;font-weight:600;text-decoration:none;border:1px solid #af3022;border-radius:7px;box-shadow:inset 0 1px 0 #ffffff25,0 3px 5px #7b211012;transition:background .16s,transform .16s}
-.sf-buy:hover{background:#aa2b1e;transform:translateY(-1px)}
+.sf-buy{display:inline-flex;align-items:center;justify-content:space-between;gap:36px;padding:14px 22px;min-height:49px;min-width:190px;background:var(--red);color:#fff!important;font-size:14px;line-height:1.4;font-weight:600;text-decoration:none;border:1px solid #af3022;border-radius:7px;box-shadow:inset 0 1px 0 #ffffff25,0 3px 5px #7b211012}
+.sf-buy:hover{background:#aa2b1e}
 .sf-buy span{font-size:19px;font-weight:400}
 .sf-link{display:inline-flex;align-items:center;gap:18px;color:var(--ink);font-size:13px;font-weight:500;min-height:44px;text-decoration:underline}
 .sf-link:hover{color:var(--red)}
@@ -263,8 +264,7 @@ body.storefront-body{padding-bottom:0}
 .kr-design-card{min-width:0;border:0;padding:0;background:none}
 .kr-design-card[data-kind=paired]{grid-column:span 2}
 .kr-design-image{display:block;background:#f0eeeb;border-radius:5px;overflow:hidden}
-.kr-design-image img{aspect-ratio:3/4;object-fit:contain;transition:transform .2s}
-.kr-design-image:hover img{transform:scale(1.025)}
+.kr-design-image img{aspect-ratio:3/4;object-fit:contain}
 .kr-design-card[data-kind=paired] .kr-design-image img{aspect-ratio:4/3}
 .kr-design-heading{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-top:12px}
 .kr-design-heading h3{font-size:17px;line-height:1.3;letter-spacing:-.02em}
@@ -356,15 +356,50 @@ body.storefront-body{padding-bottom:0}
 
 .desktop-languages{margin-left:auto}
 .language-switch{display:flex;align-items:center;gap:4px;white-space:nowrap}
-.language-switch a{display:inline-flex;align-items:center;justify-content:center;min-height:36px;padding:5px 6px;font:500 11px/1.3 "Helvetica Neue",Arial,sans-serif;color:var(--muted);text-decoration:none;border-bottom:2px solid transparent}
+.language-switch a{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:5px 8px;font:500 12px/1.3 "Helvetica Neue",Arial,sans-serif;color:var(--muted);text-decoration:none;border-bottom:2px solid transparent}
 .language-switch a[aria-current=true]{color:var(--red);border-color:var(--red)}
 .language-switch a:focus-visible{outline:2px solid var(--red);outline-offset:2px}
 .storefront-body .site-header{gap:18px}
 .storefront-body .mobile-menu{flex-shrink:0}
 .storefront-body .mobile-menu summary{white-space:nowrap}
+.mobile-current-language{font-size:12px!important;font-weight:600;color:var(--ink);padding-right:10px;margin-right:3px;border-right:1px solid #c9c5bb}
+.storefront-body .mobile-menu[open] summary .mobile-current-language{transform:none}
 html:lang(zh) .storefront,html:lang(ja) .storefront,html:lang(ko) .storefront{font-family:"Helvetica Neue",Arial,"PingFang SC","Hiragino Sans","Malgun Gothic",sans-serif;overflow-wrap:anywhere}
 html:lang(zh) .storefront :is(h1,h2,h3),html:lang(ja) .storefront :is(h1,h2,h3),html:lang(ko) .storefront :is(h1,h2,h3){letter-spacing:-.025em;line-height:1.25}
 html:lang(zh) .storefront h1 em,html:lang(ja) .storefront h1 em,html:lang(ko) .storefront h1 em{font-family:inherit;font-style:normal;font-weight:500}
 @media(min-width:701px) and (max-width:1180px){.desktop-languages{display:none}.storefront-body .site-header nav{display:none}.storefront-body .site-header .mobile-menu{display:block;margin-left:auto}}
 @media(max-width:700px){.desktop-languages{display:none}.mobile-menu .language-switch{display:flex;flex-wrap:wrap;gap:4px;padding:8px 0 12px;border-bottom:1px solid var(--line);margin-bottom:7px}.mobile-menu .language-switch a{min-height:40px;padding:8px;font-size:12px}.storefront-body .site-header{gap:10px}html:lang(ja) .sf-mobile-buy .sf-buy,html:lang(ko) .sf-mobile-buy .sf-buy{min-width:0;gap:10px;font-size:11px}html:lang(ja) .sf-hero-image figcaption,html:lang(ko) .sf-hero-image figcaption{flex-wrap:wrap}}
+
+/* Compact multilingual navigation and predictable touch targets. */
+.storefront-body .site-header{background:#fffefa;backdrop-filter:none}
+.storefront-body :is(.wordmark,.nav-link){display:inline-flex;align-items:center;min-height:44px}
+.storefront-body :is(.kr-filter-buttons button,.kr-share-actions button,.kr-side-choices button,.kr-design-choice a,.kr-section-top .sf-link,.kr-intro-links a,.cookie-settings){min-height:44px}
+.storefront-body .footer-discover a:not(.wordmark){display:flex;align-items:center;min-height:44px}
+.storefront-body :is(button,a,summary):focus-visible{outline:2px solid var(--red);outline-offset:3px}
+.storefront-body :is(.kr-filter-buttons button,.kr-share-actions button,.kr-side-choices button):hover{border-color:var(--ink);background:#eeeae1}
+.storefront-body .kr-filter-buttons button[aria-pressed=true]:hover{background:#46443c;color:#fffefa}
+.storefront-body .sf-mobile-buy[hidden]{display:none}
+html:lang(zh) .storefront-body{font-family:"Helvetica Neue",Arial,"PingFang SC","Microsoft YaHei",sans-serif}
+html:lang(ja) .storefront-body{font-family:"Helvetica Neue",Arial,"Hiragino Sans","Yu Gothic",Meiryo,sans-serif}
+html:lang(ko) .storefront-body{font-family:"Helvetica Neue",Arial,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;word-break:keep-all}
+html:lang(zh) .storefront,html:lang(ja) .storefront,html:lang(ko) .storefront{font-family:inherit}
+@media(max-width:1180px){
+  .storefront-body .site-header nav,.desktop-languages{display:none}
+  .storefront-body .site-header .mobile-menu{display:block;margin-left:auto}
+  .storefront-body .mobile-menu summary{display:flex;align-items:center;min-height:44px;padding:8px 0;gap:6px}
+  .storefront-body .mobile-menu>div{position:absolute;right:16px;top:100%;width:min(400px,calc(100vw - 32px));max-height:calc(100dvh - 110px);overflow-y:auto;background:#fffefa;border:1px solid var(--line);border-radius:0 0 7px 7px;padding:12px;box-shadow:0 12px 24px #292c2415}
+  .storefront-body .mobile-menu a{display:flex;align-items:center;min-height:44px;padding:10px 12px;font-size:14px;text-decoration:none}
+  .storefront-body .mobile-menu .language-switch{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px;padding:0 0 8px;margin-bottom:6px;border-bottom:1px solid var(--line)}
+  .storefront-body .mobile-menu .language-switch a{padding:8px 4px;font-size:12px}
+}
+@media(max-width:700px){
+  .kr-hero .sf-hero-image{order:0}
+  .kr-hero{gap:20px}
+  .kr-hero h1{font-size:34px}
+  .kr-hero .sf-actions{gap:12px;margin:13px 0 10px}
+  .kr-hero .sf-actions .sf-buy{flex:1}
+  .storefront-body .site-header{padding:8px 16px;min-height:60px}
+  .sf-product-copy h1{font-size:32px}
+  .kr-selection-note{font-size:13px}
+}
 

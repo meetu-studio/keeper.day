@@ -1,5 +1,11 @@
 const mobileMenu = document.querySelector('.mobile-menu');
 const keeperText = window.KeeperI18n.t;
+if (mobileMenu) {
+  const summary = mobileMenu.querySelector('summary');
+  const syncMenuState = () => summary.setAttribute('aria-expanded', String(mobileMenu.open));
+  mobileMenu.addEventListener('toggle', syncMenuState);
+  syncMenuState();
+}
 mobileMenu?.querySelectorAll('a').forEach((link) => {
   link.addEventListener('click', () => { mobileMenu.open = false; });
 });

@@ -225,7 +225,6 @@
     "MAKE IT YOURS": "你的风格",
     "Made for taking photographs": "为拍照而来",
     "Main navigation": "主导航",
-    "Make a photograph.": "拍下一张照片。",
     "Make it": "让它成为",
     "Make it a photograph.": "把这一刻拍下来。",
     "Make it your Keeper": "选择属于你的 Keeper",
@@ -314,7 +313,6 @@
     "THE COMPLETE LITTLE PACKAGE": "完整的一份心意",
     "THE DETAILS, CLEARLY": "把细节说清楚",
     "Take a camera on your next dog walk and see what you notice.": "下次遛狗带上相机，看看会发现什么。",
-    "Take a camera.": "带上相机。",
     "Take it along.": "带着它出发。",
     "Take the": "拍下",
     "Taking photos and updating the display require power. The small viewfinder is a separate IPS LCD. Screen images on this site are simulated.": "拍照和更新显示需要电力。小取景屏是独立的 IPS LCD，本站屏幕照片为模拟内容。",
@@ -339,7 +337,6 @@
     "The people you meet deserve photographs of your own.": "遇见的人，值得你亲自拍下。",
     "The people. The light. The little surprises.": "身边的人，路上的光，还有小惊喜。",
     "The standard Keeper package: one camera, gift box, lanyard and instruction manual": "Keeper 标准包装：一台相机、礼盒、挂绳与说明书",
-    "The trick can wait. Photograph that laugh.": "先别急着练动作，拍下这张笑脸。",
     "These are interface concepts, not released or working apps. Connectivity, reminders, automatic updates and phone-photo transfer shown here are not included features of the current camera.": "这些是界面概念，并非已发布或可运行的应用。图中的连接、提醒、自动更新和手机照片传输，不属于当前相机的已包含功能。",
     "These terms describe the current in-stock offer. Updates do not remove the cancellation, refund or other commitments already made for an existing order.": "本条款描述当前现货销售内容。后续更新不会取消现有订单已获得的取消、退款或其他承诺。",
     "This notice explains how keeper.day and Meetu Studio handle information when you browse our site, contact us, or place an order.": "本说明介绍您浏览网站、联系我们或下单时，keeper.day 与 Meetu Studio 如何处理信息。",
@@ -369,7 +366,6 @@
     "YOUR KEEPER · ONE CAMERA": "你的 KEEPER · 每单一台",
     "Yes. Cancel before shipment for a full refund of $229 USD. Contact support@keeper.day with your order details.": "可以。发货前取消可全额退还 US$229，请携订单信息联系 support@keeper.day。",
     "Yes. Keeper is manufactured and in stock. Each standard package includes one camera, a gift box, a lanyard and an instruction manual.": "可以买。Keeper 已生产并有现货，每份标准包装含一台相机、礼盒、挂绳和说明书。",
-    "You came for the view. Photograph your people, too.": "为风景而来，也别忘了拍下同行的人。",
     "You can contact us by email if you prefer not to use website chat. Order, shipping, refund, and important product-update messages are service communications needed to manage your purchase.": "如果不想使用在线聊天，您可以发邮件联系我们。订单、配送、退款及重要产品更新邮件属于管理购买所需的服务通知。",
     "You can request access, correction, or deletion of your personal information by emailing": "您可通过以下邮箱申请访问、更正或删除个人信息：",
     "You can return an unused item in its original packaging within 14 days. For change-of-mind returns, the camera price ($199 USD) is refundable, but the original $30 shipping charge is not; you pay return shipping. The studio pays return shipping for quality issues. See the purchase terms for the full policy.": "收货后 14 天内，可退回未使用且保留原包装的商品。非质量原因退货可退相机价款 US$199，但原 US$30 运费不退，退回运费由您承担。质量问题的退回运费由工作室承担，完整规则见购买条款。",
@@ -402,7 +398,10 @@
     "with your question and order number if you have one. Ask before purchase if you need a particular technical feature or delivery date.": "，说明问题，如有订单号请一并提供。若需要特定技术功能或到货日期，请购买前咨询。",
     "your camera.": "你的相机。",
     "Last updated November 9, 2026": "最后更新：2026 年 11 月 9 日",
-    "We also save a language you choose in browser local storage so future visits can use it. This interface preference does not enable optional analytics, advertising or chat. You can change the language at any time or remove the preference by clearing this site’s storage.": "我们也会在浏览器本地存储中保存您选择的语言，供以后访问使用。这项界面偏好不会启用可选的统计、广告或聊天服务。您可随时更改语言，也可清除本站存储以移除该偏好。"
+    "We also save a language you choose in browser local storage so future visits can use it. This interface preference does not enable optional analytics, advertising or chat. You can change the language at any time or remove the preference by clearing this site’s storage.": "我们也会在浏览器本地存储中保存您选择的语言，供以后访问使用。这项界面偏好不会启用可选的统计、广告或聊天服务。您可随时更改语言，也可清除本站存储以移除该偏好。",
+    "Photograph the people on your trail.": "拍下同行的人。",
+    "Catch a laugh between tricks.": "拍下练动作之间的笑脸。",
+    "Take Keeper on your next photo walk.": "下次散步，带上 Keeper 拍照。"
   },
   "ui": {
     "language_label": "语言",

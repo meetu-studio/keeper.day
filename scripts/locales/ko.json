@@ -225,7 +225,6 @@
     "MAKE IT YOURS": "나답게",
     "Made for taking photographs": "사진을 찍기 위해",
     "Main navigation": "주 탐색 메뉴",
-    "Make a photograph.": "사진 한 장을 남기세요.",
     "Make it": "나만의",
     "Make it a photograph.": "그 순간을 사진으로 남기세요.",
     "Make it your Keeper": "나만의 Keeper로",
@@ -314,7 +313,6 @@
     "THE COMPLETE LITTLE PACKAGE": "한 상자에 담긴 구성",
     "THE DETAILS, CLEARLY": "알아두어야 할 상세 정보",
     "Take a camera on your next dog walk and see what you notice.": "다음 반려견 산책에 카메라를 챙기고 무엇이 눈에 들어오는지 살펴보세요.",
-    "Take a camera.": "카메라를 챙기세요.",
     "Take it along.": "함께 나서세요.",
     "Take the": "그 순간을",
     "Taking photos and updating the display require power. The small viewfinder is a separate IPS LCD. Screen images on this site are simulated.": "촬영과 화면 업데이트에는 전력이 필요합니다. 소형 뷰파인더는 별도의 IPS LCD입니다. 사이트의 화면 사진은 시뮬레이션입니다.",
@@ -339,7 +337,6 @@
     "The people you meet deserve photographs of your own.": "만나는 사람들을 나만의 사진으로 담으세요.",
     "The people. The light. The little surprises.": "사람들, 빛, 작은 놀라움까지.",
     "The standard Keeper package: one camera, gift box, lanyard and instruction manual": "Keeper 기본 구성: 카메라 1대, 선물 상자, 스트랩 및 설명서",
-    "The trick can wait. Photograph that laugh.": "기술 연습은 잠깐 미루고 그 웃음을 찍으세요.",
     "These are interface concepts, not released or working apps. Connectivity, reminders, automatic updates and phone-photo transfer shown here are not included features of the current camera.": "인터페이스 콘셉트이며 출시되었거나 작동하는 앱이 아닙니다. 여기에 보이는 연결, 알림, 자동 업데이트, 휴대폰 사진 전송은 현재 카메라에 포함된 기능이 아닙니다.",
     "These terms describe the current in-stock offer. Updates do not remove the cancellation, refund or other commitments already made for an existing order.": "이 약관은 현재 재고 상품의 판매 조건을 설명합니다. 이후 업데이트로 기존 주문에 약속된 취소, 환불 또는 기타 조건이 없어지지 않습니다.",
     "This notice explains how keeper.day and Meetu Studio handle information when you browse our site, contact us, or place an order.": "이 안내는 사이트를 둘러보거나 문의하거나 주문할 때 keeper.day와 Meetu Studio가 정보를 처리하는 방법을 설명합니다.",
@@ -369,7 +366,6 @@
     "YOUR KEEPER · ONE CAMERA": "나의 KEEPER · 카메라 1대",
     "Yes. Cancel before shipment for a full refund of $229 USD. Contact support@keeper.day with your order details.": "네. 발송 전에 취소하면 US$229를 전액 환불합니다. 주문 정보와 함께 support@keeper.day로 연락하세요.",
     "Yes. Keeper is manufactured and in stock. Each standard package includes one camera, a gift box, a lanyard and an instruction manual.": "네. Keeper는 생산 완료되어 재고가 있습니다. 기본 구성에는 카메라 1대, 선물 상자, 스트랩, 설명서가 포함됩니다.",
-    "You came for the view. Photograph your people, too.": "풍경을 보러 왔다면 함께 온 사람들도 찍어 주세요.",
     "You can contact us by email if you prefer not to use website chat. Order, shipping, refund, and important product-update messages are service communications needed to manage your purchase.": "웹사이트 채팅을 원하지 않으면 이메일로 문의할 수 있습니다. 주문, 배송, 환불 및 중요한 제품 업데이트 메시지는 구매 관리에 필요한 서비스 안내입니다.",
     "You can request access, correction, or deletion of your personal information by emailing": "개인정보 열람, 정정 또는 삭제는 다음 이메일로 요청할 수 있습니다:",
     "You can return an unused item in its original packaging within 14 days. For change-of-mind returns, the camera price ($199 USD) is refundable, but the original $30 shipping charge is not; you pay return shipping. The studio pays return shipping for quality issues. See the purchase terms for the full policy.": "수령 후 14일 이내에 미사용 제품을 원래 포장 상태로 반품할 수 있습니다. 단순 변심 반품은 카메라 가격 US$199를 환불하지만 최초 배송비 US$30는 환불되지 않으며 반송비는 구매자가 부담합니다. 품질 문제의 반송비는 스튜디오가 부담합니다. 자세한 내용은 구매 약관을 확인하세요.",
@@ -402,7 +398,10 @@
     "with your question and order number if you have one. Ask before purchase if you need a particular technical feature or delivery date.": ". 질문과 주문 번호가 있다면 함께 알려 주세요. 특정 기술 기능이나 수령 날짜가 필요하면 구매 전에 문의하세요.",
     "your camera.": "카메라로.",
     "Last updated November 9, 2026": "최종 업데이트: 2026년 11월 9일",
-    "We also save a language you choose in browser local storage so future visits can use it. This interface preference does not enable optional analytics, advertising or chat. You can change the language at any time or remove the preference by clearing this site’s storage.": "선택한 언어를 브라우저 로컬 저장소에 저장해 다음 방문에 사용합니다. 이 화면 설정으로 선택적 분석, 광고 또는 채팅이 활성화되지는 않습니다. 언제든 언어를 변경하거나 이 사이트의 저장소를 지워 설정을 삭제할 수 있습니다."
+    "We also save a language you choose in browser local storage so future visits can use it. This interface preference does not enable optional analytics, advertising or chat. You can change the language at any time or remove the preference by clearing this site’s storage.": "선택한 언어를 브라우저 로컬 저장소에 저장해 다음 방문에 사용합니다. 이 화면 설정으로 선택적 분석, 광고 또는 채팅이 활성화되지는 않습니다. 언제든 언어를 변경하거나 이 사이트의 저장소를 지워 설정을 삭제할 수 있습니다.",
+    "Photograph the people on your trail.": "함께 걷는 사람들을 찍으세요.",
+    "Catch a laugh between tricks.": "연습 사이의 웃음을 담으세요.",
+    "Take Keeper on your next photo walk.": "다음 사진 산책에는 Keeper와 함께."
   },
   "ui": {
     "language_label": "언어",
