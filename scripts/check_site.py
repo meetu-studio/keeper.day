@@ -2,11 +2,22 @@
 """Static release gates. Checkout and responsive interaction require browser QA too."""
 from pathlib import Path
 from html.parser import HTMLParser
-from urllib.parse import urlsplit, unquote
+from urllib.parse import urlsplit, unquote, parse_qs
 from collections import Counter
 import json, re, sys
 ROOT = Path(__file__).resolve().parents[1]
 COMMERCE = json.loads((ROOT / 'scripts/commerce.json').read_text())
+DATA = json.loads((ROOT / 'scripts/content.json').read_text())
+VARIANTS = {v['id']:v for v in DATA['variants']}
+
+def valid_checkout(href, variant=None):
+    actual, expected = urlsplit(href), urlsplit(COMMERCE['checkout_url'])
+    if (actual.scheme,actual.netloc,actual.path) != (expected.scheme,expected.netloc,expected.path): return False
+    query, base = parse_qs(actual.query), parse_qs(expected.query)
+    reference = query.pop('client_reference_id', None)
+    if query != base: return False
+    if variant: return reference == ['keeper-'+variant] and variant in VARIANTS
+    return reference is None
 
 class Page(HTMLParser):
     def __init__(self, path):
@@ -45,15 +56,29 @@ for name, page in pages.items():
     allowed = {float(COMMERCE[k]) for k in ['price','shipping','total']}
     if any(float(amount) not in allowed for amount in amounts): errors.append(f'{name}: unexpected monetary amounts {amounts}')
     if '<template id="optional-services">' not in text or '/consent.js?' not in text: errors.append(f'{name}: missing optional-service consent gate')
+    # Cloudflare otherwise places its email decoder inside our inert consent template.
+    email_regions = re.findall(r'<!--email_off-->(.*?)<!--/email_off-->', text, re.S)
+    if len(email_regions) != 1 or 'mailto:support@keeper.day' not in email_regions[0]:
+        errors.append(f'{name}: support email must work without optional services')
+    email_excluded = re.sub(r'<!--email_off-->.*?<!--/email_off-->', '', text, flags=re.S)
+    if 'mailto:' in email_excluded or '__cf_email__' in text or '/cdn-cgi/l/email-protection' in text:
+        errors.append(f'{name}: unprotected or pre-obfuscated support email')
+    policy_match = re.search(r'<meta http-equiv="Content-Security-Policy" content="([^"]+)">', text)
+    policy = policy_match.group(1).split() if policy_match else []
+    if not policy or policy[0] != 'script-src-elem' or "'self'" not in policy:
+        errors.append(f'{name}: missing script-provider allowlist')
+    if any(source in ['*', 'https:', 'http:'] or 'cloudflareinsights.com' in source for source in policy):
+        errors.append(f'{name}: injected analytics can bypass the consent provider boundary')
     outside_template = re.sub(r'<template.*?</template>', '', text, flags=re.S)
     if re.search(r'<script[^>]+src="https://(?:www.googletagmanager|connect.facebook|www.clarity|js-na2.hs-scripts)', outside_template): errors.append(f'{name}: optional service loads outside consent gate')
     for pattern in [r'pre[ -]?order', r'August 2027', r'\$219\b', r'\$20\b', r'United States only', r'product in development', r'4gM9ASgVe1IzaOse1Q6kg00']:
         if re.search(pattern, text, re.I): errors.append(f'{name}: stale sale copy {pattern}')
     for anchor in page.anchors:
         a = anchor['attrs']
-        if 'data-purchase' in a and a['href'] != COMMERCE['checkout_url']:
+        routing = 'data-current-checkout' in a and a['href'] == '/camera.html#choose-style'
+        if 'data-purchase' in a and not routing and not valid_checkout(a['href'],a.get('data-variant')):
             errors.append(f'{name}: wrong direct checkout {a["href"]}')
-        if 'buy.stripe.com' in a['href'] and a['href'] != COMMERCE['checkout_url']:
+        if 'buy.stripe.com' in a['href'] and not valid_checkout(a['href'],a.get('data-variant')):
             errors.append(f'{name}: stale Stripe link {a["href"]}')
     for url in page.links + page.resources:
         u = urlsplit(url)
@@ -87,5 +112,20 @@ if 'Number(document.body.dataset.orderTotal)' not in (ROOT / 'site.js').read_tex
 data = json.loads((ROOT / 'scripts/content.json').read_text())
 for key in data['assets']:
     if not (ROOT / 'assets/collections' / f'{key}.webp').is_file(): errors.append(f'Missing collection asset {key}')
-print(json.dumps({'pages': len(pages), 'curated_images': len(data['assets']), 'storefront_images': len(list((ROOT/'assets/storefront').glob('*.webp'))), 'checkout_verified': COMMERCE['checkout_verified'], 'errors': errors}, indent=2))
+if len(data['designs']) != 98 or len(VARIANTS) != 128: errors.append('Expected 98 design images and 128 distinct choices')
+if sum(d['kind']=='single' for d in data['designs']) != 68 or sum(d['kind']=='paired' for d in data['designs']) != 30: errors.append('Wrong individual/paired design counts')
+for d in data['designs']:
+    for key in ['image','thumb']:
+        if not (ROOT/d[key].lstrip('/')).is_file(): errors.append(f'Missing design image {d[key]}')
+    expected = {d['id']+'-a',d['id']+'-b'} if d['kind']=='paired' else {d['id']}
+    if {v['id'] for v in VARIANTS.values() if v['group']==d['id']} != expected: errors.append(f'Wrong sides for {d["id"]}')
+listed = {a['attrs'].get('data-variant') for a in pages['styles.html'].anchors if 'buy.stripe.com' in a['attrs']['href']}
+if listed != set(VARIANTS): errors.append('The static catalog does not provide all 128 correct purchase links')
+payload = json.loads(re.search(r'<script type="application/json" id="keeper-design-data">(.*?)</script>',(ROOT/'camera.html').read_text(),re.S).group(1))
+if {v['id'] for v in payload['variants']} != set(VARIANTS): errors.append('Product selector and catalog disagree')
+if len(data['lifestyle']) != 8: errors.append('Expected eight lifestyle scenes')
+for scene in data['lifestyle']:
+    for suffix in ['', '-480', '-960']:
+        if not (ROOT/f'assets/everyday/{scene["id"]}{suffix}.webp').is_file(): errors.append(f'Missing responsive lifestyle image {scene["id"]}{suffix}')
+print(json.dumps({'pages': len(pages), 'curated_images': len(data['assets']), 'design_images':len(data['designs']), 'selectable_designs':len(VARIANTS), 'lifestyle_images':len(data['lifestyle']), 'checkout_verified': COMMERCE['checkout_verified'], 'errors': errors}, indent=2))
 sys.exit(bool(errors))

@@ -69,7 +69,8 @@ if (filterGrid) {
 // A checkout click is not a completed purchase; Stripe confirms payment.
 document.querySelectorAll('[data-purchase]').forEach((link) => {
   link.addEventListener('click', () => {
-    window.gtag?.('event', 'checkout_click', { placement: link.dataset.purchase, currency: 'USD', value: Number(document.body.dataset.orderTotal) });
+    if (new URL(link.href, location.href).hostname !== 'buy.stripe.com') return;
+    window.gtag?.('event', 'checkout_click', { placement: link.dataset.purchase, style: link.dataset.variant || 'classic', currency: 'USD', value: Number(document.body.dataset.orderTotal) });
     window.clarity?.('event', 'checkout_click');
   });
 });
