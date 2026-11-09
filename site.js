@@ -38,24 +38,28 @@ document.querySelectorAll('[data-photo]').forEach((button) => {
   });
 });
 const chatButton = document.querySelector('#open-chat');
+const mobileChatButton = document.querySelector('#mobile-open-chat');
 const chatStatus = document.querySelector('#chat-status');
 function enableChat() {
   if (chatButton) chatButton.hidden = false;
+  const showMobileChat = () => { if (mobileChatButton) mobileChatButton.hidden = false; };
+  if (window.HubSpotConversations.widget.status().loaded) showMobileChat();
+  window.HubSpotConversations.on('widgetLoaded', showMobileChat);
 }
 if (window.HubSpotConversations) {
   enableChat();
 } else {
   window.hsConversationsOnReady = [...(window.hsConversationsOnReady || []), enableChat];
 }
-chatButton?.addEventListener('click', () => {
+[chatButton, mobileChatButton].forEach(button => button?.addEventListener('click', () => {
   const widget = window.HubSpotConversations?.widget;
   if (widget?.status().loaded) {
     widget.open();
-    chatStatus.textContent = '';
+    if (chatStatus) chatStatus.textContent = '';
   } else {
-    chatStatus.textContent = keeperText('chat_connecting');
+    if (chatStatus) chatStatus.textContent = keeperText('chat_connecting');
   }
-});
+}));
 document.querySelectorAll('[data-preview]').forEach((previewPanel) => {
   previewPanel.querySelectorAll('[data-preview-key]').forEach((button) => {
     button.addEventListener('click', () => {
