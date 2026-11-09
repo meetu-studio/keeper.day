@@ -55,7 +55,7 @@ catalogs = read_catalogs()
 paths = list(ROOT.glob('*.html'))+[p for lang in LANGUAGES if lang != 'en' for p in (ROOT/lang).glob('*.html')]
 pages = {str(p.relative_to(ROOT)): Page(p) for p in paths}
 errors = []
-if len(pages) != 44: errors.append(f'Expected 44 language pages, found {len(pages)}')
+if len(pages) != 76: errors.append(f'Expected 76 language pages, found {len(pages)}')
 for name, page in pages.items():
     if len(page.ids) != len(set(page.ids)):
         errors.append(f'{name}: duplicate IDs {list(k for k,v in Counter(page.ids).items() if v > 1)}')
@@ -154,11 +154,28 @@ for lang in LANGUAGES:
 for lang in ['zh','ja','ko']:
     unchanged = [key for key,value in catalogs[lang]['text'].items() if value == catalogs['en']['text'][key]]
     if unchanged: errors.append(f'{lang}: untranslated text {unchanged}')
-if len(re.findall(r'<url>',(ROOT/'sitemap.xml').read_text())) != 40: errors.append('Expected 40 indexable language URLs')
+if len(re.findall(r'<url>',(ROOT/'sitemap.xml').read_text())) != 72: errors.append('Expected 72 indexable language URLs')
 if len(data['lifestyle']) != 8: errors.append('Expected eight lifestyle scenes')
 if len(data.get('camera_story',[])) != 2: errors.append('Expected two camera-use scenes')
 for scene in data['lifestyle']+data.get('camera_story',[]):
     for suffix in ['', '-480', '-960']:
         if not (ROOT/f'assets/everyday/{scene["id"]}{suffix}.webp').is_file(): errors.append(f'Missing responsive lifestyle image {scene["id"]}{suffix}')
+editorial = json.loads((ROOT/'scripts/editorial-content.json').read_text())
+for key, asset in editorial['images'].items():
+    for width in [480,960,1440]:
+        if not (ROOT/(asset['image'].lstrip('/')+f'-{width}.webp')).is_file(): errors.append(f'Missing editorial image {key}-{width}')
+for lang in LANGUAGES:
+    prefix = '' if lang=='en' else lang+'/'
+    home = (ROOT/(prefix+'index.html')).read_text()
+    for module in ['ed-hero','ed-shop','ed-facts','camera-looks','how-it-works','e-paper','everyday','ed-finder-callout','ed-gift-intro','review-examples','media','field-notes','ed-brand','community','services','ed-newsletter','ed-footer']:
+        if module not in home: errors.append(f'{lang}: missing homepage module {module}')
+    if re.search(r'"(?:Review|AggregateRating)"',home): errors.append(f'{lang}: sample review must not output review schema')
+    for name in ['index.html','moments.html','press.html','owners.html','learn.html']:
+        markup=(ROOT/(prefix+name)).read_text()
+        for form in re.findall(r'<form[^>]*data-demo-form[^>]*>.*?</form>',markup,re.S):
+            if '<fieldset disabled>' not in form or '<button type="button" disabled>' not in form or re.search(r'<form[^>]+action=',form):errors.append(f'{lang}/{name}: demonstration form enabled')
+for kind,groups in editorial['recommendations'].items():
+    for theme,ids in groups.items():
+        if len(ids)!=3 or any(key not in {d['id'] for d in data['designs']} for key in ids):errors.append(f'Invalid fixed recommendations {kind}:{theme}')
 print(json.dumps({'pages': len(pages), 'languages':list(LANGUAGES), 'translation_texts_per_language':len(catalogs['en']['text']), 'ui_messages_per_language':len(catalogs['en']['ui']), 'curated_images': len(data['assets']), 'design_images':len(data['designs']), 'selectable_designs':len(VARIANTS), 'lifestyle_images':len(data['lifestyle']), 'camera_use_images':len(data.get('camera_story',[])), 'checkout_verified': COMMERCE['checkout_verified'], 'errors': errors}, indent=2))
 sys.exit(bool(errors))

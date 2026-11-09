@@ -52,24 +52,26 @@
     const cards = [...catalog.querySelectorAll('[data-design-card]')];
     const filters = [...catalog.querySelectorAll('[data-design-filter]')];
     let kind = 'all';
+    const collections = {nature:['st-11','st-46','st-50','p-02','p-06','p-09'],minimal:['st-31','st-32','st-36','p-25','p-26','p-30'],playful:['st-01','st-13','st-27','p-13','p-21','p-22'],retro:['st-08','st-12','st-45','p-14','p-27','p-28']};
+    let collection = collections[new URL(location.href).searchParams.get('collection')] || null;
     const filter = () => {
       const words = search.value.normalize('NFKC').toLocaleLowerCase().trim().split(/\s+/).filter(Boolean);
       let count = 0;
       cards.forEach((card) => {
-        const match = (kind === 'all' || card.dataset.kind === kind) && words.every(word => card.dataset.search.normalize('NFKC').toLocaleLowerCase().includes(word));
+        const match = (!collection || collection.includes(card.dataset.search.split(' ')[0])) && (kind === 'all' || card.dataset.kind === kind) && words.every(word => card.dataset.search.normalize('NFKC').toLocaleLowerCase().includes(word));
         card.hidden = !match;
         count += Number(match);
       });
       catalog.querySelector('[data-design-count]').textContent = t(count === 1 ? 'catalog_count_one' : 'catalog_count',{count});
       catalog.querySelector('[data-design-empty]').hidden = count !== 0;
     };
-    search.addEventListener('input', filter);
+    search.addEventListener('input', () => { collection = null; filter(); });
     filters.forEach(button => button.addEventListener('click', () => {
-      kind = button.dataset.designFilter;
+      kind = button.dataset.designFilter; collection = null;
       filters.forEach(choice => choice.setAttribute('aria-pressed', String(choice === button)));
       filter();
     }));
-    catalog.querySelector('.kr-catalog-tools').hidden = false;
+    catalog.querySelector('.kr-catalog-tools').hidden = false; filter();
   });
 
   const selector = document.querySelector('[data-style-selector]');

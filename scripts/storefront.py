@@ -144,8 +144,9 @@ def _design_card(design, c):
 
 def design_catalog(c, paired_only=False):
     designs = [d for d in DATA['designs'] if not paired_only or d['kind'] == 'paired']
+    themes = '<div class="ed-theme-links">'+''.join(f'<a href="/styles.html?collection={key}">{label} ↗</a>' for key,label in [('nature','Nature'),('minimal','Quiet design'),('playful','Playful'),('retro','Retro')])+'</div>'
     filters = '' if paired_only else '<div class="kr-filter-buttons" role="group" aria-label="Design collection"><button type="button" data-design-filter="all" aria-pressed="true">All looks</button><button type="button" data-design-filter="single" aria-pressed="false">Individual · 68</button><button type="button" data-design-filter="paired" aria-pressed="false">Paired · 30</button></div>'
-    return '<section class="sf-section kr-catalog" data-design-catalog><h2 class="sf-sr-only">Choose an exterior design</h2><div class="kr-catalog-tools" hidden><label>Find your look<input type="search" data-design-search placeholder="Search a name or number, e.g. ST-42" autocomplete="off"></label>'+filters+'</div><p class="kr-catalog-count" aria-live="polite" data-design-count>'+str(len(designs))+' designs · $199 per camera + $30 worldwide shipping</p><div class="kr-design-grid">'+''.join(_design_card(d,c) for d in designs)+'</div><p class="kr-empty" data-design-empty hidden>No looks match that search. Try a design number or another word.</p></section>'
+    return '<section class="sf-section kr-catalog" data-design-catalog><h2 class="sf-sr-only">Choose an exterior design</h2><div class="kr-catalog-tools" hidden><label>Find your look<input type="search" data-design-search placeholder="Search a name or number, e.g. ST-42" autocomplete="off"></label>'+filters+themes+'</div><p class="kr-catalog-count" aria-live="polite" data-design-count>'+str(len(designs))+' designs · $199 per camera + $30 worldwide shipping</p><div class="kr-design-grid">'+''.join(_design_card(d,c) for d in designs)+'</div><p class="kr-empty" data-design-empty hidden>No looks match that search. Try a design number or another word.</p></section>'
 
 
 def styles_body(c, paired_only=False):

@@ -1,0 +1,267 @@
+{
+  "images": {
+    "hero": {
+      "image": "/assets/editorial/hero",
+      "alt": "American friends being photographed with a landscape Keeper camera",
+      "style": "st-46",
+      "story": "Bring the camera to the people you want to photograph. A pause together can become the picture you keep.",
+      "placeholder": true
+    },
+    "street": {
+      "image": "/assets/editorial/street",
+      "alt": "American friends laughing on a neighborhood photo walk",
+      "style": "st-12",
+      "story": "A familiar route can look different when you leave time to stop and take a photograph.",
+      "placeholder": true
+    },
+    "cafe": {
+      "image": "/assets/editorial/cafe",
+      "alt": "Two American friends sharing coffee by a cafe window",
+      "style": "st-42",
+      "story": "Find the window light, settle into the conversation and photograph a laugh between sips.",
+      "placeholder": true
+    },
+    "campus": {
+      "image": "/assets/editorial/campus",
+      "alt": "American students spending an afternoon on a campus lawn",
+      "style": "st-27",
+      "story": "New friends, familiar paths and the first photograph you make together.",
+      "placeholder": true
+    },
+    "pets": {
+      "image": "/assets/editorial/pets",
+      "alt": "An American woman laughing beside her dog in a park",
+      "style": "st-48",
+      "story": "Get down to their eye level and leave room for the expression that makes you smile.",
+      "placeholder": true
+    },
+    "carry": {
+      "image": "/assets/editorial/carry",
+      "alt": "Keeper camera and its original wrist strap resting beside a canvas tote",
+      "style": "classic",
+      "story": "Take the camera along with the things you use every day. Follow the included manual when attaching the lanyard.",
+      "placeholder": true
+    },
+    "gift": {
+      "image": "/assets/editorial/gift",
+      "alt": "Two separately sold Keeper sun and moon designs beside a gift box",
+      "style": "p-01-a",
+      "story": "Choose the side that suits them. The pair is shown for inspiration; each purchase is one camera.",
+      "placeholder": true
+    },
+    "studio": {
+      "image": "/assets/editorial/studio",
+      "alt": "Original grid-pattern Keeper on an illustrated design worktable",
+      "style": "st-31",
+      "story": "A photograph from the walk can stay nearby while the rest of the day carries on.",
+      "placeholder": true
+    },
+    "family": {
+      "image": "/assets/editorial/family",
+      "alt": "An American family being photographed with Keeper at a backyard birthday",
+      "style": "st-27",
+      "story": "The candles, the conversation and the face you want to remember. Bring a camera for the family photograph.",
+      "placeholder": true
+    },
+    "trail": {
+      "image": "/assets/editorial/trail",
+      "alt": "American friends taking photographs with Keeper on a mountain trail",
+      "style": "st-46",
+      "story": "Stop together, look back at the view and take a photograph before the next bend.",
+      "placeholder": true
+    },
+    "shutter": {
+      "image": "/assets/editorial/shutter",
+      "alt": "Close view of the original Keeper red shutter and small viewfinder",
+      "style": "st-46",
+      "story": "The physical shutter takes the photograph.",
+      "placeholder": true
+    },
+    "epaper-triptych": {
+      "image": "/assets/editorial/epaper-triptych",
+      "alt": "The same original Keeper photograph at a cafe, on a walk and at a desk",
+      "style": "st-46",
+      "story": "One static photograph, kept close through the day.",
+      "placeholder": true
+    },
+    "review-1": {
+      "image": "/assets/editorial/review-1",
+      "alt": "AI-generated illustrated portrait for review example one",
+      "style": "st-46",
+      "story": "",
+      "placeholder": true
+    },
+    "review-2": {
+      "image": "/assets/editorial/review-2",
+      "alt": "AI-generated illustrated portrait for review example two",
+      "style": "st-27",
+      "story": "",
+      "placeholder": true
+    },
+    "review-3": {
+      "image": "/assets/editorial/review-3",
+      "alt": "AI-generated illustrated portrait for review example three",
+      "style": "st-31",
+      "story": "",
+      "placeholder": true
+    },
+    "press-1": {
+      "image": "/assets/editorial/press-1",
+      "alt": "AI-generated editorial cover example about everyday photography",
+      "style": "classic",
+      "story": "",
+      "placeholder": true
+    },
+    "press-2": {
+      "image": "/assets/editorial/press-2",
+      "alt": "AI-generated editorial cover example about exterior design",
+      "style": "st-50",
+      "story": "",
+      "placeholder": true
+    },
+    "press-3": {
+      "image": "/assets/editorial/press-3",
+      "alt": "AI-generated editorial cover example about thoughtful gifts",
+      "style": "p-01-a",
+      "story": "",
+      "placeholder": true
+    },
+    "result": {
+      "image": "/assets/editorial/result",
+      "alt": "American friends being photographed with a landscape Keeper camera",
+      "style": "st-46",
+      "story": "Bring the camera to the people you want to photograph. A pause together can become the picture you keep.",
+      "placeholder": true
+    }
+  },
+  "recommendations": {
+    "single": {
+      "nature": [
+        "st-11",
+        "st-46",
+        "st-50"
+      ],
+      "minimal": [
+        "st-31",
+        "st-32",
+        "st-36"
+      ],
+      "playful": [
+        "st-01",
+        "st-13",
+        "st-27"
+      ],
+      "retro": [
+        "st-08",
+        "st-12",
+        "st-45"
+      ]
+    },
+    "paired": {
+      "nature": [
+        "p-02",
+        "p-06",
+        "p-09"
+      ],
+      "minimal": [
+        "p-25",
+        "p-26",
+        "p-30"
+      ],
+      "playful": [
+        "p-13",
+        "p-21",
+        "p-22"
+      ],
+      "retro": [
+        "p-14",
+        "p-27",
+        "p-28"
+      ]
+    }
+  },
+  "reviews": [
+    {
+      "name": "Photo-walk example",
+      "image": "review-1",
+      "quote": "I would take it on the short walks that somehow turn into a whole afternoon. A photograph of the people I came with is the one I would keep nearby.",
+      "placeholder": true
+    },
+    {
+      "name": "Gift-giving example",
+      "image": "review-2",
+      "quote": "For a friend who always brings everyone together, I would choose an exterior that feels like them and plan our next photo walk.",
+      "placeholder": true
+    },
+    {
+      "name": "Everyday-photography example",
+      "image": "review-3",
+      "quote": "A quiet corner, a familiar face, one picture from an ordinary day. That is the kind of photograph I would want on my desk.",
+      "placeholder": true
+    }
+  ],
+  "press": [
+    {
+      "id": "everyday-camera",
+      "image": "press-1",
+      "title": "A camera for the everyday photograph",
+      "summary": "Editorial example: the small moments that make someone reach for a camera.",
+      "body": "This illustrated feature explores the idea of bringing a dedicated camera on an ordinary walk. It describes the physical shutter, the separate viewfinder and the photograph that remains visible on color e-paper. It is an AI-generated editorial example prepared for this layout, not independent reporting.",
+      "placeholder": true
+    },
+    {
+      "id": "exterior-design",
+      "image": "press-2",
+      "title": "One camera, many personal looks",
+      "summary": "Editorial example: color, pattern and choosing a camera exterior.",
+      "body": "This sample design story looks at the exterior collection as a way to express personal taste. Individual designs and separately sold paired sides use the same Keeper camera. The cover, publication treatment and article are examples to be replaced with genuine coverage.",
+      "placeholder": true
+    },
+    {
+      "id": "thoughtful-gift",
+      "image": "press-3",
+      "title": "Give a camera, make a photograph together",
+      "summary": "Editorial example: choosing a personal gift for the next shared day.",
+      "body": "This sample gift feature introduces one camera with a selected exterior, gift box, lanyard and instruction manual. It suggests a photo walk as something to do together. It does not represent a published recommendation, award or confirmed media partnership.",
+      "placeholder": true
+    }
+  ],
+  "logos": [
+    {
+      "image": "/assets/editorial/logo-1.webp",
+      "name": "Media example",
+      "alt": "AI-generated placeholder mark, not an actual media or partner logo",
+      "placeholder": true
+    },
+    {
+      "image": "/assets/editorial/logo-2.webp",
+      "name": "Media example",
+      "alt": "AI-generated placeholder mark, not an actual media or partner logo",
+      "placeholder": true
+    },
+    {
+      "image": "/assets/editorial/logo-3.webp",
+      "name": "Media example",
+      "alt": "AI-generated placeholder mark, not an actual media or partner logo",
+      "placeholder": true
+    },
+    {
+      "image": "/assets/editorial/logo-4.webp",
+      "name": "Partner example",
+      "alt": "AI-generated placeholder mark, not an actual media or partner logo",
+      "placeholder": true
+    },
+    {
+      "image": "/assets/editorial/logo-5.webp",
+      "name": "Partner example",
+      "alt": "AI-generated placeholder mark, not an actual media or partner logo",
+      "placeholder": true
+    },
+    {
+      "image": "/assets/editorial/logo-6.webp",
+      "name": "Partner example",
+      "alt": "AI-generated placeholder mark, not an actual media or partner logo",
+      "placeholder": true
+    }
+  ]
+}
