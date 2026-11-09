@@ -81,7 +81,7 @@ def reviews():
     cards=''
     for i,item in enumerate(CONTENT['reviews']):
         cards+=f'<article>{photo(item["image"],sizes="(max-width:700px) 100vw, 33vw")}{"<p class=ed-status>AI-generated review example · not a customer review</p>" if item["placeholder"] else ""}<blockquote>{escape(item["quote"])}</blockquote><p class="ed-small">{escape(item["name"])}</p></article>'
-    return '<section class="ed-section" id="review-examples">'+head('PEOPLE & PHOTOGRAPHS','A place for your stories.','These illustrated review examples show the future layout. They are not customer testimonials.')+'<div class="ed-grid ed-three ed-reviews">'+cards+'</div></section>'
+    return '<section class="ed-section" id="review-examples">'+head('PEOPLE & PHOTOGRAPHS','Everyday camera stories.','These AI-written examples pair a person, a Keeper camera and a reason to take a photograph. They are not customer testimonials.')+'<div class="ed-grid ed-three ed-reviews">'+cards+'</div></section>'
 
 
 def press_cards():

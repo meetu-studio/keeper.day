@@ -773,7 +773,9 @@
     "Make portraits of classmates, photograph the campus walk and share the story behind one picture.": "친구들의 인물 사진과 캠퍼스 산책을 찍고 한 장의 사진에 담긴 이야기를 나누세요.",
     "Plan a short local route with three stops: a portrait, a small detail and a photograph together.": "동네의 짧은 경로에서 인물, 작은 디테일, 함께하는 사진이라는 세 번의 촬영을 계획해 보세요.",
     "Show original artwork beside a selected Keeper exterior and tell the artist’s process, once a real collaboration is agreed.": "실제 협업이 확정되면 원화와 선택한 Keeper 외관을 함께 보여 주고 작가의 제작 과정을 기록하세요.",
-    "AI-generated concept images; the interfaces shown are not released features.": "AI 생성 콘셉트 이미지입니다. 표시된 인터페이스는 출시된 기능이 아닙니다."
+    "AI-generated concept images; the interfaces shown are not released features.": "AI 생성 콘셉트 이미지입니다. 표시된 인터페이스는 출시된 기능이 아닙니다.",
+    "Everyday camera stories.": "카메라와 함께하는 일상.",
+    "These AI-written examples pair a person, a Keeper camera and a reason to take a photograph. They are not customer testimonials.": "인물과 Keeper, 사진을 찍는 이유를 담은 AI 예시입니다. 실제 고객 후기가 아닙니다."
   },
   "ui": {
     "language_label": "언어",
