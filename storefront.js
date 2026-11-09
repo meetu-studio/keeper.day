@@ -99,7 +99,7 @@
       productImage.width = display?.width || originalImage.width;
       productImage.height = display?.height || originalImage.height;
       productImage.alt = display ? t('product_alt',{name,details:variant?.side ? t('selected_side_alt',{side:variant.side.toUpperCase()}) : pendingPair ? t('pair_alt') : t('single_alt')}) : t('classic_alt');
-      productCaption.textContent = name;
+      productCaption.textContent = variant?.side ? `${name} · ${t("selected_note", {exterior})}` : pendingPair ? `${name} · ${t("pair_note")}` : name;
       document.querySelector('[data-sf-photo="0"] img').src = productImage.src;
       document.querySelector('[data-sf-photo="0"]').setAttribute('aria-label',t('show_selected',{name}));
       document.querySelector('[data-sf-photo="0"]').click();

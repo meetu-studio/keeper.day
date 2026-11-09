@@ -79,3 +79,5 @@ Stripe's standard checkout interface follows the selected locale. Product names/
 Frontend refinement (9 November): compact header with the current language visible, larger touch targets, text/price/action before the hero photograph on phones, and a purchase bar that yields to visible page actions. Resource version `20261109-frontend-1`. See `docs/frontend-polish-20261109.md` for decisions and separate project/skill validation results.
 
 Language picker follow-up (9 November): a single current-language dropdown now sits in the header at every screen size. It uses native details/summary and four static language links, with keyboard, Escape, outside-click and mutual menu closing. Automatic matching, remembered choice and current product URL parameters are preserved. Resource version `20261109-language-menu-1`.
+
+Camera-brand redesign (9 November): campaign hero, camera-first product layout, four-language copy, retained 128-style selection and responsive street imagery. Version `20261109-camera-brand-1`. Project asset sources, image prompt, replacement and validation records are kept in the vault maintenance note.

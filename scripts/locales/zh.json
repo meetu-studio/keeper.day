@@ -401,7 +401,16 @@
     "We also save a language you choose in browser local storage so future visits can use it. This interface preference does not enable optional analytics, advertising or chat. You can change the language at any time or remove the preference by clearing this site’s storage.": "我们也会在浏览器本地存储中保存您选择的语言，供以后访问使用。这项界面偏好不会启用可选的统计、广告或聊天服务。您可随时更改语言，也可清除本站存储以移除该偏好。",
     "Photograph the people on your trail.": "拍下同行的人。",
     "Catch a laugh between tricks.": "拍下练动作之间的笑脸。",
-    "Take Keeper on your next photo walk.": "下次散步，带上 Keeper 拍照。"
+    "Take Keeper on your next photo walk.": "下次散步，带上 Keeper 拍照。",
+    "A photo that takes photos.": "会拍照的相片。",
+    "A CAMERA FOR EVERY DAY": "每天随身的相机",
+    "Your day, in photographs.": "把今天拍下来。",
+    "Keeper ST-46 pocket camera, shown in landscape orientation": "横向放置的 Keeper ST-46 随身相机",
+    "Two friends walking together on an American city street": "两位朋友走在美国的城市街道上",
+    "Screen images are simulated.": "屏幕画面为模拟示意。",
+    "Screen images are simulated. Each purchase includes one camera with the selected exterior, gift box, lanyard and instruction manual.": "屏幕画面为模拟示意。每单包含一台所选外壳的相机、礼盒、挂绳和说明书。",
+    "Your selected ST or P exterior is included with the camera. For a P design, choose A (left) or B (right); each purchase contains one camera, not both. Two-camera bundles, companion apps and wireless photo-sharing features are not included. Interface pages show development concepts.": "相机包含您选择的 ST 或 P 外壳。P 款需选 A（左侧）或 B（右侧），每次购买为一台相机，并非两台。不含双机套餐、配套应用和无线照片分享功能。界面页面展示开发概念。",
+    "A pocket camera with a color e-paper display.": "一台随身的彩色墨水屏照相机。"
   },
   "ui": {
     "language_label": "语言",

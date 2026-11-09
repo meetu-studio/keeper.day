@@ -410,3 +410,90 @@ html:lang(zh) .storefront,html:lang(ja) .storefront,html:lang(ko) .storefront{fo
   .storefront-body .mobile-menu summary{font-size:11px;gap:4px}
 }
 
+
+/* Keeper camera brand: warm color, product first, concise editorial sections. */
+body.storefront-body{--ink:#22241f;--muted:#5b6059;--red:#bd3025;--line:#dedfd6;--cream:#f8f7f1;background:#fbfaf6;font-family:"Avenir Next",Avenir,"Helvetica Neue",Arial,sans-serif}
+.storefront{font-family:inherit}
+.storefront h1,.storefront h2,.storefront h3{font-family:inherit;letter-spacing:-.035em}
+.storefront h1 em,.storefront h2 em{font-family:inherit;font-style:normal;font-weight:600;color:inherit}
+.storefront-body .site-header{background:#fbfaf6;min-height:68px}
+.storefront-body .wordmark{letter-spacing:-.07em}
+.storefront-body .announcement{background:#25382e;color:#fffefa;font-weight:600}
+.storefront-body .language-switch>summary{background:#fffefa}
+.sf-section{border-bottom:1px solid #dedfd6;padding:48px 0}
+.storefront .hero.campaign-hero{min-height:0;overflow:visible}
+.campaign-hero{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:24px;align-items:center;background:#eadfbd;margin-top:20px;padding:44px clamp(24px,4vw,54px);border:0}
+.campaign-hero-copy{min-width:0;max-width:510px}
+.campaign-hero h1{font-size:clamp(42px,5.5vw,75px);line-height:1.02;max-width:560px;letter-spacing:-.06em}
+html:lang(zh) .campaign-hero h1,html:lang(ja) .campaign-hero h1,html:lang(ko) .campaign-hero h1{font-size:clamp(36px,4vw,56px);line-height:1.14;word-break:keep-all}
+.campaign-hero .sf-kicker{color:#344b3b;margin-bottom:20px!important}
+.campaign-hero .sf-lead{font-size:16px;color:#464d43;margin:18px 0!important}
+.campaign-hero .sf-price{margin-top:17px}
+.campaign-hero .sf-actions{margin:17px 0 10px}
+.campaign-product{min-width:0;align-self:center}
+.campaign-product img{width:100%;height:auto;object-fit:contain;filter:drop-shadow(0 14px 14px #49463925)}
+.campaign-product figcaption{font-size:10px;color:#4f554d;text-align:right;margin-top:8px}
+.sf-buy{background:#be3025;border-color:#be3025;border-radius:3px;box-shadow:none;font-weight:700}
+.sf-buy:hover{background:#98241c}
+.sf-link{font-weight:650;text-underline-offset:5px}
+.campaign-story{display:grid;grid-template-columns:minmax(0,.62fr) minmax(0,1.38fr);gap:32px;align-items:center}
+.campaign-story-copy{max-width:350px}
+.campaign-story-copy h2{font-size:clamp(34px,3.9vw,52px);line-height:1.05}
+.campaign-story-copy>p:not(.sf-kicker){margin-top:18px;color:var(--muted);font-size:15px}
+.campaign-story-copy>.sf-link{margin-top:15px}
+.campaign-story figure{overflow:hidden;background:#e6e8db}
+.campaign-story img{width:100%;height:auto;aspect-ratio:3/2;object-fit:cover}
+.kr-section-top{align-items:end;margin-bottom:24px}
+.kr-section-top .sf-section-head>p:last-child:not(.sf-kicker){font-size:15px}
+.kr-design-image,.kr-life-image{border-radius:0;background:#f0eee8}
+.kr-featured{gap:20px}
+.kr-featured .kr-design-heading h3{font-size:15px}
+.kr-design-choice{border-color:#cccec4}
+.kr-life-grid{gap:32px 24px}
+.kr-life-card h3{font-size:20px}
+.kr-shooting-layout{gap:44px}
+.kr-camera-controls{background:#f0ede3;padding:18px}
+.sf-steps>li,.sf-steps>article{border-top-color:#c7ccc2}
+.sf-paper{background:#dfebe0;padding:40px;gap:48px;border:0}
+.sf-final{background:#283c30;color:#fffefa;border:0;border-radius:0;padding:36px;margin:34px 0}
+.sf-final h2,.sf-final .sf-price strong,.sf-final .sf-shipping strong,.sf-final .sf-link{color:#fffefa}
+.sf-final .sf-price>span,.sf-final .sf-shipping,.sf-final .sf-micro,.sf-final a:not(.sf-buy){color:#e3e9df}
+.sf-product{gap:48px;padding-top:28px}
+.sf-product-copy h1{font-size:clamp(38px,4vw,55px);line-height:1.05}
+.sf-gallery-panel,.sf-gallery-panel.sf-hardware{border:0;border-radius:0;background:#eef0e9}
+.sf-gallery-panel.sf-hardware img{background:#eef0e9}
+.sf-gallery-panel figcaption{background:#eef0e9}
+.kr-selector{border-top:2px solid var(--ink)}
+.kr-selected-name{font-size:17px}
+.kr-select-control select{border-color:#788076;border-radius:2px}
+.kr-filter-buttons button,.kr-share-actions button,.kr-side-choices button{border-radius:2px}
+.storefront-body footer{border-top:1px solid #dedfd6}
+@media(max-width:1050px){.campaign-hero{gap:24px}.campaign-hero h1{font-size:clamp(38px,5vw,58px)}.campaign-story{gap:24px}.sf-product{gap:30px}}
+@media(max-width:700px){
+ .sf-section{padding:30px 0}
+ .campaign-hero{grid-template-columns:1fr;gap:22px;margin-top:12px;padding:25px 20px 22px}
+ .campaign-hero h1{font-size:clamp(36px,10vw,46px);line-height:1.06}
+ .campaign-hero .sf-kicker{margin-bottom:12px!important}
+ .campaign-hero .sf-lead{font-size:14px;margin:12px 0!important}
+ .campaign-hero .sf-actions{gap:12px;margin:13px 0 10px}
+ .campaign-hero .sf-actions .sf-buy{flex:1}
+ .campaign-product{order:0}
+ .campaign-story{grid-template-columns:1fr;gap:20px}
+ .campaign-story-copy h2{font-size:34px}
+ .campaign-story-copy>p:not(.sf-kicker){margin-top:12px;font-size:14px}
+ .campaign-story-copy>.sf-link{margin-top:8px}
+ .kr-featured{gap:22px 12px}
+ .kr-camera-controls{padding:10px}
+ .sf-paper{padding:24px;gap:18px}
+ .sf-final{padding:25px 22px;gap:20px}
+ .sf-product-copy h1{font-size:36px}
+}
+@media(max-width:360px){.campaign-hero{padding-inline:17px}.campaign-hero h1{font-size:34px}}
+.sf-product{grid-template-areas:"gallery heading" "gallery details";grid-template-rows:auto 1fr;column-gap:48px;row-gap:0}
+.sf-product>.sf-gallery{grid-area:gallery}
+.sf-product-heading{grid-area:heading;min-width:0;padding-top:10px}
+.sf-product-heading h1{font-size:clamp(38px,4vw,55px);line-height:1.05}
+.sf-product-heading .sf-lead{font-size:16px}
+.sf-product-copy{grid-area:details;padding-top:0}
+@media(max-width:1050px){.sf-product{column-gap:30px}}
+@media(max-width:700px){.sf-product{gap:20px}.sf-product-heading{order:-2;padding:0}.sf-product-heading h1{font-size:36px}.sf-product-heading .sf-lead{font-size:15px}.sf-product .sf-gallery{order:-1}}

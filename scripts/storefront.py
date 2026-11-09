@@ -46,7 +46,7 @@ def _gallery():
     for i, (src, alt, label) in enumerate(images):
         panels.append(f'<figure class="sf-gallery-panel{" sf-hardware" if i == 0 else ""}" id="sf-photo-{i}" data-sf-panel>{_image(src,alt,i==0)}<figcaption>{label}</figcaption></figure>')
         buttons.append(f'<button class="sf-thumb" type="button" data-sf-photo="{i}" aria-controls="sf-photo-{i}" aria-pressed="{str(i == 0).lower()}" aria-label="Show image {i+1}: {_e(label)}">{_image(src,"",False)}</button>')
-    return '<div class="sf-gallery" data-sf-gallery><div class="sf-gallery-panels">'+''.join(panels)+'</div><div class="sf-thumbnails" role="group" aria-label="Product images" hidden>'+''.join(buttons)+'</div><p class="sf-micro">Some images are AI-generated visualizations. See product details for included items.</p><p class="sf-sr-only" data-sf-gallery-status aria-live="polite"></p></div>'
+    return '<div class="sf-gallery" data-sf-gallery><div class="sf-gallery-panels">'+''.join(panels)+'</div><div class="sf-thumbnails" role="group" aria-label="Product images" hidden>'+''.join(buttons)+'</div><p class="sf-micro">Screen images are simulated.</p><p class="sf-sr-only" data-sf-gallery-status aria-live="polite"></p></div>'
 
 
 def _box(c):
@@ -96,14 +96,15 @@ def _end(c):
 
 def home_body(commerce):
     c = commerce
-    hero = f'<section class="hero sf-hero sf-section kr-hero" data-enter><div class="sf-hero-copy"><p class="sf-kicker"><span class="sf-stock-dot" aria-hidden="true"></span> A POCKET CAMERA WITH COLOR E-PAPER</p><h1>Small camera. <br>Everyday <em>stories.</em></h1><p class="sf-lead">Frame your people. Press the red shutter.<br>Keep the photograph you took on color e-paper.</p>{_purchase(c,"home-hero")}</div><figure class="sf-hero-image" data-enter-media>{_lifestyle_image(DATA["camera_story"][0],True)}<figcaption><span>Out taking photographs · ST-46</span> Bring a camera. Find your story.</figcaption></figure></section>'
+    hero = f'''<section class="hero sf-section campaign-hero" data-enter><div class="campaign-hero-copy"><p class="sf-kicker"><span class="sf-stock-dot" aria-hidden="true"></span> A POCKET CAMERA WITH COLOR E-PAPER</p><h1>A photo that takes photos.</h1><p class="sf-lead">A pocket camera with a color e-paper display.<br>Frame your people. Press the red shutter.</p>{_purchase(c,"home-hero")}</div><figure class="campaign-product" data-enter-media><img src="/assets/campaign/st-46-landscape.webp" width="1270" height="775" loading="eager" fetchpriority="high" decoding="async" alt="Keeper ST-46 pocket camera, shown in landscape orientation"><figcaption>Screen images are simulated.</figcaption></figure></section>'''
+    street = '<section class="sf-section campaign-story"><div class="campaign-story-copy"><p class="sf-kicker">A CAMERA FOR EVERY DAY</p><h2>Your day, in photographs.</h2><p>Bring a camera for the photographs you want to make along the way.</p><a class="sf-link" href="/moments.html">Explore the everyday gallery ↗</a></div><figure><img src="/assets/campaign/street-friends.webp" srcset="/assets/campaign/street-friends-480.webp 480w, /assets/campaign/street-friends-960.webp 960w, /assets/campaign/street-friends.webp 1440w" sizes="(max-width:700px) 100vw, 65vw" width="1440" height="960" loading="lazy" decoding="async" alt="Two friends walking together on an American city street"></figure></section>'
     featured = '<section class="sf-section"><div class="kr-section-top">'+_head('MAKE IT YOUR CAMERA','A look for your next photo walk.','Choose an exterior for the camera you take along. Every Keeper is $199 + $30 worldwide shipping.')+'<a class="sf-link" href="/styles.html">Explore camera designs ↗</a></div><div class="kr-design-grid kr-featured">'+''.join(_design_card(DESIGNS[k],c) for k in DATA['featured_designs'])+'</div></section>'
-    return '<div class="storefront">'+hero+_benefits()+_how()+_lifestyle_section([2,3,5,6])+_epaper()+featured+_paired_section(c)+_box(c)+_faq(c)+_share_section()+_end(c)+'</div>'
+    return '<div class="storefront">'+hero+street+featured+_how()+_lifestyle_section([2,3,5,6])+_epaper()+_paired_section(c)+_box(c)+_faq(c)+_share_section()+_end(c)+'</div>'
 
 
 def product_body(commerce):
     c = commerce
-    hero = '<section class="sf-section sf-product">'+_gallery()+f'<div class="sf-product-copy"><p class="sf-kicker"><span class="sf-stock-dot" aria-hidden="true"></span> YOUR EVERYDAY CAMERA · IN STOCK</p><h1>Take it along.<br>Take the <em>photograph.</em></h1><p class="sf-lead">A pocket camera with a color e-paper display. Frame the people and places you love, use the red shutter, and keep a favorite shot in view.</p><ul class="sf-product-points"><li>Small LCD viewfinder for composing your shot</li><li>Red physical shutter for taking photographs</li><li>3.7-inch color e-paper for a photograph you took</li></ul>{_style_selector(c)}{_purchase(c,"product-hero")}</div></section>'
+    hero = '<section class="sf-section sf-product"><div class="sf-product-heading"><p class="sf-kicker"><span class="sf-stock-dot" aria-hidden="true"></span> YOUR EVERYDAY CAMERA · IN STOCK</p><h1>Take it along.<br>Take the <em>photograph.</em></h1><p class="sf-lead">A pocket camera with a color e-paper display. Frame the people and places you love, use the red shutter, and keep a favorite shot in view.</p></div>'+_gallery()+f'<div class="sf-product-copy"><ul class="sf-product-points"><li>Small LCD viewfinder for composing your shot</li><li>Red physical shutter for taking photographs</li><li>3.7-inch color e-paper for a photograph you took</li></ul>{_style_selector(c)}{_purchase(c,"product-hero")}</div></section>'
     browser = '<details class="kr-all-designs"><summary>Browse every look · 128 design choices</summary>'+design_catalog(c)+'</details>'
     return '<div class="storefront">'+hero+browser+_how()+_box(c)+_specs()+_epaper()+_faq(c)+_end(c)+'</div>'
 
@@ -172,7 +173,7 @@ def _lifestyle_section(indices=None):
     cards = ''
     for scene in scenes:
         cards += f'<article class="kr-life-card"><a class="kr-life-image" href="/camera.html?style={scene["style"]}#choose-style">{_lifestyle_image(scene)}</a><div class="kr-life-meta"><span>{scene["style"].upper()}</span><a href="/camera.html?style={scene["style"]}#choose-style">Find this look ↗</a></div><h3>{_e(scene["title"])}</h3><p>{_e(scene["copy"])}</p></article>'
-    return '<section class="sf-section"><div class="kr-section-top">'+_head('WHAT WILL YOU PHOTOGRAPH TODAY?','The people. The light. The little surprises.','Bring a camera for the photographs you want to make along the way.')+'<a class="sf-link" href="/moments.html">Explore the everyday gallery ↗</a></div><div class="kr-life-grid">'+cards+'</div><p class="sf-micro">AI-created lifestyle scenes with original product imagery. Screen photos are simulated.</p></section>'
+    return '<section class="sf-section"><div class="kr-section-top">'+_head('WHAT WILL YOU PHOTOGRAPH TODAY?','The people. The light. The little surprises.','Bring a camera for the photographs you want to make along the way.')+'<a class="sf-link" href="/moments.html">Explore the everyday gallery ↗</a></div><div class="kr-life-grid">'+cards+'</div><p class="sf-micro">Screen images are simulated.</p></section>'
 
 
 def _paired_section(c):

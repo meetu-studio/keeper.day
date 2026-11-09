@@ -14,7 +14,7 @@ COMMERCE = json.loads((ROOT / 'scripts/commerce.json').read_text())
 C = json.loads((ROOT / 'scripts/components.json').read_text())
 A = DATA['assets']
 E = lambda x: html.escape(str(x), quote=True)
-VERSION = '20261109-language-menu-1'
+VERSION = '20261109-camera-brand-1'
 CATALOGS = read_catalogs()
 # Keep CDN-injected analytics outside the consent-controlled provider set.
 SCRIPT_POLICY = "script-src-elem 'self' 'unsafe-inline' https://www.googletagmanager.com https://connect.facebook.net https://*.clarity.ms https://*.hs-scripts.com https://*.usemessages.com https://*.hs-banner.com https://*.hs-analytics.net https://*.hscollectedforms.net https://*.hubspot.com https://*.hsadspixel.net https://*.hsleadflows.net"
@@ -34,7 +34,7 @@ def card(key):
 
 
 def footer():
-    return '<footer><div class="footer-discover"><div><a class="wordmark" href="/">keeper<span>.</span>day</a><p>A little camera.<br>A day worth keeping.</p><p>Go out. Take photographs.<br>Keep this day.</p></div><div><h3>Make it your Keeper</h3><a href="/camera.html">The camera · $199</a><a href="/styles.html">Find your look · 128 choices</a><a href="/together.html">Paired designs</a><a href="/moments.html">Everyday gallery</a><a href="/gifting.html">Inside the gift box</a></div><div><h3>Here to help</h3><a href="/support.html">Help &amp; answers</a><a href="mailto:support@keeper.day">support@keeper.day</a><a href="/terms.html">Shipping &amp; returns</a><a href="/privacy.html">Privacy</a><button class="cookie-settings" type="button" data-open-consent>Cookie settings</button><a href="/little-apps.html">Interface sketchbook</a></div></div><div class="footer-bottom"><span>© 2026 keeper.day · Meetu Studio</span><span>In stock · Gift box included · Worldwide shipping</span><a href="#main">Back to top ↑</a></div><p class="storefront-image-note">Product and lifestyle visuals include AI-created scenes and design renders. Screen images are simulated; these are not customer photographs or actual camera sample output. Each purchase includes one camera with the selected exterior, gift box, lanyard and instruction manual.</p></footer>'
+    return '<footer><div class="footer-discover"><div><a class="wordmark" href="/">keeper<span>.</span>day</a><p>A little camera.<br>A day worth keeping.</p><p>Go out. Take photographs.<br>Keep this day.</p></div><div><h3>Make it your Keeper</h3><a href="/camera.html">The camera · $199</a><a href="/styles.html">Find your look · 128 choices</a><a href="/together.html">Paired designs</a><a href="/moments.html">Everyday gallery</a><a href="/gifting.html">Inside the gift box</a></div><div><h3>Here to help</h3><a href="/support.html">Help &amp; answers</a><a href="mailto:support@keeper.day">support@keeper.day</a><a href="/terms.html">Shipping &amp; returns</a><a href="/privacy.html">Privacy</a><button class="cookie-settings" type="button" data-open-consent>Cookie settings</button><a href="/little-apps.html">Interface sketchbook</a></div></div><div class="footer-bottom"><span>© 2026 keeper.day · Meetu Studio</span><span>In stock · Gift box included · Worldwide shipping</span><a href="#main">Back to top ↑</a></div><p class="storefront-image-note">Screen images are simulated. Each purchase includes one camera with the selected exterior, gift box, lanyard and instruction manual.</p></footer>'
 
 
 def render(filename, title, description, body, product=False):

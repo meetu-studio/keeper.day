@@ -401,7 +401,16 @@
     "We also save a language you choose in browser local storage so future visits can use it. This interface preference does not enable optional analytics, advertising or chat. You can change the language at any time or remove the preference by clearing this site’s storage.": "선택한 언어를 브라우저 로컬 저장소에 저장해 다음 방문에 사용합니다. 이 화면 설정으로 선택적 분석, 광고 또는 채팅이 활성화되지는 않습니다. 언제든 언어를 변경하거나 이 사이트의 저장소를 지워 설정을 삭제할 수 있습니다.",
     "Photograph the people on your trail.": "함께 걷는 사람들을 찍으세요.",
     "Catch a laugh between tricks.": "연습 사이의 웃음을 담으세요.",
-    "Take Keeper on your next photo walk.": "다음 사진 산책에는 Keeper와 함께."
+    "Take Keeper on your next photo walk.": "다음 사진 산책에는 Keeper와 함께.",
+    "A photo that takes photos.": "사진을 찍는 사진.",
+    "A CAMERA FOR EVERY DAY": "매일 함께하는 카메라",
+    "Your day, in photographs.": "오늘을 사진으로.",
+    "Keeper ST-46 pocket camera, shown in landscape orientation": "가로 방향으로 놓인 Keeper ST-46 포켓 카메라",
+    "Two friends walking together on an American city street": "미국 도시의 거리를 함께 걷는 두 친구",
+    "Screen images are simulated.": "화면 이미지는 예시입니다.",
+    "Screen images are simulated. Each purchase includes one camera with the selected exterior, gift box, lanyard and instruction manual.": "화면 이미지는 예시입니다. 구매 1건에는 선택한 외장의 카메라 1대, 선물 상자, 끈과 설명서가 포함됩니다.",
+    "Your selected ST or P exterior is included with the camera. For a P design, choose A (left) or B (right); each purchase contains one camera, not both. Two-camera bundles, companion apps and wireless photo-sharing features are not included. Interface pages show development concepts.": "선택한 ST 또는 P 외장은 카메라에 포함됩니다. P 디자인은 A(왼쪽) 또는 B(오른쪽)를 선택하며 구매 1건은 카메라 1대입니다. 2대 묶음, 연동 앱, 무선 사진 공유 기능은 포함되지 않습니다. 인터페이스 페이지는 개발 콘셉트를 보여줍니다.",
+    "A pocket camera with a color e-paper display.": "컬러 전자종이 화면을 갖춘 포켓 카메라."
   },
   "ui": {
     "language_label": "언어",

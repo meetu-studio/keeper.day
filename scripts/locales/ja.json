@@ -401,7 +401,16 @@
     "We also save a language you choose in browser local storage so future visits can use it. This interface preference does not enable optional analytics, advertising or chat. You can change the language at any time or remove the preference by clearing this site’s storage.": "選んだ言語をブラウザーのローカルストレージに保存し、次回以降の表示に利用します。この表示設定によって任意の解析・広告・チャットが有効になることはありません。言語はいつでも変更でき、当サイトのストレージを消去すると設定を削除できます。",
     "Photograph the people on your trail.": "一緒に歩く人を撮ろう。",
     "Catch a laugh between tricks.": "技の合間の笑顔を撮ろう。",
-    "Take Keeper on your next photo walk.": "次の散歩には、Keeper を。"
+    "Take Keeper on your next photo walk.": "次の散歩には、Keeper を。",
+    "A photo that takes photos.": "写真を撮る写真。",
+    "A CAMERA FOR EVERY DAY": "毎日に持ち歩くカメラ",
+    "Your day, in photographs.": "今日を写真に。",
+    "Keeper ST-46 pocket camera, shown in landscape orientation": "横向きに置いた Keeper ST-46 ポケットカメラ",
+    "Two friends walking together on an American city street": "アメリカの街を一緒に歩く二人",
+    "Screen images are simulated.": "画面はイメージです。",
+    "Screen images are simulated. Each purchase includes one camera with the selected exterior, gift box, lanyard and instruction manual.": "画面はイメージです。1回の購入には選んだ外装のカメラ1台、ギフトボックス、ストラップ、説明書が含まれます。",
+    "Your selected ST or P exterior is included with the camera. For a P design, choose A (left) or B (right); each purchase contains one camera, not both. Two-camera bundles, companion apps and wireless photo-sharing features are not included. Interface pages show development concepts.": "選んだSTまたはPの外装は本体に含まれます。PはA（左）またはB（右）を選び、1回の購入につきカメラ1台です。2台セット、連携アプリ、無線写真共有機能は含まれません。インターフェースのページは開発コンセプトです。",
+    "A pocket camera with a color e-paper display.": "カラー電子ペーパーを備えたポケットカメラ。"
   },
   "ui": {
     "language_label": "言語",
