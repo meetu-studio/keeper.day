@@ -92,13 +92,14 @@
 .ed-hero h1:lang(zh-Hans),.ed-hero h1:lang(ja),.ed-hero h1:lang(ko){max-width:none;line-break:strict}
 .ed-hero .ed-lead:lang(zh-Hans),.ed-hero .ed-lead:lang(ja),.ed-hero .ed-lead:lang(ko){max-width:none;text-wrap:pretty}
 #mobile-open-chat{display:none}
+#mobile-open-chat:not([hidden]){display:inline-flex;align-items:center;justify-content:center;gap:9px;position:fixed;right:20px;bottom:24px;min-height:52px;padding:12px 17px;border:1px solid #ffffff38;border-radius:999px;background:#20221f;color:#fff;font-family:inherit;font-size:14px;font-weight:600;line-height:1.2;white-space:nowrap;box-shadow:0 3px 14px #0003;z-index:26;cursor:pointer}
+#mobile-open-chat svg{width:25px;height:25px;flex:none}
+#mobile-open-chat:focus-visible{outline:3px solid #d23324;outline-offset:4px}
+body:has(#mobile-open-chat:not([hidden])) #hubspot-messages-iframe-container:not(:has(.hs-shadow-container.active)){visibility:hidden!important;pointer-events:none!important}
+body:has(#hubspot-messages-iframe-container .hs-shadow-container.active) #mobile-open-chat{display:none}
 @media(max-width:700px){
- #mobile-open-chat:not([hidden]){display:grid;place-items:center;position:fixed;left:16px;right:auto;bottom:calc(16px + env(safe-area-inset-bottom));width:56px;height:56px;padding:0;border:0;border-radius:50%;background:#20221f;color:#fff;box-shadow:0 3px 14px #0003;z-index:26;cursor:pointer}
- #mobile-open-chat svg{width:28px;height:28px}
- #mobile-open-chat:focus-visible{outline:3px solid #d23324;outline-offset:4px}
+ #mobile-open-chat:not([hidden]){left:16px;right:auto;bottom:calc(16px + env(safe-area-inset-bottom))}
  body:has(.sf-mobile-buy:not([hidden])) #mobile-open-chat{bottom:calc(96px + env(safe-area-inset-bottom))}
- body:has(#mobile-open-chat:not([hidden])) #hubspot-messages-iframe-container:not(:has(.hs-shadow-container.active)){visibility:hidden!important;pointer-events:none!important}
- body:has(#hubspot-messages-iframe-container .hs-shadow-container.active) #mobile-open-chat{display:none}
 }
 
 .storefront{--page-gutter:32px}

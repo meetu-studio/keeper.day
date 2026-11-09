@@ -775,7 +775,8 @@
     "Show original artwork beside a selected Keeper exterior and tell the artist’s process, once a real collaboration is agreed.": "实际合作确认后，展示原创画稿与选定的 Keeper 外观，并记录创作者的过程。",
     "AI-generated concept images; the interfaces shown are not released features.": "AI 生成概念图；图中的界面不是已发布功能。",
     "Everyday camera stories.": "和相机一起的日常。",
-    "These AI-written examples pair a person, a Keeper camera and a reason to take a photograph. They are not customer testimonials.": "以下 AI 示例把人物、Keeper 相机和拍照的理由放在一起，并非真实顾客评价。"
+    "These AI-written examples pair a person, a Keeper camera and a reason to take a photograph. They are not customer testimonials.": "以下 AI 示例把人物、Keeper 相机和拍照的理由放在一起，并非真实顾客评价。",
+    "Live chat": "在线聊天"
   },
   "ui": {
     "language_label": "语言",

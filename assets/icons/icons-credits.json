@@ -1,0 +1,13 @@
+[
+  {
+    "file": "ui-message-circle-more.svg",
+    "icon": "ui:message-circle-more",
+    "name": "Message Circle More",
+    "kind": "line",
+    "source": "@iconify-json/lucide@1.2.100",
+    "author": "Lucide Contributors",
+    "licence": "ISC",
+    "url": "https://github.com/lucide-icons/lucide",
+    "trademark": false
+  }
+]
