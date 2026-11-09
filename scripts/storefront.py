@@ -42,12 +42,12 @@ def _head(kicker, title, copy=''):
 
 
 def _gallery():
-    images = [('/assets/product-flowers.webp','Keeper camera with flower image on the color e-paper display','The camera'),('/assets/everyday/01-take-the-photo.webp','A photographer using Keeper to photograph friends on a trail','Out taking photographs'),('/assets/everyday/02-photograph-your-people.webp','A parent using Keeper to photograph a family birthday','Photograph your people'),('full-kit','Keeper camera, gift box, lanyard and instruction manual','What’s included'),('/assets/everyday/05-workdesk.webp','Graphic Keeper on an American architect’s desk','At your desk')]
+    images = [('/assets/product-flowers.webp','Keeper camera with flower image on the color e-paper display','The camera'),('/assets/editorial/20261109-shooting/trail-1440.webp','A photographer using Keeper to photograph friends on a trail','Out taking photographs'),('/assets/editorial/20261109-shooting/family-1440.webp','A parent using Keeper to photograph a family birthday','Photograph your people'),('full-kit','Keeper camera, gift box, lanyard and instruction manual','What’s included'),('/assets/editorial/20261109-shooting/studio-1440.webp','Original grid-pattern Keeper on an illustrated design worktable','At your desk')]
     panels, buttons = [], []
     for i, (src, alt, label) in enumerate(images):
         panels.append(f'<figure class="sf-gallery-panel{" sf-hardware" if i == 0 else ""}" id="sf-photo-{i}" data-sf-panel>{_image(src,alt,i==0)}<figcaption>{label}</figcaption></figure>')
         buttons.append(f'<button class="sf-thumb" type="button" data-sf-photo="{i}" aria-controls="sf-photo-{i}" aria-pressed="{str(i == 0).lower()}" aria-label="Show image {i+1}: {_e(label)}">{_image(src,"",False)}</button>')
-    return '<div class="sf-gallery" data-sf-gallery><div class="sf-gallery-panels">'+''.join(panels)+'</div><div class="sf-thumbnails" role="group" aria-label="Product images" hidden>'+''.join(buttons)+'</div><p class="sf-micro">Screen images are simulated.</p><p class="sf-sr-only" data-sf-gallery-status aria-live="polite"></p></div>'
+    return '<div class="sf-gallery" data-sf-gallery><div class="sf-gallery-panels">'+''.join(panels)+'</div><div class="sf-thumbnails" role="group" aria-label="Product images" hidden>'+''.join(buttons)+'</div><p class="sf-micro">AI images and screen simulations are shooting references, not camera sample photographs.</p><p class="sf-sr-only" data-sf-gallery-status aria-live="polite"></p></div>'
 
 
 def _box(c):
@@ -112,7 +112,7 @@ def product_body(commerce):
 
 def gifting_body(commerce):
     c = commerce
-    hero = f'<section class="hero sf-section sf-hero sf-gift-hero" data-enter><div class="sf-hero-copy"><p class="sf-kicker">FOR THEIR NEXT FAVORITE PHOTOGRAPH</p><h1>Give them<br>a <em>camera.</em></h1><p class="sf-lead">For the birthdays, the people and the everyday adventures they want to photograph. A little Keeper, with a gift box and a look of their own.</p>{_purchase(c,"gifting-hero")}</div><figure class="sf-hero-image" data-enter-media>{_lifestyle_image(DATA["camera_story"][1],True)}<figcaption>A camera for the photographs you will make together.</figcaption></figure></section>'
+    hero = f'<section class="hero sf-section sf-hero sf-gift-hero" data-enter><div class="sf-hero-copy"><p class="sf-kicker">FOR THEIR NEXT FAVORITE PHOTOGRAPH</p><h1>Give them<br>a <em>camera.</em></h1><p class="sf-lead">For the birthdays, the people and the everyday adventures they want to photograph. A little Keeper, with a gift box and a look of their own.</p>{_purchase(c,"gifting-hero")}</div><figure class="sf-hero-image" data-enter-media>{_lifestyle_image(DATA["camera_story"][1],True)}<figcaption>A camera for the photographs you will make together.<br><span class="sf-micro">AI images and screen simulations are shooting references, not camera sample photographs.</span></figcaption></figure></section>'
     contexts = '<section class="sf-section sf-gift-contexts">'+_head('YOU KNOW WHO IT’S FOR','Something to make memories with.')+'<div class="sf-steps"><article><span>FOR YOUR PERSON</span><h3>The days you share.</h3><p>An anniversary, a birthday, or just because a favorite face deserves a place nearby.</p></article><article><span>FOR YOUR FRIEND</span><h3>More days like this.</h3><p>For coffee dates, catch-ups and the person who makes ordinary plans worth remembering.</p></article><article><span>FOR YOUR FAMILY</span><h3>A little closer to home.</h3><p>A thoughtful object for someone who loves taking pictures of the people they love.</p></article></div></section>'
     return '<div class="storefront">'+hero+_box(c)+contexts+_how()+_faq(c)+_end(c)+'</div>'
 

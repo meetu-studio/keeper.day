@@ -92,7 +92,7 @@ def logos():
     marks=''
     for item in CONTENT['logos']:
         label='<br><span>AI placeholder</span>' if item['placeholder'] else ''
-        marks+=f'<figure><img src="{item["image"]}" alt="{escape(item["alt"])}" width="600" height="400" loading="lazy"><figcaption>{escape(item["name"])}{label}</figcaption></figure>'
+        marks+=f'<figure><a href="{item["href"]}"><img src="{item["image"]}" alt="{escape(item["alt"])}" width="600" height="400" loading="lazy"></a><figcaption><strong>{escape(item["name"])}</strong><br>{escape(item["description"])}{label}</figcaption></figure>'
     return '<div class="ed-logos">'+marks+'</div>'
 
 
@@ -157,7 +157,9 @@ def press_body(c):
     stories=''
     for item in CONTENT['press']:
         stories+=f'<section class="ed-section ed-brand" id="{item["id"]}">{photo(item["image"])}<div>{"<p class=ed-status>AI-generated editorial example · not a published article</p>" if item["placeholder"] else ""}<h2>{escape(item["title"])}</h2><p>{escape(item["summary"])}</p><p>{escape(item["body"])}</p><p class="ed-small">This is a layout example. Its image, publication name, text and link will be replaced together when real coverage is available.</p></div></section>'
-    return '<div class="storefront editorial">'+intro('MEDIA & PARTNERSHIPS','A place for future conversations.',DEMO)+logos()+stories+'<section class="ed-section ed-brand" id="partnerships"><div><h2>Make something together.</h2><p>Photo walks, editorial stories and thoughtful gifts are possible starting points. This contact form is a preview; use our email for a real conversation.</p><p class="ed-status">AI partner marks above are examples, not confirmed partnerships.</p></div>'+demo_form('partnership')+'</section>'+_end(c)+'</div>'
+    ideas=['Make portraits of classmates, photograph the campus walk and share the story behind one picture.','Plan a short local route with three stops: a portrait, a small detail and a photograph together.','Show original artwork beside a selected Keeper exterior and tell the artist’s process, once a real collaboration is agreed.']
+    concepts='<section class="ed-section"><p class="ed-status">These fictional identities illustrate possible Keeper stories and collaboration formats. No partnership is announced.</p><div class="ed-grid ed-three">'+''.join(f'<article id="concept-{i+4}"><h2>{escape(item["name"])}</h2><p>{escape(item["description"])}</p><p>{escape(ideas[i])}</p></article>' for i,item in enumerate(CONTENT['logos'][3:]))+'</div></section>'
+    return '<div class="storefront editorial">'+intro('MEDIA & PARTNERSHIPS','A place for future conversations.',DEMO)+logos()+stories+concepts+'<section class="ed-section ed-brand" id="partnerships"><div><h2>Make something together.</h2><p>Photo walks, editorial stories and thoughtful gifts are possible starting points. This contact form is a preview; use our email for a real conversation.</p><p class="ed-status">AI partner marks above are examples, not confirmed partnerships.</p></div>'+demo_form('partnership')+'</section>'+_end(c)+'</div>'
 
 
 def owners_body(c):

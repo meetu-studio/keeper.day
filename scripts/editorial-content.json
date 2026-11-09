@@ -1,137 +1,175 @@
 {
   "images": {
     "hero": {
-      "image": "/assets/editorial/hero",
+      "image": "/assets/editorial/20261109-shooting/hero",
       "alt": "American friends being photographed with a landscape Keeper camera",
       "style": "st-46",
       "story": "Bring the camera to the people you want to photograph. A pause together can become the picture you keep.",
-      "placeholder": true
+      "placeholder": true,
+      "source": "attachments/keeper-day/website-shooting-references-20261109/final/hero.png",
+      "shooting_reference": "website-shooting-references-20261109/replacement-guide.md#hero"
     },
     "street": {
-      "image": "/assets/editorial/street",
-      "alt": "American friends laughing on a neighborhood photo walk",
+      "image": "/assets/editorial/20261109-shooting/street",
+      "alt": "American photographer using a Keeper ST-12 camera to photograph a friend with a skateboard on a neighborhood stoop",
       "style": "st-12",
-      "story": "A familiar route can look different when you leave time to stop and take a photograph.",
-      "placeholder": true
+      "story": "Ask a friend to pause on the stoop. Frame them and their skateboard with ST-12, then press the red shutter before the walk continues.",
+      "placeholder": true,
+      "source": "attachments/keeper-day/website-shooting-references-20261109/final/street.png",
+      "shooting_reference": "website-shooting-references-20261109/replacement-guide.md#street"
     },
     "cafe": {
-      "image": "/assets/editorial/cafe",
-      "alt": "Two American friends sharing coffee by a cafe window",
+      "image": "/assets/editorial/20261109-shooting/cafe",
+      "alt": "American friends at a cafe: a Keeper ST-42 camera frames a laughing friend across the table",
       "style": "st-42",
-      "story": "Find the window light, settle into the conversation and photograph a laugh between sips.",
-      "placeholder": true
+      "story": "Sit facing the window light. Hold ST-42 in both hands and photograph the laugh across the table; the coffee can wait a second.",
+      "placeholder": true,
+      "source": "attachments/keeper-day/website-shooting-references-20261109/final/cafe.png",
+      "shooting_reference": "website-shooting-references-20261109/replacement-guide.md#cafe"
     },
     "campus": {
-      "image": "/assets/editorial/campus",
-      "alt": "American students spending an afternoon on a campus lawn",
+      "image": "/assets/editorial/20261109-shooting/campus",
+      "alt": "An American student photographs two college friends with a Keeper ST-27 camera on a campus lawn",
       "style": "st-27",
-      "story": "New friends, familiar paths and the first photograph you make together.",
-      "placeholder": true
+      "story": "Sit on the grass with your friends. Keep both faces in the small viewfinder, take the photograph with ST-27, and bring that afternoon along.",
+      "placeholder": true,
+      "source": "attachments/keeper-day/website-shooting-references-20261109/final/campus.png",
+      "shooting_reference": "website-shooting-references-20261109/replacement-guide.md#campus"
     },
     "pets": {
-      "image": "/assets/editorial/pets",
-      "alt": "An American woman laughing beside her dog in a park",
+      "image": "/assets/editorial/20261109-shooting/pets",
+      "alt": "A Keeper ST-48 camera held at dog-eye level photographs a golden retriever in a Chicago park",
       "style": "st-48",
-      "story": "Get down to their eye level and leave room for the expression that makes you smile.",
-      "placeholder": true
+      "story": "Kneel to your dog’s eye level. Have a friend hold a treat just beside you, frame that familiar face with ST-48 and wait for the head tilt.",
+      "placeholder": true,
+      "source": "attachments/keeper-day/website-shooting-references-20261109/final/pets.png",
+      "shooting_reference": "website-shooting-references-20261109/replacement-guide.md#pets"
     },
     "carry": {
-      "image": "/assets/editorial/carry",
+      "image": "/assets/editorial/20261109-shooting/carry",
       "alt": "Keeper camera and its original wrist strap resting beside a canvas tote",
       "style": "classic",
       "story": "Take the camera along with the things you use every day. Follow the included manual when attaching the lanyard.",
-      "placeholder": true
+      "placeholder": true,
+      "source": "attachments/keeper-day/website-shooting-references-20261109/final/carry.png",
+      "shooting_reference": "website-shooting-references-20261109/replacement-guide.md#carry"
     },
     "gift": {
-      "image": "/assets/editorial/gift",
+      "image": "/assets/editorial/20261109-shooting/gift",
       "alt": "Two separately sold Keeper sun and moon designs beside a gift box",
       "style": "p-01-a",
       "story": "Choose the side that suits them. The pair is shown for inspiration; each purchase is one camera.",
-      "placeholder": true
+      "placeholder": true,
+      "source": "attachments/keeper-day/website-shooting-references-20261109/final/gift.png",
+      "shooting_reference": "website-shooting-references-20261109/replacement-guide.md#gift"
     },
     "studio": {
-      "image": "/assets/editorial/studio",
+      "image": "/assets/editorial/20261109-shooting/studio",
       "alt": "Original grid-pattern Keeper on an illustrated design worktable",
       "style": "st-31",
       "story": "A photograph from the walk can stay nearby while the rest of the day carries on.",
-      "placeholder": true
+      "placeholder": true,
+      "source": "attachments/keeper-day/website-shooting-references-20261109/final/studio.png",
+      "shooting_reference": "website-shooting-references-20261109/replacement-guide.md#studio"
     },
     "family": {
-      "image": "/assets/editorial/family",
+      "image": "/assets/editorial/20261109-shooting/family",
       "alt": "An American family being photographed with Keeper at a backyard birthday",
       "style": "st-27",
       "story": "The candles, the conversation and the face you want to remember. Bring a camera for the family photograph.",
-      "placeholder": true
+      "placeholder": true,
+      "source": "attachments/keeper-day/website-shooting-references-20261109/final/family.png",
+      "shooting_reference": "website-shooting-references-20261109/replacement-guide.md#family"
     },
     "trail": {
-      "image": "/assets/editorial/trail",
+      "image": "/assets/editorial/20261109-shooting/trail",
       "alt": "American friends taking photographs with Keeper on a mountain trail",
       "style": "st-46",
       "story": "Stop together, look back at the view and take a photograph before the next bend.",
-      "placeholder": true
+      "placeholder": true,
+      "source": "attachments/keeper-day/website-shooting-references-20261109/final/trail.png",
+      "shooting_reference": "website-shooting-references-20261109/replacement-guide.md#trail"
     },
     "shutter": {
-      "image": "/assets/editorial/shutter",
+      "image": "/assets/editorial/20261109-shooting/shutter",
       "alt": "Close view of the original Keeper red shutter and small viewfinder",
       "style": "st-46",
       "story": "The physical shutter takes the photograph.",
-      "placeholder": true
+      "placeholder": true,
+      "source": "attachments/keeper-day/website-shooting-references-20261109/final/shutter.png",
+      "shooting_reference": "website-shooting-references-20261109/replacement-guide.md#shutter"
     },
     "epaper-triptych": {
-      "image": "/assets/editorial/epaper-triptych",
+      "image": "/assets/editorial/20261109-shooting/epaper-triptych",
       "alt": "The same original Keeper photograph at a cafe, on a walk and at a desk",
-      "style": "st-46",
+      "style": "classic",
       "story": "One static photograph, kept close through the day.",
-      "placeholder": true
+      "placeholder": true,
+      "source": "attachments/keeper-day/website-shooting-references-20261109/final/epaper-triptych.png",
+      "shooting_reference": "website-shooting-references-20261109/replacement-guide.md#epaper-triptych"
     },
     "review-1": {
-      "image": "/assets/editorial/review-1",
-      "alt": "AI-generated illustrated portrait for review example one",
+      "image": "/assets/editorial/20261109-shooting/review-1",
+      "alt": "AI example: Alex holding a Keeper ST-46 after a photo walk, talking with a friend on a park bench",
       "style": "st-46",
       "story": "",
-      "placeholder": true
+      "placeholder": true,
+      "source": "attachments/keeper-day/website-shooting-references-20261109/final/review-1.png",
+      "shooting_reference": "website-shooting-references-20261109/replacement-guide.md#review-1"
     },
     "review-2": {
-      "image": "/assets/editorial/review-2",
-      "alt": "AI-generated illustrated portrait for review example two",
-      "style": "st-27",
-      "story": "",
-      "placeholder": true
-    },
-    "review-3": {
-      "image": "/assets/editorial/review-3",
-      "alt": "AI-generated illustrated portrait for review example three",
-      "style": "st-31",
-      "story": "",
-      "placeholder": true
-    },
-    "press-1": {
-      "image": "/assets/editorial/press-1",
-      "alt": "AI-generated editorial cover example about everyday photography",
-      "style": "classic",
-      "story": "",
-      "placeholder": true
-    },
-    "press-2": {
-      "image": "/assets/editorial/press-2",
-      "alt": "AI-generated editorial cover example about exterior design",
-      "style": "st-50",
-      "story": "",
-      "placeholder": true
-    },
-    "press-3": {
-      "image": "/assets/editorial/press-3",
-      "alt": "AI-generated editorial cover example about thoughtful gifts",
+      "image": "/assets/editorial/20261109-shooting/review-2",
+      "alt": "AI example: Maya wrapping a Keeper P-01 A camera gift with a card inviting a friend on a photo walk",
       "style": "p-01-a",
       "story": "",
-      "placeholder": true
+      "placeholder": true,
+      "source": "attachments/keeper-day/website-shooting-references-20261109/final/review-2.png",
+      "shooting_reference": "website-shooting-references-20261109/replacement-guide.md#review-2"
+    },
+    "review-3": {
+      "image": "/assets/editorial/20261109-shooting/review-3",
+      "alt": "AI example: Jordan at her American home studio with a Keeper ST-31 displaying a travel photograph",
+      "style": "st-31",
+      "story": "",
+      "placeholder": true,
+      "source": "attachments/keeper-day/website-shooting-references-20261109/final/review-3.png",
+      "shooting_reference": "website-shooting-references-20261109/replacement-guide.md#review-3"
+    },
+    "press-1": {
+      "image": "/assets/editorial/20261109-shooting/press-1",
+      "alt": "Illustrative Keeper feature cover with the original ST-46 camera, walking map and photo-walk story headline",
+      "style": "st-46",
+      "story": "",
+      "placeholder": true,
+      "source": "attachments/keeper-day/website-shooting-references-20261109/final/press-1.png",
+      "shooting_reference": "website-shooting-references-20261109/replacement-guide.md#press-1"
+    },
+    "press-2": {
+      "image": "/assets/editorial/20261109-shooting/press-2",
+      "alt": "Illustrative Keeper design feature cover comparing original ST-31 and ST-50 camera exteriors",
+      "style": "st-31",
+      "story": "",
+      "placeholder": true,
+      "source": "attachments/keeper-day/website-shooting-references-20261109/final/press-2.png",
+      "shooting_reference": "website-shooting-references-20261109/replacement-guide.md#press-2"
+    },
+    "press-3": {
+      "image": "/assets/editorial/20261109-shooting/press-3",
+      "alt": "Illustrative Keeper gift feature cover with one P-01 A camera, a gift box and a photo-walk invitation",
+      "style": "p-01-a",
+      "story": "",
+      "placeholder": true,
+      "source": "attachments/keeper-day/website-shooting-references-20261109/final/press-3.png",
+      "shooting_reference": "website-shooting-references-20261109/replacement-guide.md#press-3"
     },
     "result": {
-      "image": "/assets/editorial/result",
+      "image": "/assets/editorial/20261109-shooting/result",
       "alt": "American friends being photographed with a landscape Keeper camera",
       "style": "st-46",
       "story": "Bring the camera to the people you want to photograph. A pause together can become the picture you keep.",
-      "placeholder": true
+      "placeholder": true,
+      "source": "attachments/keeper-day/website-shooting-references-20261109/final/result.png",
+      "shooting_reference": "website-shooting-references-20261109/replacement-guide.md#result"
     }
   },
   "recommendations": {
@@ -182,21 +220,21 @@
   },
   "reviews": [
     {
-      "name": "Photo-walk example",
+      "name": "Alex · fictional photo-walk example",
       "image": "review-1",
-      "quote": "I would take it on the short walks that somehow turn into a whole afternoon. A photograph of the people I came with is the one I would keep nearby.",
+      "quote": "I would bring Keeper on our Saturday walk, stop when my friend turns around, and take one photograph. The camera comes home with a picture from the day still in view.",
       "placeholder": true
     },
     {
-      "name": "Gift-giving example",
+      "name": "Maya · fictional camera-gift example",
       "image": "review-2",
-      "quote": "For a friend who always brings everyone together, I would choose an exterior that feels like them and plan our next photo walk.",
+      "quote": "I would choose the sunny P-01 A exterior for a friend’s birthday and put “our next photo walk” on the card. One camera, and a reason to plan the afternoon together.",
       "placeholder": true
     },
     {
-      "name": "Everyday-photography example",
+      "name": "Jordan · fictional travel-photo example",
       "image": "review-3",
-      "quote": "A quiet corner, a familiar face, one picture from an ordinary day. That is the kind of photograph I would want on my desk.",
+      "quote": "I would keep a photograph from my trip on Keeper beside my sketchbook. When I pick up the camera for another walk, that picture would come along until I choose the next one.",
       "placeholder": true
     }
   ],
@@ -204,64 +242,76 @@
     {
       "id": "everyday-camera",
       "image": "press-1",
-      "title": "A camera for the everyday photograph",
-      "summary": "Editorial example: the small moments that make someone reach for a camera.",
-      "body": "This illustrated feature explores the idea of bringing a dedicated camera on an ordinary walk. It describes the physical shutter, the separate viewfinder and the photograph that remains visible on color e-paper. It is an AI-generated editorial example prepared for this layout, not independent reporting.",
+      "title": "Keeper on a neighborhood photo walk",
+      "summary": "A feature concept about framing a friend, pressing the red shutter and carrying the photograph home.",
+      "body": "The route can be ordinary: a cafe, a familiar stoop, a stop in the park. Keeper is a pocket camera with a color e-paper display. Compose in the small viewfinder, press the physical red shutter and keep a photograph visible on the camera afterward. This illustrated feature pairs ST-46 with a walking map and photographs of friends to show the story a real product shoot should capture. Printed photographs in the cover are styling props; Keeper does not print photographs.",
       "placeholder": true
     },
     {
       "id": "exterior-design",
       "image": "press-2",
-      "title": "One camera, many personal looks",
-      "summary": "Editorial example: color, pattern and choosing a camera exterior.",
-      "body": "This sample design story looks at the exterior collection as a way to express personal taste. Individual designs and separately sold paired sides use the same Keeper camera. The cover, publication treatment and article are examples to be replaced with genuine coverage.",
+      "title": "Keeper exteriors: graphic lines or garden color",
+      "summary": "A design feature concept comparing ST-31 and ST-50, with the same camera beneath two different looks.",
+      "body": "ST-31 uses a graphic grid with restrained red accents. ST-50 brings botanical embroidery around a paper-like photograph. The camera controls stay in the same places: a large color e-paper display, one red shutter and a separate small viewfinder. Keeper offers 68 individual designs and 30 paired images, with each paired side selectable separately. That makes 128 exterior choices with the same camera functions. This cover is an illustrative design story, not an independent review or an announced artist collaboration.",
       "placeholder": true
     },
     {
       "id": "thoughtful-gift",
       "image": "press-3",
-      "title": "Give a camera, make a photograph together",
-      "summary": "Editorial example: choosing a personal gift for the next shared day.",
-      "body": "This sample gift feature introduces one camera with a selected exterior, gift box, lanyard and instruction manual. It suggests a photo walk as something to do together. It does not represent a published recommendation, award or confirmed media partnership.",
+      "title": "Give one Keeper. Plan your next photo walk.",
+      "summary": "A gift feature concept with P-01 A, a personal note and time to make photographs together.",
+      "body": "Start with the person you want to photograph with. Choose their exterior, add a note and plan a simple outing together. The P-01 sun-and-moon image shows two options: A is the left side and B is the right side. Each purchase is one camera with the selected exterior, gift box, lanyard and manual. The camera is US$199 plus US$30 shipping, US$229 total. The ribbon, tissue and invitation in this illustrative cover are photo styling, not additional promised package contents.",
       "placeholder": true
     }
   ],
   "logos": [
     {
-      "image": "/assets/editorial/logo-1.webp",
-      "name": "Media example",
-      "alt": "AI-generated placeholder mark, not an actual media or partner logo",
-      "placeholder": true
+      "image": "/assets/editorial/20261109-shooting/logo-1.webp",
+      "name": "FRAME DAILY",
+      "alt": "FRAME DAILY: AI-generated concept identity for a Keeper story, not an actual partner",
+      "placeholder": true,
+      "description": "Keeper photo-walk feature",
+      "href": "/press.html#everyday-camera"
     },
     {
-      "image": "/assets/editorial/logo-2.webp",
-      "name": "Media example",
-      "alt": "AI-generated placeholder mark, not an actual media or partner logo",
-      "placeholder": true
+      "image": "/assets/editorial/20261109-shooting/logo-2.webp",
+      "name": "FORM & COLOR",
+      "alt": "FORM & COLOR: AI-generated concept identity for a Keeper story, not an actual partner",
+      "placeholder": true,
+      "description": "Keeper exterior design story",
+      "href": "/press.html#exterior-design"
     },
     {
-      "image": "/assets/editorial/logo-3.webp",
-      "name": "Media example",
-      "alt": "AI-generated placeholder mark, not an actual media or partner logo",
-      "placeholder": true
+      "image": "/assets/editorial/20261109-shooting/logo-3.webp",
+      "name": "GIFT NOTES",
+      "alt": "GIFT NOTES: AI-generated concept identity for a Keeper story, not an actual partner",
+      "placeholder": true,
+      "description": "Keeper camera gift feature",
+      "href": "/press.html#thoughtful-gift"
     },
     {
-      "image": "/assets/editorial/logo-4.webp",
-      "name": "Partner example",
-      "alt": "AI-generated placeholder mark, not an actual media or partner logo",
-      "placeholder": true
+      "image": "/assets/editorial/20261109-shooting/logo-4.webp",
+      "name": "CAMPUS PHOTO CLUB",
+      "alt": "CAMPUS PHOTO CLUB: AI-generated concept identity for a Keeper story, not an actual partner",
+      "placeholder": true,
+      "description": "Campus portraits with Keeper",
+      "href": "/press.html#concept-4"
     },
     {
-      "image": "/assets/editorial/logo-5.webp",
-      "name": "Partner example",
-      "alt": "AI-generated placeholder mark, not an actual media or partner logo",
-      "placeholder": true
+      "image": "/assets/editorial/20261109-shooting/logo-5.webp",
+      "name": "WEEKEND WALKERS",
+      "alt": "WEEKEND WALKERS: AI-generated concept identity for a Keeper story, not an actual partner",
+      "placeholder": true,
+      "description": "A neighborhood Keeper photo walk",
+      "href": "/press.html#concept-5"
     },
     {
-      "image": "/assets/editorial/logo-6.webp",
-      "name": "Partner example",
-      "alt": "AI-generated placeholder mark, not an actual media or partner logo",
-      "placeholder": true
+      "image": "/assets/editorial/20261109-shooting/logo-6.webp",
+      "name": "LOCAL MAKERS",
+      "alt": "LOCAL MAKERS: AI-generated concept identity for a Keeper story, not an actual partner",
+      "placeholder": true,
+      "description": "Keeper exterior art collaboration concept",
+      "href": "/press.html#concept-6"
     }
   ]
 }
