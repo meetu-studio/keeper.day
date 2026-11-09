@@ -89,6 +89,8 @@
 @media(prefers-reduced-motion:reduce){.editorial *{scroll-behavior:auto!important}}
 
 .ed-facts img{width:100%;height:100px;object-fit:contain;margin:0 0 12px;background:#f0efe9}.ed-hero h1{max-width:11ch}.ed-social-wall .ed-ai{line-height:1.5}@media(max-width:700px){.ed-facts img{height:92px}.ed-hero h1{max-width:16ch}}
+.ed-hero h1:lang(zh-Hans),.ed-hero h1:lang(ja),.ed-hero h1:lang(ko){max-width:none;line-break:strict}
+.ed-hero .ed-lead:lang(zh-Hans),.ed-hero .ed-lead:lang(ja),.ed-hero .ed-lead:lang(ko){max-width:none;text-wrap:pretty}
 
 .storefront{--page-gutter:32px}
 .storefront-body nav .nav-contact{background:var(--brand);border-radius:5px;color:#fff}
