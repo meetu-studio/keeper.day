@@ -41,10 +41,11 @@ def diary_dialog():
 
 
 def photo(key, eager=False, cls='', sizes='(max-width:700px) 100vw, 50vw'):
-    asset = CONTENT['images'][key]
+    asset = CONTENT['images'][key] if isinstance(key, str) else key
     base = asset['image']
     srcset = ', '.join(f'{base}-{w}.webp {w}w' for w in [480,960,1440])
-    return f'<figure class="ed-photo {cls}"><img src="{base}-1440.webp" srcset="{srcset}" sizes="{sizes}" alt="{escape(asset["alt"])}" width="1440" height="960" loading="{"eager" if eager else "lazy"}" decoding="async"'+(' fetchpriority="high"' if eager else '')+'>'+ (f'<figcaption class="ed-ai">{AI}</figcaption>' if asset['placeholder'] else '')+'</figure>'
+    note = 'AI-generated scene · simulated screen photo' if '/inspiration/' in base else AI
+    return f'<figure class="ed-photo {cls}"'+(' data-inspiration-image' if '/inspiration/' in base else '')+f'><img src="{base}-1440.webp" srcset="{srcset}" sizes="{sizes}" alt="{escape(asset["alt"])}" width="1440" height="960" loading="{"eager" if eager else "lazy"}" decoding="async"'+(' fetchpriority="high"' if eager else '')+'>'+ (f'<figcaption class="ed-ai">{note}</figcaption>' if asset['placeholder'] else '')+'</figure>'
 
 
 def head(kicker,title,copy='',link='',label='Explore'):
@@ -72,7 +73,7 @@ def demo_form(kind):
 
 
 GUIDES = [
-    {'id':'first-photo','title':'Your first photograph with Keeper','image':'hero','summary':'Find the viewfinder, frame your subject and use the red shutter.','parts':[
+    {'id':'first-photo','title':'Your first photograph with Keeper','image':'shooting','summary':'Find the viewfinder, frame your subject and use the red shutter.','parts':[
         ('Start with the person, not the settings.','Choose someone or something you want to remember. Look for steady, comfortable light and a background that gives your subject some space.'),
         ('Use the small screen to frame.','Hold Keeper so that the camera faces your subject. The small IPS LCD is the viewfinder; the larger color e-paper screen is for the photograph. Keep your fingers away from the screens and hold the camera steadily.'),
         ('Take the photograph with the red shutter.','Use the red physical shutter to take your picture. Keeper can take photographs without a phone. Refer to the included manual for the controls on your particular camera; this guide does not assume a press-and-release shortcut.'),
@@ -129,6 +130,23 @@ def social_wall():
     return diary_cards([p['id'] for p in CONTENT['photo_diary'] if p['id'] not in DIARY_FEATURED])+'<div class="ed-social-status"><span>Instagram · account to be added</span><span>TikTok · account to be added</span><span>YouTube · account to be added</span></div>'
 
 
+IDEA_CATEGORIES = [('friends','Friends'),('travel','Walks & travel'),('campus','Campus days'),('pets','Pets'),('gifts','Celebrations & gifts'),('home','After the photograph'),('food','Food & weekends')]
+
+
+def inspiration_section(full=False):
+    ideas = CONTENT['inspiration'] if full else [CONTENT['inspiration'][i] for i in [0,8,12,19,21,25]]
+    title = head('PHOTO IDEAS','26 ways to take Keeper along.','Photograph a moment. Hold it in the same place. Bring it into the rest of your day.','' if full else '/moments.html#photo-ideas','Explore all 26 photo ideas')
+    filters = ''
+    if full:
+        filters = '<nav class="ed-diary-filters" aria-label="Browse photo ideas by theme">'+''.join(f'<a href="/moments.html?idea={key}#photo-ideas" data-inspiration-filter="{key}">{label}</a>' for key,label in [('all','All photo ideas')]+IDEA_CATEGORIES)+'</nav><p class="ed-idea-count" data-inspiration-count role="status" aria-live="polite">26 / 26</p>'
+    cards = ''
+    for p in ideas:
+        aliases = ''.join(f'<span id="{key}" class="ed-idea-anchor" aria-hidden="true"></span>' for key,asset in CONTENT['images'].items() if full and asset.get('id') == p['id'])
+        share = f'https://keeper.day/moments.html?idea={p["category"]}#idea-{p["id"]}'
+        cards += f'<article class="ed-idea" id="idea-{p["id"]}" data-inspiration-category="{p["category"]}">{aliases}<a class="ed-image-link" href="{p["image"]}-1440.webp" aria-label="Open photograph">{photo(p)}</a><div class="ed-idea-heading"><h3>{escape(p["title"])}</h3><span class="ed-small">{p["style"].upper()}</span></div><p>{escape(p["story"])}</p><div class="ed-idea-actions"><a class="ed-text-link" href="/camera.html?style={p["style"]}#choose-style">Find this look ↗</a><div class="kr-share-actions" hidden><button type="button" data-share-url="{share}">Share this photograph</button><button type="button" data-copy-url="{share}">Copy link</button><span data-share-status role="status"></span></div></div></article>'
+    return '<section class="ed-section ed-inspiration" id="'+('photo-ideas' if full else 'everyday')+'"'+(' data-inspiration-gallery' if full else '')+'>'+title+filters+'<div class="ed-idea-grid">'+cards+'</div></section>'
+
+
 def home_body(c):
     hero='<section class="ed-section ed-hero hero" data-enter><div class="ed-hero-copy"><p class="sf-kicker">A pocket camera with a color e-paper display.</p><h1>A photo that takes photos.</h1><p class="ed-lead">Frame your favorite people. Press the red shutter. Carry the photograph with you.</p><div class="ed-hero-product"><img src="/assets/campaign/st-46-landscape-640.webp" width="640" height="391" alt="Keeper ST-46 camera with its original printed exterior"><div><strong>Keeper camera</strong><span>In stock · gift box included</span></div></div><div class="shutter-order">'+_price(c)+_buy(c,'home-hero')+'</div><a class="ed-text-link" href="/guide-first-photo.html">See how to take a photo ↓</a></div><div class="ed-hero-visual" data-enter-media>'+photo('hero',True)+'</div></section>'
     routes=[('The camera','/camera.html','/assets/product-flowers.webp','One small camera.'),('Your exterior','/styles.html','/assets/designs/st-50.webp','128 ways to make it yours.'),('A paired look','/together.html','/assets/designs/p-13.webp','Choose A or B, one camera each.'),('Ready to give','/gifting.html','/assets/storefront/full-kit-720.webp','Gift box, lanyard and manual included.')]
@@ -139,9 +157,9 @@ def home_body(c):
         d=DESIGNS[key]
         previews+=f'<article data-look-panel="{key}"><img src="{d["image"]}" alt="{escape(d["name"])}" width="{d["width"]}" height="{d["height"]}" loading="lazy"><div><p>{key.upper()}</p><h3>{escape(d["name"])}</h3><a class="sf-buy" href="/camera.html?style={key}#choose-style">Choose this look ↗</a></div></article>'
     look='<section class="ed-section ed-looks" id="camera-looks">'+head('YOUR CAMERA, YOUR LOOK','Choose the one that feels like you.','The same Keeper camera, with your selected exterior.','/styles.html','All 128 choices')+'<div class="ed-look-layout"><div class="ed-look-panels">'+previews+'</div><div class="ed-look-options">'+''.join(f'<a class="ed-look-option" data-look="{key}" href="/camera.html?style={key}#choose-style"><img src="{DESIGNS[key]["thumb"]}" alt="" width="360" height="480" loading="lazy"><span>{escape(DESIGNS[key]["name"])}</span><small>{key.upper()}</small></a>' for key in DATA['featured_designs'])+'</div></div><div class="ed-theme-links">'+''.join(f'<a href="/styles.html?collection={key}">{label} <span aria-hidden="true">↗</span></a>' for key,label in THEMES)+'</div></section>'
-    shooting='<section class="ed-section" id="how-it-works">'+head('THE FIRST PHOTOGRAPH','See it. Frame it. Take it.','A few ordinary actions make a photograph yours.','/guide-first-photo.html','Your first-photo guide')+'<div class="ed-grid ed-three">'+''.join(f'<article>{photo(im)}<p class="ed-small">{num}</p><h3>{title}</h3><p>{copy}</p></article>' for im,num,title,copy in [('hero','01','Find your frame.','Raise the camera toward the person or place and compose with the small viewfinder.'),('shutter','02','Press the red shutter.','Hold the camera steadily and use the physical shutter to take the photograph.'),('result','03','Keep the photograph in sight.','Give a favorite image a paper-like place on the larger color e-paper display.')])+'</div></section>'
+    shooting='<section class="ed-section" id="how-it-works">'+head('THE FIRST PHOTOGRAPH','See it. Frame it. Take it.','A few ordinary actions make a photograph yours.','/guide-first-photo.html','Your first-photo guide')+'<div class="ed-grid ed-three">'+''.join(f'<article>{photo(im)}<p class="ed-small">{num}</p><h3>{title}</h3><p>{copy}</p></article>' for im,num,title,copy in [('shooting','01','Find your frame.','Raise the camera toward the person or place and compose with the small viewfinder.'),('shutter','02','Press the red shutter.','Hold the camera steadily and use the physical shutter to take the photograph.'),('result','03','Keep the photograph in sight.','Give a favorite image a paper-like place on the larger color e-paper display.')])+'</div></section>'
     paper='<section class="ed-section ed-paper" id="e-paper"><div>'+head('THE PHOTOGRAPH STAYS','A little piece of the day, still here.','After the walk, the photograph comes home with you.')+'<p>The 3.7-inch color e-paper display is matte and reflective. The small viewfinder and the larger photo display have different jobs.</p><p>Taking photos and updating the display require power. Keeper displays photographs; it does not make paper prints.</p><a class="ed-text-link" href="/guide-epaper.html">Get to know color e-paper ↗</a></div><div>'+photo('epaper-triptych')+'<p class="ed-small">The same static photograph in three everyday places. Screen images are simulated.</p></div></section>'
-    daily='<section class="ed-section" id="everyday">'+head('MAKE TIME FOR A PHOTOGRAPH','There is something worth keeping in an ordinary day.','','/moments.html','More photo stories')+'<div class="ed-mosaic">'+''.join(f'<a href="/moments.html#{key}">{photo(key)}<h3>{title}</h3></a>' for key,title in [('street','A walk with your people.'),('campus','The people you meet along the way.'),('family','A birthday at home.'),('pets','The face you always photograph.'),('cafe','Stay for another coffee.'),('trail','Take the longer way back.')])+'</div></section>'
+    daily=inspiration_section()
     finder='<section class="ed-section ed-finder-callout"><div><p class="sf-kicker">A LITTLE HELP CHOOSING</p><h2>Which Keeper looks like you?</h2><p>Choose a mood, see three exteriors together, and find your favorite. Every choice has the same camera inside.</p></div><a class="sf-buy" href="/find-your-keeper.html">Find your Keeper ↗</a></section>'
     gift='<section class="ed-section ed-gift-intro"><div>'+photo('gift')+'</div><div>'+head('GIVE THEM THEIR NEXT PHOTOGRAPH','A camera for someone you know well.','For the friend who comes on every walk, the person across the table, or the family photographer.')+'<a class="sf-buy" href="/gifting.html">Explore gifting ↗</a><p class="ed-small">One camera with your selected exterior, gift box, lanyard and instruction manual.</p></div></section>'+_paired_section(c)+_box(c)
     media='<section class="ed-section" id="media">'+head('IN THE PICTURE','Media & creative company.',DEMO,'/press.html','Media & partnerships')+press_cards()+logos()+'</section>'
@@ -152,8 +170,8 @@ def home_body(c):
 
 
 def updates():
-    items=[('Four languages, one Keeper.','Read the site in English, Chinese, Japanese or Korean.','/owners.html#site-updates'),('128 exterior choices.','Explore 68 individual designs and 30 pairs.','/styles.html'),('A new set of field notes.','Three guides for your first photographs and everyday walks.','/learn.html')]
-    return '<div class="ed-updates" id="studio-updates"><h3>From the studio</h3>'+''.join(f'<a href="{u}"><time datetime="2026-11-09">2026.11.09</time><div><strong>{t}</strong><p>{copy}</p></div><span aria-hidden="true">↗</span></a>' for t,copy,u in items)+'</div>'
+    items=[('26 new photo ideas.','Friends, campus, travel and gifts, with a Keeper photograph in the same scene.','/moments.html#photo-ideas'),('Four languages, one Keeper.','Read the site in English, Chinese, Japanese or Korean.','/owners.html#site-updates'),('128 exterior choices.','Explore 68 individual designs and 30 pairs.','/styles.html'),('A new set of field notes.','Three guides for your first photographs and everyday walks.','/learn.html')]
+    return '<div class="ed-updates" id="studio-updates"><h3>From the studio</h3>'+''.join(f'<a href="{u}"><time datetime="{"2026-11-10" if u=="/moments.html#photo-ideas" else "2026-11-09"}">{"2026.11.10" if u=="/moments.html#photo-ideas" else "2026.11.09"}</time><div><strong>{t}</strong><p>{copy}</p></div><span aria-hidden="true">↗</span></a>' for t,copy,u in items)+'</div>'
 
 
 def finder_body(c):
@@ -167,7 +185,7 @@ def finder_body(c):
 
 
 def learn_body(c):
-    return '<div class="storefront editorial">'+intro('FIELD NOTES','A camera. A little curiosity.','Start with the basics, take a walk and get to know the photograph on your camera.')+'<section class="ed-section">'+guide_cards()+updates()+'</section>'+_how()+newsletter()+_end(c)+'</div>'
+    return '<div class="storefront editorial">'+intro('FIELD NOTES','A camera. A little curiosity.','Start with the basics, take a walk and get to know the photograph on your camera.')+'<section class="ed-section">'+head('PHOTO IDEAS','26 ways to take Keeper along.','','/moments.html#photo-ideas','Explore all 26 photo ideas')+guide_cards()+updates()+'</section>'+_how()+newsletter()+_end(c)+'</div>'
 
 
 def guide_body(c, slug):
@@ -195,6 +213,4 @@ def owners_body(c):
 
 
 def moments_body(c):
-    titles={'hero':'Photograph your people.','street':'A walk with your people.','cafe':'Stay for another coffee.','campus':'The people you meet along the way.','pets':'The face you always photograph.','carry':'Bring the camera along.','gift':'Give them their next photograph.','studio':'Bring a photograph home.','family':'A birthday at home.','trail':'Take the longer way back.'}
-    stories=''.join(f'<article id="{key}">{photo(key)}<h2>{title}</h2><p>{CONTENT["images"][key]["story"]}</p><a class="ed-text-link" href="/camera.html?style={CONTENT["images"][key]["style"]}#choose-style">Find this look ↗</a></article>' for key,title in titles.items())
-    return '<div class="storefront editorial">'+intro('PHOTO DIARY','Everyday photographs, worth a second look.','A small album of the people, places and little things you could bring Keeper along to photograph.')+diary_section(True)+head('THE CAMERA COMES ALONG','From the photograph to the camera.','See how a Keeper camera can come along for these everyday moments.')+'<section class="ed-section ed-story-grid">'+stories+'</section><section class="ed-section ed-brand">'+demo_form('membership')+'<div><h2>Share a photo-walk idea.</h2><p>The photo circle is a preview of future community content. There is no active membership, rewards program or account signup yet.</p><div class="kr-share-actions" hidden><button type="button" data-share-url="https://keeper.day/moments.html">Share the everyday gallery ↗</button><button type="button" data-copy-url="https://keeper.day/moments.html">Copy link</button><span data-share-status role="status"></span></div></div></section>'+newsletter()+_end(c)+diary_dialog()+'</div>'
+    return '<div class="storefront editorial">'+intro('PHOTO DIARY','Everyday photographs, worth a second look.','A small album of the people, places and little things you could bring Keeper along to photograph.')+inspiration_section(True)+head('PHOTO DIARY','The moments you didn’t plan.','Friends between plans. A dog at the door. A view worth stopping for.')+diary_section(True)+'<section class="ed-section ed-brand">'+demo_form('membership')+'<div><h2>Share a photo-walk idea.</h2><p>The photo circle is a preview of future community content. There is no active membership, rewards program or account signup yet.</p><div class="kr-share-actions" hidden><button type="button" data-share-url="https://keeper.day/moments.html">Share the everyday gallery ↗</button><button type="button" data-copy-url="https://keeper.day/moments.html">Copy link</button><span data-share-status role="status"></span></div></div></section>'+newsletter()+_end(c)+diary_dialog()+'</div>'

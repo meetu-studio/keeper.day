@@ -1,94 +1,194 @@
 {
   "images": {
     "hero": {
-      "image": "/assets/editorial/20261109-shooting/hero",
-      "alt": "American friends being photographed with a landscape Keeper camera",
-      "style": "st-46",
-      "story": "Bring the camera to the people you want to photograph. A pause together can become the picture you keep.",
+      "id": "03-favorite-people",
+      "title": "Friends outside the café.",
+      "story": "Take the photograph between conversations, while everyone is still laughing.",
+      "alt": "Friends outside the café. — Keeper ST-50 in an American everyday setting",
+      "style": "st-50",
+      "category": "friends",
+      "image": "/assets/inspiration/20261110/03-favorite-people",
+      "sizes": [
+        480,
+        960,
+        1440
+      ],
+      "width": 1440,
+      "height": 960,
       "placeholder": true,
-      "source": "attachments/keeper-day/website-shooting-references-20261109/final/hero.png",
-      "shooting_reference": "website-shooting-references-20261109/replacement-guide.md#hero"
+      "source": "attachments/keeper-day/instax-inspired-20261110/final/03-favorite-people.png",
+      "shooting_reference": "keeper-day-instax-inspired-photo-library-20261110.md#03-favorite-people"
     },
     "street": {
-      "image": "/assets/editorial/20261109-shooting/street",
-      "alt": "American photographer using a Keeper ST-12 camera to photograph a friend with a skateboard on a neighborhood stoop",
-      "style": "st-12",
-      "story": "Ask a friend to pause on the stoop. Frame them and their skateboard with ST-12, then press the red shutter before the walk continues.",
+      "id": "04-color-walk",
+      "title": "Follow a color.",
+      "story": "Choose one color on your walk. A blue wall and a bicycle can be the whole story.",
+      "alt": "Follow a color. — Keeper ST-31 in an American everyday setting",
+      "style": "st-31",
+      "category": "travel",
+      "image": "/assets/inspiration/20261110/04-color-walk",
+      "sizes": [
+        480,
+        960,
+        1440
+      ],
+      "width": 1440,
+      "height": 960,
       "placeholder": true,
-      "source": "attachments/keeper-day/website-shooting-references-20261109/final/street.png",
-      "shooting_reference": "website-shooting-references-20261109/replacement-guide.md#street"
+      "source": "attachments/keeper-day/instax-inspired-20261110/final/04-color-walk.png",
+      "shooting_reference": "keeper-day-instax-inspired-photo-library-20261110.md#04-color-walk"
     },
     "cafe": {
-      "image": "/assets/editorial/20261109-shooting/cafe",
-      "alt": "American friends at a cafe: a Keeper ST-42 camera frames a laughing friend across the table",
-      "style": "st-42",
-      "story": "Sit facing the window light. Hold ST-42 in both hands and photograph the laugh across the table; the coffee can wait a second.",
+      "id": "07-love-story",
+      "title": "Across the café table.",
+      "story": "Window light, a coffee and the person across from you. Start with their expression.",
+      "alt": "Across the café table. — Keeper ST-50 in an American everyday setting",
+      "style": "st-50",
+      "category": "friends",
+      "image": "/assets/inspiration/20261110/07-love-story",
+      "sizes": [
+        480,
+        960,
+        1440
+      ],
+      "width": 1440,
+      "height": 960,
       "placeholder": true,
-      "source": "attachments/keeper-day/website-shooting-references-20261109/final/cafe.png",
-      "shooting_reference": "website-shooting-references-20261109/replacement-guide.md#cafe"
+      "source": "attachments/keeper-day/instax-inspired-20261110/final/07-love-story.png",
+      "shooting_reference": "keeper-day-instax-inspired-photo-library-20261110.md#07-love-story"
     },
     "campus": {
-      "image": "/assets/editorial/20261109-shooting/campus",
-      "alt": "An American student photographs two college friends with a Keeper ST-27 camera on a campus lawn",
+      "id": "17-college-life",
+      "title": "Between classes.",
+      "story": "Books on the grass and friends with a little time to spare. Make a photograph together.",
+      "alt": "Between classes. — Keeper ST-27 in an American everyday setting",
       "style": "st-27",
-      "story": "Sit on the grass with your friends. Keep both faces in the small viewfinder, take the photograph with ST-27, and bring that afternoon along.",
+      "category": "campus",
+      "image": "/assets/inspiration/20261110/17-college-life",
+      "sizes": [
+        480,
+        960,
+        1440
+      ],
+      "width": 1440,
+      "height": 960,
       "placeholder": true,
-      "source": "attachments/keeper-day/website-shooting-references-20261109/final/campus.png",
-      "shooting_reference": "website-shooting-references-20261109/replacement-guide.md#campus"
+      "source": "attachments/keeper-day/instax-inspired-20261110/final/17-college-life.png",
+      "shooting_reference": "keeper-day-instax-inspired-photo-library-20261110.md#17-college-life"
     },
     "pets": {
-      "image": "/assets/editorial/20261109-shooting/pets",
-      "alt": "A Keeper ST-48 camera held at dog-eye level photographs a golden retriever in a Chicago park",
-      "style": "st-48",
-      "story": "Kneel to your dog’s eye level. Have a friend hold a treat just beside you, frame that familiar face with ST-48 and wait for the head tilt.",
+      "id": "05-two-perspectives",
+      "title": "A friend and their dog.",
+      "story": "Get down to their level and leave room for both faces in the photograph.",
+      "alt": "A friend and their dog. — Keeper P-01-A in an American everyday setting",
+      "style": "p-01-a",
+      "category": "pets",
+      "image": "/assets/inspiration/20261110/05-two-perspectives",
+      "sizes": [
+        480,
+        960,
+        1440
+      ],
+      "width": 1440,
+      "height": 960,
       "placeholder": true,
-      "source": "attachments/keeper-day/website-shooting-references-20261109/final/pets.png",
-      "shooting_reference": "website-shooting-references-20261109/replacement-guide.md#pets"
+      "source": "attachments/keeper-day/instax-inspired-20261110/final/05-two-perspectives.png",
+      "shooting_reference": "keeper-day-instax-inspired-photo-library-20261110.md#05-two-perspectives"
     },
     "carry": {
-      "image": "/assets/editorial/20261109-shooting/carry",
-      "alt": "Keeper camera and its original wrist strap resting beside a canvas tote",
-      "style": "classic",
-      "story": "Take the camera along with the things you use every day. Follow the included manual when attaching the lanyard.",
+      "id": "11-carry-a-photo",
+      "title": "Ready for a walk.",
+      "story": "Photograph the dog waiting at the door, then bring Keeper along in your bag.",
+      "alt": "Ready for a walk. — Keeper ST-42 in an American everyday setting",
+      "style": "st-42",
+      "category": "pets",
+      "image": "/assets/inspiration/20261110/11-carry-a-photo",
+      "sizes": [
+        480,
+        960,
+        1440
+      ],
+      "width": 1440,
+      "height": 960,
       "placeholder": true,
-      "source": "attachments/keeper-day/website-shooting-references-20261109/final/carry.png",
-      "shooting_reference": "website-shooting-references-20261109/replacement-guide.md#carry"
+      "source": "attachments/keeper-day/instax-inspired-20261110/final/11-carry-a-photo.png",
+      "shooting_reference": "keeper-day-instax-inspired-photo-library-20261110.md#11-carry-a-photo"
     },
     "gift": {
-      "image": "/assets/editorial/20261109-shooting/gift",
-      "alt": "Two separately sold Keeper sun and moon designs beside a gift box",
+      "id": "20-gift-a-memory",
+      "title": "Put a memory in the gift.",
+      "story": "Choose a photograph with meaning before giving them a camera for the next one.",
+      "alt": "Put a memory in the gift. — Keeper P-01-A in an American everyday setting",
       "style": "p-01-a",
-      "story": "Choose the side that suits them. The pair is shown for inspiration; each purchase is one camera.",
+      "category": "gifts",
+      "image": "/assets/inspiration/20261110/20-gift-a-memory",
+      "sizes": [
+        480,
+        960,
+        1440
+      ],
+      "width": 1440,
+      "height": 960,
       "placeholder": true,
-      "source": "attachments/keeper-day/website-shooting-references-20261109/final/gift.png",
-      "shooting_reference": "website-shooting-references-20261109/replacement-guide.md#gift"
+      "source": "attachments/keeper-day/instax-inspired-20261110/final/20-gift-a-memory.png",
+      "shooting_reference": "keeper-day-instax-inspired-photo-library-20261110.md#20-gift-a-memory"
     },
     "studio": {
-      "image": "/assets/editorial/20261109-shooting/studio",
-      "alt": "Original grid-pattern Keeper on an illustrated design worktable",
-      "style": "st-31",
-      "story": "A photograph from the walk can stay nearby while the rest of the day carries on.",
+      "id": "15-desk-photo",
+      "title": "Back at your desk.",
+      "story": "Photograph the flowers on your desk. Let that picture stay nearby as the day goes on.",
+      "alt": "Back at your desk. — Keeper ST-42 in an American everyday setting",
+      "style": "st-42",
+      "category": "home",
+      "image": "/assets/inspiration/20261110/15-desk-photo",
+      "sizes": [
+        480,
+        960,
+        1440
+      ],
+      "width": 1440,
+      "height": 960,
       "placeholder": true,
-      "source": "attachments/keeper-day/website-shooting-references-20261109/final/studio.png",
-      "shooting_reference": "website-shooting-references-20261109/replacement-guide.md#studio"
+      "source": "attachments/keeper-day/instax-inspired-20261110/final/15-desk-photo.png",
+      "shooting_reference": "keeper-day-instax-inspired-photo-library-20261110.md#15-desk-photo"
     },
     "family": {
-      "image": "/assets/editorial/20261109-shooting/family",
-      "alt": "An American family being photographed with Keeper at a backyard birthday",
-      "style": "st-27",
-      "story": "The candles, the conversation and the face you want to remember. Bring a camera for the family photograph.",
+      "id": "18-birthday-person",
+      "title": "Today is their day.",
+      "story": "Wait for the birthday smile, with the cake and everyone gathered around.",
+      "alt": "Today is their day. — Keeper P-01-A in an American everyday setting",
+      "style": "p-01-a",
+      "category": "gifts",
+      "image": "/assets/inspiration/20261110/18-birthday-person",
+      "sizes": [
+        480,
+        960,
+        1440
+      ],
+      "width": 1440,
+      "height": 960,
       "placeholder": true,
-      "source": "attachments/keeper-day/website-shooting-references-20261109/final/family.png",
-      "shooting_reference": "website-shooting-references-20261109/replacement-guide.md#family"
+      "source": "attachments/keeper-day/instax-inspired-20261110/final/18-birthday-person.png",
+      "shooting_reference": "keeper-day-instax-inspired-photo-library-20261110.md#18-birthday-person"
     },
     "trail": {
-      "image": "/assets/editorial/20261109-shooting/trail",
-      "alt": "American friends taking photographs with Keeper on a mountain trail",
+      "id": "21-adventure-diary",
+      "title": "The morning at camp.",
+      "story": "Before packing up, photograph the tent, the water and the place you woke up.",
+      "alt": "The morning at camp. — Keeper ST-46 in an American everyday setting",
       "style": "st-46",
-      "story": "Stop together, look back at the view and take a photograph before the next bend.",
+      "category": "travel",
+      "image": "/assets/inspiration/20261110/21-adventure-diary",
+      "sizes": [
+        480,
+        960,
+        1440
+      ],
+      "width": 1440,
+      "height": 960,
       "placeholder": true,
-      "source": "attachments/keeper-day/website-shooting-references-20261109/final/trail.png",
-      "shooting_reference": "website-shooting-references-20261109/replacement-guide.md#trail"
+      "source": "attachments/keeper-day/instax-inspired-20261110/final/21-adventure-diary.png",
+      "shooting_reference": "keeper-day-instax-inspired-photo-library-20261110.md#21-adventure-diary"
     },
     "shutter": {
       "image": "/assets/editorial/20261109-shooting/shutter",
@@ -163,13 +263,32 @@
       "shooting_reference": "website-shooting-references-20261109/replacement-guide.md#press-3"
     },
     "result": {
-      "image": "/assets/editorial/20261109-shooting/result",
+      "id": "25-frame-the-day",
+      "title": "A familiar face at home.",
+      "story": "A friend, a dog and the sofa everyone knows. Keep that ordinary afternoon close.",
+      "alt": "A familiar face at home. — Keeper ST-31 in an American everyday setting",
+      "style": "st-31",
+      "category": "pets",
+      "image": "/assets/inspiration/20261110/25-frame-the-day",
+      "sizes": [
+        480,
+        960,
+        1440
+      ],
+      "width": 1440,
+      "height": 960,
+      "placeholder": true,
+      "source": "attachments/keeper-day/instax-inspired-20261110/final/25-frame-the-day.png",
+      "shooting_reference": "keeper-day-instax-inspired-photo-library-20261110.md#25-frame-the-day"
+    },
+    "shooting": {
+      "image": "/assets/editorial/20261109-shooting/hero",
       "alt": "American friends being photographed with a landscape Keeper camera",
       "style": "st-46",
       "story": "Bring the camera to the people you want to photograph. A pause together can become the picture you keep.",
       "placeholder": true,
-      "source": "attachments/keeper-day/website-shooting-references-20261109/final/result.png",
-      "shooting_reference": "website-shooting-references-20261109/replacement-guide.md#result"
+      "source": "attachments/keeper-day/website-shooting-references-20261109/final/hero.png",
+      "shooting_reference": "website-shooting-references-20261109/replacement-guide.md#hero"
     }
   },
   "recommendations": {
@@ -512,6 +631,502 @@
       ],
       "placeholder": true,
       "source": "ChatGPT Imagegen, 2026-11-10"
+    }
+  ],
+  "inspiration": [
+    {
+      "id": "01-self-portrait",
+      "title": "A smile in the garden.",
+      "story": "Photograph a friend among the leaves, then hold that smile beside them.",
+      "alt": "A smile in the garden. — Keeper ST-42 in an American everyday setting",
+      "style": "st-42",
+      "category": "friends",
+      "image": "/assets/inspiration/20261110/01-self-portrait",
+      "sizes": [
+        480,
+        960,
+        1440
+      ],
+      "width": 1440,
+      "height": 960,
+      "placeholder": true,
+      "source": "attachments/keeper-day/instax-inspired-20261110/final/01-self-portrait.png",
+      "shooting_reference": "keeper-day-instax-inspired-photo-library-20261110.md#01-self-portrait"
+    },
+    {
+      "id": "02-nature-walk",
+      "title": "Bring the lake along.",
+      "story": "Find a branch, a reflection and a quiet view. Keep that same lake in sight.",
+      "alt": "Bring the lake along. — Keeper ST-46 in an American everyday setting",
+      "style": "st-46",
+      "category": "travel",
+      "image": "/assets/inspiration/20261110/02-nature-walk",
+      "sizes": [
+        480,
+        960,
+        1440
+      ],
+      "width": 1440,
+      "height": 960,
+      "placeholder": true,
+      "source": "attachments/keeper-day/instax-inspired-20261110/final/02-nature-walk.png",
+      "shooting_reference": "keeper-day-instax-inspired-photo-library-20261110.md#02-nature-walk"
+    },
+    {
+      "id": "03-favorite-people",
+      "title": "Friends outside the café.",
+      "story": "Take the photograph between conversations, while everyone is still laughing.",
+      "alt": "Friends outside the café. — Keeper ST-50 in an American everyday setting",
+      "style": "st-50",
+      "category": "friends",
+      "image": "/assets/inspiration/20261110/03-favorite-people",
+      "sizes": [
+        480,
+        960,
+        1440
+      ],
+      "width": 1440,
+      "height": 960,
+      "placeholder": true,
+      "source": "attachments/keeper-day/instax-inspired-20261110/final/03-favorite-people.png",
+      "shooting_reference": "keeper-day-instax-inspired-photo-library-20261110.md#03-favorite-people"
+    },
+    {
+      "id": "04-color-walk",
+      "title": "Follow a color.",
+      "story": "Choose one color on your walk. A blue wall and a bicycle can be the whole story.",
+      "alt": "Follow a color. — Keeper ST-31 in an American everyday setting",
+      "style": "st-31",
+      "category": "travel",
+      "image": "/assets/inspiration/20261110/04-color-walk",
+      "sizes": [
+        480,
+        960,
+        1440
+      ],
+      "width": 1440,
+      "height": 960,
+      "placeholder": true,
+      "source": "attachments/keeper-day/instax-inspired-20261110/final/04-color-walk.png",
+      "shooting_reference": "keeper-day-instax-inspired-photo-library-20261110.md#04-color-walk"
+    },
+    {
+      "id": "05-two-perspectives",
+      "title": "A friend and their dog.",
+      "story": "Get down to their level and leave room for both faces in the photograph.",
+      "alt": "A friend and their dog. — Keeper P-01-A in an American everyday setting",
+      "style": "p-01-a",
+      "category": "pets",
+      "image": "/assets/inspiration/20261110/05-two-perspectives",
+      "sizes": [
+        480,
+        960,
+        1440
+      ],
+      "width": 1440,
+      "height": 960,
+      "placeholder": true,
+      "source": "attachments/keeper-day/instax-inspired-20261110/final/05-two-perspectives.png",
+      "shooting_reference": "keeper-day-instax-inspired-photo-library-20261110.md#05-two-perspectives"
+    },
+    {
+      "id": "06-your-city",
+      "title": "Your own street corner.",
+      "story": "Photograph the corner you pass every day, with its buildings, light and people.",
+      "alt": "Your own street corner. — Keeper ST-12 in an American everyday setting",
+      "style": "st-12",
+      "category": "travel",
+      "image": "/assets/inspiration/20261110/06-your-city",
+      "sizes": [
+        480,
+        960,
+        1440
+      ],
+      "width": 1440,
+      "height": 960,
+      "placeholder": true,
+      "source": "attachments/keeper-day/instax-inspired-20261110/final/06-your-city.png",
+      "shooting_reference": "keeper-day-instax-inspired-photo-library-20261110.md#06-your-city"
+    },
+    {
+      "id": "07-love-story",
+      "title": "Across the café table.",
+      "story": "Window light, a coffee and the person across from you. Start with their expression.",
+      "alt": "Across the café table. — Keeper ST-50 in an American everyday setting",
+      "style": "st-50",
+      "category": "friends",
+      "image": "/assets/inspiration/20261110/07-love-story",
+      "sizes": [
+        480,
+        960,
+        1440
+      ],
+      "width": 1440,
+      "height": 960,
+      "placeholder": true,
+      "source": "attachments/keeper-day/instax-inspired-20261110/final/07-love-story.png",
+      "shooting_reference": "keeper-day-instax-inspired-photo-library-20261110.md#07-love-story"
+    },
+    {
+      "id": "08-new-beginnings",
+      "title": "The first day at home.",
+      "story": "Before the boxes are unpacked, photograph the people making this place home.",
+      "alt": "The first day at home. — Keeper ST-31 in an American everyday setting",
+      "style": "st-31",
+      "category": "gifts",
+      "image": "/assets/inspiration/20261110/08-new-beginnings",
+      "sizes": [
+        480,
+        960,
+        1440
+      ],
+      "width": 1440,
+      "height": 960,
+      "placeholder": true,
+      "source": "attachments/keeper-day/instax-inspired-20261110/final/08-new-beginnings.png",
+      "shooting_reference": "keeper-day-instax-inspired-photo-library-20261110.md#08-new-beginnings"
+    },
+    {
+      "id": "09-graduation-news",
+      "title": "Keep graduation day.",
+      "story": "Keep the gown, the flowers and the familiar campus in one graduation portrait.",
+      "alt": "Keep graduation day. — Keeper ST-27 in an American everyday setting",
+      "style": "st-27",
+      "category": "campus",
+      "image": "/assets/inspiration/20261110/09-graduation-news",
+      "sizes": [
+        480,
+        960,
+        1440
+      ],
+      "width": 1440,
+      "height": 960,
+      "placeholder": true,
+      "source": "attachments/keeper-day/instax-inspired-20261110/final/09-graduation-news.png",
+      "shooting_reference": "keeper-day-instax-inspired-photo-library-20261110.md#09-graduation-news"
+    },
+    {
+      "id": "10-thank-you",
+      "title": "A photograph to say thanks.",
+      "story": "Bring flowers, take a portrait and show them the smile you wanted to remember.",
+      "alt": "A photograph to say thanks. — Keeper ST-50 in an American everyday setting",
+      "style": "st-50",
+      "category": "gifts",
+      "image": "/assets/inspiration/20261110/10-thank-you",
+      "sizes": [
+        480,
+        960,
+        1440
+      ],
+      "width": 1440,
+      "height": 960,
+      "placeholder": true,
+      "source": "attachments/keeper-day/instax-inspired-20261110/final/10-thank-you.png",
+      "shooting_reference": "keeper-day-instax-inspired-photo-library-20261110.md#10-thank-you"
+    },
+    {
+      "id": "11-carry-a-photo",
+      "title": "Ready for a walk.",
+      "story": "Photograph the dog waiting at the door, then bring Keeper along in your bag.",
+      "alt": "Ready for a walk. — Keeper ST-42 in an American everyday setting",
+      "style": "st-42",
+      "category": "pets",
+      "image": "/assets/inspiration/20261110/11-carry-a-photo",
+      "sizes": [
+        480,
+        960,
+        1440
+      ],
+      "width": 1440,
+      "height": 960,
+      "placeholder": true,
+      "source": "attachments/keeper-day/instax-inspired-20261110/final/11-carry-a-photo.png",
+      "shooting_reference": "keeper-day-instax-inspired-photo-library-20261110.md#11-carry-a-photo"
+    },
+    {
+      "id": "12-keys-to-a-day",
+      "title": "One look before you leave.",
+      "story": "The cat on the bench, a little morning light and your keys ready to go.",
+      "alt": "One look before you leave. — Keeper ST-48 in an American everyday setting",
+      "style": "st-48",
+      "category": "pets",
+      "image": "/assets/inspiration/20261110/12-keys-to-a-day",
+      "sizes": [
+        480,
+        960,
+        1440
+      ],
+      "width": 1440,
+      "height": 960,
+      "placeholder": true,
+      "source": "attachments/keeper-day/instax-inspired-20261110/final/12-keys-to-a-day.png",
+      "shooting_reference": "keeper-day-instax-inspired-photo-library-20261110.md#12-keys-to-a-day"
+    },
+    {
+      "id": "13-notes-to-remember",
+      "title": "Notes from a walk.",
+      "story": "Arrange the leaves and small things you brought home. Photograph your afternoon.",
+      "alt": "Notes from a walk. — Keeper ST-12 in an American everyday setting",
+      "style": "st-12",
+      "category": "home",
+      "image": "/assets/inspiration/20261110/13-notes-to-remember",
+      "sizes": [
+        480,
+        960,
+        1440
+      ],
+      "width": 1440,
+      "height": 960,
+      "placeholder": true,
+      "source": "attachments/keeper-day/instax-inspired-20261110/final/13-notes-to-remember.png",
+      "shooting_reference": "keeper-day-instax-inspired-photo-library-20261110.md#13-notes-to-remember"
+    },
+    {
+      "id": "14-monthly-photo",
+      "title": "One photograph each month.",
+      "story": "Choose something seasonal to photograph, and keep it beside your paper calendar.",
+      "alt": "One photograph each month. — Keeper ST-31 in an American everyday setting",
+      "style": "st-31",
+      "category": "home",
+      "image": "/assets/inspiration/20261110/14-monthly-photo",
+      "sizes": [
+        480,
+        960,
+        1440
+      ],
+      "width": 1440,
+      "height": 960,
+      "placeholder": true,
+      "source": "attachments/keeper-day/instax-inspired-20261110/final/14-monthly-photo.png",
+      "shooting_reference": "keeper-day-instax-inspired-photo-library-20261110.md#14-monthly-photo"
+    },
+    {
+      "id": "15-desk-photo",
+      "title": "Back at your desk.",
+      "story": "Photograph the flowers on your desk. Let that picture stay nearby as the day goes on.",
+      "alt": "Back at your desk. — Keeper ST-42 in an American everyday setting",
+      "style": "st-42",
+      "category": "home",
+      "image": "/assets/inspiration/20261110/15-desk-photo",
+      "sizes": [
+        480,
+        960,
+        1440
+      ],
+      "width": 1440,
+      "height": 960,
+      "placeholder": true,
+      "source": "attachments/keeper-day/instax-inspired-20261110/final/15-desk-photo.png",
+      "shooting_reference": "keeper-day-instax-inspired-photo-library-20261110.md#15-desk-photo"
+    },
+    {
+      "id": "16-reason-to-go",
+      "title": "A reason to go again.",
+      "story": "On a safe overlook, photograph your friend with enough of the landscape to remember the walk.",
+      "alt": "A reason to go again. — Keeper ST-46 in an American everyday setting",
+      "style": "st-46",
+      "category": "travel",
+      "image": "/assets/inspiration/20261110/16-reason-to-go",
+      "sizes": [
+        480,
+        960,
+        1440
+      ],
+      "width": 1440,
+      "height": 960,
+      "placeholder": true,
+      "source": "attachments/keeper-day/instax-inspired-20261110/final/16-reason-to-go.png",
+      "shooting_reference": "keeper-day-instax-inspired-photo-library-20261110.md#16-reason-to-go"
+    },
+    {
+      "id": "17-college-life",
+      "title": "Between classes.",
+      "story": "Books on the grass and friends with a little time to spare. Make a photograph together.",
+      "alt": "Between classes. — Keeper ST-27 in an American everyday setting",
+      "style": "st-27",
+      "category": "campus",
+      "image": "/assets/inspiration/20261110/17-college-life",
+      "sizes": [
+        480,
+        960,
+        1440
+      ],
+      "width": 1440,
+      "height": 960,
+      "placeholder": true,
+      "source": "attachments/keeper-day/instax-inspired-20261110/final/17-college-life.png",
+      "shooting_reference": "keeper-day-instax-inspired-photo-library-20261110.md#17-college-life"
+    },
+    {
+      "id": "18-birthday-person",
+      "title": "Today is their day.",
+      "story": "Wait for the birthday smile, with the cake and everyone gathered around.",
+      "alt": "Today is their day. — Keeper P-01-A in an American everyday setting",
+      "style": "p-01-a",
+      "category": "gifts",
+      "image": "/assets/inspiration/20261110/18-birthday-person",
+      "sizes": [
+        480,
+        960,
+        1440
+      ],
+      "width": 1440,
+      "height": 960,
+      "placeholder": true,
+      "source": "attachments/keeper-day/instax-inspired-20261110/final/18-birthday-person.png",
+      "shooting_reference": "keeper-day-instax-inspired-photo-library-20261110.md#18-birthday-person"
+    },
+    {
+      "id": "19-place-at-the-table",
+      "title": "Around the brunch table.",
+      "story": "A plate of toast, a hand reaching for a glass and a table worth remembering.",
+      "alt": "Around the brunch table. — Keeper ST-50 in an American everyday setting",
+      "style": "st-50",
+      "category": "food",
+      "image": "/assets/inspiration/20261110/19-place-at-the-table",
+      "sizes": [
+        480,
+        960,
+        1440
+      ],
+      "width": 1440,
+      "height": 960,
+      "placeholder": true,
+      "source": "attachments/keeper-day/instax-inspired-20261110/final/19-place-at-the-table.png",
+      "shooting_reference": "keeper-day-instax-inspired-photo-library-20261110.md#19-place-at-the-table"
+    },
+    {
+      "id": "20-gift-a-memory",
+      "title": "Put a memory in the gift.",
+      "story": "Choose a photograph with meaning before giving them a camera for the next one.",
+      "alt": "Put a memory in the gift. — Keeper P-01-A in an American everyday setting",
+      "style": "p-01-a",
+      "category": "gifts",
+      "image": "/assets/inspiration/20261110/20-gift-a-memory",
+      "sizes": [
+        480,
+        960,
+        1440
+      ],
+      "width": 1440,
+      "height": 960,
+      "placeholder": true,
+      "source": "attachments/keeper-day/instax-inspired-20261110/final/20-gift-a-memory.png",
+      "shooting_reference": "keeper-day-instax-inspired-photo-library-20261110.md#20-gift-a-memory"
+    },
+    {
+      "id": "21-adventure-diary",
+      "title": "The morning at camp.",
+      "story": "Before packing up, photograph the tent, the water and the place you woke up.",
+      "alt": "The morning at camp. — Keeper ST-46 in an American everyday setting",
+      "style": "st-46",
+      "category": "travel",
+      "image": "/assets/inspiration/20261110/21-adventure-diary",
+      "sizes": [
+        480,
+        960,
+        1440
+      ],
+      "width": 1440,
+      "height": 960,
+      "placeholder": true,
+      "source": "attachments/keeper-day/instax-inspired-20261110/final/21-adventure-diary.png",
+      "shooting_reference": "keeper-day-instax-inspired-photo-library-20261110.md#21-adventure-diary"
+    },
+    {
+      "id": "22-food-diary",
+      "title": "Remember this breakfast.",
+      "story": "A familiar diner, pancakes and coffee. Photograph the table before the first bite.",
+      "alt": "Remember this breakfast. — Keeper ST-27 in an American everyday setting",
+      "style": "st-27",
+      "category": "food",
+      "image": "/assets/inspiration/20261110/22-food-diary",
+      "sizes": [
+        480,
+        960,
+        1440
+      ],
+      "width": 1440,
+      "height": 960,
+      "placeholder": true,
+      "source": "attachments/keeper-day/instax-inspired-20261110/final/22-food-diary.png",
+      "shooting_reference": "keeper-day-instax-inspired-photo-library-20261110.md#22-food-diary"
+    },
+    {
+      "id": "23-weekend-tasting",
+      "title": "A slow weekend table.",
+      "story": "Photograph the grapes, glasses and afternoon light from a weekend together.",
+      "alt": "A slow weekend table. — Keeper ST-12 in an American everyday setting",
+      "style": "st-12",
+      "category": "food",
+      "image": "/assets/inspiration/20261110/23-weekend-tasting",
+      "sizes": [
+        480,
+        960,
+        1440
+      ],
+      "width": 1440,
+      "height": 960,
+      "placeholder": true,
+      "source": "attachments/keeper-day/instax-inspired-20261110/final/23-weekend-tasting.png",
+      "shooting_reference": "keeper-day-instax-inspired-photo-library-20261110.md#23-weekend-tasting"
+    },
+    {
+      "id": "24-flowers-and-photo",
+      "title": "Keep the flowers in bloom.",
+      "story": "Photograph the flowers you arranged, then hold Keeper beside the same bouquet.",
+      "alt": "Keep the flowers in bloom. — Keeper ST-50 in an American everyday setting",
+      "style": "st-50",
+      "category": "home",
+      "image": "/assets/inspiration/20261110/24-flowers-and-photo",
+      "sizes": [
+        480,
+        960,
+        1440
+      ],
+      "width": 1440,
+      "height": 960,
+      "placeholder": true,
+      "source": "attachments/keeper-day/instax-inspired-20261110/final/24-flowers-and-photo.png",
+      "shooting_reference": "keeper-day-instax-inspired-photo-library-20261110.md#24-flowers-and-photo"
+    },
+    {
+      "id": "25-frame-the-day",
+      "title": "A familiar face at home.",
+      "story": "A friend, a dog and the sofa everyone knows. Keep that ordinary afternoon close.",
+      "alt": "A familiar face at home. — Keeper ST-31 in an American everyday setting",
+      "style": "st-31",
+      "category": "pets",
+      "image": "/assets/inspiration/20261110/25-frame-the-day",
+      "sizes": [
+        480,
+        960,
+        1440
+      ],
+      "width": 1440,
+      "height": 960,
+      "placeholder": true,
+      "source": "attachments/keeper-day/instax-inspired-20261110/final/25-frame-the-day.png",
+      "shooting_reference": "keeper-day-instax-inspired-photo-library-20261110.md#25-frame-the-day"
+    },
+    {
+      "id": "26-holiday-memory",
+      "title": "After the decorations come down.",
+      "story": "Photograph the people decorating together, so the day stays after the season ends.",
+      "alt": "After the decorations come down. — Keeper P-01-A in an American everyday setting",
+      "style": "p-01-a",
+      "category": "gifts",
+      "image": "/assets/inspiration/20261110/26-holiday-memory",
+      "sizes": [
+        480,
+        960,
+        1440
+      ],
+      "width": 1440,
+      "height": 960,
+      "placeholder": true,
+      "source": "attachments/keeper-day/instax-inspired-20261110/final/26-holiday-memory.png",
+      "shooting_reference": "keeper-day-instax-inspired-photo-library-20261110.md#26-holiday-memory"
     }
   ]
 }

@@ -143,3 +143,23 @@ body:has(#hubspot-messages-iframe-container .hs-shadow-container.active) #mobile
 /* Keep the new editorial identities readable and their example status visible. */
 .ed-logos img{height:112px}.ed-logos a{display:block}.ed-logos figcaption strong{font-size:12px;color:var(--ink)}.ed-logos figcaption span{display:inline-block;margin-top:5px;color:#704f3e}.ed-grid article[id^="concept-"]{scroll-margin-top:30px}.ed-grid article[id^="concept-"] h2{font-size:23px;overflow-wrap:anywhere}
 @media(max-width:700px){.ed-logos{grid-template-columns:repeat(2,minmax(0,1fr))}.ed-logos img{height:96px}.ed-logos figcaption{font-size:12px}}
+
+.ed-idea-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px 24px}
+[data-inspiration-gallery] .ed-idea-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.ed-idea{min-width:0;position:relative;scroll-margin-top:100px}
+.ed-idea[hidden]{display:none}
+.ed-idea-anchor{position:absolute;top:0;scroll-margin-top:100px}
+.ed-idea-heading{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-top:14px}
+.ed-idea-heading h3{font-size:22px;line-height:1.35;margin:0;min-width:0;text-wrap:pretty}
+.ed-idea-heading>span{flex-shrink:0;font-size:11px;white-space:nowrap}
+.ed-idea>p{font-size:15px;line-height:1.65;margin:10px 0 8px;color:var(--muted)}
+.ed-idea-actions{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px}
+.ed-idea-actions .ed-text-link{min-height:44px;font-size:13px}
+.ed-idea-actions .kr-share-actions{margin:0;gap:8px;flex-wrap:wrap}
+.ed-idea-actions .kr-share-actions button{font-size:12px;min-height:44px;padding:8px 10px}
+.ed-idea-actions [data-share-status]{font-size:12px;max-width:100%;overflow-wrap:anywhere}
+.ed-idea-count{font-size:13px;color:var(--muted);margin:0 0 20px}
+.editorial [data-inspiration-image] img{aspect-ratio:3/2;object-fit:contain;height:auto}
+.page-gifting .sf-hero-image img[src*="/inspiration/"]{width:100%;height:auto;aspect-ratio:3/2;object-fit:contain}
+@media(max-width:900px){.ed-idea-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:700px){.ed-idea-grid,[data-inspiration-gallery] .ed-idea-grid{grid-template-columns:1fr;gap:30px}.ed-idea-heading h3{font-size:21px}.ed-idea>p{font-size:14px}.ed-idea-actions{gap:8px 12px}}

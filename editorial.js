@@ -40,6 +40,33 @@
     finder.addEventListener('change', () => update()); update(false);
   }
   document.querySelectorAll('[data-demo-form]').forEach(form => form.addEventListener('submit', event => event.preventDefault()));
+  const inspiration = document.querySelector('[data-inspiration-gallery]');
+  if (inspiration) {
+    const cards = [...inspiration.querySelectorAll('[data-inspiration-category]')];
+    const filters = [...inspiration.querySelectorAll('[data-inspiration-filter]')];
+    const count = inspiration.querySelector('[data-inspiration-count]');
+    const choose = (category, write = true) => {
+      cards.forEach(card => { card.hidden = category !== 'all' && card.dataset.inspirationCategory !== category; });
+      filters.forEach(link => link.setAttribute('aria-current', String(link.dataset.inspirationFilter === category)));
+      count.textContent = `${cards.filter(card => !card.hidden).length} / ${cards.length}`;
+      if (write) {
+        const url = new URL(location.href);
+        category === 'all' ? url.searchParams.delete('idea') : url.searchParams.set('idea', category);
+        url.hash = 'photo-ideas';
+        history.replaceState(null, '', url);
+        document.dispatchEvent(new Event('keeper:selectionchange'));
+      }
+    };
+    filters.forEach(link => link.addEventListener('click', event => {
+      if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      event.preventDefault(); choose(link.dataset.inspirationFilter);
+    }));
+    const linked = cards.find(card => '#'+card.id === location.hash || [...card.querySelectorAll('.ed-idea-anchor')].some(anchor => '#'+anchor.id === location.hash));
+    const requested = new URL(location.href).searchParams.get('idea');
+    const category = linked?.dataset.inspirationCategory || (filters.some(link => link.dataset.inspirationFilter === requested) ? requested : 'all');
+    choose(category, false);
+    if (linked) requestAnimationFrame(() => linked.scrollIntoView({block:'start'}));
+  }
   const diary = document.querySelector('.ed-diary-dialog');
   if (diary && typeof diary.showModal === 'function') {
     const cards = [...document.querySelectorAll('.ed-diary-card')];

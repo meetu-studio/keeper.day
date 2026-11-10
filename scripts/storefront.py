@@ -20,6 +20,9 @@ def _image(name, alt, eager=False):
     path = name if name.startswith('/') else '/assets/storefront/' + name + '.webp'
     w, h = (659, 891) if 'product-flowers' in path else (1440, 960)
     responsive = ' srcset="/assets/storefront/full-kit-720.webp 720w, /assets/storefront/full-kit.webp 1440w" sizes="(max-width:700px) calc(100vw - 40px), 46vw"' if name == 'full-kit' else ''
+    if '/assets/inspiration/' in path:
+        base = path.removesuffix('-1440.webp')
+        responsive = ' srcset="'+', '.join(f'{base}-{size}.webp {size}w' for size in [480,960,1440])+'" sizes="(max-width:700px) calc(100vw - 40px), 46vw"'
     return f'<img src="{_e(path)}"{responsive} alt="{_e(alt)}" width="{w}" height="{h}" loading="{"eager" if eager else "lazy"}" decoding="async"'+(' fetchpriority="high"' if eager else '')+'>'
 
 
@@ -42,7 +45,8 @@ def _head(kicker, title, copy=''):
 
 
 def _gallery():
-    images = [('/assets/product-flowers.webp','Keeper camera with flower image on the color e-paper display','The camera'),('/assets/editorial/20261109-shooting/trail-1440.webp','A photographer using Keeper to photograph friends on a trail','Out taking photographs'),('/assets/editorial/20261109-shooting/family-1440.webp','A parent using Keeper to photograph a family birthday','Photograph your people'),('full-kit','Keeper camera, gift box, lanyard and instruction manual','What’s included'),('/assets/editorial/20261109-shooting/studio-1440.webp','Original grid-pattern Keeper on an illustrated design worktable','At your desk')]
+    editorial=json.loads((Path(__file__).parent/'editorial-content.json').read_text())['images']
+    images = [('/assets/product-flowers.webp','Keeper camera with flower image on the color e-paper display','The camera'),(editorial['trail']['image']+'-1440.webp',editorial['trail']['alt'],'Out taking photographs'),(editorial['hero']['image']+'-1440.webp',editorial['hero']['alt'],'Photograph your people'),('full-kit','Keeper camera, gift box, lanyard and instruction manual','What’s included'),(editorial['studio']['image']+'-1440.webp',editorial['studio']['alt'],'At your desk')]
     panels, buttons = [], []
     for i, (src, alt, label) in enumerate(images):
         panels.append(f'<figure class="sf-gallery-panel{" sf-hardware" if i == 0 else ""}" id="sf-photo-{i}" data-sf-panel>{_image(src,alt,i==0)}<figcaption>{label}</figcaption></figure>')
@@ -112,7 +116,8 @@ def product_body(commerce):
 
 def gifting_body(commerce):
     c = commerce
-    hero = f'<section class="hero sf-section sf-hero sf-gift-hero" data-enter><div class="sf-hero-copy"><p class="sf-kicker">FOR THEIR NEXT FAVORITE PHOTOGRAPH</p><h1>Give them<br>a <em>camera.</em></h1><p class="sf-lead">For the birthdays, the people and the everyday adventures they want to photograph. A little Keeper, with a gift box and a look of their own.</p>{_purchase(c,"gifting-hero")}</div><figure class="sf-hero-image" data-enter-media>{_lifestyle_image(DATA["camera_story"][1],True)}<figcaption>A camera for the photographs you will make together.<br><span class="sf-micro">AI images and screen simulations are shooting references, not camera sample photographs.</span></figcaption></figure></section>'
+    gift=json.loads((Path(__file__).parent/'editorial-content.json').read_text())['images']['gift']
+    hero = f'<section class="hero sf-section sf-hero sf-gift-hero" data-enter><div class="sf-hero-copy"><p class="sf-kicker">FOR THEIR NEXT FAVORITE PHOTOGRAPH</p><h1>Give them<br>a <em>camera.</em></h1><p class="sf-lead">For the birthdays, the people and the everyday adventures they want to photograph. A little Keeper, with a gift box and a look of their own.</p>{_purchase(c,"gifting-hero")}</div><figure class="sf-hero-image" data-enter-media>{_image(gift["image"]+"-1440.webp",gift["alt"],True)}<figcaption>A camera for the photographs you will make together.<br><span class="sf-micro">AI images and screen simulations are shooting references, not camera sample photographs.</span><br><span class="sf-micro">Gift wrapping shown is a styling example. See the included package below.</span></figcaption></figure></section>'
     contexts = '<section class="sf-section sf-gift-contexts">'+_head('YOU KNOW WHO IT’S FOR','Something to make memories with.')+'<div class="sf-steps"><article><span>FOR YOUR PERSON</span><h3>The days you share.</h3><p>An anniversary, a birthday, or just because a favorite face deserves a place nearby.</p></article><article><span>FOR YOUR FRIEND</span><h3>More days like this.</h3><p>For coffee dates, catch-ups and the person who makes ordinary plans worth remembering.</p></article><article><span>FOR YOUR FAMILY</span><h3>A little closer to home.</h3><p>A thoughtful object for someone who loves taking pictures of the people they love.</p></article></div></section>'
     return '<div class="storefront">'+hero+_box(c)+contexts+_how()+_faq(c)+_end(c)+'</div>'
 

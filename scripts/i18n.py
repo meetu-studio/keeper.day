@@ -163,7 +163,7 @@ class Localizer(HTMLParser):
             for key in ['data-share-url','data-copy-url']:
                 if key in a:
                     p = urlsplit(a[key])
-                    a[key] = 'https://keeper.day'+localized_url(p.path+('?' + p.query if p.query else ''),self.locale)
+                    a[key] = 'https://keeper.day'+localized_url(p.path+('?' + p.query if p.query else '')+('#'+p.fragment if p.fragment else ''),self.locale)
         self.output.append('<'+tag+''.join(' '+key if value is None else ' '+key+'="'+escape(value,quote=True)+'"' for key,value in a.items())+'>')
 
     def handle_startendtag(self, tag, attrs):
