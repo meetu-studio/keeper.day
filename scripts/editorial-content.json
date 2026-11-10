@@ -291,52 +291,6 @@
       "shooting_reference": "website-shooting-references-20261109/replacement-guide.md#hero"
     }
   },
-  "recommendations": {
-    "single": {
-      "nature": [
-        "st-11",
-        "st-46",
-        "st-50"
-      ],
-      "minimal": [
-        "st-31",
-        "st-32",
-        "st-36"
-      ],
-      "playful": [
-        "st-01",
-        "st-13",
-        "st-27"
-      ],
-      "retro": [
-        "st-08",
-        "st-12",
-        "st-45"
-      ]
-    },
-    "paired": {
-      "nature": [
-        "p-02",
-        "p-06",
-        "p-09"
-      ],
-      "minimal": [
-        "p-25",
-        "p-26",
-        "p-30"
-      ],
-      "playful": [
-        "p-13",
-        "p-21",
-        "p-22"
-      ],
-      "retro": [
-        "p-14",
-        "p-27",
-        "p-28"
-      ]
-    }
-  },
   "reviews": [
     {
       "name": "Alex · fictional photo-walk example",
@@ -371,7 +325,7 @@
       "image": "press-2",
       "title": "Keeper exteriors: graphic lines or garden color",
       "summary": "A design feature concept comparing ST-31 and ST-50, with the same camera beneath two different looks.",
-      "body": "ST-31 uses a graphic grid with restrained red accents. ST-50 brings botanical embroidery around a paper-like photograph. The camera controls stay in the same places: a large color e-paper display, one red shutter and a separate small viewfinder. Keeper offers 68 individual designs and 30 paired images, with each paired side selectable separately. That makes 128 exterior choices with the same camera functions. This cover is an illustrative design story, not an independent review or an announced artist collaboration.",
+      "body": "ST-31 uses a graphic grid with restrained red accents. ST-50 brings botanical embroidery around a paper-like photograph. The camera controls stay in the same places: a large color e-paper display, one red shutter and a separate small viewfinder. Keeper now offers eight looks: classic cream, five individual designs, and Sun & moon A or B. Every choice has the same camera functions. This cover is an illustrative design story, not an independent review or an announced artist collaboration.",
       "placeholder": true
     },
     {

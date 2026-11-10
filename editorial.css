@@ -187,7 +187,7 @@ body:has(#hubspot-messages-iframe-container .hs-shadow-container.active) #mobile
 .page-index .ed-updates{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 24px;margin-top:22px}.page-index .ed-updates h3{grid-column:1/-1}.page-index .ed-updates>a{gap:12px;padding:12px 0}
 .page-index .ed-brand{grid-template-columns:1fr 2fr;gap:32px}.page-index .ed-brand .ed-section-head{margin-bottom:12px}
 .kr-picker-title{font-size:18px!important;margin:0 0 8px!important}.kr-selected-name{margin:0 0 6px!important;font-size:20px}.kr-selection-note{margin:0 0 12px!important;font-size:14px!important}
-.kr-visual-picks{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px;margin:14px 0}
+.kr-visual-picks{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;margin:14px 0}
 .kr-visual-picks a{display:block;border:1px solid var(--line);padding:5px 3px;text-align:center;text-decoration:none;border-radius:3px;min-width:0;min-height:44px}
 .kr-visual-picks a[aria-current=true]{border:2px solid var(--brand);padding:4px 2px;background:#fff}
 .kr-visual-picks img{height:66px;object-fit:contain}.kr-visual-picks span{display:block;font-size:13px;overflow-wrap:anywhere;margin-top:5px}
@@ -222,3 +222,12 @@ body:has(#hubspot-messages-iframe-container .hs-shadow-container.active) .sf-mob
  .storefront .kr-design-choice a{font-size:16px;min-height:44px}.storefront .kr-design-heading h3{font-size:18px}.ed-look-panels .sf-buy{font-size:16px}
 }
 @media(max-width:360px){.storefront-body .site-header{gap:6px;padding-inline:16px}.storefront-body .site-header .wordmark{font-size:24px}.storefront-body .language-switch>summary{min-width:76px;font-size:13px;padding:8px}.storefront-body .mobile-menu>summary{font-size:13px;padding:8px 3px}.ed-hero h1{font-size:30px}.ed-hero-visual img{max-height:200px}.kr-pair-overlay{inset:8px;gap:8px}.kr-pair-overlay button{padding:6px}.kr-pair-overlay button>span{font-size:14px;padding:8px}.page-index #media .ed-grid>article{grid-template-columns:84px 1fr}}
+
+/* The curated catalog includes classic, five ST designs and the two P-01 sides. */
+.kr-visual-picks small{display:block;font-size:13px;line-height:1.4;color:var(--muted)}
+.page-styles .kr-page-intro h1,.page-together .kr-page-intro h1,.page-find-your-keeper .ed-intro h1{font-size:40px;line-height:1.15;max-width:none;margin:12px 0 18px}
+.kr-pair-section{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:32px;align-items:center}
+.kr-pair-section>.kr-section-top{display:block}.kr-pair-section .kr-design-grid.kr-pair-featured{grid-template-columns:1fr}
+.kr-pair-section .kr-pair-featured .kr-design-card:last-child{grid-column:1;max-width:none}
+.kr-catalog>h2{font-size:24px;margin:0 0 24px}.kr-static-checkouts{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding-left:20px}.kr-static-checkouts a{display:inline-flex;align-items:center;min-height:44px}
+@media(max-width:700px){.kr-pair-section{grid-template-columns:1fr;gap:18px}.page-styles .kr-page-intro h1,.page-together .kr-page-intro h1,.page-find-your-keeper .ed-intro h1{font-size:30px}}

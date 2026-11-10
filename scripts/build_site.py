@@ -15,7 +15,7 @@ COMMERCE = json.loads((ROOT / 'scripts/commerce.json').read_text())
 C = json.loads((ROOT / 'scripts/components.json').read_text())
 A = DATA['assets']
 E = lambda x: html.escape(str(x), quote=True)
-VERSION = '20261110-camera-audit-fix'
+VERSION = '20261110-eight-looks'
 CATALOGS = read_catalogs()
 # Keep CDN-injected analytics outside the consent-controlled provider set.
 SCRIPT_POLICY = "script-src-elem 'self' 'unsafe-inline' https://www.googletagmanager.com https://connect.facebook.net https://*.clarity.ms https://*.hs-scripts.com https://*.usemessages.com https://*.hs-banner.com https://*.hs-analytics.net https://*.hscollectedforms.net https://*.hubspot.com https://*.hsadspixel.net https://*.hsleadflows.net"
@@ -90,10 +90,10 @@ render('gifting.html', 'A gift worth keeping — Keeper camera & gift box',
 render('support.html', 'Keeper support — Orders, shipping, camera & returns',
        'Find answers about the Keeper camera, what is in the box, worldwide shipping, cancellations and returns. Contact support@keeper.day.', support_body(COMMERCE))
 
-render('styles.html', 'Find your look — 128 Keeper exterior choices',
-       'Explore 68 individual looks and 30 paired designs. Every Keeper is $199 plus $30 worldwide shipping, with your selected exterior included.', styles_body(COMMERCE))
+render('styles.html', 'Find your look — eight Keeper exteriors',
+       'Choose from eight looks, including classic cream and Sun & moon A or B. Every Keeper is $199 plus $30 worldwide shipping.', styles_body(COMMERCE))
 render('together.html', 'Paired designs — Choose your side, Keeper',
-       '30 paired designs. Choose A or B, sold individually. One Keeper camera with your selected exterior, $199 plus $30 worldwide shipping.', styles_body(COMMERCE,True))
+       'Sun & moon: choose A or B, sold individually. One Keeper camera with your selected exterior, $199 plus $30 worldwide shipping.', styles_body(COMMERCE,True))
 notice = 'These are interface concepts, not released or working apps. Wireless connectivity, reminders and automatic updates shown here are not included features of the current camera. Photos can be exported by connecting Keeper directly to a phone.'
 body = '<section class="page-intro"><p class="eyebrow">FROM THE DESIGN STUDIO</p><h1>Ideas for another day.</h1><p class="section-lead">'+notice+'</p><a class="text-link" href="/camera.html">Meet the camera ↗</a></section><section class="section-pad"><h2>Interface sketchbook</h2><p class="sf-micro">AI-generated concept images; the interfaces shown are not released features.</p><div class="collection-grid two">'+''.join(card(k) for k in DATA['apps'])+'</div></section>'
 render('little-apps.html', 'Interface sketchbook — Keeper studio', notice, body)

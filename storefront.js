@@ -47,39 +47,11 @@
     controls.hidden = false;
   });
 
-  document.querySelectorAll('[data-design-catalog]').forEach((catalog) => {
-    const search = catalog.querySelector('[data-design-search]');
-    const cards = [...catalog.querySelectorAll('[data-design-card]')];
-    const filters = [...catalog.querySelectorAll('[data-design-filter]')];
-    let kind = 'all';
-    const collections = {nature:['st-11','st-46','st-50','p-02','p-06','p-09'],minimal:['st-31','st-32','st-36','p-25','p-26','p-30'],playful:['st-01','st-13','st-27','p-13','p-21','p-22'],retro:['st-08','st-12','st-45','p-14','p-27','p-28']};
-    let collection = collections[new URL(location.href).searchParams.get('collection')] || null;
-    const filter = () => {
-      const words = search.value.normalize('NFKC').toLocaleLowerCase().trim().split(/\s+/).filter(Boolean);
-      let count = 0;
-      cards.forEach((card) => {
-        const match = (!collection || collection.includes(card.dataset.search.split(' ')[0])) && (kind === 'all' || card.dataset.kind === kind) && words.every(word => card.dataset.search.normalize('NFKC').toLocaleLowerCase().includes(word));
-        card.hidden = !match;
-        count += Number(match);
-      });
-      catalog.querySelector('[data-design-count]').textContent = t(count === 1 ? 'catalog_count_one' : 'catalog_count',{count});
-      catalog.querySelector('[data-design-empty]').hidden = count !== 0;
-    };
-    search.addEventListener('input', () => { collection = null; filter(); });
-    filters.forEach(button => button.addEventListener('click', () => {
-      kind = button.dataset.designFilter; collection = null;
-      filters.forEach(choice => choice.setAttribute('aria-pressed', String(choice === button)));
-      filter();
-    }));
-    catalog.querySelector('.kr-catalog-tools').hidden = false; filter();
-  });
-
   const selector = document.querySelector('[data-style-selector]');
   let currentShareUrl = location.href;
   if (selector) {
     const data = JSON.parse(document.querySelector('#keeper-design-data').textContent);
     const options = new Map(data.variants.map(v => [v.id, v]));
-    const picker = selector.querySelector('.kr-all-designs');
     const overlay = document.querySelector('[data-pair-overlay]');
     let pairGroup = '';
     const productImage = document.querySelector('#sf-photo-0 img');
@@ -96,13 +68,13 @@
       overlay.hidden = !pairGroup;
       document.querySelectorAll('[data-pair-side]').forEach(button => button.setAttribute('aria-pressed',String(button.dataset.pairSide === variant?.side)));
       const display = variant || groupVariants[0];
-      const name = variant ? `${variant.name} · ${id.toUpperCase()}` : pendingPair ? t('choose_side_name',{name:groupVariants[0].name.split(' · ')[0]}) : t('classic_name');
+      const name = variant ? `${variant.name} · ${id.toUpperCase()}` : pendingPair ? t('choose_side_name',{name:groupVariants[0].name.split(' · ')[0]}) : valid ? t('classic_name') : t('choose_look');
       selector.querySelector('[data-selected-name]').textContent = name;
       const exterior = variant?.side ? t('side_exterior',{side:variant.side.toUpperCase(),position:t(variant.side==='a'?'left':'right')}) : variant ? t('exterior',{name:variant.name}) : t('classic_exterior');
-      selector.querySelector('[data-selection-note]').textContent = pendingPair ? t('pair_note') : t('selected_note',{exterior});
-      selector.querySelector('[data-selection-status]').textContent = !valid && !pendingPair ? t('invalid_design') : pendingPair ? t('select_side') : t('selected_total');
+      selector.querySelector('[data-selection-note]').textContent = !valid && !pendingPair ? t('invalid_design') : pendingPair ? t('pair_note') : t('selected_note',{exterior});
+      selector.querySelector('[data-selection-status]').textContent = !valid && !pendingPair ? '' : pendingPair ? t('select_side') : t('selected_total');
       selector.querySelector('[data-side-choices]').hidden = !pairGroup;
-      const purchaseContext = pairGroup ? (variant ? t('pair_selection',{id:id.toUpperCase(),side:variant.side.toUpperCase(),position:t(variant.side==='a'?'left':'right')}) : t('pair_note')) : t('one_selection',{name:variant ? id.toUpperCase() : t('classic_name')});
+      const purchaseContext = !valid && !pendingPair ? t('choose_look') : pairGroup ? (variant ? t('pair_selection',{id:id.toUpperCase(),side:variant.side.toUpperCase(),position:t(variant.side==='a'?'left':'right')}) : t('pair_note')) : t('one_selection',{name:variant ? id.toUpperCase() : t('classic_name')});
       document.querySelector('[data-image-selection]').textContent = purchaseContext;
       document.querySelector('[data-sticky-selection]').textContent = purchaseContext;
       productImage.src = display?.image || originalImage.src;
@@ -125,12 +97,12 @@
         link.replaceChildren(document.createTextNode(text));
         if (arrow) link.append(arrow);
       });
-      const shared = new URL(url('/camera.html'+(variant || pendingPair ? '?style='+encodeURIComponent(id) : '')));
+      const shared = new URL(url('/camera.html'+(variant || pendingPair || !valid ? '?style='+encodeURIComponent(id) : '')));
       shared.host = 'keeper.day';shared.protocol = 'https:';shared.port = '';
       currentShareUrl = shared.href;
       if (updateUrl) {
         const url = new URL(location.href);
-        if (variant || pendingPair) url.searchParams.set('style', id); else url.searchParams.delete('style');
+        if (variant || pendingPair || !valid) url.searchParams.set('style', id); else url.searchParams.delete('style');
         history.replaceState(null, '', url);
       }
       document.dispatchEvent(new Event('keeper:selectionchange'));
@@ -141,7 +113,6 @@
       event.preventDefault();
       const id = link.dataset.pickStyle || new URL(link.href).searchParams.get('style');
       update(id);
-      picker.open = false;
       selector.querySelector('[data-selected-name]').setAttribute('tabindex','-1');
       selector.querySelector('[data-selected-name]').focus({preventScroll:true});
     }));
@@ -149,7 +120,7 @@
       if (link.getAttribute('aria-disabled') === 'true') {
         event.preventDefault();
         selector.scrollIntoView({block:'center',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
-        (pendingPair ? selector.querySelector('[data-pair-side]') : picker.querySelector('summary')).focus();
+        (pendingPair ? selector.querySelector('[data-pair-side]') : selector.querySelector('[data-pick-style]')).focus();
       }
     }));
     addEventListener('popstate', () => update(new URL(location.href).searchParams.get('style') || 'classic', false));

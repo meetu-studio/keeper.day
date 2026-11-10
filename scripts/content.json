@@ -2790,13 +2790,10 @@
     "st-27",
     "st-31",
     "st-42",
-    "st-46",
     "st-50"
   ],
   "featured_pairs": [
-    "p-01",
-    "p-13",
-    "p-21"
+    "p-01"
   ],
   "lifestyle": [
     {
@@ -2923,5 +2920,15 @@
       "provenance": "AI-generated environment with original product pixels composited from a locked source layer; not a customer photo or a camera sample.",
       "source_sha256": "43b4e294a6989d2da3b552520728a32a954ef8305816fce7c720e1f9fa05f63e"
     }
+  ],
+  "active_choices": [
+    "classic",
+    "st-12",
+    "st-27",
+    "st-31",
+    "st-42",
+    "st-50",
+    "p-01-a",
+    "p-01-b"
   ]
 }

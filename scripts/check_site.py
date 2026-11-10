@@ -10,7 +10,9 @@ from i18n import LANGUAGES, HTML_LANG, read_catalogs, canonical
 ROOT = Path(__file__).resolve().parents[1]
 COMMERCE = json.loads((ROOT / 'scripts/commerce.json').read_text())
 DATA = json.loads((ROOT / 'scripts/content.json').read_text())
-VARIANTS = {v['id']:v for v in DATA['variants']}
+CHOICES = set(DATA['active_choices'])
+ARCHIVE_VARIANTS = {v['id']:v for v in DATA['variants']}
+VARIANTS = {key:value for key,value in ARCHIVE_VARIANTS.items() if key in CHOICES}
 
 def valid_checkout(href, variant=None, locale='en'):
     actual, expected = urlsplit(href), urlsplit(COMMERCE['checkout_url'])
@@ -19,7 +21,7 @@ def valid_checkout(href, variant=None, locale='en'):
     base['locale'] = [locale]
     reference = query.pop('client_reference_id', None)
     if query != base: return False
-    if variant: return reference == ['keeper-'+variant] and variant in VARIANTS
+    if variant and variant != 'classic': return reference == ['keeper-'+variant] and variant in VARIANTS
     return reference is None
 
 class Page(HTMLParser):
@@ -95,6 +97,9 @@ for name, page in pages.items():
     for anchor in page.anchors:
         a = anchor['attrs']
         parsed = urlsplit(a['href'])
+        style = parse_qs(parsed.query).get('style', [None])[0]
+        if parsed.path.endswith('/camera.html') and style and style not in CHOICES | {v['group'] for v in VARIANTS.values()}:
+            errors.append(f'{name}: link offers an inactive exterior {style}')
         routing = 'data-current-checkout' in a and parsed.path.endswith('/camera.html') and parsed.fragment == 'choose-style'
         if 'data-purchase' in a and not routing and not valid_checkout(a['href'],a.get('data-variant'),page.locale):
             errors.append(f'{name}: wrong direct checkout {a["href"]}')
@@ -133,25 +138,27 @@ if 'Number(document.body.dataset.orderTotal)' not in (ROOT / 'site.js').read_tex
 data = json.loads((ROOT / 'scripts/content.json').read_text())
 for key in data['assets']:
     if not (ROOT / 'assets/collections' / f'{key}.webp').is_file(): errors.append(f'Missing collection asset {key}')
-if len(data['designs']) != 98 or len(VARIANTS) != 128: errors.append('Expected 98 design images and 128 distinct choices')
+if len(data['designs']) != 98 or len(ARCHIVE_VARIANTS) != 128: errors.append('The original design archive must be retained')
+if len(CHOICES) != 8 or 'classic' not in CHOICES or CHOICES - {'classic'} != set(VARIANTS): errors.append('Expected exactly eight active choices including Classic cream')
 if sum(d['kind']=='single' for d in data['designs']) != 68 or sum(d['kind']=='paired' for d in data['designs']) != 30: errors.append('Wrong individual/paired design counts')
 for d in data['designs']:
     for key in ['image','thumb']:
         if not (ROOT/d[key].lstrip('/')).is_file(): errors.append(f'Missing design image {d[key]}')
     expected = {d['id']+'-a',d['id']+'-b'} if d['kind']=='paired' else {d['id']}
-    if {v['id'] for v in VARIANTS.values() if v['group']==d['id']} != expected: errors.append(f'Wrong sides for {d["id"]}')
+    if {v['id'] for v in ARCHIVE_VARIANTS.values() if v['group']==d['id']} != expected: errors.append(f'Wrong sides for {d["id"]}')
 listed = {a['attrs'].get('data-variant') for a in pages['styles.html'].anchors if 'buy.stripe.com' in a['attrs']['href']}
-if listed != set(VARIANTS): errors.append('The static catalog does not provide all 128 correct purchase links')
+if listed != CHOICES: errors.append('The static catalog must offer exactly the eight active choices')
 for lang in LANGUAGES:
     prefix = '' if lang=='en' else lang+'/'
     listed = {a['attrs'].get('data-variant') for a in pages[prefix+'styles.html'].anchors if 'buy.stripe.com' in a['attrs']['href']}
-    if listed != set(VARIANTS): errors.append(f'{lang}: missing static purchase choices')
+    if listed != CHOICES: errors.append(f'{lang}: wrong static purchase choices')
+    product = (ROOT/(prefix+'camera.html')).read_text()
+    if set(re.findall(r'data-pick-style="([^"]+)"',product)) != CHOICES: errors.append(f'{lang}: visual picker must contain the same eight choices')
     payload = json.loads(re.search(r'<script type="application/json" id="keeper-design-data">(.*?)</script>',(ROOT/(prefix+'camera.html')).read_text(),re.S).group(1))
     if {v['id'] for v in payload['variants']} != set(VARIANTS): errors.append(f'{lang}: selector and catalog disagree')
     if parse_qs(urlsplit(payload['checkout']).query).get('locale') != [lang]: errors.append(f'{lang}: wrong checkout language')
     for variant in payload['variants']:
         if catalogs[lang]['designs'][variant['group']] not in variant['name']: errors.append(f'{lang}: wrong localized variant name {variant["id"]}')
-        if not any(variant['id'] in search.split() for search in pages[prefix+'styles.html'].searches): errors.append(f'{lang}: search omits variant {variant["id"]}')
     for card in pages[prefix+'styles.html'].anchors:
         if card['attrs'].get('data-variant') and not valid_checkout(card['attrs']['href'],card['attrs']['data-variant'],lang): errors.append(f'{lang}: invalid design checkout')
 for lang in ['zh','ja','ko']:
@@ -177,8 +184,9 @@ for lang in LANGUAGES:
         markup=(ROOT/(prefix+name)).read_text()
         for form in re.findall(r'<form[^>]*data-demo-form[^>]*>.*?</form>',markup,re.S):
             if not re.search(r'<fieldset\b[^>]*\bdisabled(?:\s|>)',form) or not re.search(r'<button\b(?=[^>]*\btype="button")(?=[^>]*\bdisabled(?:\s|>))[^>]*>',form) or re.search(r'<form[^>]+action=',form):errors.append(f'{lang}/{name}: demonstration form enabled')
-for kind,groups in editorial['recommendations'].items():
-    for theme,ids in groups.items():
-        if len(ids)!=3 or any(key not in {d['id'] for d in data['designs']} for key in ids):errors.append(f'Invalid fixed recommendations {kind}:{theme}')
-print(json.dumps({'pages': len(pages), 'languages':list(LANGUAGES), 'translation_texts_per_language':len(catalogs['en']['text']), 'ui_messages_per_language':len(catalogs['en']['ui']), 'curated_images': len(data['assets']), 'design_images':len(data['designs']), 'selectable_designs':len(VARIANTS), 'lifestyle_images':len(data['lifestyle']), 'camera_use_images':len(data.get('camera_story',[])), 'checkout_verified': COMMERCE['checkout_verified'], 'errors': errors}, indent=2))
+for lang in LANGUAGES:
+    prefix = '' if lang=='en' else lang+'/'
+    for filename in ['index.html','styles.html','camera.html','find-your-keeper.html','together.html','press.html','owners.html']:
+        if re.search(r'\b128\b', (ROOT/(prefix+filename)).read_text()): errors.append(f'{lang}/{filename}: stale 128-choice offer')
+print(json.dumps({'pages': len(pages), 'languages':list(LANGUAGES), 'translation_texts_per_language':len(catalogs['en']['text']), 'ui_messages_per_language':len(catalogs['en']['ui']), 'curated_images': len(data['assets']), 'archived_design_images':len(data['designs']), 'selectable_designs_including_classic':len(CHOICES), 'lifestyle_images':len(data['lifestyle']), 'camera_use_images':len(data.get('camera_story',[])), 'checkout_verified': COMMERCE['checkout_verified'], 'errors': errors}, indent=2))
 sys.exit(bool(errors))
