@@ -932,7 +932,29 @@
     "A familiar face at home. — Keeper ST-31 in an American everyday setting": "家里熟悉的那张脸 — 美国日常生活中的 Keeper ST-31",
     "After the decorations come down.": "节日结束以后也在",
     "Photograph the people decorating together, so the day stays after the season ends.": "拍下一起布置节日的人，让这一天在节后也留着。",
-    "After the decorations come down. — Keeper P-01-A in an American everyday setting": "节日结束以后也在 — 美国日常生活中的 Keeper P-01-A"
+    "After the decorations come down. — Keeper P-01-A in an American everyday setting": "节日结束以后也在 — 美国日常生活中的 Keeper P-01-A",
+    "Optional cookies enable analytics and chat. Checkout works with essential cookies.": "可选 Cookie 用于分析与聊天。仅使用必要 Cookie 也能结账。",
+    "A · left": "A · 左侧",
+    "B · right": "B · 右侧",
+    "Classic cream · one camera": "经典米白 · 一台相机",
+    "Battery life varies with use. Contact": "续航随使用情况变化。如需兼容性或订单帮助，请联系",
+    "for compatibility or order support.": "。",
+    "Photo transfer": "照片导出",
+    "Connect directly to your phone to export photos.": "可直接连接手机导出照片。",
+    "Battery life": "续航",
+    "Charge twice a year. Actual battery life varies with use.": "一年充两次电。实际续航随使用情况变化。",
+    "Warranty": "保修",
+    "Your statutory consumer rights apply in the relevant sales region.": "保修及消费者权益依适用销售地区的法律规定执行。",
+    "Keeper takes photos independently and stores them on microSD. Connect it directly to your phone to export photos.": "Keeper 可独立拍照，并将照片保存至 microSD 卡。直接连接手机即可导出照片。",
+    "Frame with the small viewfinder, press the red shutter, then connect directly to your phone when you want to export your photos.": "用小屏取景，按下红色快门；需要导出照片时，直接连接手机。",
+    "Check that your storage card is ready before heading out. Connect Keeper directly to your phone to export your photographs. Ask support about compatibility with your particular phone.": "出门前确认存储卡可用。Keeper 可直接连接手机导出照片；具体手机兼容性可向客服咨询。",
+    "Two charges a year.": "一年充两次。",
+    "Keeper is designed for everyday photography with two charges a year. Actual battery life varies with use. Taking photos and changing the displayed image use power.": "Keeper 面向日常拍照，一年充两次电。实际续航随使用情况变化；拍照和更新屏幕照片都会耗电。",
+    "Your statutory consumer rights apply in the relevant sales region. These rights are additional to our stated return policy and are not limited by it. Contact support@keeper.day for help with a product fault.": "保修及消费者权益依适用销售地区的法律规定执行。这些法定权益不受本网站退换政策限制。如有产品质量问题，请联系 support@keeper.day。",
+    "Every camera includes the gift box.": "每台相机都包含礼盒。",
+    "Connect Keeper directly to your phone to export photos. Contact us for phone or card compatibility and delivery questions.": "直接连接手机即可导出 Keeper 照片。手机或存储卡兼容性、配送问题可向我们咨询。",
+    "These are interface concepts, not released or working apps. Wireless connectivity, reminders and automatic updates shown here are not included features of the current camera. Photos can be exported by connecting Keeper directly to a phone.": "这些是界面概念，并非已发布或可用的应用。这里展示的无线连接、提醒和自动更新不属于当前相机功能。相机可直接连接手机导出照片。",
+    "Last updated November 10, 2026": "最后更新：2026年11月10日"
   },
   "ui": {
     "language_label": "语言",
@@ -979,7 +1001,9 @@
     "buy_design_aria": "购买一台 {name} {side} Keeper，含运费合计 US$229",
     "scene_alt": "{title} — 美国日常生活中的 Keeper {id}",
     "view_full_image": "查看完整图片：{title}（新标签页）",
-    "image_button": "显示第 {index} 张图片：{label}"
+    "image_button": "显示第 {index} 张图片：{label}",
+    "pair_selection": "{id} · {side}（{position}）· 一台相机",
+    "one_selection": "{name} · 一台相机"
   },
   "designs": {
     "st-01": "课间涂鸦",

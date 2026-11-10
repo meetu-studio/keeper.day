@@ -932,7 +932,29 @@
     "A familiar face at home. — Keeper ST-31 in an American everyday setting": "家で会えるいつもの顔 — 米国の日常シーンのKeeper ST-31",
     "After the decorations come down.": "飾りを片づけたあとも",
     "Photograph the people decorating together, so the day stays after the season ends.": "一緒に飾りつける人を撮って、季節が過ぎてもその日を手元に。",
-    "After the decorations come down. — Keeper P-01-A in an American everyday setting": "飾りを片づけたあとも — 米国の日常シーンのKeeper P-01-A"
+    "After the decorations come down. — Keeper P-01-A in an American everyday setting": "飾りを片づけたあとも — 米国の日常シーンのKeeper P-01-A",
+    "Optional cookies enable analytics and chat. Checkout works with essential cookies.": "任意の Cookie はアクセス解析とチャットに使用します。必須 Cookie のみでも購入できます。",
+    "A · left": "A · 左側",
+    "B · right": "B · 右側",
+    "Classic cream · one camera": "クラシッククリーム · カメラ1台",
+    "Battery life varies with use. Contact": "バッテリー持続時間は使用状況により異なります。互換性や注文のお問い合わせ：",
+    "for compatibility or order support.": "。",
+    "Photo transfer": "写真の転送",
+    "Connect directly to your phone to export photos.": "スマートフォンに直接接続して写真を書き出せます。",
+    "Battery life": "バッテリー",
+    "Charge twice a year. Actual battery life varies with use.": "充電は年に2回。実際の持続時間は使用状況により異なります。",
+    "Warranty": "保証",
+    "Your statutory consumer rights apply in the relevant sales region.": "保証と消費者の権利には、該当する販売地域の法令が適用されます。",
+    "Keeper takes photos independently and stores them on microSD. Connect it directly to your phone to export photos.": "Keeper は単体で撮影し、写真を microSD に保存します。スマートフォンに直接接続して写真を書き出せます。",
+    "Frame with the small viewfinder, press the red shutter, then connect directly to your phone when you want to export your photos.": "小さな画面で構図を決め、赤いシャッターを押します。写真を書き出すときはスマートフォンに直接接続します。",
+    "Check that your storage card is ready before heading out. Connect Keeper directly to your phone to export your photographs. Ask support about compatibility with your particular phone.": "出かける前にメモリーカードを確認してください。Keeper をスマートフォンに直接接続して写真を書き出せます。お使いの機種との互換性はサポートにお問い合わせください。",
+    "Two charges a year.": "充電は年に2回。",
+    "Keeper is designed for everyday photography with two charges a year. Actual battery life varies with use. Taking photos and changing the displayed image use power.": "Keeper は日常の撮影で年に2回の充電を想定しています。実際の持続時間は使用状況により異なります。撮影と表示写真の変更には電力を使います。",
+    "Your statutory consumer rights apply in the relevant sales region. These rights are additional to our stated return policy and are not limited by it. Contact support@keeper.day for help with a product fault.": "該当する販売地域の法令に基づく消費者の権利が適用されます。これらの権利は当社の返品ポリシーによって制限されません。製品の不具合は support@keeper.day にお問い合わせください。",
+    "Every camera includes the gift box.": "すべてのカメラにギフトボックスが付属します。",
+    "Connect Keeper directly to your phone to export photos. Contact us for phone or card compatibility and delivery questions.": "Keeper をスマートフォンに直接接続して写真を書き出せます。機種・カードの互換性や配送についてはお問い合わせください。",
+    "These are interface concepts, not released or working apps. Wireless connectivity, reminders and automatic updates shown here are not included features of the current camera. Photos can be exported by connecting Keeper directly to a phone.": "これらはインターフェースの構想で、公開済みのアプリではありません。表示される無線接続、リマインダー、自動更新は現在のカメラに含まれません。写真は Keeper をスマートフォンに直接接続して書き出せます。",
+    "Last updated November 10, 2026": "最終更新：2026年11月10日"
   },
   "ui": {
     "language_label": "言語",
@@ -979,7 +1001,9 @@
     "buy_design_aria": "{name} {side} のKeeper 1台を送料込み US$229で購入",
     "scene_alt": "{title} — 米国の日常シーンのKeeper {id}",
     "view_full_image": "画像全体を見る：{title}（新しいタブ）",
-    "image_button": "画像{index}を表示：{label}"
+    "image_button": "画像{index}を表示：{label}",
+    "pair_selection": "{id} · {side}（{position}）· カメラ1台",
+    "one_selection": "{name} · カメラ1台"
   },
   "designs": {
     "st-01": "キャンパスの落書き",

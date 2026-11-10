@@ -932,7 +932,29 @@
     "A familiar face at home. — Keeper ST-31 in an American everyday setting": "A familiar face at home. — Keeper ST-31 in an American everyday setting",
     "After the decorations come down.": "After the decorations come down.",
     "Photograph the people decorating together, so the day stays after the season ends.": "Photograph the people decorating together, so the day stays after the season ends.",
-    "After the decorations come down. — Keeper P-01-A in an American everyday setting": "After the decorations come down. — Keeper P-01-A in an American everyday setting"
+    "After the decorations come down. — Keeper P-01-A in an American everyday setting": "After the decorations come down. — Keeper P-01-A in an American everyday setting",
+    "Optional cookies enable analytics and chat. Checkout works with essential cookies.": "Optional cookies enable analytics and chat. Checkout works with essential cookies.",
+    "A · left": "A · left",
+    "B · right": "B · right",
+    "Classic cream · one camera": "Classic cream · one camera",
+    "Battery life varies with use. Contact": "Battery life varies with use. Contact",
+    "for compatibility or order support.": "for compatibility or order support.",
+    "Photo transfer": "Photo transfer",
+    "Connect directly to your phone to export photos.": "Connect directly to your phone to export photos.",
+    "Battery life": "Battery life",
+    "Charge twice a year. Actual battery life varies with use.": "Charge twice a year. Actual battery life varies with use.",
+    "Warranty": "Warranty",
+    "Your statutory consumer rights apply in the relevant sales region.": "Your statutory consumer rights apply in the relevant sales region.",
+    "Keeper takes photos independently and stores them on microSD. Connect it directly to your phone to export photos.": "Keeper takes photos independently and stores them on microSD. Connect it directly to your phone to export photos.",
+    "Frame with the small viewfinder, press the red shutter, then connect directly to your phone when you want to export your photos.": "Frame with the small viewfinder, press the red shutter, then connect directly to your phone when you want to export your photos.",
+    "Check that your storage card is ready before heading out. Connect Keeper directly to your phone to export your photographs. Ask support about compatibility with your particular phone.": "Check that your storage card is ready before heading out. Connect Keeper directly to your phone to export your photographs. Ask support about compatibility with your particular phone.",
+    "Two charges a year.": "Two charges a year.",
+    "Keeper is designed for everyday photography with two charges a year. Actual battery life varies with use. Taking photos and changing the displayed image use power.": "Keeper is designed for everyday photography with two charges a year. Actual battery life varies with use. Taking photos and changing the displayed image use power.",
+    "Your statutory consumer rights apply in the relevant sales region. These rights are additional to our stated return policy and are not limited by it. Contact support@keeper.day for help with a product fault.": "Your statutory consumer rights apply in the relevant sales region. These rights are additional to our stated return policy and are not limited by it. Contact support@keeper.day for help with a product fault.",
+    "Every camera includes the gift box.": "Every camera includes the gift box.",
+    "Connect Keeper directly to your phone to export photos. Contact us for phone or card compatibility and delivery questions.": "Connect Keeper directly to your phone to export photos. Contact us for phone or card compatibility and delivery questions.",
+    "These are interface concepts, not released or working apps. Wireless connectivity, reminders and automatic updates shown here are not included features of the current camera. Photos can be exported by connecting Keeper directly to a phone.": "These are interface concepts, not released or working apps. Wireless connectivity, reminders and automatic updates shown here are not included features of the current camera. Photos can be exported by connecting Keeper directly to a phone.",
+    "Last updated November 10, 2026": "Last updated November 10, 2026"
   },
   "ui": {
     "language_label": "Language",
@@ -979,7 +1001,9 @@
     "buy_design_aria": "Buy one {name} {side} Keeper, US$229 USD including shipping",
     "scene_alt": "{title} — Keeper {id} in an American everyday setting",
     "view_full_image": "View full image: {title} (opens new tab)",
-    "image_button": "Show image {index}: {label}"
+    "image_button": "Show image {index}: {label}",
+    "pair_selection": "{id} · {side} ({position}) · one camera",
+    "one_selection": "{name} · one camera"
   },
   "designs": {
     "st-01": "Campus doodles",

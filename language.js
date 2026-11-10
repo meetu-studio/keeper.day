@@ -53,6 +53,8 @@
   window.KeeperI18n = {t,url,localizeNotFound,get locale(){return locale;}};
   document.addEventListener('DOMContentLoaded',refreshLinks);
   document.addEventListener('keeper:selectionchange',refreshLinks);
+  window.addEventListener('hashchange',refreshLinks);
+  window.addEventListener('popstate',refreshLinks);
   document.addEventListener('click',event => {
     const link = event.target.closest('[data-language]');
     if (!link || event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;

@@ -79,7 +79,9 @@
   if (selector) {
     const data = JSON.parse(document.querySelector('#keeper-design-data').textContent);
     const options = new Map(data.variants.map(v => [v.id, v]));
-    const select = selector.querySelector('[data-style-select]');
+    const picker = selector.querySelector('.kr-all-designs');
+    const overlay = document.querySelector('[data-pair-overlay]');
+    let pairGroup = '';
     const productImage = document.querySelector('#sf-photo-0 img');
     const productCaption = document.querySelector('#sf-photo-0 figcaption');
     const originalImage = {src: productImage.getAttribute('src'), width:productImage.width, height:productImage.height};
@@ -89,14 +91,20 @@
       const groupVariants = data.variants.filter(v => v.group === id && v.side);
       pendingPair = groupVariants.length ? id : '';
       const valid = id === 'classic' || !!variant;
-      select.value = variant ? id : valid ? 'classic' : '';
+      pairGroup = variant?.side ? variant.group : pendingPair;
+      selector.querySelectorAll('[data-pick-style]').forEach(link => link.setAttribute('aria-current',String(link.dataset.pickStyle === id)));
+      overlay.hidden = !pairGroup;
+      document.querySelectorAll('[data-pair-side]').forEach(button => button.setAttribute('aria-pressed',String(button.dataset.pairSide === variant?.side)));
       const display = variant || groupVariants[0];
       const name = variant ? `${variant.name} · ${id.toUpperCase()}` : pendingPair ? t('choose_side_name',{name:groupVariants[0].name.split(' · ')[0]}) : t('classic_name');
       selector.querySelector('[data-selected-name]').textContent = name;
       const exterior = variant?.side ? t('side_exterior',{side:variant.side.toUpperCase(),position:t(variant.side==='a'?'left':'right')}) : variant ? t('exterior',{name:variant.name}) : t('classic_exterior');
       selector.querySelector('[data-selection-note]').textContent = pendingPair ? t('pair_note') : t('selected_note',{exterior});
       selector.querySelector('[data-selection-status]').textContent = !valid && !pendingPair ? t('invalid_design') : pendingPair ? t('select_side') : t('selected_total');
-      selector.querySelector('[data-side-choices]').hidden = !pendingPair;
+      selector.querySelector('[data-side-choices]').hidden = !pairGroup;
+      const purchaseContext = pairGroup ? (variant ? t('pair_selection',{id:id.toUpperCase(),side:variant.side.toUpperCase(),position:t(variant.side==='a'?'left':'right')}) : t('pair_note')) : t('one_selection',{name:variant ? id.toUpperCase() : t('classic_name')});
+      document.querySelector('[data-image-selection]').textContent = purchaseContext;
+      document.querySelector('[data-sticky-selection]').textContent = purchaseContext;
       productImage.src = display?.image || originalImage.src;
       productImage.width = display?.width || originalImage.width;
       productImage.height = display?.height || originalImage.height;
@@ -127,16 +135,24 @@
       }
       document.dispatchEvent(new Event('keeper:selectionchange'));
     };
-    selector.querySelector('.kr-select-control').hidden = false;
-    select.addEventListener('change', () => update(select.value));
-    selector.querySelectorAll('[data-pair-side]').forEach(button => button.addEventListener('click', () => update(pendingPair+'-'+button.dataset.pairSide)));
+    document.querySelectorAll('[data-pair-side]').forEach(button => button.addEventListener('click', () => update(pairGroup+'-'+button.dataset.pairSide)));
+    selector.querySelectorAll('[data-pick-style], .kr-choose, .kr-design-image').forEach(link => link.addEventListener('click', event => {
+      if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      event.preventDefault();
+      const id = link.dataset.pickStyle || new URL(link.href).searchParams.get('style');
+      update(id);
+      picker.open = false;
+      selector.querySelector('[data-selected-name]').setAttribute('tabindex','-1');
+      selector.querySelector('[data-selected-name]').focus({preventScroll:true});
+    }));
     document.querySelectorAll('[data-current-checkout]').forEach(link => link.addEventListener('click', event => {
       if (link.getAttribute('aria-disabled') === 'true') {
         event.preventDefault();
         selector.scrollIntoView({block:'center',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
-        (pendingPair ? selector.querySelector('[data-pair-side]') : select).focus();
+        (pendingPair ? selector.querySelector('[data-pair-side]') : picker.querySelector('summary')).focus();
       }
     }));
+    addEventListener('popstate', () => update(new URL(location.href).searchParams.get('style') || 'classic', false));
     const requested = new URL(location.href).searchParams.get('style');
     update(requested?.toLowerCase() || 'classic', false);
   }

@@ -932,7 +932,29 @@
     "A familiar face at home. — Keeper ST-31 in an American everyday setting": "집에서 만나는 익숙한 얼굴 — 미국 일상 속 Keeper ST-31",
     "After the decorations come down.": "장식을 치운 뒤에도",
     "Photograph the people decorating together, so the day stays after the season ends.": "함께 장식하는 사람들을 찍어, 계절이 지나도 그날을 간직하세요.",
-    "After the decorations come down. — Keeper P-01-A in an American everyday setting": "장식을 치운 뒤에도 — 미국 일상 속 Keeper P-01-A"
+    "After the decorations come down. — Keeper P-01-A in an American everyday setting": "장식을 치운 뒤에도 — 미국 일상 속 Keeper P-01-A",
+    "Optional cookies enable analytics and chat. Checkout works with essential cookies.": "선택 쿠키는 분석과 채팅에 사용됩니다. 필수 쿠키만으로도 결제할 수 있습니다.",
+    "A · left": "A · 왼쪽",
+    "B · right": "B · 오른쪽",
+    "Classic cream · one camera": "클래식 크림 · 카메라 1대",
+    "Battery life varies with use. Contact": "배터리 사용 시간은 사용 방식에 따라 다릅니다. 호환성 및 주문 문의:",
+    "for compatibility or order support.": ".",
+    "Photo transfer": "사진 내보내기",
+    "Connect directly to your phone to export photos.": "휴대폰에 직접 연결해 사진을 내보낼 수 있습니다.",
+    "Battery life": "배터리",
+    "Charge twice a year. Actual battery life varies with use.": "1년에 두 번 충전합니다. 실제 배터리 사용 시간은 사용 방식에 따라 다릅니다.",
+    "Warranty": "보증",
+    "Your statutory consumer rights apply in the relevant sales region.": "보증 및 소비자 권리에는 해당 판매 지역의 법률이 적용됩니다.",
+    "Keeper takes photos independently and stores them on microSD. Connect it directly to your phone to export photos.": "Keeper는 독립적으로 촬영하고 사진을 microSD에 저장합니다. 휴대폰에 직접 연결해 사진을 내보낼 수 있습니다.",
+    "Frame with the small viewfinder, press the red shutter, then connect directly to your phone when you want to export your photos.": "작은 화면으로 구도를 잡고 빨간 셔터를 누르세요. 사진을 내보낼 때는 휴대폰에 직접 연결하세요.",
+    "Check that your storage card is ready before heading out. Connect Keeper directly to your phone to export your photographs. Ask support about compatibility with your particular phone.": "외출 전에 메모리 카드를 확인하세요. Keeper를 휴대폰에 직접 연결해 사진을 내보낼 수 있습니다. 사용 중인 휴대폰의 호환성은 지원팀에 문의하세요.",
+    "Two charges a year.": "1년에 두 번 충전.",
+    "Keeper is designed for everyday photography with two charges a year. Actual battery life varies with use. Taking photos and changing the displayed image use power.": "Keeper는 일상 촬영에서 연 2회 충전을 기준으로 설계되었습니다. 실제 배터리 사용 시간은 사용 방식에 따라 다르며, 촬영과 화면 사진 변경에는 전력이 필요합니다.",
+    "Your statutory consumer rights apply in the relevant sales region. These rights are additional to our stated return policy and are not limited by it. Contact support@keeper.day for help with a product fault.": "해당 판매 지역의 법률에 따른 소비자 권리가 적용됩니다. 이러한 권리는 당사의 반품 정책으로 제한되지 않습니다. 제품 결함에 대한 도움이 필요하면 support@keeper.day로 문의하세요.",
+    "Every camera includes the gift box.": "모든 카메라에 선물 상자가 포함됩니다.",
+    "Connect Keeper directly to your phone to export photos. Contact us for phone or card compatibility and delivery questions.": "Keeper를 휴대폰에 직접 연결해 사진을 내보낼 수 있습니다. 휴대폰과 카드의 호환성 및 배송은 지원팀에 문의하세요.",
+    "These are interface concepts, not released or working apps. Wireless connectivity, reminders and automatic updates shown here are not included features of the current camera. Photos can be exported by connecting Keeper directly to a phone.": "이 화면은 출시되거나 작동하는 앱이 아닌 인터페이스 구상입니다. 표시된 무선 연결, 알림 및 자동 업데이트는 현재 카메라에 포함되지 않습니다. Keeper를 휴대폰에 직접 연결해 사진을 내보낼 수 있습니다.",
+    "Last updated November 10, 2026": "최종 업데이트: 2026년 11월 10일"
   },
   "ui": {
     "language_label": "언어",
@@ -979,7 +1001,9 @@
     "buy_design_aria": "{name} {side} Keeper 1대 구매, 배송비 포함 총 US$229",
     "scene_alt": "{title} — 미국 일상 속 Keeper {id}",
     "view_full_image": "전체 이미지 보기: {title} (새 탭)",
-    "image_button": "이미지 {index} 표시: {label}"
+    "image_button": "이미지 {index} 표시: {label}",
+    "pair_selection": "{id} · {side} ({position}) · 카메라 1대",
+    "one_selection": "{name} · 카메라 1대"
   },
   "designs": {
     "st-01": "캠퍼스 낙서",
