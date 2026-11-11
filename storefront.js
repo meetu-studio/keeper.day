@@ -68,13 +68,13 @@
       overlay.hidden = !pairGroup;
       document.querySelectorAll('[data-pair-side]').forEach(button => button.setAttribute('aria-pressed',String(button.dataset.pairSide === variant?.side)));
       const display = variant || groupVariants[0];
-      const name = variant ? `${variant.name} · ${id.toUpperCase()}` : pendingPair ? t('choose_side_name',{name:groupVariants[0].group_name}) : valid ? t('classic_name') : t('choose_look');
+      const name = variant ? variant.name : pendingPair ? t('choose_side_name',{name:groupVariants[0].group_name}) : valid ? t('classic_name') : t('choose_look');
       selector.querySelector('[data-selected-name]').textContent = name;
       const exterior = variant?.side ? t('side_exterior',{side:variant.side.toUpperCase(),position:t(variant.side==='a'?'left':'right')}) : variant ? t('exterior',{name:variant.name}) : t('classic_exterior');
       selector.querySelector('[data-selection-note]').textContent = !valid && !pendingPair ? t('invalid_design') : pendingPair ? t('pair_note') : t('selected_note',{exterior});
       selector.querySelector('[data-selection-status]').textContent = !valid && !pendingPair ? '' : pendingPair ? t('select_side') : t('selected_total');
       selector.querySelector('[data-side-choices]').hidden = !pairGroup;
-      const purchaseContext = !valid && !pendingPair ? t('choose_look') : pairGroup ? (variant ? t('pair_selection',{id:id.toUpperCase(),side:variant.side.toUpperCase(),position:t(variant.side==='a'?'left':'right')}) : t('pair_note')) : t('one_selection',{name:variant ? id.toUpperCase() : t('classic_name')});
+      const purchaseContext = !valid && !pendingPair ? t('choose_look') : pairGroup ? (variant ? t('pair_selection',{name,side:variant.side.toUpperCase(),position:t(variant.side==='a'?'left':'right')}) : t('pair_note')) : t('one_selection',{name});
       document.querySelector('[data-image-selection]').textContent = purchaseContext;
       document.querySelector('[data-sticky-selection]').textContent = purchaseContext;
       productImage.src = display?.image || originalImage.src;
@@ -93,7 +93,7 @@
         link.setAttribute('aria-disabled', String(!!pendingPair || !valid));
         link.setAttribute('aria-label', pendingPair || !valid ? t('checkout_pick') : t('buy_aria',{name}));
         const arrow = link.querySelector('span');
-        const text = pendingPair || !valid ? t('choose_look') : t('buy_label',{name:variant ? id.toUpperCase() : 'Keeper'});
+        const text = pendingPair || !valid ? t('choose_look') : t('buy_label',{name:'Keeper'});
         link.replaceChildren(document.createTextNode(text));
         if (arrow) link.append(arrow);
       });

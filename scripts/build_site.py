@@ -15,7 +15,7 @@ COMMERCE = json.loads((ROOT / 'scripts/commerce.json').read_text())
 C = json.loads((ROOT / 'scripts/components.json').read_text())
 A = DATA['assets']
 E = lambda x: html.escape(str(x), quote=True)
-VERSION = '20261111-finish-names'
+VERSION = '20261111-name-only-picker'
 CATALOGS = read_catalogs()
 # Keep CDN-injected analytics outside the consent-controlled provider set.
 SCRIPT_POLICY = "script-src-elem 'self' 'unsafe-inline' https://www.googletagmanager.com https://connect.facebook.net https://*.clarity.ms https://*.hs-scripts.com https://*.usemessages.com https://*.hs-banner.com https://*.hs-analytics.net https://*.hscollectedforms.net https://*.hubspot.com https://*.hsadspixel.net https://*.hsleadflows.net"

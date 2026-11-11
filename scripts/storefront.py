@@ -157,7 +157,7 @@ def _design_card(design, c):
             label = f'{_e(VARIANTS[variant]["name"])} · {label}'
         choices += f'<div class="kr-design-choice"><a class="kr-choose" href="/camera.html?style={variant}#choose-style">{label} ↗</a><a class="kr-quick-buy" data-purchase="design-{variant}" data-variant="{variant}" href="{_e(checkout_url(c,variant))}" aria-label="Buy one {_e(design["name"])} {side.upper()} Keeper, $229 USD including shipping">Buy one · $199</a></div>'
     label = 'A / left · B / right · sold individually' if paired else 'Camera + selected exterior'
-    return f'<article class="kr-design-card card" data-design-card data-kind="{design["kind"]}" data-search="{_e(key+" "+design["name"]+" "+design["name_zh"])}"><a class="kr-design-image" href="/camera.html?style={key}{"-a" if paired else ""}#choose-style"><img src="{design["thumb"]}" srcset="{design["thumb"]} 360w, {design["image"]} {design["width"]}w" sizes="{sizes}" alt="{_e(design["name"])} — {key.upper()}{" A and B exterior designs" if paired else " exterior design"}" width="{design["width"]}" height="{design["height"]}" loading="lazy" decoding="async"></a><div class="kr-design-heading"><h3>{_e(design["name"])}</h3><span>{key.upper()}</span></div><p class="kr-design-caption">{label}</p>{choices}</article>'
+    return f'<article class="kr-design-card card" data-design-card data-kind="{design["kind"]}" data-search="{_e(key+" "+design["name"]+" "+design["name_zh"])}"><a class="kr-design-image" href="/camera.html?style={key}{"-a" if paired else ""}#choose-style"><img src="{design["thumb"]}" srcset="{design["thumb"]} 360w, {design["image"]} {design["width"]}w" sizes="{sizes}" alt="{_e(design["name"])}" width="{design["width"]}" height="{design["height"]}" loading="lazy" decoding="async"></a><div class="kr-design-heading"><h3>{_e(design["name"])}</h3></div><p class="kr-design-caption">{label}</p>{choices}</article>'
 
 
 def design_catalog(c, paired_only=False):
@@ -181,8 +181,9 @@ def _style_selector(c):
     for variant in DATA['variants']:
         key, d = variant['id'], DESIGNS[variant['group']]
         name = _e(variant['name'])
-        picks += f'<a data-pick-style="{key}" href="/camera.html?style={key}#choose-style"><img src="{d["thumb"]}" alt="" width="{d["width"]}" height="{d["height"]}" loading="lazy"><span>{name}</span><small>{key.upper()}</small></a>'
-        static_buys += f'<li><a data-variant="{key}" href="{_e(checkout_url(c,key))}"><span>{name}</span> · <span>{key.upper()}</span></a></li>'
+        side = {'a': '<small>A · left</small>', 'b': '<small>B · right</small>'}.get(variant['side'], '')
+        picks += f'<a data-pick-style="{key}" href="/camera.html?style={key}#choose-style"><img src="{d["thumb"]}" alt="" width="{d["width"]}" height="{d["height"]}" loading="lazy"><span>{name}</span>{side}</a>'
+        static_buys += f'<li><a data-variant="{key}" href="{_e(checkout_url(c,key))}">{name}</a></li>'
     return f'<div class="kr-selector" id="choose-style" data-style-selector><h2 class="kr-picker-title">Choose from eight looks</h2><p class="kr-selected-name" data-selected-name>Porcelain White</p><p class="kr-selection-note" data-selection-note>One camera · Porcelain White exterior · gift box, lanyard &amp; manual.</p><div class="kr-side-choices" data-side-choices hidden><button type="button" data-pair-side="a">Choose A · left</button><button type="button" data-pair-side="b">Choose B · right</button></div><div class="kr-visual-picks">{picks}</div><p class="kr-selection-status" data-selection-status aria-live="polite"></p><div class="kr-share-actions" hidden><button type="button" data-share-current>Share this look ↗</button><button type="button" data-copy-current>Copy link</button><span data-share-status role="status"></span></div><noscript><p>Without JavaScript, use the named checkout links below. The main purchase button buys Porcelain White.</p><ul class="kr-static-checkouts">{static_buys}</ul></noscript><script type="application/json" id="keeper-design-data">{payload}</script></div>'
 
 
