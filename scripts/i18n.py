@@ -70,6 +70,14 @@ def read_catalogs():
     return catalogs
 
 
+def variant_name(variant, catalog):
+    group = catalog['designs'][variant['group']]
+    if variant['name'] in catalog['text']:
+        return catalog['text'][variant['name']]
+    side = variant['side']
+    return group + (catalog['ui']['side_suffix'].format(side=side.upper()) if side else '')
+
+
 def dynamic_entries(catalog):
     ui, names, texts = (catalog[k] for k in ['ui','designs','text'])
     t = lambda key, **values: ui[key].format(**values)
@@ -84,7 +92,7 @@ def dynamic_entries(catalog):
             entries[f'Buy one {name} {side.upper()} Keeper, $229 USD including shipping'] = t('buy_design_aria',name=local,side=side.upper())
     for variant in DATA['variants']:
         group, side = variant['group'], variant['side']
-        label = names[group]+(t('side_suffix',side=side.upper()) if side else '')
+        label = variant_name(variant, catalog)
         original = f'{group.upper()}{" "+side.upper() if side else ""} — {variant["name"]}'
         entries[original] = f'{group.upper()}{" "+side.upper() if side else ""} — {label}'
     for scene in DATA['lifestyle']+DATA['camera_story']:
@@ -180,7 +188,9 @@ class Localizer(HTMLParser):
         if self.script == 'keeper-design-data':
             payload = json.loads(data)
             for variant in payload['variants']:
-                variant['name'] = self.catalog['designs'][variant['group']]+(self.catalog['ui']['side_suffix'].format(side=variant['side'].upper()) if variant['side'] else '')
+                variant['name'] = variant_name(variant, self.catalog)
+                if variant['side']:
+                    variant['group_name'] = self.catalog['designs'][variant['group']]
             payload['checkout'] = checkout_url(payload['checkout'],self.locale)
             self.output.append(safe_json(payload))
         elif self.script == 'application/ld+json':

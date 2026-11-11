@@ -176,7 +176,7 @@ def home_body(c):
 
 
 def updates():
-    items=[('26 new photo ideas.','Friends, campus, travel and gifts, with a Keeper photograph in the same scene.','/moments.html#photo-ideas'),('Four languages, one Keeper.','Read the site in English, Chinese, Japanese or Korean.','/owners.html#site-updates'),('Eight selected looks.','A smaller collection: classic cream, five designs and Sun & moon A or B.','/styles.html'),('A new set of field notes.','Three guides for your first photographs and everyday walks.','/learn.html')]
+    items=[('26 new photo ideas.','Friends, campus, travel and gifts, with a Keeper photograph in the same scene.','/moments.html#photo-ideas'),('Four languages, one Keeper.','Read the site in English, Chinese, Japanese or Korean.','/owners.html#site-updates'),('Eight selected looks.','A smaller collection: Porcelain White, five designs and Sun & moon A or B.','/styles.html'),('A new set of field notes.','Three guides for your first photographs and everyday walks.','/learn.html')]
     return '<div class="ed-updates" id="studio-updates"><h3>From the studio</h3>'+''.join(f'<a href="{u}"><time datetime="{"2026-11-10" if u in ["/moments.html#photo-ideas","/styles.html"] else "2026-11-09"}">{"2026.11.10" if u in ["/moments.html#photo-ideas","/styles.html"] else "2026.11.09"}</time><div><strong>{t}</strong><p>{copy}</p></div><span aria-hidden="true">↗</span></a>' for t,copy,u in items)+'</div>'
 
 

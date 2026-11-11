@@ -588,8 +588,8 @@
     },
     {
       "id": "st-12",
-      "name": "Indie band",
-      "name_zh": "独立乐队海报",
+      "name": "Vermilion Collage",
+      "name_zh": "朱砂拼色",
       "kind": "single",
       "source": "attachments/keeper-day/product-stickers/st-12-indie-band.png",
       "source_sha256": "60695fe4ab229b093e108a1a03477876fe6eadcb15c9bee418b2e01a5fccf0bf",
@@ -768,8 +768,8 @@
     },
     {
       "id": "st-27",
-      "name": "Candy stripes",
-      "name_zh": "糖果店条纹",
+      "name": "Rose Stripe",
+      "name_zh": "蔷薇条纹",
       "kind": "single",
       "source": "attachments/keeper-day/product-stickers/st-27-candy-stripes.png",
       "source_sha256": "9cc12ed59c0d0a275b415b52a6c6108338539d7532d3132648005854948d00b9",
@@ -816,8 +816,8 @@
     },
     {
       "id": "st-31",
-      "name": "Quiet geometry",
-      "name_zh": "瑞士网格",
+      "name": "Slate Grid",
+      "name_zh": "岩灰格纹",
       "kind": "single",
       "source": "attachments/keeper-day/product-stickers/st-31-swiss-grid.png",
       "source_sha256": "f92cfd12f685632d33e979689f7a5035db9617ea3557f322ba567047123dae06",
@@ -948,8 +948,8 @@
     },
     {
       "id": "st-42",
-      "name": "Soft daydream",
-      "name_zh": "柔和渐变",
+      "name": "Dusk Gradient",
+      "name_zh": "暮霞渐变",
       "kind": "single",
       "source": "attachments/keeper-day/product-stickers/st-42-soft-gradient.png",
       "source_sha256": "92a15665f71d476bc335dc2066f3e2ada0b6f9b65903a73b48c5fcea0e880348",
@@ -1044,8 +1044,8 @@
     },
     {
       "id": "st-50",
-      "name": "Garden stitches",
-      "name_zh": "花园刺绣",
+      "name": "Ivory Garden",
+      "name_zh": "庭园花纹",
       "kind": "single",
       "source": "attachments/keeper-day/product-stickers/st-50-garden-embroidery.png",
       "source_sha256": "7f19dfb0f1cd66ebb726f12c9af57b4efeb605ac09b1e4ccf81610d971107e41",
@@ -1734,7 +1734,7 @@
     {
       "id": "st-12",
       "group": "st-12",
-      "name": "Indie band",
+      "name": "Vermilion Collage",
       "side": "",
       "image": "/assets/designs/st-12.webp",
       "width": 720,
@@ -1869,7 +1869,7 @@
     {
       "id": "st-27",
       "group": "st-27",
-      "name": "Candy stripes",
+      "name": "Rose Stripe",
       "side": "",
       "image": "/assets/designs/st-27.webp",
       "width": 720,
@@ -1905,7 +1905,7 @@
     {
       "id": "st-31",
       "group": "st-31",
-      "name": "Quiet geometry",
+      "name": "Slate Grid",
       "side": "",
       "image": "/assets/designs/st-31.webp",
       "width": 720,
@@ -2004,7 +2004,7 @@
     {
       "id": "st-42",
       "group": "st-42",
-      "name": "Soft daydream",
+      "name": "Dusk Gradient",
       "side": "",
       "image": "/assets/designs/st-42.webp",
       "width": 720,
@@ -2076,7 +2076,7 @@
     {
       "id": "st-50",
       "group": "st-50",
-      "name": "Garden stitches",
+      "name": "Ivory Garden",
       "side": "",
       "image": "/assets/designs/st-50.webp",
       "width": 720,
@@ -2247,7 +2247,7 @@
     {
       "id": "p-01-a",
       "group": "p-01",
-      "name": "Sun & moon · Side A",
+      "name": "Solar Gold",
       "side": "a",
       "image": "/assets/designs/p-01.webp",
       "width": 960,
@@ -2256,7 +2256,7 @@
     {
       "id": "p-01-b",
       "group": "p-01",
-      "name": "Sun & moon · Side B",
+      "name": "Lunar Blue",
       "side": "b",
       "image": "/assets/designs/p-01.webp",
       "width": 960,

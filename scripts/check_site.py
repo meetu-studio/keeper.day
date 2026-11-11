@@ -6,7 +6,7 @@ from html import unescape
 from urllib.parse import urlsplit, unquote, parse_qs
 from collections import Counter
 import json, re, sys
-from i18n import LANGUAGES, HTML_LANG, read_catalogs, canonical
+from i18n import LANGUAGES, HTML_LANG, read_catalogs, canonical, variant_name
 ROOT = Path(__file__).resolve().parents[1]
 COMMERCE = json.loads((ROOT / 'scripts/commerce.json').read_text())
 DATA = json.loads((ROOT / 'scripts/content.json').read_text())
@@ -158,7 +158,7 @@ for lang in LANGUAGES:
     if {v['id'] for v in payload['variants']} != set(VARIANTS): errors.append(f'{lang}: selector and catalog disagree')
     if parse_qs(urlsplit(payload['checkout']).query).get('locale') != [lang]: errors.append(f'{lang}: wrong checkout language')
     for variant in payload['variants']:
-        if catalogs[lang]['designs'][variant['group']] not in variant['name']: errors.append(f'{lang}: wrong localized variant name {variant["id"]}')
+        if variant['name'] != variant_name(VARIANTS[variant['id']], catalogs[lang]): errors.append(f'{lang}: wrong localized variant name {variant["id"]}')
     for card in pages[prefix+'styles.html'].anchors:
         if card['attrs'].get('data-variant') and not valid_checkout(card['attrs']['href'],card['attrs']['data-variant'],lang): errors.append(f'{lang}: invalid design checkout')
 for lang in ['zh','ja','ko']:

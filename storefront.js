@@ -68,7 +68,7 @@
       overlay.hidden = !pairGroup;
       document.querySelectorAll('[data-pair-side]').forEach(button => button.setAttribute('aria-pressed',String(button.dataset.pairSide === variant?.side)));
       const display = variant || groupVariants[0];
-      const name = variant ? `${variant.name} · ${id.toUpperCase()}` : pendingPair ? t('choose_side_name',{name:groupVariants[0].name.split(' · ')[0]}) : valid ? t('classic_name') : t('choose_look');
+      const name = variant ? `${variant.name} · ${id.toUpperCase()}` : pendingPair ? t('choose_side_name',{name:groupVariants[0].group_name}) : valid ? t('classic_name') : t('choose_look');
       selector.querySelector('[data-selected-name]').textContent = name;
       const exterior = variant?.side ? t('side_exterior',{side:variant.side.toUpperCase(),position:t(variant.side==='a'?'left':'right')}) : variant ? t('exterior',{name:variant.name}) : t('classic_exterior');
       selector.querySelector('[data-selection-note]').textContent = !valid && !pendingPair ? t('invalid_design') : pendingPair ? t('pair_note') : t('selected_note',{exterior});

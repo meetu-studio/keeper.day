@@ -9,6 +9,7 @@ CHOICES = DATA['active_choices']
 DATA['variants'] = [v for v in DATA['variants'] if v['id'] in CHOICES]
 DATA['designs'] = [d for d in DATA['designs'] if any(v['group'] == d['id'] for v in DATA['variants'])]
 DESIGNS = {d['id']: d for d in DATA['designs']}
+VARIANTS = {v['id']: v for v in DATA['variants']}
 
 
 def _e(value):
@@ -61,7 +62,7 @@ def _gallery():
             visual = '<div class="sf-photo-stage">'+visual+'<div class="kr-pair-overlay" data-pair-overlay hidden><button type="button" data-pair-side="a" aria-pressed="false"><span>A · left</span></button><button type="button" data-pair-side="b" aria-pressed="false"><span>B · right</span></button></div></div>'
         panels.append(f'<figure class="sf-gallery-panel{" sf-hardware" if i == 0 else ""}" id="sf-photo-{i}" data-sf-panel>{visual}<figcaption>{label}</figcaption></figure>')
         buttons.append(f'<button class="sf-thumb" type="button" data-sf-photo="{i}" aria-controls="sf-photo-{i}" aria-pressed="{str(i == 0).lower()}" aria-label="Show image {i+1}: {_e(label)}">{_image(src,"",False,True)}</button>')
-    return '<div class="sf-gallery" data-sf-gallery><p class="kr-image-selection" data-image-selection aria-live="polite">Classic cream · one camera</p><div class="sf-gallery-panels">'+''.join(panels)+'</div><div class="sf-thumbnails" role="group" aria-label="Product images" hidden>'+''.join(buttons)+'</div><p class="sf-micro">AI images and screen simulations are shooting references, not camera sample photographs.</p><p class="sf-sr-only" data-sf-gallery-status aria-live="polite"></p></div>'
+    return '<div class="sf-gallery" data-sf-gallery><p class="kr-image-selection" data-image-selection aria-live="polite">Porcelain White · one camera</p><div class="sf-gallery-panels">'+''.join(panels)+'</div><div class="sf-thumbnails" role="group" aria-label="Product images" hidden>'+''.join(buttons)+'</div><p class="sf-micro">AI images and screen simulations are shooting references, not camera sample photographs.</p><p class="sf-sr-only" data-sf-gallery-status aria-live="polite"></p></div>'
 
 
 def _box(c):
@@ -152,6 +153,8 @@ def _design_card(design, c):
     for side in sides:
         variant = key+('-'+side if side else '')
         label = ('Side '+side.upper()+(' · left' if side == 'a' else ' · right')) if side else 'Choose this look'
+        if side:
+            label = f'{_e(VARIANTS[variant]["name"])} · {label}'
         choices += f'<div class="kr-design-choice"><a class="kr-choose" href="/camera.html?style={variant}#choose-style">{label} ↗</a><a class="kr-quick-buy" data-purchase="design-{variant}" data-variant="{variant}" href="{_e(checkout_url(c,variant))}" aria-label="Buy one {_e(design["name"])} {side.upper()} Keeper, $229 USD including shipping">Buy one · $199</a></div>'
     label = 'A / left · B / right · sold individually' if paired else 'Camera + selected exterior'
     return f'<article class="kr-design-card card" data-design-card data-kind="{design["kind"]}" data-search="{_e(key+" "+design["name"]+" "+design["name_zh"])}"><a class="kr-design-image" href="/camera.html?style={key}{"-a" if paired else ""}#choose-style"><img src="{design["thumb"]}" srcset="{design["thumb"]} 360w, {design["image"]} {design["width"]}w" sizes="{sizes}" alt="{_e(design["name"])} — {key.upper()}{" A and B exterior designs" if paired else " exterior design"}" width="{design["width"]}" height="{design["height"]}" loading="lazy" decoding="async"></a><div class="kr-design-heading"><h3>{_e(design["name"])}</h3><span>{key.upper()}</span></div><p class="kr-design-caption">{label}</p>{choices}</article>'
@@ -159,28 +162,28 @@ def _design_card(design, c):
 
 def design_catalog(c, paired_only=False):
     designs = [d for d in DATA['designs'] if not paired_only or d['kind'] == 'paired']
-    classic = '' if paired_only else f'<article class="kr-design-card card" data-design-card data-kind="single"><a class="kr-design-image" href="/camera.html?style=classic#choose-style"><img src="/assets/product-flowers.webp" alt="Classic cream" width="659" height="891" loading="lazy"></a><div class="kr-design-heading"><h3>Classic cream</h3></div><p class="kr-design-caption">Camera + selected exterior</p><div class="kr-design-choice"><a class="kr-choose" href="/camera.html?style=classic#choose-style">Choose this look ↗</a><a class="kr-quick-buy" data-purchase="design-classic" data-variant="classic" href="{_e(c["checkout_url"])}">Buy one · $199</a></div></article>'
+    classic = '' if paired_only else f'<article class="kr-design-card card" data-design-card data-kind="single"><a class="kr-design-image" href="/camera.html?style=classic#choose-style"><img src="/assets/product-flowers.webp" alt="Porcelain White" width="659" height="891" loading="lazy"></a><div class="kr-design-heading"><h3>Porcelain White</h3></div><p class="kr-design-caption">Camera + selected exterior</p><div class="kr-design-choice"><a class="kr-choose" href="/camera.html?style=classic#choose-style">Choose this look ↗</a><a class="kr-quick-buy" data-purchase="design-classic" data-variant="classic" href="{_e(c["checkout_url"])}">Buy one · $199</a></div></article>'
     count = 'Two sides. Choose one camera.' if paired_only else 'Eight looks, one camera.'
     return '<section class="sf-section kr-catalog"><h2>'+count+'</h2><div class="kr-design-grid">'+classic+''.join(_design_card(d,c) for d in designs)+'</div></section>'
 
 
 def styles_body(c, paired_only=False):
     title = 'Sun & moon' if paired_only else 'Eight looks. Pick your favorite.'
-    copy = 'Sun & moon: choose A (left) or B (right). Each order includes one camera, not a pair.' if paired_only else 'Classic cream, five individual designs, and two Sun & moon sides. Eight choices in total, with the same camera inside.'
+    copy = 'Sun & moon: choose A (left) or B (right). Each order includes one camera, not a pair.' if paired_only else 'Porcelain White, five individual designs, and two Sun & moon sides. Eight choices in total, with the same camera inside.'
     intro = '<section class="sf-section kr-page-intro"><p class="sf-kicker">CHOOSE YOUR KEEPER</p><h1>'+title+'</h1><p class="sf-lead">'+copy+'</p><p class="kr-price-line"><strong>$199 per camera</strong> + $30 worldwide shipping · $229 USD total</p><div class="kr-intro-links"><a href="/styles.html">All designs</a><a href="/together.html">Paired designs</a><a href="/camera.html">The camera &amp; what’s included</a></div></section>'
     return '<div class="storefront">'+intro+design_catalog(c,paired_only)+_share_section()+_end(c)+'</div>'
 
 
 def _style_selector(c):
     payload = json.dumps({'variants':DATA['variants'],'checkout':c['checkout_url']},ensure_ascii=False).replace('</','<\\/')
-    picks = '<a data-pick-style="classic" href="/camera.html#choose-style"><img src="/assets/product-flowers.webp" alt="Classic cream" width="659" height="891" loading="lazy"><span>Classic cream</span></a>'
-    static_buys = f'<li><a href="{_e(c["checkout_url"])}">Classic cream</a></li>'
+    picks = '<a data-pick-style="classic" href="/camera.html#choose-style"><img src="/assets/product-flowers.webp" alt="" width="659" height="891" loading="lazy"><span>Porcelain White</span></a>'
+    static_buys = f'<li><a href="{_e(c["checkout_url"])}">Porcelain White</a></li>'
     for variant in DATA['variants']:
         key, d = variant['id'], DESIGNS[variant['group']]
-        side = ' · '+('A · left' if variant['side'] == 'a' else 'B · right') if variant['side'] else ''
-        picks += f'<a data-pick-style="{key}" href="/camera.html?style={key}#choose-style"><img src="{d['thumb']}" alt="{_e(d['name'])}" width="{d['width']}" height="{d['height']}" loading="lazy"><span>{key.upper()}</span>'+ (f'<small>{side[3:]}</small>' if side else '')+'</a>'
-        static_buys += f'<li><a data-variant="{key}" href="{_e(checkout_url(c,key))}">{key.upper()}</a></li>'
-    return f'<div class="kr-selector" id="choose-style" data-style-selector><h2 class="kr-picker-title">Choose from eight looks</h2><p class="kr-selected-name" data-selected-name>Classic cream</p><p class="kr-selection-note" data-selection-note>One camera · classic cream exterior · gift box, lanyard &amp; manual.</p><div class="kr-side-choices" data-side-choices hidden><button type="button" data-pair-side="a">Choose A · left</button><button type="button" data-pair-side="b">Choose B · right</button></div><div class="kr-visual-picks">{picks}</div><p class="kr-selection-status" data-selection-status aria-live="polite"></p><div class="kr-share-actions" hidden><button type="button" data-share-current>Share this look ↗</button><button type="button" data-copy-current>Copy link</button><span data-share-status role="status"></span></div><noscript><p>Without JavaScript, use the named checkout links below. The main purchase button buys Classic cream.</p><ul class="kr-static-checkouts">{static_buys}</ul></noscript><script type="application/json" id="keeper-design-data">{payload}</script></div>'
+        name = _e(variant['name'])
+        picks += f'<a data-pick-style="{key}" href="/camera.html?style={key}#choose-style"><img src="{d["thumb"]}" alt="" width="{d["width"]}" height="{d["height"]}" loading="lazy"><span>{name}</span><small>{key.upper()}</small></a>'
+        static_buys += f'<li><a data-variant="{key}" href="{_e(checkout_url(c,key))}"><span>{name}</span> · <span>{key.upper()}</span></a></li>'
+    return f'<div class="kr-selector" id="choose-style" data-style-selector><h2 class="kr-picker-title">Choose from eight looks</h2><p class="kr-selected-name" data-selected-name>Porcelain White</p><p class="kr-selection-note" data-selection-note>One camera · Porcelain White exterior · gift box, lanyard &amp; manual.</p><div class="kr-side-choices" data-side-choices hidden><button type="button" data-pair-side="a">Choose A · left</button><button type="button" data-pair-side="b">Choose B · right</button></div><div class="kr-visual-picks">{picks}</div><p class="kr-selection-status" data-selection-status aria-live="polite"></p><div class="kr-share-actions" hidden><button type="button" data-share-current>Share this look ↗</button><button type="button" data-copy-current>Copy link</button><span data-share-status role="status"></span></div><noscript><p>Without JavaScript, use the named checkout links below. The main purchase button buys Porcelain White.</p><ul class="kr-static-checkouts">{static_buys}</ul></noscript><script type="application/json" id="keeper-design-data">{payload}</script></div>'
 
 
 def _lifestyle_image(scene, eager=False):
