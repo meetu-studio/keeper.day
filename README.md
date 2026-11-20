@@ -105,3 +105,11 @@ The owner found the scene photos on the new pages dark and muddy, with faces tha
 - New files: `assets/redesign/photos-20261120/`, at the same sizes as the photos they replace (1440×960 or 960×640). Average brightness went from 94–137 to 128–184 (0–255).
 - `scripts/redesign/build.py` maps the old paths to the new files in `REFRESHED`; only the eight pages it builds use them. The old photos stay in place, unchanged, for the rest of the site.
 - `storefront/full-kit.webp` was bright already and is unchanged. Prompts, candidates and the review page are in the owner's notes (`拍立得/attachments/keeper-day/website-photo-refresh-20261120/`).
+
+## 2026-11-20 · Brighter photos on the other pages
+
+The same refresh for the older pages (about, gifting, the three guides, learn, moments and press, in four languages). Their pictures come from two families: the inspiration photos (`assets/inspiration/20261110/`) and the photo-diary pictures taken with Keeper (`assets/photo-diary/20261110/`). Each was regenerated with Codex image generation from the original, with the brief used for the home page; the photo-diary pictures show no camera. The owner picked one version per photo: 23 regenerated, the desk photo (15) kept as it was, and a clear-skin edit for the flower portrait (24). The twelve inspiration photos already refreshed on the home page reuse the owner's earlier pick; 14 was bright already and is unchanged.
+
+- New files: `assets/inspiration/20261120/` and `assets/photo-diary/20261120/`, with the same names and sizes as the originals (inspiration 240/480/960/1440, photo-diary 480/960/1440/full). Average brightness of the regenerated photos went from 94–138 to 128–190 (0–255).
+- `scripts/build_site.py` points a page at the 20261120 file wherever one exists (`brighter()`); the kept 2026-11-11 designs (`index-20261111.html`, `camera-20261111.html`) keep the originals. The 20261110 files stay in place, unchanged.
+- The pages listed a 240-wide size that some inspiration photos never had, a broken srcset entry since 2026-11-10. The refreshed photos have it in the new folder; for the originals still in use (01, 09, 13, 22 and 26 on the kept 2026-11-11 designs, and photo 14 everywhere) a 240 copy scaled from the original's 480 file was added beside them. No page now lists an image file that does not exist.

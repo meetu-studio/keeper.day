@@ -24,6 +24,16 @@ PRICE, SHIPPING, TOTAL = (COMMERCE[k] for k in ['price', 'shipping', 'total'])
 NAV = [('camera.html', 'The camera'), ('styles.html', 'Find your look'), ('learn.html', 'Photography'), ('gifting.html', 'Gifting'), ('support.html', 'Support')]
 
 
+# 2026-11-20: brighter commercial versions of the inspiration and photo-diary pictures sit in a 20261120 folder beside the
+# 20261110 originals, same names and sizes. Pages use the new file where one exists; the kept 2026-11-11 designs keep
+# the originals (AGENTS.md: add, never overwrite).
+BRIGHTER = re.compile(r'/assets/(inspiration|photo-diary)/20261110/([a-z0-9-]+-(?:240|480|960|1440|full)\.webp)')
+
+
+def brighter(page):
+    return BRIGHTER.sub(lambda m: f'/assets/{m[1]}/20261120/{m[2]}' if (ROOT / 'assets' / m[1] / '20261120' / m[2]).exists() else m[0], page)
+
+
 def image(key, eager=False):
     a = A[key]
     return f'<img src="/assets/collections/{E(key)}.webp" alt="{E(a["alt"])}" width="{a["width"]}" height="{a["height"]}" loading="{"eager" if eager else "lazy"}" decoding="async">'
@@ -84,6 +94,8 @@ def render(filename, title, description, body, product=False):
         name = REPLACED.get(filename, filename)
         if name != filename:
             page = page.replace('<meta charset="utf-8">', '<meta charset="utf-8">\n<meta name="robots" content="noindex">\n<!-- The 2026-11-11 design of ' + filename + ', kept beside the 2026-11-20 design that replaced it (scripts/redesign/build.py; AGENTS.md: add, never overwrite). -->\n', 1)
+        else:
+            page = brighter(page)
         target = ROOT/name if locale == 'en' else ROOT/locale/name
         target.parent.mkdir(exist_ok=True)
         target.write_text(page)
