@@ -73,6 +73,11 @@ HOME_NEW = SITE / 'assets/redesign/home-20261120'
 HOME_HERO = (HOME_NEW / 'hero-classic-1440.webp').exists()
 HOME_SHUTTER = (HOME_NEW / 'shutter-1440.webp').exists()
 HOME_ALL_LOOKS = (HOME_NEW / 'looks-all-1080.webp').exists()
+# 2026-11-20 (evening): the everyday photos (a sunset, a corgi, brunch) and the four places Keeper is kept (fridge,
+# desk, tote, backpack); with them the home page takes the Insta360 Toast product page's run of sections, in Keeper's
+# own words: at a glance, wherever you keep it, six-color paper, charging, online on its own, in the box and specs
+HOME_EVERYDAY = (HOME_NEW / 'everyday-sunset-1440.webp').exists()
+HOME_PLACES = (HOME_NEW / 'place-fridge-1440.webp').exists()
 HOME_SHARE = 'share-20261120.jpg' if (SITE / 'assets/redesign/share-20261120.jpg').exists() else 'share.jpg'
 
 LANGS = {
@@ -465,6 +470,96 @@ def footer(p, close, links, buy_href):
 
 # ---------------------------------------------------------------- the home page
 
+def home_sections_20261120(p, c):
+    """the sections the home page takes from the Insta360 Toast product page's structure (2026-11-20), each in the
+    copy file under <name>_20261120; {} until the photos and the copy are both there (the page is then as before)"""
+    if not (HOME_PLACES and 'places_20261120' in c):
+        return {}
+    N = '/assets/redesign/home-20261120/'
+    hl, pl, bt, ol, ib = (c[k + '_20261120'] for k in ('highlights', 'places', 'battery', 'online', 'inbox'))
+    tiles = '\n'.join(f'        <a class="glance__item" href="{it["href"]}"><h3>{it["h3"]}</h3><p>{it["p"]}</p></a>' for it in hl['items'])
+    place_files = [('place-fridge', 'Keeper stuck to a fridge door'), ('place-desk', 'Keeper leaning on books on a desk'),
+                   ('place-tote', 'Keeper hanging from a canvas tote'), ('place-backpack', 'Keeper hanging from a backpack strap')]
+    places = '\n'.join(f"""        <div class="tile">
+          <div class="tile__head"><h3>{it['h3']}</h3></div>
+          <p>{it['p']}</p>
+          <div class="tile__media m-zoom"><img src="{N}{f}-1440.webp" alt="{a(it['alt'])}" width="1440" height="960" loading="lazy" data-source="client" data-subject="{subj}"></div>
+        </div>""" for it, (f, subj) in zip(pl['items'], place_files))
+    cards = '\n'.join(f'        <div class="card"><h3>{it["h3"]}</h3><p>{it["p"]}</p></div>' for it in ol['items'])
+    box = '\n'.join(f'          <li>{i}</li>' for i in ib['items'])
+    return {'highlights': f"""
+  <section class="section" id="glance" aria-labelledby="glance-h">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="glance-h">{hl['h2']}</h2>
+        <p>{hl['p']}</p>
+      </div>
+      <div class="glance">
+{tiles}
+      </div>
+    </div>
+  </section>
+""", 'places': f"""
+  <section class="section" id="places" style="--h: 2" aria-labelledby="places-h">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="places-h">{pl['h2']}</h2>
+        <p>{pl['p']}</p>
+      </div>
+      <div class="places">
+{places}
+      </div>
+    </div>
+  </section>
+""", 'battery': f"""
+  <section class="section" id="battery" aria-labelledby="battery-h">
+    <div class="wrap grid grid--top">
+      <p class="battery__stat span-6" aria-hidden="true">{bt['stat']}</p>
+      <div class="span-5 start-8">
+        <div class="section-head">
+          <h2 id="battery-h">{bt['h2']}</h2>
+          <p>{bt['p']}</p>
+        </div>
+        <p class="t-small muted">{bt['note']}</p>
+      </div>
+    </div>
+  </section>
+""", 'online': f"""
+  <section class="section" id="online" aria-labelledby="online-h">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="online-h">{ol['h2']}</h2>
+        <p>{ol['p']}</p>
+      </div>
+      <div class="online">
+{cards}
+      </div>
+    </div>
+  </section>
+""", 'inbox': f"""
+  <section class="section" id="inbox" style="--h: 2" aria-labelledby="inbox-h">
+    <div class="wrap grid grid--top">
+      <div class="span-6">
+        <div class="section-head">
+          <h2 id="inbox-h">{ib['h2']}</h2>
+          <p>{ib['p']}</p>
+        </div>
+        <h3 class="rows__head">{ib['box_h']}</h3>
+        <ul class="box__items box__items--two">
+{box}
+        </ul>
+        <h3 class="rows__head">{ib['specs_h']}</h3>
+        <ul class="rows rows--spec">
+{rows(ib['rows'])}
+        </ul>
+        <p class="t-small muted">{ib['note']}</p>
+      </div>
+      <figure class="side-photo span-5 start-8" style="--pos: 50% 52%"><img src="{p.site('storefront/full-kit.webp')}" alt="{a(ib['alt'])}" width="1440" height="960" loading="lazy" data-source="client" data-subject="Everything in the Keeper gift box"></figure>
+    </div>
+  </section>
+"""}
+
+
 def home(p):
     c, s = p.c['home'], p.c['shared']
     S = p.site
@@ -507,10 +602,23 @@ def home(p):
     wall_items = [('st-27', '09-graduation-news', 'Keeper at a graduation'), ('p-01-a', '05-two-perspectives', 'Keeper with a dog in the park'),
                   ('st-12', '06-your-city', 'Keeper on a city street'), ('st-50', '10-thank-you', 'Keeper at a kitchen table'),
                   ('st-31', '08-new-beginnings', 'Keeper in a new apartment'), ('st-42', '01-self-portrait', 'Keeper in a garden')]
+    wall_srcs = [S('inspiration/20261110/' + f + '-960.webp') for _, f, _ in wall_items]
+    wall_copy, everyday_p = c['everyday']['wall'], c['everyday']['p']
+    if HOME_EVERYDAY and 'wall_20261120' in c['everyday']:
+        new = lambda n: '/assets/redesign/home-20261120/' + n + '-960.webp'
+        wall_items = [('st-42', 'everyday-sunset', 'Keeper held sideways at a sunset'), ('st-12', '06-your-city', 'Keeper on a city street'),
+                      ('p-01-b', 'everyday-dog', 'Keeper photographing a corgi in autumn leaves'), ('st-50', '10-thank-you', 'Keeper at a kitchen table'),
+                      ('st-27', 'everyday-brunch', 'Keeper on a brunch table'), ('st-31', '08-new-beginnings', 'Keeper in a new apartment')]
+        wall_srcs = [new(f) if f.startswith('everyday-') else S('inspiration/20261110/' + f + '-960.webp') for _, f, _ in wall_items]
+        wall_copy, everyday_p = c['everyday']['wall_20261120'], c['everyday'].get('p_20261120', everyday_p)
     wall = '\n'.join(
         f'        <a class="m-zoom" href="#looks" data-look="{lid}" aria-label="{a(c["everyday"]["aria"].format(look=s["looks"][lid]["name"], where=w["where"]))}">'
-        f'<img src="{S("inspiration/20261110/" + f + "-960.webp")}" alt="{a(w["alt"])}" width="960" height="640" loading="lazy" data-source="client" data-subject="{subj}"></a>'
-        for (lid, f, subj), w in zip(wall_items, c['everyday']['wall']))
+        f'<img src="{src}" alt="{a(w["alt"])}" width="960" height="640" loading="lazy" data-source="client" data-subject="{subj}"></a>'
+        for (lid, f, subj), src, w in zip(wall_items, wall_srcs, wall_copy))
+    sec = home_sections_20261120(p, c)
+    paper_h2 = c['paper'].get('h2_20261120', c['paper']['h2']) if sec else c['paper']['h2']
+    paper_rows = c['paper'].get('rows_20261120', c['paper']['rows']) if sec else c['paper']['rows']
+    faq_items = c['questions'].get('faq_20261120', c['questions']['faq']) if sec else c['questions']['faq']
     o = c['order']
     body = f"""{comment}{nav(p, links)}
 <main id="top">
@@ -528,7 +636,7 @@ def home(p):
       </div>
     </div></div>
   </section>
-
+{sec.get('highlights', '')}
   <!-- pinned-chapters: the section holds while the three steps open one at a time -->
   <section class="section" id="how" style="--h: 2" data-moment="pinned-chapters" aria-labelledby="how-h">
     <div class="wrap mo-pc__grid">
@@ -575,7 +683,7 @@ def home(p):
       <div class="section-head section-head--row">
         <div>
           <h2 id="everyday-h">{c['everyday']['h2']}</h2>
-          <p>{c['everyday']['p']}</p>
+          <p>{everyday_p}</p>
         </div>
         <a class="link" href="{p.live('guide-photo-walk.html')}">{c['everyday']['link']}</a>
       </div>
@@ -584,23 +692,23 @@ def home(p):
       </div>
     </div>
   </section>
-
+{sec.get('places', '')}
   <section class="section" id="paper"{hm(c, 'paper')} aria-labelledby="paper-h">
     <div class="wrap grid grid--top">
       <div class="span-6">
         <div class="section-head">
-          <h2 id="paper-h">{c['paper']['h2']}</h2>
+          <h2 id="paper-h">{paper_h2}</h2>
           <p>{c['paper']['p']}</p>
         </div>
         <ul class="rows rows--spec">
-{rows(c['paper']['rows'])}
+{rows(paper_rows)}
         </ul>
         <p class="t-small muted">{c['paper']['note']}</p>
       </div>
       <figure class="develop span-5 start-8" data-moment="picture-develops"><img src="{S('storefront/at-home.webp')}" alt="{a(c['paper']['alt'])}" width="1440" height="960" loading="lazy" data-source="client" data-subject="Keeper's e-paper screen at home"></figure>
     </div>
   </section>
-
+{sec.get('battery', '')}
   <section class="section" id="carry" aria-labelledby="carry-h">
     <div class="wrap">
       <div class="section-head section-head--row">
@@ -613,7 +721,7 @@ def home(p):
       <div class="bleed"><img src="{S('editorial/20261109-shooting/carry-1440.webp')}" alt="{a(c['carry']['alt'])}" width="1440" height="960" loading="lazy" data-source="client" data-subject="Keeper carried with a jacket and tote"></div>
     </div>
   </section>
-
+{sec.get('online', '')}
   <section class="section ground-brand" id="gift" aria-labelledby="gift-h">
     <div class="wrap">
       <div class="section-head section-head--row">
@@ -629,7 +737,7 @@ def home(p):
       </div>
     </div>
   </section>
-
+{sec.get('inbox', '')}
   <section class="section" id="questions" aria-labelledby="questions-h">
     <div class="wrap grid grid--top">
       <div class="span-6">
@@ -640,7 +748,7 @@ def home(p):
         <a class="link" href="mailto:support@keeper.day">{c['questions']['link']}</a>
       </div>
       <div class="faq span-5 start-8">
-{faq(c['questions']['faq'])}
+{faq(faq_items)}
       </div>
     </div>
   </section>
@@ -719,7 +827,7 @@ def camera(p):
           <p>{c['specs']['p']}</p>
         </div>
         <ul class="rows rows--spec">
-{rows(c['specs']['rows'])}
+{rows(c['specs'].get('rows_20261120', c['specs']['rows']))}
         </ul>
         <p class="t-small muted">{c['specs']['note']}</p>
       </div>

@@ -172,6 +172,33 @@
           "where": "in a garden",
           "alt": "Keeper in Dusk Gradient photographing a smiling woman in a garden"
         }
+      ],
+      "p_20261120": "A sunset from a lookout, a corgi in the leaves, brunch from above, the corner you pass every day.",
+      "wall_20261120": [
+        {
+          "where": "at a sunset",
+          "alt": "Keeper in Dusk Gradient held sideways, photographing a Pacific sunset from a cliffside railing"
+        },
+        {
+          "where": "on a street corner",
+          "alt": "Keeper in Vermilion Collage held up to a brick street corner with a crosswalk"
+        },
+        {
+          "where": "with a corgi in the leaves",
+          "alt": "A man crouching in autumn leaves, photographing a corgi with Keeper in Lunar Blue"
+        },
+        {
+          "where": "at a kitchen table",
+          "alt": "Keeper in Ivory Garden photographing a laughing older woman holding flowers at her kitchen table"
+        },
+        {
+          "where": "at brunch",
+          "alt": "Keeper in Rose Stripe on a marble brunch table, the photo of the table on its screen"
+        },
+        {
+          "where": "in a new apartment",
+          "alt": "Keeper in Slate Grid photographing a woman sitting on the floor of a new apartment among boxes"
+        }
       ]
     },
     "paper": {
@@ -204,7 +231,26 @@
         ]
       ],
       "note": "Charging is planned for everyday photography; battery life varies with how often you shoot and change the picture.",
-      "alt": "Keeper in Porcelain White leaning on a green book by a window, a portrait of a smiling woman on its screen"
+      "alt": "Keeper in Porcelain White leaning on a green book by a window, a portrait of a smiling woman on its screen",
+      "h2_20261120": "A six&#8209;color e&#8209;paper screen",
+      "rows_20261120": [
+        [
+          "Colors",
+          "Six-color e-paper"
+        ],
+        [
+          "Finish",
+          "Matte, lit by the room, no glow"
+        ],
+        [
+          "With the power off",
+          "The photo stays on the screen"
+        ],
+        [
+          "Size",
+          "3.7 inches, 480 × 720"
+        ]
+      ]
     },
     "carry": {
       "h2": "A camera for the bag you already carry",
@@ -240,6 +286,24 @@
           "Were these photos taken with Keeper?",
           "No. The scenes on this page are AI-generated pictures of Keeper in use, and the photos on its screen are simulated."
         ]
+      ],
+      "faq_20261120": [
+        [
+          "Do I need a phone to take photos?",
+          "No. Keeper takes photos on its own and saves them to a microSD card. It also goes online by itself, so it exports your photos without a phone."
+        ],
+        [
+          "Does Keeper print photos?",
+          "No. The photo shows on the color e-paper screen. Keeper does not make paper prints."
+        ],
+        [
+          "Can I cancel or return it?",
+          "Yes. Cancel before it ships for a full US$229 refund. An unused camera in its box can be returned within 14 days of delivery: the US$199 is refunded, the US$30 shipping is not, and return postage is yours unless the camera is faulty."
+        ],
+        [
+          "Were these photos taken with Keeper?",
+          "No. The scenes on this page are AI-generated pictures of Keeper in use, and the photos on its screen are simulated."
+        ]
       ]
     },
     "close": {
@@ -247,7 +311,145 @@
       "line": "US$199 plus US$30 shipping, in its gift box.",
       "alt": "Keeper in Solar Gold photographing a couple hanging ornaments on a Christmas tree"
     },
-    "hero_alt_20261120": "A hand holds Keeper in Porcelain White at a seaside boardwalk, thumb on the red shutter, toward two friends laughing at the railing; the same two friends are on its screen"
+    "hero_alt_20261120": "A hand holds Keeper in Porcelain White at a seaside boardwalk, thumb on the red shutter, toward two friends laughing at the railing; the same two friends are on its screen",
+    "highlights_20261120": {
+      "h2": "Keeper at a glance",
+      "p": "A photo that takes photos. Here is what it does; each part has its own place further down.",
+      "items": [
+        {
+          "h3": "Takes photos on its own",
+          "p": "Frame on the small screen, press the red shutter.",
+          "href": "#how"
+        },
+        {
+          "h3": "Six-color e-paper",
+          "p": "Full color, matte like a print, no glow.",
+          "href": "#paper"
+        },
+        {
+          "h3": "Charge twice a year",
+          "p": "With everyday photography.",
+          "href": "#battery"
+        },
+        {
+          "h3": "Magnetic, with a lanyard",
+          "p": "On the fridge, a bag or your wrist.",
+          "href": "#places"
+        },
+        {
+          "h3": "Online on its own",
+          "p": "Exports photos without a phone, and family can send photos to it.",
+          "href": "#online"
+        },
+        {
+          "h3": "Eight looks",
+          "p": "The same camera, US$199 each.",
+          "href": "#looks"
+        }
+      ]
+    },
+    "places_20261120": {
+      "h2": "Wherever you keep it",
+      "p": "Keeper is magnetic and comes with a lanyard, so the photo you took stays where you will see it.",
+      "items": [
+        {
+          "h3": "On the fridge",
+          "p": "It sticks on, like any magnet.",
+          "alt": "Keeper in Solar Gold stuck to a white fridge door beside children's drawings, a beach family photo on its screen"
+        },
+        {
+          "h3": "On your desk",
+          "p": "Lean it on a few books by your coffee.",
+          "alt": "Keeper in Porcelain White leaning on two books on a wooden desk, a golden retriever photo on its screen"
+        },
+        {
+          "h3": "On your tote",
+          "p": "The lanyard loops through the handle.",
+          "alt": "Keeper in Vermilion Collage hanging by its lanyard from a canvas tote on a city sidewalk"
+        },
+        {
+          "h3": "On your backpack",
+          "p": "Hung on a strap, ready for the next photo.",
+          "alt": "Keeper in Slate Grid hanging from a green backpack strap on a college campus"
+        }
+      ]
+    },
+    "battery_20261120": {
+      "h2": "Charge it twice a year",
+      "stat": "2× a year",
+      "p": "E-paper only uses power when the picture changes, so with everyday photography Keeper needs charging about twice a year, over USB-C.",
+      "note": "Based on everyday photography. Battery life varies with how often you take photos, change the picture and go online."
+    },
+    "online_20261120": {
+      "h2": "Online on its own",
+      "p": "Keeper connects to the internet by itself. No phone in between.",
+      "items": [
+        {
+          "h3": "Export without a phone",
+          "p": "Keeper sends your photos out itself, so you never plug it into a phone."
+        },
+        {
+          "h3": "Photos from family",
+          "p": "Someone far away can send a photo straight to your Keeper's screen."
+        },
+        {
+          "h3": "Synced to the cloud",
+          "p": "Your photos sync to the cloud, not only to the memory card."
+        }
+      ]
+    },
+    "inbox_20261120": {
+      "h2": "In the box, and the numbers",
+      "p": "Every Keeper ships in a gift box, ready to give.",
+      "box_h": "In the box",
+      "items": [
+        "Keeper camera in your chosen look",
+        "Gift box",
+        "Lanyard",
+        "Instruction manual"
+      ],
+      "specs_h": "Specifications",
+      "rows": [
+        [
+          "Photo screen",
+          "3.7-inch six-color e-paper, 480 × 720"
+        ],
+        [
+          "Viewfinder",
+          "0.85-inch IPS LCD"
+        ],
+        [
+          "Shutter",
+          "One physical red button"
+        ],
+        [
+          "Storage",
+          "microSD card"
+        ],
+        [
+          "Charging port",
+          "USB-C"
+        ],
+        [
+          "Connection",
+          "Online on its own, no phone needed"
+        ],
+        [
+          "Magnetic",
+          "Yes, it sticks to a fridge"
+        ],
+        [
+          "Charging",
+          "About twice a year"
+        ],
+        [
+          "Price",
+          "US$199, plus US$30 shipping"
+        ]
+      ],
+      "note": "Battery life is based on everyday photography. A memory card is not confirmed to be in the box.",
+      "alt": "The open Keeper gift box with Keeper in Porcelain White, its lid, the lanyard and the quick start card"
+    }
   },
   "camera": {
     "title": "Buy Keeper, the photo that takes photos: US$199",
@@ -324,7 +526,41 @@
         ]
       ],
       "note": "Battery life varies with how often you take photos and change the picture.",
-      "alt": "Keeper in Slate Grid standing on a desk by a city window while a woman reads"
+      "alt": "Keeper in Slate Grid standing on a desk by a city window while a woman reads",
+      "rows_20261120": [
+        [
+          "Photo screen",
+          "3.7-inch color e-paper"
+        ],
+        [
+          "Viewfinder",
+          "Small IPS LCD, separate from the photo screen"
+        ],
+        [
+          "Shutter",
+          "One physical red button"
+        ],
+        [
+          "Storage",
+          "microSD card"
+        ],
+        [
+          "Taking photos",
+          "On its own, no phone or app"
+        ],
+        [
+          "Copying photos",
+          "Exports them itself online, no phone needed"
+        ],
+        [
+          "Charging",
+          "About twice a year with everyday photography"
+        ],
+        [
+          "Warranty",
+          "Your consumer rights in your region apply"
+        ]
+      ]
     },
     "box": {
       "h2": "What comes in the gift box",
