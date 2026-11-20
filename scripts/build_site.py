@@ -62,6 +62,31 @@ def footer():
 REPLACED = {'index.html': 'index-20261111.html', 'camera.html': 'camera-20261111.html'}
 
 
+# 2026-11-20 (owner): Keeper goes online on its own and exports photos without a phone; it also receives photos
+# sent from afar and syncs to the cloud. The current pages swap the older sentences for these (their translations
+# are in scripts/locales); the sources keep the old sentences, and so do the kept 2026-11-11 pages.
+NO_PHONE_20261120 = {
+    'Connect directly to your phone to export photos.':
+        'Keeper goes online on its own and exports photos, no phone needed.',
+    'Keeper takes photos independently and stores them on microSD. Connect it directly to your phone to export photos.':
+        'No phone is needed. Keeper takes photos independently and stores them on microSD, and it goes online on its own to export them.',
+    'Frame with the small viewfinder, press the red shutter, then connect directly to your phone when you want to export your photos.':
+        'Frame with the small viewfinder and press the red shutter. Keeper goes online on its own to export your photos, no phone needed.',
+    'Check that your storage card is ready before heading out. Connect Keeper directly to your phone to export your photographs. Ask support about compatibility with your particular phone.':
+        'Check that your storage card is ready before heading out. Keeper goes online on its own to export your photographs, so you do not need a phone.',
+    'Connect Keeper directly to your phone to export photos. Contact us for phone or card compatibility and delivery questions.':
+        'Keeper goes online on its own to export photos, no phone needed. Contact us about memory cards and delivery.',
+    'These are interface concepts, not released or working apps. Wireless connectivity, reminders and automatic updates shown here are not included features of the current camera. Photos can be exported by connecting Keeper directly to a phone.':
+        'These are interface concepts, not released or working apps. Reminders and automatic updates shown here are not included features of the current camera. Keeper goes online on its own: it exports photos without a phone, receives photos sent from afar and syncs them to the cloud.',
+}
+
+
+def no_phone(content):
+    for old, new in NO_PHONE_20261120.items():
+        content = content.replace(old, new)
+    return content
+
+
 def render(filename, title, description, body, product=False):
     nav = ''.join(f'<a class="nav-link" href="/{p}"' + (' aria-current="page"' if p == filename else '') + f'>{t}</a>' for p, t in NAV)
     about_menu = '<details class="nav-discover"><summary>About Keeper <span aria-hidden="true">⌄</span></summary><div><a href="/about.html">Our story</a><a href="/press.html">Media examples</a><a href="/press.html#partnerships">Partnerships</a><a href="/owners.html">For your Keeper</a></div></details>'
@@ -95,6 +120,8 @@ def render(filename, title, description, body, product=False):
 <body class="keeper-home storefront-body page-{filename.removesuffix('.html')}" data-order-total="{TOTAL}"><!-- Look: client paper white / ink / red accents; IBM Plex Sans; photography hero; nav-split; footer-columns; close-type; static photo chapters; pill; wordmark. Compact heights and visible AI captions follow the approved client brief. --><!--email_off--><a class="skip-link" href="#main">Skip to content</a><div class="announcement">In stock. Ready for your everyday. <span>Gift box included · ${SHIPPING} worldwide shipping</span></div>
 <header class="site-header"><a class="wordmark" href="/" aria-label="keeper.day home">keeper<span>.</span>day</a><nav aria-label="Main navigation">{nav}<a class="nav-contact" data-current-checkout data-purchase="header" href="/camera.html#choose-style" aria-label="Buy one Keeper camera for ${PRICE} plus ${SHIPPING} shipping, ${TOTAL} total">Shop camera — ${PRICE} <span aria-hidden="true">↗</span></a></nav><details class="mobile-menu"><summary aria-label="Open navigation">Menu <span aria-hidden="true">+</span></summary><div><a href="/">Home</a>{mobile}<a href="/camera.html#choose-style" data-current-checkout data-purchase="mobile-menu">Shop camera — ${PRICE}</a></div></details></header>
 <section class="consent-banner" data-consent-banner aria-label="Privacy choices" hidden><p>Optional cookies enable analytics and chat. Checkout works with essential cookies. <a href="/privacy.html">Privacy details</a></p><div class="consent-actions"><button type="button" data-consent-decline>Essential only</button><button type="button" data-consent-allow>Allow optional</button></div></section><main id="main">{body}</main>{footer()}<button id="mobile-open-chat" class="mobile-chat-launcher" type="button" aria-label="Live chat" hidden><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092a10 10 0 1 0-4.777-4.719M8 12h.01M12 12h.01M16 12h.01"/></svg><span>Live chat</span></button><!--/email_off--><template id="optional-services">{C['tracking']}</template></body></html>'''
+    if filename not in REPLACED:
+        content = no_phone(content)
     pages = {locale:localize(content,locale,filename,CATALOGS,VERSION) for locale in LANGUAGES}
     if filename == '404.html':
         pages['en'] = attach_not_found(pages)

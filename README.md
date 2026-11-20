@@ -153,3 +153,11 @@ The owner found the six "What to photograph with Keeper" photos all alike (a han
 - **Changed wording**, as new `_20261120` keys beside the old ones in the four copy files: the e-paper section's heading and rows (six colours), the first FAQ answer and the product page's "Copying photos" row (no phone needed).
 - Not taken from Toast: its four-colour vs six-colour comparison (no real photographs of both screens), its car mount and its "one second" figure. Connection type, cloud storage size and cost are not stated anywhere; the page says only what the owner confirmed.
 - `HOME_EVERYDAY` and `HOME_PLACES` switch all of this on when the files exist; without them the page builds as before. Only the four home pages and four product pages change.
+
+## 2026-11-20 · Older pages: photos are exported without a phone
+
+The owner confirmed that Keeper goes online on its own and exports photos without a phone, and that it receives photos sent from afar and syncs to the cloud. Six sentences on the pages from `scripts/build_site.py` (support, gifting, learn, owners, the first-photo guide and the interface sketchbook, in all four languages) said photos are exported by connecting Keeper to a phone, and the sketchbook's notice said wireless connectivity was not included.
+
+- `NO_PHONE_20261120` in `scripts/build_site.py` swaps each of those sentences for a corrected one before the page is translated; the corrected sentences and their zh/ja/ko translations are new entries in `scripts/locales/*.json`.
+- The original sentences stay in `storefront.py`, `editorial.py` and the catalogs, and the kept 2026-11-11 pages (`index-20261111.html`, `camera-20261111.html`) still show them.
+- 24 pages change. Nothing says how Keeper connects (Wi-Fi or otherwise) or how much cloud storage there is.
