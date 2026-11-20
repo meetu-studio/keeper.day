@@ -38,6 +38,12 @@ def footer():
     return '<footer class="ed-footer"><div class="ed-footer-grid"><div><a class="wordmark" href="/">keeper<span>.</span>day</a><p>A pocket camera.<br>A photograph kept close.</p><p>Meetu Studio</p></div><div><h3>Shop</h3><a href="/camera.html">The camera · $199</a><a href="/styles.html">All exterior designs</a><a href="/find-your-keeper.html">Find your Keeper</a><a href="/together.html">Paired designs</a><a href="/gifting.html">Gifting</a></div><div><h3>Photography</h3><a href="/learn.html">Photography guides</a><a href="/moments.html">Everyday gallery</a><a href="/moments.html#membership">The photo circle</a><a href="/little-apps.html">Interface sketchbook</a></div><div><h3>About Keeper</h3><a href="/about.html">Our story</a><a href="/press.html">Media examples</a><a href="/press.html#partnerships">Partnerships</a><a href="/owners.html#site-updates">Studio updates</a></div><div><h3>Here to help</h3><a href="/support.html">Help &amp; answers</a><a href="/owners.html">For your Keeper</a><a href="mailto:support@keeper.day">support@keeper.day</a><a href="/terms.html">Shipping &amp; returns</a><a href="/privacy.html">Privacy</a><button class="cookie-settings" type="button" data-open-consent>Cookie settings</button></div></div><div class="footer-bottom"><span>© 2026 keeper.day · Meetu Studio</span><span>In stock · Gift box included · Worldwide shipping</span><a href="#main">Back to top ↑</a></div><p class="storefront-image-note">Screen images are simulated. Each purchase includes one camera with the selected exterior, gift box, lanyard and instruction manual.</p></footer>'
 
 
+# 2026-11-20: the home page and the product page in every language now come from scripts/redesign/build.py.
+# This builder keeps writing its own version of them beside the new ones, as <name>-20261111.html, out of the
+# search index, so the new pages are never overwritten and the old design is never lost.
+REPLACED = {'index.html': 'index-20261111.html', 'camera.html': 'camera-20261111.html'}
+
+
 def render(filename, title, description, body, product=False):
     nav = ''.join(f'<a class="nav-link" href="/{p}"' + (' aria-current="page"' if p == filename else '') + f'>{t}</a>' for p, t in NAV)
     about_menu = '<details class="nav-discover"><summary>About Keeper <span aria-hidden="true">⌄</span></summary><div><a href="/about.html">Our story</a><a href="/press.html">Media examples</a><a href="/press.html#partnerships">Partnerships</a><a href="/owners.html">For your Keeper</a></div></details>'
@@ -75,7 +81,10 @@ def render(filename, title, description, body, product=False):
     if filename == '404.html':
         pages['en'] = attach_not_found(pages)
     for locale, page in pages.items():
-        target = ROOT/filename if locale == 'en' else ROOT/locale/filename
+        name = REPLACED.get(filename, filename)
+        if name != filename:
+            page = page.replace('<meta charset="utf-8">', '<meta charset="utf-8">\n<meta name="robots" content="noindex">\n<!-- The 2026-11-11 design of ' + filename + ', kept beside the 2026-11-20 design that replaced it (scripts/redesign/build.py; AGENTS.md: add, never overwrite). -->\n', 1)
+        target = ROOT/name if locale == 'en' else ROOT/locale/name
         target.parent.mkdir(exist_ok=True)
         target.write_text(page)
         print('Built', target.relative_to(ROOT))

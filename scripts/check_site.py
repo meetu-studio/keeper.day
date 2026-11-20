@@ -12,6 +12,9 @@ COMMERCE = json.loads((ROOT / 'scripts/commerce.json').read_text())
 DATA = json.loads((ROOT / 'scripts/content.json').read_text())
 CHOICES = set(DATA['active_choices'])
 ARCHIVE_VARIANTS = {v['id']:v for v in DATA['variants']}
+# 2026-11-20: index.html and camera.html in every language are the new design (scripts/redesign/build.py); the
+# 2026-11-11 design of each is kept beside it as <name>-20261111.html, out of the index (scripts/build_site.py)
+KEPT = {'index-20261111.html': 'index.html', 'camera-20261111.html': 'camera.html'}
 VARIANTS = {key:value for key,value in ARCHIVE_VARIANTS.items() if key in CHOICES}
 
 def valid_checkout(href, variant=None, locale='en'):
@@ -60,7 +63,7 @@ pages = {str(p.relative_to(ROOT)): Page(p) for p in paths}
 errors = []
 if not verification.is_file() or verification.read_text().strip() != 'google-site-verification: google0c0b3716f5a1174c.html':
     errors.append('Google site verification file must be preserved')
-if len(pages) != 76: errors.append(f'Expected 76 language pages, found {len(pages)}')
+if len(pages) != 84: errors.append(f'Expected 84 language pages (76 and 8 kept copies), found {len(pages)}')
 for name, page in pages.items():
     if len(page.ids) != len(set(page.ids)):
         errors.append(f'{name}: duplicate IDs {list(k for k,v in Counter(page.ids).items() if v > 1)}')
@@ -68,9 +71,11 @@ for name, page in pages.items():
     text = re.sub(r'<script id="keeper-not-found" type="application/json">.*?</script>', '', page.path.read_text(), flags=re.S)
     if page.locale not in LANGUAGES: errors.append(f'{name}: missing or invalid locale')
     if f'lang="{HTML_LANG.get(page.locale)}"' not in text: errors.append(f'{name}: wrong document language')
+    page_name = KEPT.get(page.path.name, page.path.name)
+    if page_name != page.path.name and '<meta name="robots" content="noindex">' not in text: errors.append(f'{name}: a kept copy must stay out of the index')
     for lang in LANGUAGES:
-        if f'hreflang="{HTML_LANG[lang]}" href="{canonical(page.path.name,lang)}"' not in text: errors.append(f'{name}: missing alternate {lang}')
-    if f'rel="canonical" href="{canonical(page.path.name,page.locale)}"' not in text: errors.append(f'{name}: wrong canonical')
+        if f'hreflang="{HTML_LANG[lang]}" href="{canonical(page_name,lang)}"' not in text: errors.append(f'{name}: missing alternate {lang}')
+    if f'rel="canonical" href="{canonical(page_name,page.locale)}"' not in text: errors.append(f'{name}: wrong canonical')
     if '/language.js?' not in text or 'id="keeper-i18n"' not in text: errors.append(f'{name}: missing language bootstrap')
     if f'data-order-total="{COMMERCE["total"]}"' not in text: errors.append(f'{name}: wrong configured total')
     amounts = re.findall(r'(?:US\$|\$)\s*(\d+(?:\.\d+)?)', text)
@@ -152,13 +157,24 @@ for lang in LANGUAGES:
     prefix = '' if lang=='en' else lang+'/'
     listed = {a['attrs'].get('data-variant') for a in pages[prefix+'styles.html'].anchors if 'buy.stripe.com' in a['attrs']['href']}
     if listed != CHOICES: errors.append(f'{lang}: wrong static purchase choices')
-    product = (ROOT/(prefix+'camera.html')).read_text()
+    product = (ROOT/(prefix+'camera-20261111.html')).read_text()
     if set(re.findall(r'data-pick-style="([^"]+)"',product)) != CHOICES: errors.append(f'{lang}: visual picker must contain the same eight choices')
-    payload = json.loads(re.search(r'<script type="application/json" id="keeper-design-data">(.*?)</script>',(ROOT/(prefix+'camera.html')).read_text(),re.S).group(1))
+    payload = json.loads(re.search(r'<script type="application/json" id="keeper-design-data">(.*?)</script>',product,re.S).group(1))
     if {v['id'] for v in payload['variants']} != set(VARIANTS): errors.append(f'{lang}: selector and catalog disagree')
     if parse_qs(urlsplit(payload['checkout']).query).get('locale') != [lang]: errors.append(f'{lang}: wrong checkout language')
     for variant in payload['variants']:
         if variant['name'] != variant_name(VARIANTS[variant['id']], catalogs[lang]): errors.append(f'{lang}: wrong localized variant name {variant["id"]}')
+    # the new design's picker (home and product page): the same eight choices, names and checkout language
+    for filename in ['index.html', 'camera.html']:
+        markup = (ROOT/(prefix+filename)).read_text()
+        if set(re.findall(r'<button class="swatch"[^>]*data-look="([^"]+)"',markup)) != CHOICES: errors.append(f'{lang}/{filename}: picker must offer the same eight choices')
+        looks = json.loads(re.search(r'<script type="application/json" id="kd-looks">(.*?)</script>',markup,re.S).group(1))
+        if set(looks['looks']) != CHOICES: errors.append(f'{lang}/{filename}: picker data and catalog disagree')
+        if parse_qs(urlsplit(looks['checkout']).query).get('locale') != [lang]: errors.append(f'{lang}/{filename}: wrong checkout language')
+        for vid, look in looks['looks'].items():
+            expected_name = variant_name(VARIANTS[vid], catalogs[lang]) if vid in VARIANTS else catalogs[lang]['ui']['classic_name']
+            if look['name'] != expected_name: errors.append(f'{lang}/{filename}: wrong localized variant name {vid}')
+        if 'id="choose-style"' not in markup and filename == 'camera.html': errors.append(f'{lang}/camera.html: the buy block must keep the #choose-style anchor')
     for card in pages[prefix+'styles.html'].anchors:
         if card['attrs'].get('data-variant') and not valid_checkout(card['attrs']['href'],card['attrs']['data-variant'],lang): errors.append(f'{lang}: invalid design checkout')
 for lang in ['zh','ja','ko']:
@@ -176,11 +192,11 @@ for key, asset in editorial['images'].items():
         if not (ROOT/(asset['image'].lstrip('/')+f'-{width}.webp')).is_file(): errors.append(f'Missing editorial image {key}-{width}')
 for lang in LANGUAGES:
     prefix = '' if lang=='en' else lang+'/'
-    home = (ROOT/(prefix+'index.html')).read_text()
+    home = (ROOT/(prefix+'index-20261111.html')).read_text()
     for module in ['ed-hero','ed-shop','ed-facts','camera-looks','how-it-works','e-paper','everyday','ed-finder-callout','ed-gift-intro','review-examples','media','field-notes','ed-brand','community','services','ed-newsletter','ed-footer']:
         if module not in home: errors.append(f'{lang}: missing homepage module {module}')
     if re.search(r'"(?:Review|AggregateRating)"',home): errors.append(f'{lang}: sample review must not output review schema')
-    for name in ['index.html','moments.html','press.html','owners.html','learn.html']:
+    for name in ['index-20261111.html','moments.html','press.html','owners.html','learn.html']:
         markup=(ROOT/(prefix+name)).read_text()
         for form in re.findall(r'<form[^>]*data-demo-form[^>]*>.*?</form>',markup,re.S):
             if not re.search(r'<fieldset\b[^>]*\bdisabled(?:\s|>)',form) or not re.search(r'<button\b(?=[^>]*\btype="button")(?=[^>]*\bdisabled(?:\s|>))[^>]*>',form) or re.search(r'<form[^>]+action=',form):errors.append(f'{lang}/{name}: demonstration form enabled')

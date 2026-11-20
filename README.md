@@ -81,3 +81,19 @@ Frontend refinement (9 November): compact header with the current language visib
 Language picker follow-up (9 November): a single current-language dropdown now sits in the header at every screen size. It uses native details/summary and four static language links, with keyboard, Escape, outside-click and mutual menu closing. Automatic matching, remembered choice and current product URL parameters are preserved. Resource version `20261109-language-menu-1`.
 
 Camera-brand redesign (9 November): campaign hero, camera-first product layout, four-language copy, retained 128-style selection and responsive street imagery. Version `20261109-camera-brand-2`. Project asset sources, image prompt, replacement and validation records are kept in the vault maintenance note.
+
+## 2026-11-20 · New home page and product page
+
+The home page (`/`, `/zh/`, `/ja/`, `/ko/`) and the product page (`/camera.html` and its three translations) use the 2026-11-20 design. `scripts/redesign/build.py` writes them from `scripts/redesign/copy/<lang>.json`, with `keeper.css`, `keeper.js`, the page kit in `assets/kit/` and this design's own pictures in `assets/redesign/`. Every other page still comes from `scripts/build_site.py`.
+
+The earlier 2026-11-11 design of both pages is kept, not removed: `scripts/build_site.py` now writes it beside the new pages as `index-20261111.html` and `camera-20261111.html` in each language, marked noindex and left out of the sitemap. It never writes `index.html` or `camera.html` again.
+
+The new pages keep the site's working parts: `consent.js` and the optional-services block from `scripts/components.json` (analytics and chat load only after consent), `language.js` with its `keeper-i18n` packet, the script policy, canonical and hreflang links, the Product data, the `checkout_click` event, the `#choose-style` anchor and `?style=<id>` links from every other page, and the Stripe Payment Link with `client_reference_id=keeper-<id>` for every printed look. `scripts/check_site.py` checks the new picker (the same eight choices and localized names) and the kept copies.
+
+Run, after the existing build:
+
+```sh
+python3 scripts/build_site.py
+python3 scripts/redesign/build.py
+python3 scripts/check_site.py
+```

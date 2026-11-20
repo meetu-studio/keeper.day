@@ -1,0 +1,204 @@
+/* keeper.day, the 2026-11-20 design: the page CSS shared by the home page (index.html) and the product page
+   (camera.html) in every language. The kit (/assets/kit/) stays as copied; this file only styles what sits
+   inside the visuals, the client's wordmark, the language menu, the consent banner and the CJK type. */
+
+/* the client's wordmark: keeper.day with the shutter-red dot */
+.nav__logo.wordmark, .footer .wordmark { gap: 0; font-family: var(--font-text); font-weight: 600; letter-spacing: -0.035em; font-size: 26px; }
+.wordmark__text { display: inline; white-space: nowrap; }
+.wordmark__dot { display: inline; color: var(--p-accent); }
+
+/* a phone: the hero's photograph takes what the head leaves (as the kit does for a render), so the
+   hero is one screen; the three steps of #how, stacked, take two whole screens */
+@media (max-width: 639px) {
+  .hero--product .hero__stage:has(> img:not(.is-cutout)) { flex: 1 1 auto; aspect-ratio: auto; min-height: 240px; }
+  main > section#how[data-moment]:not(.is-live) { min-height: calc(2 * 100vh); min-height: calc(2 * 100lvh); }
+}
+
+/* the nav's look cards: the whole body of each look, never a crop of its screen photo */
+.nav__menu .menu-card .panel { background: #e7e6e4; }
+.nav__menu .menu-card .panel > img { object-fit: contain; }
+
+/* the language menu: a short list under the language's own name; the footer repeats it as links */
+.lang { position: relative; }
+.lang > summary { list-style: none; display: inline-flex; align-items: center; gap: 6px; min-height: 40px; padding: 0 var(--s-2); border-radius: var(--r-sm); cursor: pointer; font-size: var(--t-small); color: var(--ink); white-space: nowrap; }
+.lang > summary::-webkit-details-marker { display: none; }
+.lang > summary:hover { background: color-mix(in oklab, var(--ink) 6%, transparent); }
+.lang > summary:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+.lang > summary svg { width: 12px; height: 12px; transition: transform var(--dur, .2s) var(--ease, ease); }
+.lang[open] > summary svg { transform: rotate(180deg); }
+.lang__list { position: absolute; right: 0; top: calc(100% + 8px); z-index: 40; min-width: 168px; margin: 0; padding: 6px; list-style: none; background: var(--bg); color: var(--ink); border: 1px solid var(--line); border-radius: var(--r-md); box-shadow: 0 18px 40px -20px rgb(0 0 0 / .35); }
+.lang__list a { display: block; padding: 9px 12px; border-radius: var(--r-sm); color: inherit; text-decoration: none; font-size: var(--t-small); }
+.lang__list a:hover, .lang__list a:focus-visible { background: color-mix(in oklab, var(--ink) 6%, transparent); }
+.lang__list a[aria-current] { font-weight: 600; }
+.nav__actions:has(> .lang) { display: flex; align-items: center; gap: var(--s-3); }
+.footer__langs { display: inline-flex; flex-wrap: wrap; gap: var(--s-2) var(--s-4); }
+.footer__langs a[aria-current] { font-weight: 600; }
+
+/* the look picker: the selected look's photograph beside its swatches (home) or in the buy block (camera) */
+[data-look-img] { transition: opacity .22s var(--ease, ease); }
+[data-look-img].is-swapping { opacity: 0; }
+.order__frame { margin: 0; aspect-ratio: 3 / 4; border-radius: var(--r-lg); overflow: hidden; background: var(--look-bg, #e6e5e3); }
+.order__frame > img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.order__look { display: grid; gap: var(--s-1); margin-bottom: var(--s-5); }
+.order__name { font: var(--display-weight) var(--t-h3)/1.15 var(--font-display); letter-spacing: var(--display-tracking); }
+.order__note { color: var(--muted); }
+.swatches { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: var(--s-2); margin-bottom: var(--s-6); }
+.swatch { display: block; aspect-ratio: 3 / 4; padding: 0; border: 1px solid var(--line); border-radius: var(--r-sm); background: #e6e5e3; overflow: hidden; cursor: pointer; }
+.swatch > img { display: block; width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
+.swatch[aria-checked="true"] { border-color: var(--ink); box-shadow: 0 0 0 1px var(--ink); }
+.order .rows { margin-bottom: var(--s-6); }
+.order .btn-row { align-items: center; }
+/* under 1024 the picture moves up under the heading, so a tapped swatch changes what is on screen */
+@media (max-width: 1023px) {
+  #order > .grid { row-gap: 0; }
+  #order .order { display: contents; }
+  #order .order > * { grid-column: 1 / -1; min-width: 0; }
+  #order .order > .section-head { order: -2; }
+  .order__frame { order: -1; margin: 0 0 var(--s-6); max-width: 560px; }
+}
+/* a tablet held upright: the picture runs from line to line, the chosen look whole on its own ground, and
+   the section takes two whole screens, so the next one never shows under it */
+@media (min-width: 640px) and (max-width: 1023px) {
+  .order__frame { max-width: none; aspect-ratio: 1; }
+  .order__frame > img { object-fit: contain; }
+  main > section#order { min-height: calc(2 * 100vh); min-height: calc(2 * 100svh); }
+}
+@media (max-width: 639px) {
+  .swatches { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .order__frame { aspect-ratio: 4 / 5; }
+}
+
+/* the product page's buy block: the split hero's words are the order, its picture the chosen look */
+.buy .hero__lead { margin-bottom: var(--s-5); }
+.buy__price { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--s-1) var(--s-3); margin: 0 0 var(--s-5); }
+.buy__amount { font: var(--display-weight) var(--t-h3)/1 var(--font-display); letter-spacing: var(--display-tracking); }
+.buy__ship { color: var(--muted); }
+.buy__look { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px var(--s-3); margin: 0 0 var(--s-3); }
+.buy__name { font-weight: 500; }
+.buy__note { color: var(--muted); font-size: var(--t-small); }
+.buy .swatches { margin-bottom: var(--s-5); }
+.buy .btn-row { align-items: center; margin-bottom: var(--s-3); }
+.buy__reassure { margin: 0; }
+/* the chosen look whole, never cropped, on its own render's ground (keeper.js sets --look-bg on a swap) */
+.hero--split .hero__media:has(> [data-look-img]) { background: var(--look-bg, #e4e3e3); transition: background-color .22s var(--ease, ease); }
+.hero--split .hero__media > img[data-look-img] { object-fit: contain; object-position: 50% 50%; }
+@media (max-width: 639px) {
+  /* the hero stays one screen: the shipping link sits beside the button, the picture may go down to 200px */
+  .buy .btn-row { flex-direction: row; align-items: center; flex-wrap: nowrap; }
+  .buy .btn-row > .btn { flex: 1 1 auto; }
+  .buy .btn-row > .link { flex: 0 0 auto; }
+  .hero--split.buy .hero__media { min-height: 200px; }
+  .buy .swatches { grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 4px; margin-bottom: var(--s-4); }
+  .buy .hero__lead, .buy__price { margin-bottom: var(--s-4); }
+  .buy__note, .buy__reassure { display: none; }
+}
+
+/* the photo wall: six scenes from line to line, 2px apart, each one a link to its look */
+.wall { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2px; }
+.wall > a { display: block; overflow: hidden; aspect-ratio: 8 / 5; }
+.wall img { display: block; width: 100%; height: 100%; object-fit: cover; }
+@media (min-width: 640px) and (max-width: 1023px) { .wall { grid-template-columns: repeat(2, minmax(0, 1fr)); } .wall > a { aspect-ratio: 3 / 2; } }
+@media (max-width: 639px) { .wall { grid-template-columns: repeat(2, minmax(0, 1fr)); } .wall > a { aspect-ratio: 1; } }
+
+/* picture-develops: the e-paper section's one photograph, as tall as the words beside it */
+.develop { margin: 0; border-radius: var(--r-lg); overflow: hidden; height: min(640px, var(--ly-fit, 640px)); }
+.develop > img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 42% 50%; }
+@media (max-width: 1023px) { .develop { height: auto; aspect-ratio: 4 / 3; margin-top: var(--s-7); } }
+
+/* a split section's photograph (specifications, shipping), as tall as the words beside it */
+.side-photo { margin: 0; border-radius: var(--r-lg); overflow: hidden; height: min(640px, var(--ly-fit, 640px)); }
+.side-photo > img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: var(--pos, 50% 50%); }
+@media (max-width: 1023px) { .side-photo { height: auto; aspect-ratio: 4 / 3; margin-top: var(--s-7); } }
+
+/* bleed: one photograph across the viewport under the head row */
+.bleed { margin-inline: calc(50% - 50vw); height: clamp(320px, calc(100svh - 380px), 520px); overflow: hidden; }
+.bleed > img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 52%; }
+@media (max-width: 639px) { .bleed { height: auto; aspect-ratio: 4 / 5; } .bleed > img { object-position: 64% 50%; } }
+
+/* the gift box: one wide photograph of everything in it, the four things named underneath */
+.box__photo { margin: 0; border-radius: var(--r-lg); overflow: hidden; height: clamp(300px, calc(100svh - 480px), 440px); }
+.box__photo > img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 52%; }
+.box__items { list-style: none; margin: var(--s-5) 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--s-4) var(--gutter); }
+.box__items li { border-top: 1px solid var(--line); padding-top: var(--s-3); font-weight: 500; }
+.box__note { margin: var(--s-4) 0 0; }
+@media (max-width: 639px) {
+  .box__photo { height: auto; aspect-ratio: 4 / 3; }
+  .box__items { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* a phone: the product page's longer values go under their names, not into a narrow column at the right */
+@media (max-width: 479px) {
+  :is(#specs, #shipping) .rows > li { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+  :is(#specs, #shipping) .rows__value { grid-column: 1; grid-row: 2; text-align: left; max-width: none; white-space: normal; }
+}
+
+/* shipping and returns: two short lists under their own small heads */
+.rows__head { font-family: var(--font-text); font-size: var(--t-body); font-weight: 600; letter-spacing: 0; margin: 0 0 var(--s-2); }
+.rows + .rows__head { margin-top: var(--s-6); }
+
+/* the gift pair: two photographs on span-6, one ratio */
+.pair__photo { margin: 0; aspect-ratio: 4 / 3; border-radius: var(--r-lg); overflow: hidden; }
+.pair__photo > img { display: block; width: 100%; height: 100%; object-fit: cover; }
+@media (max-width: 1023px) { .pair__photo + .pair__photo { margin-top: var(--s-5); } }
+
+/* the close's photograph, from line to line */
+.close--photo .close__media { aspect-ratio: auto; height: 300px; }
+.close--photo .close__media > img { object-position: var(--pos, 50% 42%); }
+@media (max-width: 639px) { .close--photo .close__media > img { object-position: var(--pos-phone, var(--pos, 50% 42%)); } }
+
+/* a phrase kept whole (the Chinese brand line in a heading), broken only when it cannot fit at all */
+.nb { word-break: keep-all; overflow-wrap: anywhere; }
+
+/* Chinese, Japanese and Korean: Fraunces and Figtree keep the Latin letters and figures (Keeper, US$199),
+   a serif and a sans of the language set the rest; no negative tracking, looser lines, and words kept
+   whole at the end of a line (Japanese phrases, Korean words) */
+:root:lang(zh) { --font-display: "Fraunces", "Noto Serif SC", "Songti SC", "STSong", serif; --font-text: "Figtree", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", sans-serif; }
+:root:lang(ja) { --font-display: "Fraunces", "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", serif; --font-text: "Figtree", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Noto Sans JP", sans-serif; }
+:root:lang(ko) { --font-display: "Fraunces", "Noto Serif KR", "AppleMyungjo", serif; --font-text: "Figtree", "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR", sans-serif; }
+:root:is(:lang(zh), :lang(ja), :lang(ko)) { --display-tracking: 0em; --display-tracking-xl: 0em; }
+:is(:lang(zh), :lang(ja), :lang(ko)) :is(h1, h2) { line-height: 1.24; text-wrap: balance; }
+:is(:lang(zh), :lang(ja), :lang(ko)) :is(p, li, .rows__name, .rows__value) { line-height: 1.7; }
+:lang(ja) :is(h1, h2, h3, .hero__lead, .section-head p, .order__note) { word-break: auto-phrase; }
+:lang(ko) { word-break: keep-all; }
+/* a heading longer than its line still breaks, so the page never scrolls sideways */
+:is(:lang(zh), :lang(ja), :lang(ko)) :is(h1, h2, h3) { overflow-wrap: anywhere; }
+
+/* the live site's consent banner (consent.js shows it until the reader chooses), in this design's look: a card
+   at the foot of the screen, both choices the same weight; on a phone it sits above the action bar.
+   consent.css, written for the 2026-11-11 design, is not loaded on these pages. */
+.consent-banner {
+  position: fixed; z-index: 60; left: 50%; transform: translateX(-50%);
+  bottom: calc(var(--s-4) + env(safe-area-inset-bottom));
+  width: min(480px, calc(100% - 2 * var(--gut)));
+  display: flex; flex-direction: column; align-items: stretch; gap: var(--s-3);
+  padding: var(--s-4) var(--s-5);
+  background: var(--p-bg); color: var(--p-ink);
+  border: 1px solid var(--line-strong); border-radius: var(--r-lg);
+  box-shadow: 0 18px 48px rgb(29 27 23 / 0.16);
+  font-size: var(--t-small); line-height: 1.5;
+}
+.consent-banner[hidden] { display: none; }
+.consent-banner p { margin: 0; flex: 1 1 auto; }
+.consent-banner a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+.consent-actions { display: flex; gap: var(--s-2); }
+.consent-actions .btn { flex: 1 1 0; }
+/* the two choices are real buttons of the same weight: an outlined box, no arrow (an arrow reads as "go to") */
+.consent-banner .consent-actions .btn {
+  min-height: 44px; padding-inline: var(--s-4); border: 1px solid var(--line-strong); background: transparent;
+  text-decoration: none; color: var(--p-ink);
+}
+.consent-banner .consent-actions .btn:hover { background: color-mix(in oklab, var(--p-ink) 6%, var(--p-bg)); border-color: color-mix(in oklab, var(--p-ink) 40%, transparent); }
+.consent-banner .consent-actions .btn::after { content: none; }
+/* on a wide screen the card keeps to the lower right, clear of the hero's Keeper on the left */
+@media (min-width: 1024px) {
+  .consent-banner { left: auto; right: var(--gut); transform: none; }
+}
+@media (max-width: 639px) {
+  .consent-banner { bottom: calc(var(--bar, 0px) + var(--s-3)); }
+}
+
+/* the footer's cookie settings and chat buttons read as its links (on a phone the kit gives their row 44px) */
+.footer__button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; text-align: start; line-height: inherit; }
+.footer__button:hover { color: var(--action); }
+.footer__button:focus-visible { outline: 2px solid var(--action); outline-offset: 3px; }
+.footer__button[hidden] { display: none; }

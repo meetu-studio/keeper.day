@@ -1,0 +1,414 @@
+{
+  "shared": {
+    "skip": "Skip to content",
+    "home_aria": "keeper.day home",
+    "top_aria": "keeper.day, back to top",
+    "main_aria": "Main",
+    "menu": "Menu",
+    "language": "Language",
+    "quick_aria": "Quick actions",
+    "nav": {
+      "camera": "Camera",
+      "looks": "Looks",
+      "screen": "Screen",
+      "gifts": "Gifts",
+      "buy": "Buy Keeper"
+    },
+    "in_look": "Keeper in {name}",
+    "swatch_group": "Keeper look",
+    "looks": {
+      "classic": {
+        "name": "Porcelain White",
+        "note": "The plain white original.",
+        "short": "The plain white original",
+        "alt": "Keeper in Porcelain White: a white body, a flower photo on its screen, the red shutter at lower left"
+      },
+      "st-12": {
+        "name": "Vermilion Collage",
+        "note": "A red and navy paper collage.",
+        "short": "A red and navy paper collage",
+        "alt": "Keeper in Vermilion Collage: a red and navy collage around the screen, the red shutter at lower left"
+      },
+      "st-27": {
+        "name": "Rose Stripe",
+        "note": "Pink and mint candy stripes.",
+        "short": "Pink and mint candy stripes",
+        "alt": "Keeper in Rose Stripe: pink and mint stripes around the screen, the red shutter at lower left"
+      },
+      "st-31": {
+        "name": "Slate Grid",
+        "note": "A grey grid with small red squares.",
+        "short": "A grey grid with red squares",
+        "alt": "Keeper in Slate Grid: a grey grid with red squares around the screen, the red shutter at lower left"
+      },
+      "st-42": {
+        "name": "Dusk Gradient",
+        "note": "A pink to pale blue sunset fade.",
+        "short": "A pink to pale blue fade",
+        "alt": "Keeper in Dusk Gradient: a pink and blue fade around the screen, the red shutter at lower left"
+      },
+      "st-50": {
+        "name": "Ivory Garden",
+        "note": "Embroidered flowers and butterflies on cream.",
+        "short": "Embroidered flowers on cream",
+        "alt": "Keeper in Ivory Garden: embroidered flowers around the screen, the red shutter at lower left and the small viewfinder at lower right"
+      },
+      "p-01-a": {
+        "name": "Solar Gold",
+        "note": "Sun and moon, side A: cream with a gold sun.",
+        "short": "Cream with a gold sun",
+        "alt": "Keeper in Solar Gold: cream with a gold sun, a moon in the small viewfinder"
+      },
+      "p-01-b": {
+        "name": "Lunar Blue",
+        "note": "Sun and moon, side B: navy with a gold moon.",
+        "short": "Navy with a gold moon",
+        "alt": "Keeper in Lunar Blue: navy with a gold moon, a sun in the small viewfinder"
+      }
+    },
+    "footer": {
+      "lede": "A photo that takes photos, made by Meetu Studio.",
+      "keeper": "Keeper",
+      "guides": "Guides",
+      "help": "Help",
+      "company": "Company",
+      "languages": "Language",
+      "how": "How it works",
+      "looks": "Looks and prices",
+      "paper": "Color e-paper",
+      "specs": "Specifications",
+      "shipping": "Shipping and returns",
+      "guide_first": "Your first photo",
+      "guide_walk": "A photo walk",
+      "gifting": "Gift ideas",
+      "support": "Support",
+      "terms": "Purchase terms",
+      "email": "Email us",
+      "about": "About Keeper",
+      "privacy": "Privacy",
+      "legal_terms": "Terms",
+      "copyright": "&copy; 2026 Meetu Studio",
+      "ai": "Scenes are AI-generated; screen photos are simulated."
+    }
+  },
+  "home": {
+    "title": "Keeper: a pocket camera with a color e-paper screen",
+    "description": "Keeper takes a picture with one red shutter and keeps it showing on a 3.7-inch color e-paper screen. Eight looks, US$199 plus US$30 shipping.",
+    "og_title": "Keeper: a pocket camera with a color e-paper screen",
+    "og_description": "One red shutter, and the picture stays on color e-paper. US$199.",
+    "h1": "A photo that takes photos.",
+    "lead": "Keeper is a pocket camera with a color e-paper screen. Press the red shutter and the picture stays on it. US$199, plus US$30 shipping.",
+    "see_how": "See how it works",
+    "hero_alt": "A hand holds Keeper in Ivory Garden up to two laughing friends on a sidewalk; the same two friends are on its screen",
+    "how": {
+      "h2": "How Keeper takes a photo",
+      "steps": [
+        {
+          "h3": "Frame it in the small screen",
+          "p": "Hold Keeper toward the person or the place. The small screen in the corner is the viewfinder for lining up the shot.",
+          "alt": "Keeper in Slate Grid held up to a bicycle against a blue wall, the bicycle framed on its screen"
+        },
+        {
+          "h3": "Press the red shutter",
+          "p": "The round red button is the shutter. One press, and Keeper takes the picture on its own.",
+          "alt": "A parent holds Keeper in Rose Stripe sideways in both hands to photograph a child and her father at a backyard birthday"
+        },
+        {
+          "h3": "Keep the photo in view",
+          "p": "The picture fills the color e-paper screen and stays there: on the café table, the park bench, the desk at home.",
+          "alt": "The same Keeper photograph of a couple shown on a café table, a park bench and a wooden desk"
+        }
+      ]
+    },
+    "order": {
+      "h2": "Pick your Keeper’s look",
+      "p": "All eight are in stock at US$199, with the same camera, screen and shutter.",
+      "rows": [
+        [
+          "Keeper, any look",
+          "US$199"
+        ],
+        [
+          "Shipping, worldwide",
+          "US$30"
+        ],
+        [
+          "In the box",
+          "Gift box, lanyard, manual"
+        ]
+      ],
+      "shipping_link": "Shipping and returns",
+      "frame_alt_prefix": ""
+    },
+    "everyday": {
+      "h2": "What to photograph with Keeper",
+      "p": "A graduation, a dog in the leaves, the corner you pass every day, a new apartment.",
+      "link": "Read the photo walk guide",
+      "aria": "{look}, {where}: see this look",
+      "wall": [
+        {
+          "where": "at a graduation",
+          "alt": "Keeper in Rose Stripe photographing a graduate holding flowers"
+        },
+        {
+          "where": "with a dog in the park",
+          "alt": "Keeper in Solar Gold photographing a woman hugging her dog among autumn leaves"
+        },
+        {
+          "where": "on a street corner",
+          "alt": "Keeper in Vermilion Collage held up to a brick street corner with a crosswalk"
+        },
+        {
+          "where": "at a kitchen table",
+          "alt": "Keeper in Ivory Garden photographing a laughing older woman holding flowers at her kitchen table"
+        },
+        {
+          "where": "in a new apartment",
+          "alt": "Keeper in Slate Grid photographing a woman sitting on the floor of a new apartment among boxes"
+        },
+        {
+          "where": "in a garden",
+          "alt": "Keeper in Dusk Gradient photographing a smiling woman in a garden"
+        }
+      ]
+    },
+    "paper": {
+      "h2": "A 3.7&#8209;inch color e&#8209;paper screen",
+      "p": "It is matte and takes the light of the room, like a printed photo. Once a picture is on it, the screen holds it without power.",
+      "rows": [
+        [
+          "Photo screen",
+          "3.7-inch color e-paper"
+        ],
+        [
+          "Viewfinder",
+          "Small IPS LCD, lower right"
+        ],
+        [
+          "Shutter",
+          "One physical red button"
+        ],
+        [
+          "Storage",
+          "microSD card"
+        ],
+        [
+          "Copying photos",
+          "Connect directly to a phone"
+        ],
+        [
+          "Charging",
+          "Twice a year"
+        ]
+      ],
+      "note": "Charging is planned for everyday photography; battery life varies with how often you shoot and change the picture.",
+      "alt": "Keeper in Porcelain White leaning on a green book by a window, a portrait of a smiling woman on its screen"
+    },
+    "carry": {
+      "h2": "A camera for the bag you already carry",
+      "p": "Hang Keeper from a bag or your wrist with the lanyard in the box, and take it off when something is worth a photo.",
+      "link": "Read the first photo guide",
+      "alt": "Keeper with its lanyard resting on a denim jacket beside a canvas tote on a park bench"
+    },
+    "gift": {
+      "h2": "A gift with the first photo already on it",
+      "p": "Take one together before you wrap it. The picture stays on the screen until they take the next one.",
+      "link": "See gift ideas",
+      "alt1": "Keeper in Solar Gold on tissue paper in an open gift box, a photo of two joined hands on its screen",
+      "alt2": "A couple at a wooden table opening the Keeper gift box, the lanyard and manual beside it"
+    },
+    "questions": {
+      "h2": "Questions before you buy",
+      "p": "Ask us anything about your order, shipping or the camera itself.",
+      "link": "Email support",
+      "faq": [
+        [
+          "Do I need a phone to take photos?",
+          "No. Keeper takes photos on its own and saves them to a microSD card. To copy them off, connect Keeper directly to your phone."
+        ],
+        [
+          "Does Keeper print photos?",
+          "No. The photo shows on the color e-paper screen. Keeper does not make paper prints."
+        ],
+        [
+          "Can I cancel or return it?",
+          "Yes. Cancel before it ships for a full US$229 refund. An unused camera in its box can be returned within 14 days of delivery: the US$199 is refunded, the US$30 shipping is not, and return postage is yours unless the camera is faulty."
+        ],
+        [
+          "Were these photos taken with Keeper?",
+          "No. The scenes on this page are AI-generated pictures of Keeper in use, and the photos on its screen are simulated."
+        ]
+      ]
+    },
+    "close": {
+      "h2": "Keeper, in your look",
+      "line": "US$199 plus US$30 shipping, in its gift box.",
+      "alt": "Keeper in Solar Gold photographing a couple hanging ornaments on a Christmas tree"
+    }
+  },
+  "camera": {
+    "title": "Buy Keeper, the photo that takes photos: US$199",
+    "description": "Choose one of eight looks for Keeper, a pocket camera that keeps your photo on a 3.7-inch color e-paper screen. US$199 plus US$30 worldwide shipping.",
+    "og_title": "Buy Keeper, the photo that takes photos",
+    "og_description": "A pocket camera with a color e-paper screen, in eight looks. US$199.",
+    "h1": "Keeper, the photo that takes photos",
+    "lead": "A pocket camera with a color e-paper screen, a red shutter and a small viewfinder, in eight looks.",
+    "price": "US$199",
+    "ship": "plus US$30 shipping, US$229 in all",
+    "shipping_link": "Shipping and returns",
+    "reassure": "In stock, sent in its gift box. Cancel before it ships for a full refund.",
+    "day": {
+      "h2": "Where Keeper goes in a day",
+      "p": "Keeper hangs from a bag or a wrist, so the camera is already out when something happens.",
+      "chapters": [
+        {
+          "h3": "Out the door",
+          "p": "Keeper in your hand on the walk to work, ready for the first photo of the day.",
+          "alt": "A hand holds Keeper in Porcelain White on a sunny sidewalk"
+        },
+        {
+          "h3": "Coffee with a friend",
+          "p": "Hold it up across the table. The photo of them is on the screen before the coffee cools.",
+          "alt": "A hand holds Keeper in Ivory Garden across a café table; the young man sitting there is smiling on its screen"
+        },
+        {
+          "h3": "A birthday party",
+          "p": "The candles, the cake and everyone around them, with Keeper held sideways to fit them all in.",
+          "alt": "A mother photographs her daughter and the girl's father at a birthday cake with Keeper in Rose Stripe held sideways"
+        },
+        {
+          "h3": "Home for the night",
+          "p": "The dog on the couch beside you, the last photo of the day. It stays on the screen overnight.",
+          "alt": "A hand holds Keeper in Slate Grid toward a smiling woman on a couch with her dog; the two of them are on its screen"
+        }
+      ]
+    },
+    "specs": {
+      "h2": "Keeper specifications",
+      "p": "Everything the camera does, in one list. Ask support@keeper.day about anything not here.",
+      "rows": [
+        [
+          "Photo screen",
+          "3.7-inch color e-paper"
+        ],
+        [
+          "Viewfinder",
+          "Small IPS LCD, separate from the photo screen"
+        ],
+        [
+          "Shutter",
+          "One physical red button"
+        ],
+        [
+          "Storage",
+          "microSD card"
+        ],
+        [
+          "Taking photos",
+          "On its own, no phone or app"
+        ],
+        [
+          "Copying photos",
+          "Connect directly to your phone"
+        ],
+        [
+          "Charging",
+          "About twice a year with everyday photography"
+        ],
+        [
+          "Warranty",
+          "Your consumer rights in your region apply"
+        ]
+      ],
+      "note": "Battery life varies with how often you take photos and change the picture.",
+      "alt": "Keeper in Slate Grid standing on a desk by a city window while a woman reads"
+    },
+    "box": {
+      "h2": "What comes in the gift box",
+      "p": "Every Keeper ships ready to give, in one box.",
+      "items": [
+        "Keeper camera in your chosen look",
+        "Gift box",
+        "Lanyard",
+        "Instruction manual"
+      ],
+      "note": "One camera per order. A memory card is not confirmed to be in the box; if you need one included, ask us before you order.",
+      "alt": "The open Keeper gift box with Keeper in Porcelain White, its lid, the lanyard and the quick start card"
+    },
+    "shipping": {
+      "h2": "Shipping, returns and payment",
+      "head1": "Paying and shipping",
+      "rows1": [
+        [
+          "Currency",
+          "Choose USD at Stripe checkout to pay US$229"
+        ],
+        [
+          "Import duties",
+          "Not included in the price"
+        ],
+        [
+          "United States",
+          "About 3 business days to send, then about 15 in transit"
+        ],
+        [
+          "Other destinations",
+          "Email us before you order"
+        ]
+      ],
+      "head2": "Cancelling and returning",
+      "rows2": [
+        [
+          "Before it ships",
+          "Cancel for a full US$229 refund"
+        ],
+        [
+          "14 days after delivery",
+          "Return it unused, in its box"
+        ],
+        [
+          "Change of mind",
+          "US$199 back; shipping and return postage are yours"
+        ],
+        [
+          "A fault",
+          "We pay the return postage"
+        ]
+      ],
+      "terms_link": "Read the purchase terms",
+      "alt": "Keeper in Porcelain White in an open gift box on a wooden table, a red ribbon beside it"
+    },
+    "questions": {
+      "h2": "Questions about Keeper",
+      "p": "Ask us anything about your order, shipping or the camera itself.",
+      "link": "Email support",
+      "faq": [
+        [
+          "Is the camera the same in every look?",
+          "Yes. All eight looks have the same camera, screen and shutter at the same price. Only the outside is different."
+        ],
+        [
+          "Does Keeper print photos?",
+          "No. The photo shows on the color e-paper screen. Keeper does not make paper prints."
+        ],
+        [
+          "Where do I get help once it arrives?",
+          "Email support@keeper.day, or read the support page for setup and charging."
+        ],
+        [
+          "When does a refund reach me?",
+          "Within 7 business days after we receive and inspect a returned camera, the refund goes back to your original payment method. Your bank decides when it shows."
+        ],
+        [
+          "Were these photos taken with Keeper?",
+          "No. The scenes on this page are AI-generated pictures of Keeper in use, and the photos on its screen are simulated."
+        ]
+      ]
+    },
+    "close": {
+      "h2": "Your first photo, on its own screen",
+      "line": "Pick a look at the top of the page, then check out with Stripe.",
+      "alt": "A woman holds Keeper in Dusk Gradient sideways to photograph her laughing friend across a café table"
+    }
+  }
+}
