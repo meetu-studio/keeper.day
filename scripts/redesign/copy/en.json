@@ -111,7 +111,8 @@
         {
           "h3": "Press the red shutter",
           "p": "The round red button is the shutter. One press, and Keeper takes the picture on its own.",
-          "alt": "A parent holds Keeper in Rose Stripe sideways in both hands to photograph a child and her father at a backyard birthday"
+          "alt": "A parent holds Keeper in Rose Stripe sideways in both hands to photograph a child and her father at a backyard birthday",
+          "alt_20261120": "A thumb presses the red shutter on Keeper in Rose Stripe; a birthday-cake photo is on its screen"
         },
         {
           "h3": "Keep the photo in view",
@@ -138,7 +139,8 @@
         ]
       ],
       "shipping_link": "Shipping and returns",
-      "frame_alt_prefix": ""
+      "frame_alt_prefix": "",
+      "all_alt_20261120": "All eight Keeper looks side by side, each with a color photo on its screen"
     },
     "everyday": {
       "h2": "What to photograph with Keeper",
@@ -244,7 +246,8 @@
       "h2": "Keeper, in your look",
       "line": "US$199 plus US$30 shipping, in its gift box.",
       "alt": "Keeper in Solar Gold photographing a couple hanging ornaments on a Christmas tree"
-    }
+    },
+    "hero_alt_20261120": "A hand holds Keeper in Porcelain White at a seaside boardwalk, thumb on the red shutter, toward two friends laughing at the railing; the same two friends are on its screen"
   },
   "camera": {
     "title": "Buy Keeper, the photo that takes photos: US$199",

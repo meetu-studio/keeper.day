@@ -133,3 +133,12 @@ The owner asked for photos without Black people. Eight pictures showed one; each
 - New files, same names and sizes as the photos they replace: `assets/redesign/photos-20261120-recast/` (01, 03, 10, 26 on the home page), `assets/inspiration/20261120-recast/` (01, 03, 10, 17, 26), `assets/photo-diary/20261120-recast/` (friends-pizza, outdoors-roadtrip). The hooks added with the faster pages pick them up; the 20261120 files stay in place, unchanged.
 - Share images, also new files: `assets/og-card-20261120.webp` (the card of the 76 older pages, its hillside photo recast) and `assets/redesign/share-20261120.jpg` (the home page's, the top of the recast 03). `og-card.webp` and `redesign/share.jpg` are unchanged.
 - The kept 2026-11-11 designs (`index-20261111.html`, `camera-20261111.html`, noindex, not linked) keep their original photos.
+
+## 2026-11-20 · Home page: Keeper big and new, its screen in full colour
+
+The owner found the home photos lacked desire, the Keeper in them too old-looking and its six-colour screen too plain. From a round of samples they picked three, all in `assets/redesign/home-20261120/` as new files:
+
+- **Hero:** `hero-classic-*.webp`, Keeper in Porcelain White held up at a seaside boardwalk, thumb on the red shutter, its screen showing the two friends behind it in full colour (replaces 03 here; `--ly-pos: 34% 50%`).
+- **How, step 2 "Press the red shutter":** `shutter-*.webp`, a thumb pressing the red shutter on Rose Stripe (replaces the family photo in this step; step 1 and step 3 are unchanged).
+- **Order frame:** `looks-all-*.webp`, the eight looks side by side, cut out of the existing look images (no body redrawn), each screen at full colour. It is the frame's first picture; clicking a look shows that look as before.
+- `scripts/redesign/build.py` uses each new file where it exists (`HOME_HERO`, `HOME_SHUTTER`, `HOME_ALL_LOOKS`); their alt texts are new keys ending `_20261120` in the four copy files, beside the old ones. The old photos and keys are unchanged; only the four home pages change.

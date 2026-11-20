@@ -65,6 +65,14 @@ REFRESHED = {old: 'redesign/photos-20261120/' + new for old, new in {
 RECAST = lambda path: path.replace('/photos-20261120/', '/photos-20261120-recast/', 1)
 REFRESHED = {old: RECAST(new) if (SITE / 'assets' / RECAST(new)).exists() else new for old, new in REFRESHED.items()}
 # the home page's share image is cut from the 03 photo, so it is recast with it
+# 2026-11-20, evening: the owner found the home photos lacked desire and picked three samples that show Keeper big and new,
+# its six-colour screen at full colour. New files in redesign/home-20261120/; used where they exist, the old ones stay:
+# the hero (Porcelain White, thumb on the shutter), step 2 of #how (the red shutter close up) and the order frame's
+# first picture (all eight looks; clicking a look still shows that one look). Their alt texts are new keys ending _20261120.
+HOME_NEW = SITE / 'assets/redesign/home-20261120'
+HOME_HERO = (HOME_NEW / 'hero-classic-1440.webp').exists()
+HOME_SHUTTER = (HOME_NEW / 'shutter-1440.webp').exists()
+HOME_ALL_LOOKS = (HOME_NEW / 'looks-all-1080.webp').exists()
 HOME_SHARE = 'share-20261120.jpg' if (SITE / 'assets/redesign/share-20261120.jpg').exists() else 'share.jpg'
 
 LANGS = {
@@ -153,7 +161,7 @@ def bundle_kit_css():
 # the sizes that exist so the browser fetches the one it needs. Lazy pictures size themselves from their layout
 # (sizes="auto"); browsers without that, and the eager pictures, use the fallback.
 SIZED = re.compile(r'<img\b[^>]*>')
-SIZED_SRC = re.compile(r'\ssrc="(/assets/redesign/photos-20261120(?:-recast)?/[a-z0-9-]+)-(?:480|960|1440)\.webp"')
+SIZED_SRC = re.compile(r'\ssrc="(/assets/redesign/(?:photos-20261120(?:-recast)?|home-20261120)/[a-z0-9-]+)-(?:480|960|1440)\.webp"')
 
 
 def srcsets(page):
@@ -478,12 +486,24 @@ def home(p):
     links = {'home': '#top', 'camera': p.url('camera.html'), 'looks': '#looks', 'screen': '#paper', 'gifts': '#gift', 'buy': '#order'}
     steps_src = [S('inspiration/20261110/04-color-walk-1440.webp'), S('everyday/02-photograph-your-people.webp'),
                  S('editorial/20261109-shooting/epaper-triptych-1440.webp')]
+    steps_alt = [st['alt'] for st in c['how']['steps']]
+    if HOME_SHUTTER:
+        steps_src[1] = '/assets/redesign/home-20261120/shutter-1440.webp'
+        steps_alt[1] = c['how']['steps'][1].get('alt_20261120', steps_alt[1])
+    if HOME_HERO:
+        hero_img = ('/assets/redesign/home-20261120/hero-classic-1440.webp', c.get('hero_alt_20261120', c['hero_alt']), '34% 50%')
+    else:
+        hero_img = (S('inspiration/20261110/03-favorite-people-1440.webp'), c['hero_alt'], '32% 30%')
+    if HOME_ALL_LOOKS:
+        order_img = ('/assets/redesign/home-20261120/looks-all-1080.webp', c['order'].get('all_alt_20261120', look['alt']), 1080, 1440, '#f8f4ee')
+    else:
+        order_img = (look_src, look['alt'], lw, lh, lbg)
     steps_subj = ['Framing a shot with Keeper', 'Taking a photo with the red shutter', 'The photo staying on the e-paper screen']
     steps = '\n'.join(f"""          <li class="mo-pc__step">
             <h3>{st['h3']}</h3>
             <p>{st['p']}</p>
-            <figure class="mo-pc__visual"><img src="{src}" alt="{a(st['alt'])}" width="1440" height="960" loading="lazy" data-source="client" data-subject="{subj}"></figure>
-          </li>""" for st, src, subj in zip(c['how']['steps'], steps_src, steps_subj))
+            <figure class="mo-pc__visual"><img src="{src}" alt="{a(alt)}" width="1440" height="960" loading="lazy" data-source="client" data-subject="{subj}"></figure>
+          </li>""" for st, src, alt, subj in zip(c['how']['steps'], steps_src, steps_alt, steps_subj))
     wall_items = [('st-27', '09-graduation-news', 'Keeper at a graduation'), ('p-01-a', '05-two-perspectives', 'Keeper with a dog in the park'),
                   ('st-12', '06-your-city', 'Keeper on a city street'), ('st-50', '10-thank-you', 'Keeper at a kitchen table'),
                   ('st-31', '08-new-beginnings', 'Keeper in a new apartment'), ('st-42', '01-self-portrait', 'Keeper in a garden')]
@@ -504,7 +524,7 @@ def home(p):
         <div class="btn-row"><a class="btn btn--primary" href="#order">{s['nav']['buy']}{ARROW}</a><a class="btn btn--secondary" href="#how">{c['see_how']}</a></div>
       </div>
       <div class="hero__stage">
-        <img src="{S('inspiration/20261110/03-favorite-people-1440.webp')}" alt="{a(c['hero_alt'])}" width="1440" height="960" style="--ly-pos: 32% 30%" fetchpriority="high" data-source="client" data-subject="Keeper in use, photographing two friends">
+        <img src="{hero_img[0]}" alt="{a(hero_img[1])}" width="1440" height="960" style="--ly-pos: {hero_img[2]}" fetchpriority="high" data-source="client" data-subject="Keeper in use, photographing two friends">
       </div>
     </div></div>
   </section>
@@ -544,8 +564,8 @@ def home(p):
           <a class="link" href="{p.url('camera.html')}#shipping">{o['shipping_link']}</a>
         </div>
       </div>
-      <figure class="order__frame span-5 start-8" style="--look-bg: {lbg}">
-        <img data-look-img src="{look_src}" alt="{a(look['alt'])}" width="{lw}" height="{lh}" loading="lazy" data-source="client" data-subject="Keeper, the selected look">
+      <figure class="order__frame span-5 start-8" style="--look-bg: {order_img[4]}">
+        <img data-look-img src="{order_img[0]}" alt="{a(order_img[1])}" width="{order_img[2]}" height="{order_img[3]}" loading="lazy" data-source="client" data-subject="Keeper, the selected look">
       </figure>
     </div>
   </section>
