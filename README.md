@@ -125,3 +125,11 @@ The owner found the site slow. Measured in headless Chrome (`perf.mjs`, Chinese 
 - Cloudflare does not cache the HTML (`cf-cache-status: DYNAMIC`); a Cache Rule for the HTML in the Cloudflare dashboard is the owner's to set.
 
 Also in this change, not yet in use: the owner asked for no Black people in the photos. Both builds prefer a recast copy where one exists (`photos-20261120-recast/`, `inspiration/20261120-recast/`, `photo-diary/20261120-recast/`, `assets/og-card-20261120.webp`, `assets/redesign/share-20261120.jpg`). None exists yet, so no page changes until the owner picks the recast photos.
+
+## 2026-11-20 · Recast photos (no Black people)
+
+The owner asked for photos without Black people. Eight pictures showed one; each was regenerated with Codex image generation from the live photo as the reference, changing only the people (Latino, Asian and white Americans; the people on Keeper's screen too) and keeping the framing, light and Keeper. The owner picked the recast version of all eight.
+
+- New files, same names and sizes as the photos they replace: `assets/redesign/photos-20261120-recast/` (01, 03, 10, 26 on the home page), `assets/inspiration/20261120-recast/` (01, 03, 10, 17, 26), `assets/photo-diary/20261120-recast/` (friends-pizza, outdoors-roadtrip). The hooks added with the faster pages pick them up; the 20261120 files stay in place, unchanged.
+- Share images, also new files: `assets/og-card-20261120.webp` (the card of the 76 older pages, its hillside photo recast) and `assets/redesign/share-20261120.jpg` (the home page's, the top of the recast 03). `og-card.webp` and `redesign/share.jpg` are unchanged.
+- The kept 2026-11-11 designs (`index-20261111.html`, `camera-20261111.html`, noindex, not linked) keep their original photos.
