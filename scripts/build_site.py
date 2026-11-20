@@ -27,11 +27,19 @@ NAV = [('camera.html', 'The camera'), ('styles.html', 'Find your look'), ('learn
 # 2026-11-20: brighter commercial versions of the inspiration and photo-diary pictures sit in a 20261120 folder beside the
 # 20261110 originals, same names and sizes. Pages use the new file where one exists; the kept 2026-11-11 designs keep
 # the originals (AGENTS.md: add, never overwrite).
+# the share card: the 2026-11-20 one (its hillside photo recast) once it exists, else the old one
+OG_CARD = 'og-card-20261120.webp' if (ROOT / 'assets/og-card-20261120.webp').exists() else 'og-card.webp'
 BRIGHTER = re.compile(r'/assets/(inspiration|photo-diary)/20261110/([a-z0-9-]+-(?:240|480|960|1440|full)\.webp)')
 
 
 def brighter(page):
-    return BRIGHTER.sub(lambda m: f'/assets/{m[1]}/20261120/{m[2]}' if (ROOT / 'assets' / m[1] / '20261120' / m[2]).exists() else m[0], page)
+    # 2026-11-20, later: a recast version (no Black people, the owner's request) wins over the bright one where it exists
+    def newest(m):
+        for d in ('20261120-recast', '20261120'):
+            if (ROOT / 'assets' / m[1] / d / m[2]).exists():
+                return f'/assets/{m[1]}/{d}/{m[2]}'
+        return m[0]
+    return BRIGHTER.sub(newest, page)
 
 
 def image(key, eager=False):
@@ -82,7 +90,7 @@ def render(filename, title, description, body, product=False):
 <link rel="stylesheet" href="/styles.css?v={VERSION}"><link rel="stylesheet" href="/redesign.css?v={VERSION}"><link rel="stylesheet" href="/experience.css?v={VERSION}"><link rel="stylesheet" href="/storefront.css?v={VERSION}"><link rel="stylesheet" href="/editorial.css?v={VERSION}"><link rel="stylesheet" href="/consent.css?v={VERSION}"><link rel="stylesheet" href="/assets/motion/motion.css?v={VERSION}">
 <link rel="preload" href="/assets/fonts/ibm-plex-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
 <script>document.documentElement.classList.add('m-enter');setTimeout(()=>document.documentElement.classList.add('m-enter-done'),700)</script>
-<meta property="og:type" content="website"><meta property="og:title" content="{E(title)}"><meta property="og:description" content="{E(description)}"><meta property="og:url" content="{canonical}"><meta property="og:image" content="https://keeper.day/assets/og-card.webp?v={VERSION}"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image">
+<meta property="og:type" content="website"><meta property="og:title" content="{E(title)}"><meta property="og:description" content="{E(description)}"><meta property="og:url" content="{canonical}"><meta property="og:image" content="https://keeper.day/assets/{OG_CARD}?v={VERSION}"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image">
 {structured}<script src="/consent.js?v={VERSION}" defer></script><script src="/site.js?v={VERSION}" defer></script><script src="/storefront.js?v={VERSION}" defer></script><script src="/editorial.js?v={VERSION}" defer></script><script type="module" src="/assets/motion/motion.js?v={VERSION}"></script>{moments}</head>
 <body class="keeper-home storefront-body page-{filename.removesuffix('.html')}" data-order-total="{TOTAL}"><!-- Look: client paper white / ink / red accents; IBM Plex Sans; photography hero; nav-split; footer-columns; close-type; static photo chapters; pill; wordmark. Compact heights and visible AI captions follow the approved client brief. --><!--email_off--><a class="skip-link" href="#main">Skip to content</a><div class="announcement">In stock. Ready for your everyday. <span>Gift box included · ${SHIPPING} worldwide shipping</span></div>
 <header class="site-header"><a class="wordmark" href="/" aria-label="keeper.day home">keeper<span>.</span>day</a><nav aria-label="Main navigation">{nav}<a class="nav-contact" data-current-checkout data-purchase="header" href="/camera.html#choose-style" aria-label="Buy one Keeper camera for ${PRICE} plus ${SHIPPING} shipping, ${TOTAL} total">Shop camera — ${PRICE} <span aria-hidden="true">↗</span></a></nav><details class="mobile-menu"><summary aria-label="Open navigation">Menu <span aria-hidden="true">+</span></summary><div><a href="/">Home</a>{mobile}<a href="/camera.html#choose-style" data-current-checkout data-purchase="mobile-menu">Shop camera — ${PRICE}</a></div></details></header>

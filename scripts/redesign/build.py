@@ -60,6 +60,12 @@ REFRESHED = {old: 'redesign/photos-20261120/' + new for old, new in {
     'storefront/gift-opening.webp': 'gift-opening-1440.webp',
     'storefront/in-the-hand.webp': 'in-the-hand-1440.webp',
 }.items()}
+# 2026-11-20, later the same day: the owner asked for no Black people in the photos. The recast versions they
+# picked sit beside the bright ones in redesign/photos-20261120-recast/ and win where a file exists there.
+RECAST = lambda path: path.replace('/photos-20261120/', '/photos-20261120-recast/', 1)
+REFRESHED = {old: RECAST(new) if (SITE / 'assets' / RECAST(new)).exists() else new for old, new in REFRESHED.items()}
+# the home page's share image is cut from the 03 photo, so it is recast with it
+HOME_SHARE = 'share-20261120.jpg' if (SITE / 'assets/redesign/share-20261120.jpg').exists() else 'share.jpg'
 
 LANGS = {
     'en': {'dir': '', 'html': 'en', 'stripe': 'en', 'label': 'English', 'short': 'EN', 'font': ''},
@@ -132,6 +138,38 @@ BRAND = """:root {
 }"""
 
 
+# 2026-11-20 (speed): the six kit stylesheets, in their old order, as one file (fewer requests before the first paint).
+# The six files stay as they are; this one is written from them on every build.
+KIT_CSS = ['system.css', 'ui/cards.css', 'motion/motion.css', 'backgrounds/backgrounds.css', 'layout/layout.css', 'icons/icon.css']
+KIT_BUNDLE = 'kit-bundle.css'
+
+
+def bundle_kit_css():
+    parts = [f'/* ---- {name} ---- */\n' + (SITE / 'assets/kit' / name).read_text(encoding='utf-8') for name in KIT_CSS]
+    (SITE / 'assets/kit' / KIT_BUNDLE).write_text('/* written by scripts/redesign/build.py from the six kit stylesheets; edit those */\n' + '\n'.join(parts), encoding='utf-8')
+
+
+# 2026-11-20 (speed): the photos in redesign/photos-20261120(-recast)/ come in 480, 960 and 1440 wide; each <img> lists
+# the sizes that exist so the browser fetches the one it needs. Lazy pictures size themselves from their layout
+# (sizes="auto"); browsers without that, and the eager pictures, use the fallback.
+SIZED = re.compile(r'<img\b[^>]*>')
+SIZED_SRC = re.compile(r'\ssrc="(/assets/redesign/photos-20261120(?:-recast)?/[a-z0-9-]+)-(?:480|960|1440)\.webp"')
+
+
+def srcsets(page):
+    def add(m):
+        tag = m[0]
+        src = SIZED_SRC.search(tag)
+        if 'srcset=' in tag or not src:
+            return tag
+        have = [w for w in (480, 960, 1440) if (SITE / f'{src[1].lstrip("/")}-{w}.webp').exists()]
+        if len(have) < 2:
+            return tag
+        sizes = 'auto, (min-width: 1024px) 50vw, 100vw' if 'loading="lazy"' in tag else '100vw'
+        return tag.replace(' src=', ' srcset="' + ', '.join(f'{src[1]}-{w}.webp {w}w' for w in have) + f'" sizes="{sizes}" src=', 1)
+    return SIZED.sub(add, page)
+
+
 def stamp(path):
     """/keeper.css?v=<hash>: a changed file is never served from a stale cache"""
     return path + '?v=' + hashlib.sha1((SITE / path.lstrip('/')).read_bytes()).hexdigest()[:8]
@@ -180,8 +218,8 @@ class Page:
 
 def head(p, title, description, og_title, og_description, share, preload, product=None):
     font = 'https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,400..700,0..100,0..1&family=Figtree:wght@400..600'
-    if p.L['font']:
-        font += '&family=' + p.L['font'] + ':wght@400;500'
+    # 2026-11-20 (speed): Noto Serif SC/JP/KR (about 670 KB on the Chinese page) is no longer fetched; the serif
+    # comes from the reader's own system, which keeper.css already names (Songti SC, Hiragino Mincho, AppleMyungjo)
     font += '&display=swap'
     pre = ''.join(f'<link rel="modulepreload" href="{p.kit("moments/" + m)}">' for m in preload)
     canonical = p.canonical()
@@ -227,13 +265,9 @@ def head(p, title, description, og_title, og_description, share, preload, produc
 <meta name="page-type" content="product">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="{font}" rel="stylesheet">
-<link rel="stylesheet" href="{stamp(p.kit('system.css'))}">
-<link rel="stylesheet" href="{stamp(p.kit('ui/cards.css'))}">
-<link rel="stylesheet" href="{stamp(p.kit('motion/motion.css'))}">
-<link rel="stylesheet" href="{stamp(p.kit('backgrounds/backgrounds.css'))}">
-<link rel="stylesheet" href="{stamp(p.kit('layout/layout.css'))}">
-<link rel="stylesheet" href="{stamp(p.kit('icons/icon.css'))}">
+<link rel="stylesheet" href="{font}" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="{font}"></noscript>
+<link rel="stylesheet" href="{stamp(p.kit(KIT_BUNDLE))}">
 <style>
 {BRAND}
 </style>
@@ -314,15 +348,22 @@ def nav(p, links):
 {consent(p)}"""
 
 
+def swatch_src(p, lid, kind, thumb):
+    """2026-11-20 (speed): a 240-wide copy for the 78 px swatch when it exists (scripts/redesign/make_sizes.py)"""
+    small = f'redesign/swatches-20261120/{lid}-240.webp'
+    return '/assets/' + small if (SITE / 'assets' / small).exists() else p.look_src(kind, thumb)
+
+
 def swatches(p):
     s = p.c['shared']
     out = []
+    lazy = ' loading="lazy"' if p.name == 'index.html' else ''  # on the product page they sit on the first screen
     for lid, kind, full, thumb, w, h, bg in LOOKS:
         on = lid == INITIAL
         tw, th = (w, h) if thumb == full else (360, 480)
         out.append(f'<button class="swatch" type="button" role="radio" aria-checked="{"true" if on else "false"}" '
                    f'tabindex="{0 if on else -1}" data-look="{lid}" aria-label="{a(s["looks"][lid]["name"])}">'
-                   f'<img src="{p.look_src(kind, thumb)}" alt="" width="{tw}" height="{th}"></button>')
+                   f'<img src="{swatch_src(p, lid, kind, thumb)}" alt="" width="{tw}" height="{th}"{lazy}></button>')
     return (f'<div class="swatches" role="radiogroup" aria-label="{a(s["swatch_group"])}">\n            '
             + '\n            '.join(out) + '\n          </div>')
 
@@ -420,7 +461,7 @@ def home(p):
     c, s = p.c['home'], p.c['shared']
     S = p.site
     look, look_src, lw, lh, lbg = initial_look(p)
-    h = head(p, c['title'], c['description'], c['og_title'], c['og_description'], 'share.jpg',
+    h = head(p, c['title'], c['description'], c['og_title'], c['og_description'], HOME_SHARE,
              ['pinned-chapters/moment.js', 'picture-develops/moment.js'])
     comment = """<!-- type: product (site-kind other: a consumer camera sold as an everyday and gift object; photographs lead)
      deal: hero product (photograph on the stage), nav nav-split, close close-photo, footer footer-dark,
@@ -504,7 +545,7 @@ def home(p):
         </div>
       </div>
       <figure class="order__frame span-5 start-8" style="--look-bg: {lbg}">
-        <img data-look-img src="{look_src}" alt="{a(look['alt'])}" width="{lw}" height="{lh}" data-source="client" data-subject="Keeper, the selected look">
+        <img data-look-img src="{look_src}" alt="{a(look['alt'])}" width="{lw}" height="{lh}" loading="lazy" data-source="client" data-subject="Keeper, the selected look">
       </figure>
     </div>
   </section>
@@ -724,6 +765,7 @@ def camera(p):
 
 
 def main():
+    bundle_kit_css()
     for lang in LANGS:
         f = COPY / f'{lang}.json'
         if not f.exists():
@@ -733,7 +775,7 @@ def main():
         out = SITE / LANGS[lang]['dir']
         out.mkdir(exist_ok=True)
         for name, fn in (('index.html', home), ('camera.html', camera)):
-            (out / name).write_text(fn(Page(lang, name, copy)), encoding='utf-8')
+            (out / name).write_text(srcsets(fn(Page(lang, name, copy))), encoding='utf-8')
             print('wrote', (out / name).relative_to(SITE))
 
 

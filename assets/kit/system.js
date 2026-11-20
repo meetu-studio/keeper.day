@@ -324,8 +324,13 @@ function peek() {
       rows.forEach(r => r.classList.toggle('is-on', wide && r === row));
       pics.forEach(p => { p.hidden = p !== pic; });
     };
-    // every photograph is fetched now, so a swap never shows an empty frame
-    pics.forEach(p => { if (p.loading === 'lazy') p.loading = 'eager'; });
+    // every photograph is fetched once the list comes within a screen, so a swap never shows an empty frame
+    // (keeper.day 2026-11-20: no longer at page start, where they competed with the first screen's pictures)
+    const warm = () => pics.forEach(p => { if (p.loading === 'lazy') p.loading = 'eager'; });
+    if ('IntersectionObserver' in window) {
+      const near = new IntersectionObserver(seen => { if (seen.some(e => e.isIntersecting)) { near.disconnect(); warm(); } }, { rootMargin: '100% 0px' });
+      near.observe(root);
+    } else warm();
     show(rows.find(r => pics.some(p => !p.hidden && p.dataset.peekFor === r.dataset.peekTo)) || rows[0]);
     rows.forEach(r => {
       r.addEventListener('pointerenter', e => { if (e.pointerType === 'mouse') show(r); });
@@ -516,8 +521,8 @@ function tone() {
 }
 
 /* ------------------------------------------------------------------ pictures always draw
-   A photograph never shows as an empty frame: once the page has loaded, every lazy image is fetched
-   (so one far down the page is there when a visitor or a screenshot reaches it), and one that fails
+   A photograph never shows as an empty frame: the browser fetches each lazy image ahead of the scroll
+   (keeper.day 2026-11-20; it used to fetch them all once the page had loaded), and one that fails
    to load is outlined in red and counted (<html data-broken="n">), like a placeholder. */
 function pictures() {
   const html = document.documentElement;
@@ -534,10 +539,8 @@ function pictures() {
     if (img.complete && img.getAttribute('src') && !img.naturalWidth) img.decode().catch(() => fail(img));
     else img.addEventListener('error', () => fail(img), { once: true });
   });
-  const eager = () => document.querySelectorAll('img[loading="lazy"]').forEach(img => { img.loading = 'eager'; });
-  const idle = window.requestIdleCallback || (f => setTimeout(f, 200));
-  if (document.readyState === 'complete') idle(eager);
-  else window.addEventListener('load', () => idle(eager), { once: true });
+  // keeper.day 2026-11-20: lazy pictures are no longer all fetched after load (2.6 MB at once on the home page);
+  // the browser's own lazy loading fetches each one well before it scrolls into view.
 }
 
 /* ------------------------------------------------------------------ guards
