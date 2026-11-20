@@ -33,6 +33,33 @@ INITIAL = 'st-50'
 # the live site's script policy and its optional services (analytics, ads, chat), loaded only after consent
 SCRIPT_POLICY = re.search(r'^SCRIPT_POLICY = "(.*)"$', (SITE / 'scripts/build_site.py').read_text(encoding='utf-8'), re.M).group(1)
 TRACKING = json.loads((SITE / 'scripts/components.json').read_text(encoding='utf-8'))['tracking']
+# 2026-11-20: brighter commercial versions of these photos, picked one by one by the owner
+# (20 from Codex, the self-portrait from Gemini). The old files stay where they are for the
+# rest of the site and for comparison; only these pages point at the new ones.
+REFRESHED = {old: 'redesign/photos-20261120/' + new for old, new in {
+    'editorial/20261109-shooting/cafe-1440.webp': 'cafe-1440.webp',
+    'editorial/20261109-shooting/carry-1440.webp': 'carry-1440.webp',
+    'editorial/20261109-shooting/epaper-triptych-1440.webp': 'epaper-triptych-1440.webp',
+    'editorial/20261109-shooting/family-1440.webp': 'family-1440.webp',
+    'everyday/02-photograph-your-people.webp': 'family-1440.webp',
+    'everyday/05-workdesk.webp': 'workdesk-1440.webp',
+    'inspiration/20261110/01-self-portrait-960.webp': '01-self-portrait-960.webp',
+    'inspiration/20261110/03-favorite-people-1440.webp': '03-favorite-people-1440.webp',
+    'inspiration/20261110/04-color-walk-1440.webp': '04-color-walk-1440.webp',
+    'inspiration/20261110/05-two-perspectives-960.webp': '05-two-perspectives-960.webp',
+    'inspiration/20261110/06-your-city-960.webp': '06-your-city-960.webp',
+    'inspiration/20261110/07-love-story-1440.webp': '07-love-story-1440.webp',
+    'inspiration/20261110/08-new-beginnings-960.webp': '08-new-beginnings-960.webp',
+    'inspiration/20261110/09-graduation-news-960.webp': '09-graduation-news-960.webp',
+    'inspiration/20261110/10-thank-you-960.webp': '10-thank-you-960.webp',
+    'inspiration/20261110/20-gift-a-memory-1440.webp': '20-gift-a-memory-1440.webp',
+    'inspiration/20261110/25-frame-the-day-1440.webp': '25-frame-the-day-1440.webp',
+    'inspiration/20261110/26-holiday-memory-1440.webp': '26-holiday-memory-1440.webp',
+    'storefront/at-home.webp': 'at-home-1440.webp',
+    'storefront/gift-box.webp': 'gift-box-1440.webp',
+    'storefront/gift-opening.webp': 'gift-opening-1440.webp',
+    'storefront/in-the-hand.webp': 'in-the-hand-1440.webp',
+}.items()}
 
 LANGS = {
     'en': {'dir': '', 'html': 'en', 'stripe': 'en', 'label': 'English', 'short': 'EN', 'font': ''},
@@ -123,7 +150,7 @@ class Page:
 
     # paths: all root-relative, like the rest of the site
     def kit(self, p=''): return '/assets/kit/' + p
-    def site(self, p=''): return '/assets/' + p
+    def site(self, p=''): return '/assets/' + REFRESHED.get(p, p)
     def own(self, p=''): return '/assets/redesign/' + p
 
     def url(self, page, lang=None):

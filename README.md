@@ -97,3 +97,11 @@ python3 scripts/build_site.py
 python3 scripts/redesign/build.py
 python3 scripts/check_site.py
 ```
+
+## 2026-11-20 · Brighter photos on the home page and product page
+
+The owner found the scene photos on the new pages dark and muddy, with faces that did not look clean. Each of the 21 scene photos was regenerated as a bright commercial photograph from the original (the original was the reference image; daylight, clean whites, clean skin; Keeper's shell, buttons and orientation kept), with Codex image generation and with Gemini (`gemini-3.1-flash-image`). The owner picked one version per photo: 20 from Codex, the self-portrait from Gemini.
+
+- New files: `assets/redesign/photos-20261120/`, at the same sizes as the photos they replace (1440×960 or 960×640). Average brightness went from 94–137 to 128–184 (0–255).
+- `scripts/redesign/build.py` maps the old paths to the new files in `REFRESHED`; only the eight pages it builds use them. The old photos stay in place, unchanged, for the rest of the site.
+- `storefront/full-kit.webp` was bright already and is unchanged. Prompts, candidates and the review page are in the owner's notes (`拍立得/attachments/keeper-day/website-photo-refresh-20261120/`).
