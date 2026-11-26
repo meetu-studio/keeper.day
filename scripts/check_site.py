@@ -63,7 +63,7 @@ pages = {str(p.relative_to(ROOT)): Page(p) for p in paths}
 errors = []
 if not verification.is_file() or verification.read_text().strip() != 'google-site-verification: google0c0b3716f5a1174c.html':
     errors.append('Google site verification file must be preserved')
-if len(pages) != 84: errors.append(f'Expected 84 language pages (76 and 8 kept copies), found {len(pages)}')
+if len(pages) != 86: errors.append(f'Expected 86 language pages (78 and 8 kept copies), found {len(pages)}')
 for name, page in pages.items():
     if len(page.ids) != len(set(page.ids)):
         errors.append(f'{name}: duplicate IDs {list(k for k,v in Counter(page.ids).items() if v > 1)}')
@@ -73,7 +73,8 @@ for name, page in pages.items():
     if f'lang="{HTML_LANG.get(page.locale)}"' not in text: errors.append(f'{name}: wrong document language')
     page_name = KEPT.get(page.path.name, page.path.name)
     if page_name != page.path.name and '<meta name="robots" content="noindex">' not in text: errors.append(f'{name}: a kept copy must stay out of the index')
-    for lang in LANGUAGES:
+    expected_langs = ('en', 'zh') if page_name == 'guide-what-is-keeper.html' else LANGUAGES
+    for lang in expected_langs:
         if f'hreflang="{HTML_LANG[lang]}" href="{canonical(page_name,lang)}"' not in text: errors.append(f'{name}: missing alternate {lang}')
     if f'rel="canonical" href="{canonical(page_name,page.locale)}"' not in text: errors.append(f'{name}: wrong canonical')
     if '/language.js?' not in text or 'id="keeper-i18n"' not in text: errors.append(f'{name}: missing language bootstrap')
@@ -126,6 +127,11 @@ for name, page in pages.items():
     if page.path.name != '404.html':
         for expected in ['mailto:support@keeper.day', 'G-783F93X4HE', '1113554937986944', 'z98vqpb6j4', '247894352.js']:
             if expected not in text: errors.append(f'{name}: missing support/tracking {expected}')
+    for ld_raw in re.findall(r'<script type="application/ld\+json">(.*?)</script>', text, re.S):
+        try:
+            json.loads(ld_raw)
+        except json.JSONDecodeError as exc:
+            errors.append(f'{name}: invalid JSON-LD ({exc})')
 for name in ['index.html', 'camera.html', 'gifting.html', 'support.html', 'terms.html']:
     text = (ROOT / name).read_text().lower()
     for expected in ['199', '30', '229', 'gift box', 'lanyard', 'manual', 'in stock']:
@@ -180,7 +186,7 @@ for lang in LANGUAGES:
 for lang in ['zh','ja','ko']:
     unchanged = [key for key,value in catalogs[lang]['text'].items() if value == catalogs['en']['text'][key]]
     if unchanged: errors.append(f'{lang}: untranslated text {unchanged}')
-if len(re.findall(r'<url>',(ROOT/'sitemap.xml').read_text())) != 72: errors.append('Expected 72 indexable language URLs')
+if len(re.findall(r'<url>',(ROOT/'sitemap.xml').read_text())) != 74: errors.append('Expected 74 indexable language URLs')
 if len(data['lifestyle']) != 8: errors.append('Expected eight lifestyle scenes')
 if len(data.get('camera_story',[])) != 2: errors.append('Expected two camera-use scenes')
 for scene in data['lifestyle']+data.get('camera_story',[]):
