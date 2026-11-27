@@ -63,7 +63,7 @@ pages = {str(p.relative_to(ROOT)): Page(p) for p in paths}
 errors = []
 if not verification.is_file() or verification.read_text().strip() != 'google-site-verification: google0c0b3716f5a1174c.html':
     errors.append('Google site verification file must be preserved')
-if len(pages) != 150: errors.append(f'Expected 150 language pages (142 and 8 kept copies), found {len(pages)}')
+if len(pages) != 154: errors.append(f'Expected 154 language pages (146 and 8 kept copies), found {len(pages)}')
 for name, page in pages.items():
     if len(page.ids) != len(set(page.ids)):
         errors.append(f'{name}: duplicate IDs {list(k for k,v in Counter(page.ids).items() if v > 1)}')
@@ -186,7 +186,7 @@ for lang in LANGUAGES:
 for lang in ['zh','ja','ko']:
     unchanged = [key for key,value in catalogs[lang]['text'].items() if value == catalogs['en']['text'][key]]
     if unchanged: errors.append(f'{lang}: untranslated text {unchanged}')
-if len(re.findall(r'<url>',(ROOT/'sitemap.xml').read_text())) != 138: errors.append('Expected 138 indexable language URLs')
+if len(re.findall(r'<url>',(ROOT/'sitemap.xml').read_text())) != 142: errors.append('Expected 142 indexable language URLs')
 if len(data['lifestyle']) != 8: errors.append('Expected eight lifestyle scenes')
 if len(data.get('camera_story',[])) != 2: errors.append('Expected two camera-use scenes')
 for scene in data['lifestyle']+data.get('camera_story',[]):
